@@ -1,0 +1,108 @@
+<header class="header">
+  <div class="back-icon" (click)="goBack()">
+    <i class="fas fa-chevron-left"></i>
+  </div>
+  <div class="head">
+    <p>Wallet</p>
+  </div>
+  <div class="balance" [ngClass]="{ 'zero-balance': currentBalance === 0, 'positive-balance': currentBalance > 0 }">
+    Balance: <br>
+    ₹{{ currentBalance }}
+  </div>
+</header>
+
+
+<div class="select">
+  <div class="autopay" >
+    <div class="set">
+      <label>
+        <input type="radio" [(ngModel)]="selectedOption" value="autopay" (change)="toggleOption('autopay')"> Setup Autopay
+      </label>
+ 
+      <div class="box">
+        <div class="tab"><i class="fas fa-wallet"></i></div>
+      </div>
+    </div>
+      
+    <div class="current">
+      ₹{{ Balance }}
+    </div>
+    <div class="top">
+      <div class="one">
+        <p> ₹1500</p>
+      </div>
+      <div class="two">
+        <p> ₹8250</p>
+      </div>
+      <div class="three">
+        <p> ₹15000</p>
+      </div>
+    </div>
+    <div class="text">
+      <span>It will recharge automatically when your wallet balance goes below<h3> ₹100</h3></span>
+    </div>
+  </div>
+
+  <div class="recharge" >
+    <label>
+      <input type="radio" [(ngModel)]="selectedOption" value="recharge" (change)="toggleOption('recharge')"> Recharge Once
+    </label>
+      
+    <div class="emit">
+    <div class="current1">
+      ₹{{ ReBalance }} 
+    </div>
+    <div class="truth">Get flat Rs.500 Cashback</div>
+  </div>
+    <div class="top">
+      <div class="one">
+        <p> ₹1500</p>
+      </div>
+      <div class="two">
+        <p> ₹8250</p>
+      </div>
+      <div class="three">
+        <p> ₹15000</p>
+      </div>
+    </div>
+    <div class="take">
+      <p>Recommended Offers</p>
+    </div>
+    <div class="container">
+      <div class="rain">
+        <div class="app">
+          <h4>Rs 5000 Offer</h4>
+          <p>Get flat Rs. 500 cashback</p>
+        </div>
+        <div class="app1" (click)="removeSection('rain')">X</div>
+      </div>
+      <div class="rain1">
+        <div class="app">
+          <h4>Rs 500 Offer</h4>
+          <p>Get flat Rs. 100 cashback</p>
+        </div>
+        <div class="app2" (click)="removeSection('rain1')">APPLY</div>
+      </div>
+    </div>
+    <div class="code">
+      <p>Have a coupon code ?</p>
+    </div>
+  </div>
+
+  <ngb-carousel *ngIf="images && images.length > 0">
+    <ng-template ngbSlide>
+      <div class="logo">
+        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20231031171317/10-Best-UPI-Apps-for-Cashback-in-2023.webp" alt="" />
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="logo">
+        <img src="https://d6xcmfyh68wv8.cloudfront.net/blog-content/uploads/2020/07/UPI-autopay-razorpay.png" alt="" />
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
+
+<div class="address-price">
+  <button class="add-address" [routerLink]="['/payment']">Pay ₹{{ totalPrice }}</button> 
+</div>

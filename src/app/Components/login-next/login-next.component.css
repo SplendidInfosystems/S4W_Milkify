@@ -1,0 +1,88 @@
+.container {
+  height: 100vh;
+}
+
+.otp button:hover {
+  background-color: #04B56C;
+}
+
+.back-icon {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  font-size: 20px;
+}
+
+.error-message {
+  color: red;
+  margin-left: 5px;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
+
+.resend p {
+  color: rgb(79, 78, 78);
+  text-align: center;
+  margin-top: 10px;
+  font-family: 'Arial', sans-serif;
+}
+
+
+
+.OTP-verify {
+
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 18%;
+}
+
+.OTP-verify p {
+  font-size: 13px;
+  margin-top: 15px;
+}
+
+.OTP-verify h3 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.otp-input {
+  margin-top: 20px;
+}
+
+.otp-input input {
+  width: 40px;
+  height: 30px;
+  margin: 0 5px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.otp {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.otp input[type="text"] {
+  width: 200px;
+  height: 40px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.otp button {
+  width: 300px;
+  height: 40px;
+  background-color: #04B56C;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 520px;
+}

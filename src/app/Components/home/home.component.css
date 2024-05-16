@@ -1,0 +1,249 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.landing-page {
+  font-family: Arial, sans-serif;
+}
+
+.main-content {
+  padding: 20px;
+  background-color: #f1f7f7;
+}
+
+.hero-image {
+  max-width: 15%;
+  margin: 5px 15px 0px 10px;
+  border-radius: 50%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  padding: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.morning-delivery {
+  margin-right: -25px;
+}
+
+.header-right {
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.header-right h3 {
+  font-size: 14px;
+  color: #333;
+  font-weight: 800;
+}
+
+.header-right p {
+  font-size: 12px;
+  color: #666;
+}
+
+.box {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin-left: 26%;
+  border: 1px solid #b2b2b2;
+  background-color: #fff;
+  color: white;
+  border-radius: 5px;
+}
+
+.tab {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: gray;
+}
+
+.delivery-timing {
+  font-size: 0.8rem;
+  margin-right: 20px;
+}
+
+.wallet-icon {
+  width: 25px;
+  height: 25px;
+  margin-left: 32%;
+}
+
+.small-text {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.popup-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.head p {
+  color: #04B56C;
+  font-weight: 400;
+}
+
+.head h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.head img {
+  width: 30px;
+  margin-right: 10px;
+  height: 30px;
+}
+
+.logo {
+  padding: 10px;
+  height: 30vh;
+  text-align: center;
+
+}
+
+.logo img {
+  margin-top: 17px;
+  width: 100%;
+  height: 95%;
+  border-radius: 15px;
+}
+
+.popular-items {
+  margin-right: -10px;
+}
+
+.popular-item {
+  width: calc(51% - 15px);
+  border: 1px solid #D2E19C;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 10px 3px 0px;
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
+  position: relative;
+  background-color: white;
+}
+
+.popular-item img {
+  width: 100%;
+  border-radius: 5px;
+  margin: 10px 0px 15px 0;
+}
+
+.popular-item h3 {
+  font-size: 15px;
+  margin-bottom: 5px;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.popular-item p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.popular-item button:hover {
+  background-color: #04B56C;
+}
+
+.side-button {
+  position: absolute;
+  top: 44%;
+  z-index: 1;
+  background: linear-gradient(135deg, #FEE58C 0%, #FEE58C 100%);
+  color: #000;
+  border: none;
+  border-radius: 20px;
+  font-size: 12px;
+  padding: 2px 7px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.desc {
+  text-align: center;
+}
+
+.add-button {
+  position: absolute;
+  bottom: 18px;
+  left: 75%;
+  transform: translateX(-50%);
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: #04B56C;
+  color: #fff;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.no-order-btn {
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: #04B56C;
+  color: #fff;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: #6c8c1b;
+}
+
+.promo-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 25px;
+  background-image: linear-gradient(to right, #F5E586, #C0ED5F);
+  z-index: 1;
+  border-radius: 5px 5px 0 0;
+}
+
+.promo-banner::before {
+  content: "Hormone free";
+  color: #000;
+  position: absolute;
+  font-size: 12px;
+  left: 25%;
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+.promo-banner::after {
+  content: "";
+}

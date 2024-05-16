@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="back-icon">
+        <i class="fas fa-chevron-left"></i>
+    </div>
+    <div class="OTP-verify">
+        <h3>OTP Verification</h3>
+        <p>We have sent a Verification code to +919421665674</p>
+        <div class="otp-input">
+            <input type="text" maxlength="1" (input)="onOtpInput(1)" #otpInput1>
+            <input type="text" maxlength="1" (input)="onOtpInput(2)" #otpInput2>
+            <input type="text" maxlength="1" (input)="onOtpInput(3)" #otpInput3>
+            <input type="text" maxlength="1" (input)="onOtpInput(4)" #otpInput4>
+            <input type="text" maxlength="1" (input)="onOtpInput(5)" #otpInput5>
+            <input type="text" maxlength="1" (input)="onOtpInput(6)" #otpInput6>
+        </div>
+        <div class="otp">
+            <div *ngIf="otpVerificationFailed" class="error-message">
+                Invalid OTP. Please try again.
+            </div>
+            <p *ngIf="!otpVerificationFailed && otpVerified">OTP verified. Proceeding...</p>
+            <p *ngIf="!showResendOption">Didn't receive the OTP? Retry in: {{ remainingTime }}</p>
+            <div *ngIf="showResendOption">
+                <button (click)="resend()">Resend</button>
+            </div>
+            <button (click)="verifyOTP()">Verify & Proceed</button>
+        </div>
+    </div>
+</div>

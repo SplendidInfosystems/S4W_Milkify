@@ -1,0 +1,112 @@
+.container {
+    background-color: #F1F7F7;
+    height: 100vh;
+}
+
+.logo {
+    padding: 10px;
+    height: 50vh;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.Loginscreen {
+    margin: auto;
+    width: 95%;
+    height: 42vh;
+    border: 1px solid #fff;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 45px;
+}
+
+.logo img {
+    margin-top: 70px;
+    width: 200px;
+    height: auto;
+}
+
+.message p {
+    padding: 15px;
+    text-align: center;
+    margin-top: 20%;
+    font-size: 14px;
+    color: rgb(79, 78, 78);
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+}
+
+.carousel-caption p {
+    font-size: 20px;
+    font-weight: bold;
+    color: #8CB626;
+    text-align: center;
+    /* margin-top: 10px; */
+    font-family: 'Arial', sans-serif;
+}
+
+.num p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.num input[type="tel"],
+.otp input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    height: 50px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.error-message {
+    color: red;
+    margin-left: 5px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+.resend p {
+    color: rgb(79, 78, 78);
+    text-align: center;
+    margin-top: 10px;
+    font-family: 'Arial', sans-serif;
+}
+
+.resend span {
+    text-align: center;
+}
+
+.login p {
+    font-weight: 700;
+    color: rgb(58, 57, 57);
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+.num button,
+.otp button {
+    width: 100%;
+    padding: 10px;
+    background-color: #04B56C;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.num button:hover,
+.otp button:hover {
+    background-color: #04B56C;
+}
+
+.success p {
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    text-align: center;
+    color: #04B56C;
+}

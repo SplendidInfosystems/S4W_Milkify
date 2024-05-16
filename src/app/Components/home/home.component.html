@@ -1,0 +1,71 @@
+<div class="landing-page">
+  <header class="header">
+    <img src="..\assets\Images\logo.png" alt="Farm Fresh Milk" class="hero-image">
+    <div class="header-right">
+      <h3>Morning Delivery</h3>
+      <p>6:00 AM - 9:00 AM</p>
+    </div>
+    <div class="box">
+      <div class="tab" [routerLink]="['/wallet']"><i class="fas fa-wallet"></i></div>
+    </div>
+  </header>
+
+  <div class="popup-card">
+    <div class="popup-content">
+      <p class="small-text">There is no order scheduled for tomorrow</p>
+      <button class="no-order-btn" [routerLink]="['/product-details']">Add item</button>
+    </div>
+  </div>
+
+  <ngb-carousel *ngIf="images && images.length > 0">
+    <ng-template ngbSlide>
+      <div class="logo">
+        <img src="https://i.pinimg.com/736x/b5/fb/84/b5fb843522cd96f2f4e4b9832abea75f.jpg" alt="" />
+      </div>
+
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="logo">
+        <img src="https://img.freepik.com/premium-vector/3d-fresh-milk-ad-template_317442-1798.jpg" alt="" />
+      </div>
+
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="logo">
+        <img src="https://i.ytimg.com/vi/ephkoGmK8so/maxresdefault.jpg" alt="" />
+      </div>
+
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="logo">
+        <img src="https://www.alphamilk.in/wp-content/uploads/2021/11/banner-1280w.webp" alt="" />
+      </div>
+    </ng-template>
+  </ngb-carousel>
+
+
+  <main class="main-content">
+    <div class="popular-items">
+      <div class="head">
+        <h2>Most Popular Items</h2>
+        <p>view all <i class="fas fa-chevron-right"></i></p>
+      </div>
+      <div class="popular-item" *ngFor="let item of popularItems; let i = index">
+        <button class="side-button">20% off</button>
+        <a [routerLink]="['/product-details', i]">
+          <div class="promo-banner"></div>
+          <img [src]="item.image" alt="{{ item.name }}">
+        </a>
+        <div class="desc">
+          <h3>{{ item.name }}</h3>
+        </div>
+        <p>{{ item.litre }}</p>
+        <p><strong>{{ item.price }}</strong></p>
+        <button class="add-button" [routerLink]="['/wallet']">Add</button>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+<app-tapbar></app-tapbar>
