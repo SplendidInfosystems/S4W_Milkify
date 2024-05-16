@@ -9,7 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginNextComponent } from './Components/login-next/login-next.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { NgModule } from '@angular/core';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,9 +18,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { WalletComponent } from './Services/wallet/wallet.component';
+
 import { MatRadioModule } from '@angular/material/radio';
-import { PaymentComponent } from './Services/wallet/payment/payment.component';
+
+import { WalletComponent } from './Components/wallet/wallet.component';
+import { PaymentComponent } from './Components/payment/payment.component';
+import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations: [

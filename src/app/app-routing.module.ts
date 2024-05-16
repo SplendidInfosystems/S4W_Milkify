@@ -4,8 +4,9 @@ import { HomeComponent } from './Components/home/home.component';
 import { LoginComponent } from './Components/login/login.component';
 import { LoginNextComponent } from './Components/login-next/login-next.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
-import { WalletComponent } from './Services/wallet/wallet.component';
-import { PaymentComponent } from './Services/wallet/payment/payment.component';
+import { WalletComponent } from './Components/wallet/wallet.component';
+import { PaymentComponent } from './Components/payment/payment.component';
+
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
