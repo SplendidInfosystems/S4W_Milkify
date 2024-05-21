@@ -1,0 +1,85 @@
+.vacation-main , .vacation{
+    background-color: #f1f7f7;
+    padding-top: 5px;
+    height: 100%;
+}
+.vacation-header {
+    display: flex;
+    align-items: center;
+        padding: 10px 20px;
+}
+.vacation-header h3{
+    text-align: center;
+    margin: 7px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.vacation-main p{
+    text-align: center;
+}
+.vacation-header button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+.mat-icon {
+    width: 30px; /* Adjust as needed */
+    height: auto;
+}
+.mat-icon:hover {
+    transform: scale(1.1); /* Adjust scale factor as needed */
+}
+
+.vacation-section {
+    margin-top: 20px; /* Adjust spacing */
+}
+.vacation-section img {
+    width: 65%;
+    border-radius: 10px;
+    margin: 20px 10px 1rem 4rem;
+            height: auto;
+}
+.vacation-section p {
+    margin-top: 10px;
+    text-align: center;
+}
+.vacation-section p:hover {
+    color: #555; /* Change color on hover */
+    cursor: pointer;
+} 
+  .vacation-card-row  {
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    width: 90%;
+    margin-left: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .vacation-column {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .divider {
+    border-right: 1px solid #ccc;
+    height: 50px; /* Adjust height as needed */
+    margin: 0 10px;
+  }
+  
+  .vacation-header {
+    font-weight: bold;
+  }
+  .vacation button {
+    padding: 10px 20px;
+    background-color: #04B56C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 90%;
+    margin: 10% 20px 20px 20px;
+}

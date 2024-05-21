@@ -1,0 +1,57 @@
+.transaction-main{
+    background-color: #f1f7f7;
+    padding-top: 5px;
+    height: 100%;
+}
+.transaction-header {
+    display: flex;
+    align-items: center;
+        padding: 10px 20px;
+        border-bottom: 1px solid #ccc;
+}
+.transaction-header h3{
+    text-align: center;
+    margin: 7px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.transaction-main p{
+    text-align: center;
+}
+.transaction-header button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+.mat-icon {
+    width: 30px; /* Adjust as needed */
+    height: auto;
+}
+.mat-icon:hover {
+    transform: scale(1.1); /* Adjust scale factor as needed */
+}
+.transaction-wallet-balance {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 10px; /* Adjust spacing */
+}
+.transaction-wallet-balance p {
+    margin-right: 10px; 
+}
+.transaction-wallet-balance button, .transaction-main button {
+    background-color: #04B56C; 
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 8px 16px;
+}
+.transaction-main button {
+    margin-left: 7rem;
+}
+.no-trans{
+    margin-top: 10px;
+}

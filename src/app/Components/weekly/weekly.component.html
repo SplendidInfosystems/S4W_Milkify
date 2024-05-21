@@ -1,0 +1,60 @@
+
+
+<header class="header">
+    <div class="back-icon" (click)="goBack()">
+        <i class="fas fa-chevron-left"></i>
+    </div>
+    <div class="head">
+        <p>Weekly Plan</p>
+    </div>
+
+</header>
+
+<div class="popular-items">
+    <div class="popular-item" *ngFor="let item of popularItems; let i = index">
+        <div class="promo-banner"></div>
+        <img [src]="item.image" alt="{{ item.name }}">
+    </div>
+    <div class="popular-it" *ngFor="let item of popularItems; let i = index">
+        <h5>{{item.name}}</h5>
+        <p>{{item.litre}}</p>
+       <p>{{item.price}}</p>
+       <div class="text">
+        <p>You are saving ₹9.50 with VIP</p>
+       </div>
+    </div>
+</div>
+<div class="select-days">
+    <p>Select Days</p>
+    <ul>
+      <li *ngFor="let day of days" (click)="toggleDaySelection(day)" [class.selected]="selectedDays.includes(day)">
+        {{ day }}
+      </li>
+    </ul>
+  </div>
+  
+  <div class="select-quantity">
+    <p>Select quantity per day</p>
+    <div *ngFor="let selectedDay of selectedDays" class="selected-day">
+      <div class="mid">
+        <div class="day">{{ selectedDay }}</div>
+        <div class="cart">
+          <p (click)="increaseValue(selectedDay)">+</p>
+          <span>{{ dayQuantities[selectedDay] || 1}}</span>
+          <p (click)="decreaseValue(selectedDay)">-</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-container *ngIf="showError">
+    <p style="color: red;">Please select at least one day.</p>
+</ng-container>
+
+  <div class="address-price">
+    <button class="add-address" [routerLink]="'/order-sub'" [disabled]="selectedDays.length === 0">
+        ₹{{ totalPrice }} Confirm Subscription
+    </button> 
+</div>
+
+
+  

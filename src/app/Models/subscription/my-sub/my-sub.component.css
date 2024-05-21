@@ -1,0 +1,149 @@
+
+.my-sub-main{
+    background-color: #f1f7f7;
+    padding-top: 5px;
+    height: 100%;
+}
+.my-sub-header {
+    display: flex;
+    align-items: center;
+        padding: 10px 20px;
+}
+.my-sub-header h3{
+    text-align: center;
+    margin: 7px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.my-sub-horizontal-card {
+    display: flex;
+    align-items: center;
+    margin: 20px 10px;
+    padding: 10px;
+    border: 1px solid #83bddd;
+    background-color: #e2f4ff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.my-sub-horizontal-card img {
+    width: 40%;
+    border-radius: 25px;
+    height: auto;
+    margin-right: 10px;
+}
+.my-sub-card-details {
+    flex-grow: 1;
+}
+.my-sub-card-details h2 {
+    margin: 0;
+}
+.my-sub-card-details p {
+    margin-top: 5px;
+}
+.my-sub-header button {
+   background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+.mat-icon{
+    width: 30px;
+    height: auto;
+}
+.my-sub-header button:hover {
+    transform: scale(1.1);
+}
+.product-card {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    flex-direction: column;
+    margin: 10px;
+    width: 95%;
+}
+.product-image {
+    flex: 0 0 auto;
+    width: 150px; /* Adjust as needed */
+}
+.product-image img {
+    width: 85%;
+    height: auto;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+.product-details {
+    flex: 1;
+    padding: 10px;
+}
+.products-main{
+    display: flex;
+    align-items: center;
+}
+.add p {
+    margin: 0;
+}
+.add p span {
+    text-decoration: line-through;
+    font-weight: normal;
+}
+.add p strong {
+    font-weight: bold;
+}
+.edit-button {
+    background-color: #04B56C;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.edit-button:hover {
+    background-color: #0056b3;
+}
+.offer-card, .grey-card, .dotted-card {
+    width: 95%;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.offer-card {
+    background: linear-gradient(to right, #e2d2424f, #e4d7608f, #f6c31896);
+}
+.grey-card {
+    background-color: rgb(211, 202, 202);
+    text-align: center;
+}
+.offer-card p, .grey-card p {
+    margin: 0;
+}
+
+.dotted-card {
+    border: 2px dotted #04B56C;
+    background: linear-gradient(45deg, #04b56c73, white);
+    padding: 9px;
+}
+.dot-card-details {
+    display: flex;
+    align-items: center;
+}
+.dot-card-details img {
+    width: 50px; 
+    height: 50px; 
+    margin-right: 15px;
+}
+.text-details h6 {
+    margin: 0;
+    font-size: 1rem; 
+    color: #333;
+}
+.saved-amount {
+    margin: 10px 0 0 0;
+    font-size: 0.9rem; 
+    color: #04B56C;
+    font-weight: bold;
+    cursor: pointer;
+}

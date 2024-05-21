@@ -1,0 +1,77 @@
+<div class="help-header">
+    <mat-toolbar >
+        <mat-toolbar-row>
+          <button mat-icon-button (click)="goBack()">
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+          <h3>Need Help?</h3>
+          <span class="example-spacer"></span>
+          <a mat-button href="#" class="faq-link">FAQ's</a>
+        </mat-toolbar-row>
+      </mat-toolbar>
+</div>
+
+
+
+<div class="order-status-container">
+<div class="recent-orders">
+<p><strong>Recent Orders</strong></p>     
+<mat-card class="order-card">
+<mat-card-content>
+  <p class="order-date">Sat, 18 May</p>
+  <div *ngFor="let item of orders" class="order-item">
+    <img [src]="item.image" alt="{{item.name}}" class="order-image">
+    <div class="order-details">
+      <span class="order-name">{{item.name}}&nbsp;&nbsp;</span>
+      <span class="order-quantity">{{item.quantity}}ml x {{item.count}}</span>
+    </div>
+    <span class="out-of-stock" *ngIf="item.outOfStock">Out of stock</span>
+  </div>
+  <div class="divider"></div>
+  <div class="side-text">
+    <p class="not-delivered">Not Delivered</p>
+    <p class="need"><strong>Need Help?</strong></p>
+  </div>
+</mat-card-content>
+</mat-card>
+
+</div>
+
+<div class="help-options">
+<div class="custom-list">
+<div class="main-custom-card">
+<div *ngFor="let item of items" class="custom-card">
+  <div class="custom-list-item">
+    <div class="custom-list-content">
+      <h6 class="custom-header">{{ item.header }}</h6>
+      <p class="custom-para">{{ item.description }}</p>
+    </div>
+    <button class="custom-arrow">
+        <mat-icon [routerLink]="[item.route]">chevron_right</mat-icon>
+            </button>
+  </div>
+  <div class="divider"></div>
+</div>
+</div>
+</div>
+
+
+
+</div>
+
+<div class="vip-support">
+  <p><strong>VIP Support</strong></p>
+  <div class="vip-actions">
+    <button mat-raised-button class="custom-button" (click)="callUs()">
+      <mat-icon>phone</mat-icon>
+      Call Us
+    </button>
+    <button mat-raised-button class="custom-button" (click)="mailUs()">
+      <mat-icon>email</mat-icon>
+      Mail Us
+    </button>
+  </div>
+  
+  
+</div>
+</div>

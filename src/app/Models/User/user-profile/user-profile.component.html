@@ -1,0 +1,104 @@
+
+<div class="user-header">
+    <button mat-icon-button (click)="goBack()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h3>My Profile</h3>
+  </div>
+  <!-- User Information -->
+  <div class="user-info-main">
+    <mat-card class="user-card">
+<div class="card-content">
+    <div class="profile-section">
+      <div class="profile-text">
+          <h4>Name</h4>
+      <p>Bhavna </p>
+      </div>
+      <mat-icon (click)="openNamePopup()">chevron_right</mat-icon>
+        </div>
+  </div>
+  
+  <div *ngIf="showNamePopup" class="modal-overlay" (click)="closeNamePopup()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h3>Enter Your Name</h3>
+      <input [(ngModel)]="newName" placeholder="Enter name" type="name"/>
+    
+        <button class="confirm-button" (click)="saveName()">Save</button>
+    </div>
+  </div>
+  
+  <div class="card-content">
+    <div class="profile-section">
+      <div class="profile-text">
+        <h4>Email</h4>
+        <p>{{ email || 'Not Added' }}</p>
+      </div>
+      <button mat-button class="custom-button" (click)="openEmailPopup()">Add</button>
+    </div>
+  </div>
+  
+  <!-- Email Entry Popup -->
+  <div *ngIf="showEmailPopup" class="modal-overlay" (click)="closeEmailPopup()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h3>Enter Your Email</h3>
+      <input [(ngModel)]="newEmail" placeholder="Enter email" type="email"/>
+      <button class="confirm-button" [class.disabled]="!newEmail" (click)="saveEmail()">Save</button>
+    </div>
+  </div>
+  
+  <div class="card-content">
+    <div class="profile-section">
+      <div class="profile-text">
+          <h4>Alternate Number</h4>
+      <p>8476513257</p>
+      </div>
+      <button mat-button class="custom-button">Add</button>
+    </div>
+  </div>
+  <div class="card-content">
+    <div class="profile-section">
+      <div class="profile-text">
+          <h4>Eggetarian</h4>
+      <p>Not Specifies</p>
+      </div>
+      <button mat-button class="custom-button">Add</button>
+    </div>
+  </div>
+  <div class="card-content">
+    <div class="profile-section">
+      <div class="profile-text">
+          <h4>Milk Preferences</h4>
+      <p>Not Specified</p>
+      </div>
+      <button mat-button class="custom-button">Add</button>
+    </div>
+  </div>
+  <div class="card-content">
+    <div class="profile-section">
+      <div class="profile-text">
+          <h4>Gender</h4>
+      <p>Not Specified</p>
+      </div>
+      <button mat-button class="custom-button">Add</button>
+    </div>
+  </div>
+  <div class="card-content">
+    <div class="profile-section">
+      <div class="profile-text">
+          <h4>Family Member Count</h4>
+      <p>Not Specified</p>
+      </div>
+      <button mat-button class="custom-button">Add</button>
+    </div>
+  </div>
+  <div class="card-content">
+    <div class="profile-section">
+      <div class="profile-text">
+          <h4>Weight(kg)</h4>
+      <p>Not Specified</p>
+      </div>
+      <button mat-button class="custom-button">Add</button>
+    </div>
+  </div>
+</mat-card> 
+</div>

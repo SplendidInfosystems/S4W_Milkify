@@ -1,0 +1,93 @@
+<div class="accounts-header">
+    <button mat-icon-button (click)="goBack()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h3>Account & Preferences</h3>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+  </div>
+    
+   <div class="accounts-main">
+      <mat-card class="accounts-card">
+          <div class="card-content">
+            <div class="profile-section">
+              <div class="profile-text">
+              <h4>My Profile</h4>
+              <p>8999568045</p>
+          </div>
+            </div>
+            <mat-icon (click)="navigateToUserProfile()">chevron_right</mat-icon>      
+          </div>
+        
+          <div class="card-content">
+            <div class="profile-section">
+              <div class="profile-text">
+              <h4>Address</h4>
+              <p>5hhhb, 204 Mote Mangal Karyalay Rd Dattwadi Shobhapur Kasba Peth Pune, Pune</p>
+          </div>  
+          </div>
+          <mat-icon >chevron_right</mat-icon>
+                </div>
+        </mat-card>
+        
+        <h4 class="section-header">Customer Preference</h4>
+        
+        <mat-card class="accounts-card">
+          
+          <div class="card-content">
+            <div class="profile-section">
+              <div class="profile-text">
+                <h4>Delivery time slot</h4>
+                <p>{{ selectedTimeSlot || 'Not selected' }}</p>
+              </div>
+            </div>
+            <mat-icon (click)="togglePopup()">chevron_right</mat-icon>
+          </div>
+          
+          <!-- Popup -->
+          <div class="popup" *ngIf="isPopupVisible">
+            <div class="popup-content">
+              <h5><strong>Select Delivery Slot</strong></h5>
+              <mat-radio-group [(ngModel)]="selectedTimeSlot">
+                <mat-radio-button value="morning">Morning (5:00 AM - 7:30 AM)</mat-radio-button>
+                <mat-radio-button value="afternoon">Afternoon (12:00 PM - 3:00 PM)</mat-radio-button>
+                <mat-radio-button value="evening">Evening (6:00 PM - 9:00 PM)</mat-radio-button>
+              </mat-radio-group>
+              <p style="    text-align: center;
+              padding: 5px;">All changes will be applicable from Tue 20 May</p>
+              <div class="button-group">
+                <button mat-raised-button  (click)="confirmSelection()">Confirm</button>
+              </div>
+            </div>
+            <div class="popup-overlay" (click)="closePopup()"></div>
+          </div>
+          
+        
+          <div class="card-content">
+            <div class="profile-section">
+              
+              <div class="profile-text">
+                  <h4>Ring the bell</h4>
+                  <p>No</p>
+              </div>
+              <mat-slide-toggle></mat-slide-toggle>
+            </div>
+          </div>
+        
+          <div class="card-content">
+            <div class="profile-section">
+              <div class="profile-text">
+                  <h4>Record voice instructions</h4>
+              <p>No</p>
+              </div>
+              <button mat-button class="custom-button">Add</button>
+            </div>
+          </div>
+        </mat-card>
+        
+        
+   </div>

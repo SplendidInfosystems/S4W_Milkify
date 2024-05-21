@@ -61,7 +61,8 @@
         </div>
         <p>{{ item.litre }}</p>
         <p><strong>{{ item.price }}</strong></p>
-        <button class="add-button" [routerLink]="['/wallet']">Add</button>
+        <button mat-button class="add-button" [routerLink]="['/product-details',i]">Add</button>
+
       </div>
     </div>
   </main>

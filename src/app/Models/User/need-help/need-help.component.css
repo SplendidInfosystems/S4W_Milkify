@@ -1,0 +1,173 @@
+.order-status-container {
+    padding: 15px;
+    background-color: #f1f7f7;
+    
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  
+  .faq-link {
+    color: #04B56C;
+    font-size: 15px;
+  }
+  
+  .order-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+  }
+  
+  .order-image {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .out-of-stock {
+    color: red;
+  }
+  
+  .not-delivered {
+    color: red;
+    font-weight: bold;
+  }
+  .vip-support p{
+    margin-left: 5px;
+  }
+  .vip-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  .custom-button {
+    color: #04B56C; 
+    background-color: white;
+    border: 1px solid grey; 
+    border-radius: 10px; 
+    padding: 8px 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .custom-button mat-icon {
+    margin-right: 8px; 
+  }
+  mat-toolbar{
+    background-color: white;
+  }  
+ 
+  .help-header button{
+    padding: 0;
+    margin-right: 10px;
+    border: none;
+    background-color: transparent;
+  }
+  .order-date {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .order-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .order-image {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 5px;
+  }
+  
+  .order-details {
+    flex-grow: 1;
+  }
+  
+  .order-name {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .order-quantity {
+    font-size: 12px;
+    color: gray;
+  }
+  
+  .out-of-stock {
+    color: red;
+    font-size: 12px;
+  }
+  
+  .not-delivered {
+    color: red;
+    margin-top: 6px;
+    text-align: center;
+  }
+  .divider {
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+  }
+  
+  .side-text {
+    display: flex;
+    justify-content: space-between;
+  }
+  .need{
+    color: #04B56C;
+    margin-top: 6px;
+  }
+
+  .custom-list {
+    padding: 0;
+    margin: 40px 0 20px 0;
+    list-style-type: none;
+  }
+  
+  .main-custom-card {
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: white;
+  }
+  .custom-card{
+    padding: 5px;
+  }
+  .custom-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    background-color: white;
+  }
+  
+  .custom-list-content {
+    flex-grow: 1;
+    padding-top: 0;
+    margin-bottom: -10px;
+  }
+  
+  .custom-header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .custom-para {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .custom-arrow {
+    background: none;
+    border: none;
+    color: #777;
+    font-size: 18px;
+    cursor: pointer;
+  }

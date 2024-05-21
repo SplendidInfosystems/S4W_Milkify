@@ -1,0 +1,23 @@
+<div class="transaction-header">
+    <button mat-icon-button (click)="goBack()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h3>Transactions History</h3>
+  </div>
+  <div class="line"></div>
+  <div class="transaction-wallet-balance">
+  <div class="transaction-desc">
+    <p>Current Wallet Balance</p>
+    <h6><strong>$ 0.0</strong></h6>
+  </div>
+    <button [routerLink]="['/wallet']">Add Money</button>
+  </div>
+  <div class="transaction-main">
+    <div class="no-trans">
+      <h6 style="text-align: center;"><strong>No Transactions</strong></h6>
+      <p>You haven't made any transactions,please <br>
+        explore our healthy products.
+      </p>
+      <button mat-raised-button color="primary" (click)="goToProductDetails()">EXPLORE PRODUCTS</button>
+    </div>
+  </div>

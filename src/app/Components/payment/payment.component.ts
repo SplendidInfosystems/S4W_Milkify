@@ -21,11 +21,11 @@ export class PaymentComponent {
     this.upiIDs.splice(index, 1); // Remove the UPI ID input field at the specified index
   }
   popularItems = [
-    {
-      name: 'PAYTM',
-      image:
-        'https://m.economictimes.com/thumb/msid-107312198,width-1200,height-900,resizemode-4,imgsize-6574/paytm-etonline.jpg',
-    },
+    // {
+    //   name: 'PAYTM',
+    //   image:
+    //     'https://m.economictimes.com/thumb/msid-107312198,width-1200,height-900,resizemode-4,imgsize-6574/paytm-etonline.jpg',
+    // },
     {
       name: 'GPAY',
       image:
@@ -36,11 +36,11 @@ export class PaymentComponent {
       image:
         'https://gumlet-images.assettype.com/afaqs%2Fimport%2Fall%2Fnews%2Fimages%2Fnews_story_grfx%2F2018%2F03%2F52495%2FPhonePe.jpg?auto=format%2Ccompress&w=1200',
     }, 
-    {
-      name: 'AMAZON',
-      image:
-        'https://www.svgrepo.com/show/313459/amazon-pay.svg',
-    },
+    // {
+    //   name: 'AMAZON',
+    //   image:
+    //     'https://www.svgrepo.com/show/313459/amazon-pay.svg',
+    // },
    
   ]
 }

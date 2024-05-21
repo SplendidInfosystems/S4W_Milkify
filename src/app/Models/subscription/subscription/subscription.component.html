@@ -1,0 +1,168 @@
+<div class="product">
+    <button class="back-icon" (click)="goBack()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  
+    <div class="Carousel">
+      <ngb-carousel *ngIf="images && images.length > 0">
+        <ng-template ngbSlide *ngFor="let image of images">
+          <div class="logo">
+            <img [src]="image" alt="" />
+          </div>
+        </ng-template>
+      </ngb-carousel>
+    </div>
+  
+    <div class="main">
+      <div class="details">
+        <div class="tales">
+          <h6><strong>Cow Milk</strong></h6>
+          <p>450ml</p>
+        </div>
+        <div class="tail">
+          <p>Hormone Free</p>
+        </div>
+      </div>
+  
+      <div class="mid">
+        <div class="add">
+            <p><strong>₹27</strong> <span> ₹45.50</span></p>
+        </div>
+        
+        <div class="cart">
+          <button (click)="decreaseValue()">-</button>
+          <span>{{ quantity }}</span>
+          <button (click)="increaseValue()">+</button>
+        </div>
+      </div>
+      <div class="offer-card">
+        <div class="offer-details">
+          <p><strong>You are saving <span style="color: blue;">$18.55</span> with VIP</strong></p>
+        </div>
+      </div>
+      <div class="grey-card">
+        <p>Offer applicable on max 2 units.</p>
+      </div>
+    </div>
+    <div class="line-above"></div>
+    <div class="dotted-card">
+        <div class="dot-card-details">
+            <img src="https://cdn-icons-png.freepik.com/512/3960/3960581.png?ga=GA1.1.1335550155.1713184366">
+            <div class="text-details">
+              <h6><strong>100% off on every delivery after 5 deliveries</strong></h6>
+            </div>
+            <p class="saved-amount"><strong>Know More</strong></p>
+         </div>    
+  </div>
+    <div class="sum">
+      <div class="plan">
+        <h2>Subscription type</h2>
+        <div class="cart">
+          <p *ngIf="!isSubscriptionTypesVisible" (click)="toggleSubscriptionTypes()">{{ selectedSubscription }}</p>
+          <ng-container *ngIf="isSubscriptionTypesVisible">
+            <p (click)="selectSubscription('Daily')">Daily</p>
+            <p (click)="selectSubscription('Alternate')">Alternate</p>
+            <p (click)="selectSubscription('Weekly')">Weekly</p>
+            <p (click)="selectSubscription('One Time')">One Time</p>
+          </ng-container>
+          <i class="fas fa-edit" (click)="toggleSubscriptionTypes()"></i>
+        </div>
+      </div>
+   
+    </div>
+
+    <div class="descript">
+        <h6><strong>Product Description</strong></h6>     
+         <ul>
+                <li>A glass of milk may become your kid's favourite drink with Country Delight Cow Milk.</li>
+                <li>The natural sweetness of our cow's milk is the hallmark of purity and becomes an instant favourite among kids.</li>
+                <li>Moreover, we source our milk from a mix of Desi Gir cows, desi Sahiwal cows, crossbred Holstein & Jersey cows.</li>
+                <li> No preservatives, no milk powder or cream is added to the milk and the milk is not recombined in any form.</li>
+                <li> We deliver the milk under the best cold chain right up to your doorstep..</li>
+            
+            </ul>
+            </div>
+          
+            <div class="subscription" *ngIf="!isEditing; else editingTemplate">
+              <button class="add-sub" (click)="confirmSubscription()">₹{{ totalPrice }} Confirm Subscription</button>
+            </div>
+          
+            <ng-template #editingTemplate>
+              <div class="subscription edit-mode">
+                <button class="resume-sub" (click)="resumeSubscription($event)">Resume Subscription</button>
+                <button class="cancel-sub" (click)="cancelSubscription()">Cancel Subscription</button>
+              </div>
+            </ng-template>
+            <div *ngIf=" showResumePopup" class="modal-overlay" (click)="closeResumePopup()">
+              <div class="modal-content" (click)="$event.stopPropagation()">
+                <h5><strong>Subscription Resumed</strong></h5>
+                <p>Your subscription of cow milk has been resumed</p>
+                <div class="divider">
+                  </div>
+                  <p class="awesome-button" (click)="closeResumePopup()">Awesome</p>
+                    
+               </div>
+            </div>
+        <div *ngIf="showCancelPopup" class="modal-overlay" (click)="closeCancelPopup()">
+          <div class="modal-content" (click)="$event.stopPropagation()">
+        <h5><strong>Cancel Subscription</strong></h5>
+            <p>If you are cancelling for a certain period of time you can pause the  <br>
+              subscription rather than cancelling.</p>
+        <div class="popup-products-card">
+            <div class="popup-img">
+              <img src="https://content.jdmagicbox.com/comp/delhi/s6/011pxx11.xx11.191015075931.b6s6/catalogue/country-delight-okhla-industrial-area-delhi-milk-dairy-nlw19dbmil.jpg">
+            </div>
+            
+              <div class="para">
+                <p><strong>Cow Milk</strong></p>
+              <p>450 ml</p>
+              </div>
+              <p><strong>25$</strong></p>
+            </div>
+            <div class="button-divider">
+              <button class="pause-sub-button" (click)="closeCancelPopup()">Pause Subscription</button>
+              <button class="cancel-sub-button" (click)="confirmCancelSubscription()">Cancel Subscription</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Popup for cancellation -->
+        <div *ngIf="showCancellationPopup" class="modal-overlay" (click)="closeCancellationPopup()">
+          <div class="modal-content" (click)="$event.stopPropagation()">
+            <h3>Subscription Cancelled</h3>
+            <p>Your subscription has been cancelled.</p>
+              <button class="confirm-button" (click)="closeCancellationPopup()">Okay</button>
+            
+          </div>
+        </div>
+
+        <!-- Pause subscription popup -->
+<div *ngIf="showPausePopup" class="modal-overlay" (click)="closePausePopup()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h3>Pause Subscription</h3>
+      <p>Please select the duration for pausing your subscription:</p>
+      <ul>
+        <li><input type="radio" name="pauseDuration" value="1 Week"> 1 Week</li>
+        <li><input type="radio" name="pauseDuration" value="2 Weeks"> 2 Weeks</li>
+        <li><input type="radio" name="pauseDuration" value="1 Month"> 1 Month</li>
+        <li><input type="radio" name="pauseDuration" value="2 Months"> 2 Months</li>
+      </ul>
+      <div class="button-divider">
+        <button class="confirm-button" (click)="confirmPause()">Confirm</button>
+      </div>
+    </div>
+  </div>
+  <!-- Pause duration confirmation popup -->
+  <div *ngIf="showPausedDurationPopup" class="modal-overlay" (click)="closePausedDurationPopup()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h3>Subscription Paused</h3>
+      <p>Your subscription has been paused for the selected duration.</p>
+      <div class="button-divider">
+        <button class="confirm-button" (click)="closePausedDurationPopup()">Okay</button>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+   </div>

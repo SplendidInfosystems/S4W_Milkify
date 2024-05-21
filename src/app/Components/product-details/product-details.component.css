@@ -154,6 +154,7 @@
 .descript {
     border-top: 1px solid gray;
     padding-top: 10px;
+    height: 70vh;
 }
 
 
@@ -202,5 +203,29 @@
 }
 
 .add-address:hover {
-    background-color: #0056b3;
+    background-color: #04B56C;
 }
+
+/* Customizing datepicker appearance */
+::ng-deep .mat-calendar-body-selected {
+    background-color: blue !important;
+  }
+  
+  /* Adding a Done button */
+  ::ng-deep .mat-datepicker-content {
+    position: relative;
+  }
+  
+  ::ng-deep .mat-datepicker-actions {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    background-color: #f5f5f5;
+  }
+  
+  ::ng-deep .mat-datepicker-actions .mat-button {
+    margin-right: 8px;
+  }
+  

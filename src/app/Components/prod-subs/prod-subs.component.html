@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="sub-container">
+      <div class="column" *ngFor="let row of rows; let i = index">
+        <h6>
+          <strong>{{ getColumnHeader(i) }}</strong>
+        </h6>
+        <div class="main">
+          <div class="row" *ngFor="let col of row">
+            <!-- <img [src]="col.icon" alt="Icon" (click)="navigateTo(col.route)" /> -->
+            <mat-icon (click)="navigateTocol(col.route)">{{ col.icon }}</mat-icon>
+            <p>{{ col.name }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="card-container">
+      
+      <div class="offer-card">
+        <div class="offer-details">
+          <img src="https://png.pngtree.com/element_our/20200702/ourlarge/pngtree-vector-crown-vip-icon-element-image_2280858.jpg" alt="Icon" />
+          <div class="text-details">
+            <h6><strong>VIP Membership</strong></h6>
+            <p>You are a VIP Member</p>
+          </div>
+          <p class="saved-amount"><strong>Saved $0.0</strong></p>
+        </div>
+      </div>
+  
+      <div class="card" *ngFor="let card of cards">
+        <!-- <img [src]="card.image" alt="Card Image" /> -->
+        <mat-icon class="card-icons">{{ card.image }}</mat-icon>
+  
+        <div class="details">
+          <h6>{{ card.title }}</h6>
+          <p>{{ card.description }}</p>
+        </div>
+        <!-- <button class="image-button">
+          <img src="./assets/Images/right-arrow (1).png" />
+        </button>-->
+        <div class="main">
+          <button class="image-button">
+            <mat-icon (click)="navigateTo(card)">chevron_right</mat-icon>
+                    </button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+  <app-tapbar></app-tapbar>

@@ -1,3 +1,4 @@
+
 <div class="product">
     <div class="back-icon" (click)="goBack()">
         <i class="fas fa-chevron-left"></i>
@@ -63,24 +64,24 @@
         <h2>Subscription type</h2>
         <div class="cart">
             <p *ngIf="!isSubscriptionTypesVisible" (click)="openSubscriptionTypes()">{{ selectedSubscription }}</p>
-            <p *ngIf="isSubscriptionTypesVisible" (click)="selectSubscription('Daily')">Daily</p>
-            <p *ngIf="isSubscriptionTypesVisible" (click)="selectSubscription('Weekly')">Alternate</p>
-            <p *ngIf="isSubscriptionTypesVisible" (click)="selectSubscription('Monthly')">Weekly</p>
-            <p *ngIf="isSubscriptionTypesVisible" (click)="selectSubscription('Monthly')">One Time</p>
+            <p *ngIf="isSubscriptionTypesVisible" (click)="selectSubscription('Daily'); openCalendar()">Daily</p>
+            <p *ngIf="isSubscriptionTypesVisible" (click)="selectSubscription('Alternate'); openCalendar()">Alternate</p>
+            <p *ngIf="isSubscriptionTypesVisible" (click)="selectSubscription('Weekly'); openCalendar()">Weekly</p>
+            <p *ngIf="isSubscriptionTypesVisible" (click)="selectSubscription('One Time'); closeCalendar()">One Time</p>
             <i class="fas fa-edit" (click)="openSubscriptionTypes()"></i>
         </div>
     </div>
 
-
-    <div class="plan1">
+    <div class="plan1" *ngIf="selectedSubscription">
         <h2>Start Date</h2>
         <div class="cart">
-            <p><input matInput [matDatepicker]="picker" [value]="defaultDate"></p>
+            <p><input matInput [matDatepicker]="picker" [value]="defaultDate" #inputDate (click)="openCalendar()"></p>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </div>
     </div>
 </div>
+
 
 
 <div class="descript">
