@@ -1,10 +1,10 @@
-import { Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-next',
   templateUrl: './login-next.component.html',
-  styleUrl: './login-next.component.css'
+  styleUrls: ['./login-next.component.css']
 })
 export class LoginNextComponent {
   remainingTime: number = 40;
@@ -15,56 +15,57 @@ export class LoginNextComponent {
   otpVerified: boolean = false;
   otp: string = '123456';
   resendDisabled: boolean = false;
-  otpVerificationFailed: any;
+  otpVerificationFailed: boolean = false;
   showResendOption: boolean = false;
-
-
 
   constructor(private router: Router) {
     this.startCountdownTimer();
   }
+
   onOtpInput(index: number): void {
-    if (index < 6 && this.otpInputs && this.otpInputs.length > index + 1) {
-      const nextInput = this.otpInputs.toArray()[index + 1];
-      if (nextInput) {
-        nextInput.nativeElement.focus();
-      }
+    const otpInputArray = this.otpInputs.toArray();
+    const currentInput = otpInputArray[index].nativeElement;
+    if (currentInput.value.length === 1 && index < otpInputArray.length - 1) {
+      otpInputArray[index + 1].nativeElement.focus();
+    }
+  }
+
+  onOtpKeydown(event: KeyboardEvent, index: number): void {
+    const otpInputArray = this.otpInputs.toArray();
+    const currentInput = otpInputArray[index].nativeElement;
+    if (event.key === 'Backspace' && currentInput.value.length === 0 && index > 0) {
+      otpInputArray[index - 1].nativeElement.focus();
     }
   }
 
   verifyOTP(): void {
-    if (this.otp === '123456') {
+    const enteredOtp = this.otpInputs.toArray().map(input => input.nativeElement.value).join('');
+    if (enteredOtp === this.otp) {
       this.otpVerified = true;
       console.log('OTP verified successfully.');
-
       alert('OTP verified successfully!');
-
       this.router.navigate(['/home']);
     } else {
-
       this.otpVerified = false;
-
+      this.otpVerificationFailed = true;
       alert('Invalid OTP. Please try again.');
     }
   }
- 
+
   resend(): void {
-    // Your resend logic goes here
-    // This function will be called when the user clicks on the "resend" option
-    // You can reset the timer and hide the "resend" option if needed
     this.remainingTime = 40;
     this.startCountdownTimer();
-    this.showResendOption = false; // Hide the resend option after clicking it
+    this.showResendOption = false;
+    // Add logic to actually resend the OTP
   }
+
   startCountdownTimer(): void {
     this.countdownInterval = setInterval(() => {
       this.remainingTime--;
       if (this.remainingTime <= 0) {
         clearInterval(this.countdownInterval);
-        // Set the flag to true when the countdown reaches zero
         this.showResendOption = true;
       }
     }, 1000);
   }
-
 }
