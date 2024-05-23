@@ -7,7 +7,7 @@ import { ProductDetailsComponent } from './Components/product-details/product-de
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
@@ -16,6 +16,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatMenuModule } from '@angular/material/menu';
@@ -38,6 +39,8 @@ import { AccountsComponent } from './Models/User/accounts/accounts.component';
 import { AppGuideComponent } from './Models/User/app-guide/app-guide.component';
 import { NeedHelpComponent } from './Models/User/need-help/need-help.component';
 import { UserProfileComponent } from './Models/User/user-profile/user-profile.component';
+import { ReferComponent } from './Components/refer/refer.component';
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 @NgModule({
@@ -62,15 +65,18 @@ import { UserProfileComponent } from './Models/User/user-profile/user-profile.co
     AccountsComponent,
     AppGuideComponent,
     NeedHelpComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ReferComponent
   
   ],
   imports: [
     MatFormFieldModule,
     MatDatepickerModule,
     MatInputModule,
+    ReactiveFormsModule,
     MatNativeDateModule,
     MatToolbarModule,
+    MatStepperModule,
     MatMenuModule ,
     MatSlideToggleModule,
     BrowserModule,
@@ -78,6 +84,7 @@ import { UserProfileComponent } from './Models/User/user-profile/user-profile.co
     AppRoutingModule,
     RouterModule, 
     MatCardModule,
+    MatProgressBarModule,
     MatRadioModule,
     MatIconModule,
     NgbModule

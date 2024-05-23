@@ -1,7 +1,7 @@
 <div class="product">
-    <button class="back-icon" (click)="goBack()">
-      <mat-icon>arrow_back</mat-icon>
-    </button>
+  <div class="back-icon" (click)="goBack()">
+    <i class="fas fa-chevron-left"></i>
+</div>
   
     <div class="Carousel">
       <ngb-carousel *ngIf="images && images.length > 0">
@@ -67,8 +67,21 @@
           </ng-container>
           <i class="fas fa-edit" (click)="toggleSubscriptionTypes()"></i>
         </div>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Start Date</mat-label>
+          <div class="flex">
+              <mat-date-range-input [rangePicker]="picker">
+                  <input matStartDate #startDateInput placeholder="Start date" (dateChange)="onStartDateSelected($event.value)">
+                  <input matEndDate #endDateInput placeholder="End date">
+                </mat-date-range-input>
+          </div>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
       </div>
    
+      
     </div>
 
     <div class="descript">

@@ -1,7 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatDatepicker } from '@angular/material/datepicker';
+import { MatDateRangeInput, MatDateRangePicker, MatDatepicker } from '@angular/material/datepicker';
 import { DateAdapter } from '@angular/material/core';
+
 
 @Component({
   selector: 'app-product-details',
@@ -10,20 +11,33 @@ import { DateAdapter } from '@angular/material/core';
 })
 export class ProductDetailsComponent {
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
-  startDate: Date = new Date('2024-05-10');
+  startDate: Date = new Date();
+  endDate: Date = new Date();
   defaultDate: Date;
-  selectedSubscription: string = 'Daily';
+  selectedSubscription = 'Daily';
   isSubscriptionTypesVisible: boolean = false;
   price: number = 53;
+  isAlternateCalendarVisible: boolean = false;
+  isDailyCalendarVisible: boolean = false;
+  alternateSelectedDate: Date[] = [];
   quantity: number = 1;
   totalPrice: number = this.price;
+  subscriptionTypes: string[] = ['Daily', 'Alternate', 'Weekly', 'One Time'];
 
-  @ViewChild('picker') picker: MatDatepicker<any> | undefined; // Reference to the MatDatepicker
+  
+  @ViewChild('startDateInput') startDateInput!: MatDateRangeInput<Date>; 
+  @ViewChild('endDateInput') endDateInput!: MatDateRangeInput<Date>;
 
-  constructor(private router: Router, private dateAdapter: DateAdapter<Date>) {
+  
+  @ViewChild(MatDateRangePicker) datePicker!: MatDateRangePicker<Date>; 
+  @ViewChild('picker') picker: MatDatepicker<Date> | undefined;
+
+  constructor(private router: Router,private dateAdapter: DateAdapter<Date>) {
     this.defaultDate = new Date();
   }
-
+  toggleSubscriptionTypes() {
+    this.isSubscriptionTypesVisible = !this.isSubscriptionTypesVisible;
+  }
   ngOnInit(): void {
     this.defaultDate = new Date();
   }
@@ -32,22 +46,9 @@ export class ProductDetailsComponent {
     this.router.navigate(['/home']);
   }
 
-  openDatePicker(): void {
-    
+  openSubscriptionTypes() {
+    this.isSubscriptionTypesVisible = !this.isSubscriptionTypesVisible;
   }
-
-  openSubscriptionTypes(): void {
-    this.isSubscriptionTypesVisible = true;
-  }
-
-  selectSubscription(subscription: string): void {
-    this.selectedSubscription = subscription;
-    this.isSubscriptionTypesVisible = false;
-
-    if (subscription === 'Weekly') {
-        this.router.navigate(['/weekly']);
-    }
-}
 
   increaseValue(): void {
     this.quantity++;
@@ -65,38 +66,81 @@ export class ProductDetailsComponent {
     this.totalPrice = this.price * this.quantity;
   }
 
+  openAlternateCalendar() {
+    this.isAlternateCalendarVisible = true;
+  }
+  openDailyCalendar(){
+    this.isDailyCalendarVisible = true;
+  }
+
+  closeAlternateCalendar() {
+    this.isAlternateCalendarVisible = false;
+  }
+
+  selectSubscription(subscriptionType: string) {
+    this.selectedSubscription = subscriptionType;
+    
+    if (subscriptionType === 'One Time') {
+      // Open the calendar when "One Time" subscription is selected
+      this.datePicker.open();
+    } else if (subscriptionType === 'Weekly') {
+      this.router.navigate(['/weekly']);
+    } else {
+  
+      this.startDate = new Date(); 
+      this.endDate = new Date();
+      
+      if (subscriptionType === 'Daily') {
+        this.openCalendar();
+        this.selectDailyDates(this.defaultDate);
+      } else if (subscriptionType === 'Alternate') {
+        this.openCalendar();
+        this.selectAlternateDate(this.defaultDate);
+      }
+    }
+  }
+  
+
+  selectDailyDates(event: Date) {
+    const selectedDate = new Date(event);
+    const lastDayOfMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 0).getDate();
+    const alternateDates = [];
+
+    for (let i = 1; i <= lastDayOfMonth; i += 2) {
+      alternateDates.push(new Date(selectedDate.getFullYear(), selectedDate.getMonth(), i));
+    }
+    this.alternateSelectedDate = alternateDates.slice();
+  }
+
+  selectAlternateDate(event: Date) {
+    const selectedDate = new Date(event);
+    const today = new Date(); 
+    const dailyDates = [];
+    for (let i = selectedDate.getDate(); i <= selectedDate.getDate(); i++) {
+      const currentDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), i);
+      if (currentDate >= today) {
+        dailyDates.push(currentDate);
+      }
+    }
+    this.alternateSelectedDate = dailyDates.slice();
+    dailyDates.forEach(date => {
+      this.picker?.select(date);
+    });
+  }
+  
+  
+
   openCalendar(): void {
     if (this.picker) {
-        this.picker.open(); 
-        if (this.selectedSubscription === 'Daily') {
-            this.highlightDatesUntilEndOfMonth();
-        } 
-     
-    }
-}
-
-
-  closeCalendar(): void {
-    if (this.picker) {
-      this.picker.close(); 
+      this.picker.open();
     }
   }
 
-  private highlightDatesUntilEndOfMonth(): void {
-    const currentDate = new Date();
-    const lastDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
-    const datesToHighlight = this.getDatesArray(this.defaultDate, lastDayOfMonth);
-    this.picker?.select(datesToHighlight);
-}
-
-private getDatesArray(startDate: Date, endDate: Date): Date[] {
-    const dates = [];
-    let currentDate = new Date(startDate); 
-    while (currentDate <= endDate) {
-        dates.push(currentDate);
-        currentDate = new Date(currentDate.getTime() + 24 * 60 * 60 * 1000);
-    }
-    return dates;
-}
+  onStartDateSelected(selectedDate: Date) {
+    const endDate = new Date(selectedDate.getFullYear(), 11, 31);
+    this.dateAdapter.setLocale('en'); // Set locale if necessary
+    this.endDateInput._startInput.value = selectedDate;
+    this.endDateInput._endInput.value = endDate;
+  }
 
 }

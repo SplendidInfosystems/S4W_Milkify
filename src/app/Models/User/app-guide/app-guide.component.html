@@ -6,11 +6,22 @@
 </div>
 
 <div class="guide-main">
-<h6><strong>I want to?</strong></h6>
-<div class="guide-card">
-    <h2 class="section-title">Place an Order</h2>
+    <h6><strong>I want to?</strong></h6>
+    <div class="guide-card" (click)="showInfo('Place an Order')">
+        <h2 class="section-title">Place an Order</h2>
+    </div>
+    <div *ngIf="showDetails">
+        <div class="guide-card" *ngFor="let option of guideOptions" (click)="showInfo(option)">
+            <h5 class="section-title">{{ option }}</h5>
+        </div>
     </div>
 
+    <div *ngIf="infoToShow">
+        <!-- This could be a modal, a panel, or any other UI element to display information -->
+        <h2>{{ infoToShow.title }}</h2>
+        <p>{{ infoToShow.description }}</p>
+    </div>
+<!-- 
     <div class="guide-card">
         <h5 class="section-title">Add a vacation</h5>
         </div>
@@ -25,5 +36,5 @@
                     </div>
                     <div class="guide-card">
                         <h5 class="section-title">View current Offers</h5>
-                        </div>
+                        </div> -->
 </div>

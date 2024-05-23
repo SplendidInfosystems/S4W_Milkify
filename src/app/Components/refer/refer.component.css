@@ -1,0 +1,186 @@
+.refer{ 
+    padding-bottom: 70px;
+    height: 105vh;
+}
+.ref{
+  background-color: #F0F7F7;
+}
+.header {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    padding: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  .balance{
+    margin-left: 20%;
+    margin-top: 20px;
+    color: #04B56C;
+  }
+  .back-icon {
+    top: 10px;
+    left: 20px;
+    margin-left: 10px;
+    display: flex;
+    font-size: 20px;
+  }
+  
+  .head {
+    text-align: center;
+    margin-left: 5%;
+    font-size: 20px;
+    margin-top: 10px;
+  }
+  
+  .head p {
+    margin-top: 10px;
+    font-weight: 500;
+    font-size: 18px;
+  }
+  
+  .logo {
+    padding: 10px;
+    height: 30vh;
+    padding-top: 70px;
+    text-align: center;
+  }
+  
+  .logo img {
+    margin-top: 17px;
+    width: 100%;
+    height: 30vh;
+    border-radius: 15px;
+  }
+  .content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+.all{
+    border: 1px solid #b2b2b2;
+    background-color: #fff;
+    border-radius: 20px; 
+    margin-top: 115px;
+    padding: 10px;
+    width: 95%;
+    margin-left: 10px;
+   
+}
+.count{
+    text-align: center;
+    color: gray;
+    margin-top: 15px;
+}
+.set{
+    margin-top: 10px;
+}
+
+.pending,
+.success,
+.earned {
+    text-align: center;
+}
+
+.pending p,
+.success p,
+.earned p {
+    margin: 5px 0;
+    font-size: 15px;
+}
+.color{
+    color: orangered;
+}
+.color2{
+    color: green;
+}
+
+/* Add this to your component's CSS file */
+::ng-deep .mat-step-header {
+  display: flex;
+  align-items: center;
+}
+
+::ng-deep .mat-horizontal-stepper-header .mat-step-icon {
+  font-size: 24px; /* Adjust the font size as needed */
+  color: green; /* Set the color to green */
+}
+
+::ng-deep .mat-step-header .mat-step-icon-selected {
+  color: green; /* Set the color of the selected step to green */
+}
+/* Add this to your component's CSS file */
+.refer-now-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.referal p{
+  font-size: 18px;
+  margin-top: 5px;
+}
+.referal{
+  display: flex;
+  padding: 5px;
+  justify-content:center;
+  background-color: #04B56C;
+  border: 1px solid #b2b2b2;
+  color: #fff;
+  width: 70%;
+  text-align: center;
+  margin-left: 5%;
+  height:6vh;
+    border-radius: 5px; 
+}
+
+.icons-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #b2b2b2;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 25px; 
+}
+
+.referal img{
+  width: 35px;
+  height: 35px;
+}
+.share-icon {
+  font-size: 25px; 
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+.contact p {
+  margin: 0;
+  color: red;
+  margin-right: 35%;
+}
+
+.contact i {
+  color: #888;
+}
+.bottom{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff; 
+  padding: 10px; 
+  border-radius: 20px;
+  z-index: 999; 
+  
+}

@@ -20,6 +20,7 @@ import { AccountsComponent } from './Models/User/accounts/accounts.component';
 import { UserProfileComponent } from './Models/User/user-profile/user-profile.component';
 import { AppGuideComponent } from './Models/User/app-guide/app-guide.component';
 import { NeedHelpComponent } from './Models/User/need-help/need-help.component';
+import { ReferComponent } from './Components/refer/refer.component';
 
 
 
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'vacation', component: VacationComponent },
   { path: 'add-vac', component: AddVacComponent },
+  { path: 'refer', component: ReferComponent },
   { path: 'subscription', component: SubscriptionComponent },
   { path: 'my-sub', component: MySubComponent},
   { path: 'accounts', component: AccountsComponent },

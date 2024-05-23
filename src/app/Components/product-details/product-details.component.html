@@ -1,9 +1,9 @@
 
 <div class="product">
-    <div class="back-icon" (click)="goBack()">
+    <button class="back-icon" (click)="goBack()">
         <i class="fas fa-chevron-left"></i>
-        <span>Back</span>
-    </div>
+    </button>
+  
     
 
     <div class="Carousel">
@@ -59,30 +59,36 @@
         </div>
     </div>
 </div>
+
 <div class="sum">
     <div class="plan">
-        <h2>Subscription type</h2>
-        <div class="cart">
-            <p *ngIf="!isSubscriptionTypesVisible" (click)="openSubscriptionTypes()">{{ selectedSubscription }}</p>
-            <p *ngIf="isSubscriptionTypesVisible" (click)="selectSubscription('Daily'); openCalendar()">Daily</p>
-            <p *ngIf="isSubscriptionTypesVisible" (click)="selectSubscription('Alternate'); openCalendar()">Alternate</p>
-            <p *ngIf="isSubscriptionTypesVisible" (click)="selectSubscription('Weekly'); openCalendar()">Weekly</p>
-            <p *ngIf="isSubscriptionTypesVisible" (click)="selectSubscription('One Time'); closeCalendar()">One Time</p>
-            <i class="fas fa-edit" (click)="openSubscriptionTypes()"></i>
+      <h2>Subscription type</h2>
+      <div class="cart">
+        <p *ngIf="!isSubscriptionTypesVisible" (click)="toggleSubscriptionTypes()">{{ selectedSubscription }}</p>
+        <ng-container *ngIf="isSubscriptionTypesVisible">
+          <p (click)="selectSubscription('Daily')">Daily</p>
+          <p (click)="selectSubscription('Alternate')">Alternate</p>
+          <p (click)="selectSubscription('Weekly')">Weekly</p>
+          <p (click)="selectSubscription('One Time')">One Time</p>
+        </ng-container>
+        <i class="fas fa-edit" (click)="toggleSubscriptionTypes()"></i>
+      </div>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Start Date</mat-label>
+        <div class="flex">
+            <mat-date-range-input [rangePicker]="picker">
+                <input matStartDate #startDateInput placeholder="Start date" (dateChange)="onStartDateSelected($event.value)">
+                <input matEndDate #endDateInput placeholder="End date">
+              </mat-date-range-input>
         </div>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
     </div>
-
-    <div class="plan1" *ngIf="selectedSubscription">
-        <h2>Start Date</h2>
-        <div class="cart">
-            <p><input matInput [matDatepicker]="picker" [value]="defaultDate" #inputDate (click)="openCalendar()"></p>
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </div>
-    </div>
-</div>
-
-
+ 
+    
+  </div>
 
 <div class="descript">
     <h2>Product Description</h2>
@@ -99,5 +105,5 @@
 </div>
 
 <div class="address-price">
-    <button class="add-address">₹{{ totalPrice }} Add Address</button> 
+    <button class="add-address" [routerLink]="['/wallet']">₹{{ totalPrice }} Confirm Subcription</button> 
 </div>

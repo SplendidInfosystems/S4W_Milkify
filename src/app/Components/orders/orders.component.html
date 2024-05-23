@@ -1,16 +1,92 @@
+<div class="orderpage">
 <div class="orders-header">
     <button mat-icon-button (click)="goBack()">
         <mat-icon>arrow_back</mat-icon>
       </button>
           <h3>Order History</h3>
 </div>
+<div class="text">
+  <p>Yay! You are saving ₹18.50 on this order</p>
+</div>
+<div class="line-above">
+</div>
+    <div class="dotted-card">
+        <div class="dot-card-details">
+            <img src="https://cdn-icons-png.freepik.com/512/3960/3960581.png?ga=GA1.1.1335550155.1713184366">
+            <div class="text-details">
+              <h6><strong>Yay! 100% off on every delivery after 5 deliveries</strong></h6>
+            </div>
+         </div>    
+  </div>
+<div class="apps">
+  <h4>Subscription Details</h4>
+  </div>
+<div class="red">
+  <div class="on">
+    <p>Start Date</p>
+    <p>{{ currentDate | date:'mediumDate' }}</p>
+  </div>
+  
+<div class="in">
+  <p>Subscription type</p>
+  <p>Alternate</p>
+</div>
+</div>
 
-<div class="orders-main">
+
+<div class="apps">
+  <h4>Order Details</h4>
+  </div>
+<div class="red">
+  <div class="it">
+    <p>item total</p>
+    <p> ₹27</p>
+  </div>
+  <div class="on">
+    <p>Delivery Charges</p>
+    <p>Free</p>
+  </div>
+  
+<div class="in">
+  <p>Packeging Charges</p>
+  <p>Free</p>
+</div>
+</div>
+
+<div class="apps">
+  <h4>Saving ₹18.50</h4>
+  </div>
+<div class="red">
+  <div class="on">
+    <p class="grt">Extra Discount</p>
+    <p class="grt"> ₹18.50</p>
+  </div>
+</div>
+<div class="apps">
+  <h4>Delivery Details</h4>
+  </div>
+<div class="red">
+  <div class="on">
+    <p>Delivery Date</p>
+    <p>{{ currentDate | date:'mediumDate' }}</p>
+  </div>
+</div>
+
+<div class="apps">
+  <h4>Disclaimer</h4>
+  </div>
+<div class="red">
+  <div class="on">
+    <p>Weight shown are indicative you will be billed as per actual weight deliverd</p>
+
+  </div>
+</div>
+<!-- <div class="orders-main">
     <img src="https://cdn-icons-gif.flaticon.com/15309/15309814.gif">
     <h6><strong>No Orders</strong></h6>
     <p >You haven't made any orders,<br>
     please explore our healthy <br>products.</p>
-    <button mat-raised-button color="primary" class="order-button"  (click)="goToProductDetails()">EXPLORE PRODUCTS</button>
+    <button mat-raised-button color="primary" class="order-button"  (click)="goToProductDetails()">EXPLORE PRODUCTS</button> -->
     <div *ngIf="showCancelPopup" class="modal-overlay" (click)="closeCancelPopup()">
         <div class="modal-content" (click)="$event.stopPropagation()">
           <h5><strong>Please select a reason for cancellation</strong></h5>
@@ -23,5 +99,5 @@
             <button class="confirm-button"  (click)="confirmCancellation()">Confirm</button>
           
         </div>
-      </div>
+    </div>
 </div>

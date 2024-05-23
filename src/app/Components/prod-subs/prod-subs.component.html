@@ -28,16 +28,12 @@
       </div>
   
       <div class="card" *ngFor="let card of cards">
-        <!-- <img [src]="card.image" alt="Card Image" /> -->
         <mat-icon class="card-icons">{{ card.image }}</mat-icon>
   
         <div class="details">
           <h6>{{ card.title }}</h6>
           <p>{{ card.description }}</p>
         </div>
-        <!-- <button class="image-button">
-          <img src="./assets/Images/right-arrow (1).png" />
-        </button>-->
         <div class="main">
           <button class="image-button">
             <mat-icon (click)="navigateTo(card)">chevron_right</mat-icon>

@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class OrdersComponent {
   showCancelPopup: boolean = false;
+  currentDate: Date = new Date();
   subscriptionCancelled: boolean = false;
   constructor(private location: Location, private router:Router,private route: ActivatedRoute) { }
   goBack(): void {

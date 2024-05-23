@@ -58,6 +58,9 @@
   .act {
       border-right: 1px solid gray;
   }
+  .act h4,.react h4, .deact h4{
+    font-size: 17px;
+  }
   
   .react {
       border-right: 1px solid gray;

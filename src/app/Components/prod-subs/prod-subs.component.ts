@@ -33,9 +33,10 @@ export class ProdSubsComponent {
   }
   cards = [
     { image: 'account_circle', title: 'Account & Preference', description: 'Edit Address', route: '/accounts' },
-    { image: 'account_balance_wallet', title: 'Wallet & payments', description: 'Add Money', route: '/wallet' },
-    { image: 'help', title: 'Need Help?', description: 'Call or Chat with us', route: '/need-help' },
-    { image: 'assignment_turned_in', title: 'Legal', description: 'Terms & Condition', route: '/legal' }
+    { image: 'account_balance_wallet', title: 'Wallet and payments', description: 'Add Money', route: '/wallet' },
+    { image: 'help', title: '   Need Helps ?     ', description: 'Call or Chat  with us', route: '/need-help' },
+    { image: 'assignment_turned_in', title: 'Legal', description: 'Terms and Condition', route: '/legal' },
+   
   ];
   navigateTocol(route: string): void {
     this.router.navigate([route]);
