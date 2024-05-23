@@ -6,13 +6,14 @@ import { Router } from '@angular/router';
   styleUrl: './user-profile.component.css'
 })
 export class UserProfileComponent {
-  name: string = 'Bhavna';
+  name: string | null = null ;
   newName: string = '';
   showNamePopup: boolean = false;
   
   email: string | null = null;
   newEmail: string = '';
   showEmailPopup: boolean = false;
+
   constructor(private router :Router){}
   goBack(): void {
     this.router.navigate(['/accounts']);
@@ -29,7 +30,7 @@ export class UserProfileComponent {
     }
   }
   openNamePopup(): void {
-    this.newName = this.name;  // Pre-fill with the current name
+    this.newName = this.name  || '';  // Pre-fill with the current name
     this.showNamePopup = true;
   }
   closeNamePopup(): void {

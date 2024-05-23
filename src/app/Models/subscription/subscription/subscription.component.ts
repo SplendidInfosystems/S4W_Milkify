@@ -48,7 +48,7 @@ export class SubscriptionComponent implements OnInit {
     });
   }
   goBack(): void {
-    this.router.navigate(['/product-details']);
+    this.router.navigate(['/prod-subs']);
   }
   increaseValue() {
     this.quantity++;
@@ -108,9 +108,9 @@ export class SubscriptionComponent implements OnInit {
   confirmCancelSubscription() {
     this.showCancelPopup = false; // Close the cancel subscription popup
     console.log('Subscription canceled successfully!');
-    this.snackBar.open('Subscription canceled successfully!', 'Close', {
-      duration: 3000,
-    });
+    // this.snackBar.open('Subscription canceled successfully!', 'Close', {
+    //   duration: 3000,
+    // });
     this.router.navigate(['/orders'], { queryParams: { showCancelPopup: true } });
   }
   closeCancellationPopup() {
@@ -135,8 +135,8 @@ export class SubscriptionComponent implements OnInit {
   }
   closePausedDurationPopup() {
     this.showPausedDurationPopup = false;
-    this.snackBar.open('Your subscription has been paused.', 'Close', {
-      duration: 3000,
-    });
+    // this.snackBar.open('Your subscription has been paused.', 'Close', {
+    //   duration: 3000,
+    // });
   }
 }

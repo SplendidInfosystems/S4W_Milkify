@@ -57,7 +57,7 @@
 .product-card {
     display: flex;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
     overflow: hidden;
     flex-direction: column;
     margin: 10px;
@@ -80,6 +80,7 @@
 .products-main{
     display: flex;
     align-items: center;
+    background-color: white;
 }
 .add p {
     margin: 0;
@@ -95,13 +96,14 @@
     background-color: #04B56C;
     color: #fff;
     border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
+    padding: 5px 20px;
+    border-radius: 6px;
+    
     cursor: pointer;
     transition: background-color 0.3s;
 }
 .edit-button:hover {
-    background-color: #0056b3;
+    background-color: #07aa66;
 }
 .offer-card, .grey-card, .dotted-card {
     width: 95%;
@@ -146,4 +148,7 @@
     color: #04B56C;
     font-weight: bold;
     cursor: pointer;
+}
+.additional-cards{
+    background-color: white;
 }

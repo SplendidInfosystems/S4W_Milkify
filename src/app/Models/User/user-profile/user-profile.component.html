@@ -12,8 +12,8 @@
     <div class="profile-section">
       <div class="profile-text">
           <h4>Name</h4>
-      <p>Bhavna </p>
-      </div>
+          <p>{{ name || 'Not Added' }}</p>
+        </div>
       <mat-icon (click)="openNamePopup()">chevron_right</mat-icon>
         </div>
   </div>
@@ -23,7 +23,7 @@
       <h3>Enter Your Name</h3>
       <input [(ngModel)]="newName" placeholder="Enter name" type="name"/>
     
-        <button class="confirm-button" (click)="saveName()">Save</button>
+        <button class="confirm-button" [class.disabled]="!newName"  (click)="saveName()">Save</button>
     </div>
   </div>
   

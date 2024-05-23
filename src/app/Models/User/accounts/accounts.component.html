@@ -27,11 +27,29 @@
             <div class="profile-section">
               <div class="profile-text">
               <h4>Address</h4>
-              <p>5hhhb, 204 Mote Mangal Karyalay Rd Dattwadi Shobhapur Kasba Peth Pune, Pune</p>
+              <div *ngIf="address">
+                <p>{{ address.street }}&nbsp;{{ address.city }}&nbsp;{{ address.state }}&nbsp;{{ address.zip }} </p>
+               
+              </div>
           </div>  
           </div>
-          <mat-icon >chevron_right</mat-icon>
+          <mat-icon (click)="togglePopupAdd()">chevron_right</mat-icon>
                 </div>
+
+
+                <!-- Popup for changing address -->
+  <div class="popup" *ngIf="showPopup">
+    <div class="popup-content">
+      <h3>Delivery Address</h3>
+      <div *ngIf="address">
+        <p>{{ address.street }}&nbsp;{{ address.city }}&nbsp;{{ address.state }}&nbsp;{{ address.zip }} </p>
+       
+      </div>
+      <button (click)="navigateToChangeAddress()">Change Address</button>
+    </div>
+  </div>
+
+
         </mat-card>
         
         <h4 class="section-header">Customer Preference</h4>
@@ -84,9 +102,24 @@
                   <h4>Record voice instructions</h4>
               <p>No</p>
               </div>
-              <button mat-button class="custom-button">Add</button>
+              <button mat-button class="custom-button" (click)="toggleRecordPopup()">Add</button>
             </div>
           </div>
+
+          <div class="popup" *ngIf="showRecordPopup">
+            <div class="popup-content">
+              <h3>Record Voice Instructions</h3>
+              <button (click)="startRecording()">Start Recording</button>
+              <button (click)="stopRecording()">Stop Recording</button>
+              <button (click)="toggleRecordPopup()">Cancel</button>
+              <div *ngIf="audioUrl">
+                <h4>Recorded Audio:</h4>
+                <audio [src]="audioUrl" controls></audio>
+              </div>
+            </div>
+          </div>
+
+
         </mat-card>
         
         

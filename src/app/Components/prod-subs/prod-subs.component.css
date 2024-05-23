@@ -1,128 +1,150 @@
-.container {
+.prod-subs-container {
     display: flex;
     flex-direction: column;
     background-color: #f1f7f7;
+    padding: 10px;
   } 
-  
+ 
   .column {
-    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     margin: 5px 10px;
   }
   
-  .main {
+  .column-main {
     display: flex;
-    /* flex-direction: column;  */
-    align-items: flex-start; 
+    align-items: flex-start;
   }
+  
   .row {
-    display: flex;
-    align-items: center;
     margin-left: 5px;
-    padding: 10px 0; 
+    text-align: center;
   }
-  .row mat-icon {
-    margin-right: 10px; 
+  
+  .col-icons mat-icon {
+    margin-right: 10px;
     width: 55px;
     height: 30px;
-    margin-left: 5px;
-    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1));
-    transition: filter 0.3s ease-in-out; 
   }
-  .row p {
+  
+  .col-text p {
     margin: 0;
   }
-
-  .sub-container{
-    padding: 5px;
+  
+  .card-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    padding-bottom: 70px;
   }
-.card-container {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin-top: 20px;
-  padding-bottom: 70px;
-}
-.card {
-  width: 100%;
-  display: flex;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 15px;
-  padding: 10px;
- justify-content: space-around;
-  flex-direction: row;
-  align-items: center;
-}
-.card-icons {
-  width: 30px;
-  height: auto;
-  border-radius: 10px;
-  margin-right: 5px;
-  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.5));
-  transition: filter 0.3s ease-in-out; 
-}
-.card-icons:hover , .offer-details img:hover, .mat-icon:hover{
-  filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.7));
-}
-.image-button {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  font-size: 16px; 
-  color: #333; 
-  transition: all 0.3s ease; 
-}
-.image-button .mat-icon{
-  width: 40px;
-  height: auto;
-  margin-left: 40px;
-}
+  
+  .card {
+    display: flex;
+    align-items: center;
+    width:95%;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    background-color: white;
+flex-direction: row;
+  }
+  
+  .card-icons {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+  }
+  
+  .card-details {
+    flex: 1;
+  }
+  
+  .card-details h6 {
+    margin: 0;
+  }
+  
+  .card-details p {
+    margin: 5px 0 0;
+  }
+  
+  .card-main {
+    display: flex;
+    align-items: center;
+  }
+  
+  .image-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    transition: all 0.3s ease;
+  }
+  
+  .image-button .mat-icon {
+    width: 40px;
+    height: auto;
+    margin-left: 10px;
+  }
+  
+  .card-icons:hover,
+  .image-button .mat-icon:hover {
+    filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.7));
+  }
+  
 .image-button:hover {
   color: #555;
 }
 
 .offer-card {
-  width: 100%; /* Adjust as needed */
-  margin-bottom: 20px;
-  padding: 10px;
-  background:linear-gradient(to right, #e2d2424f, #e4d7608f, #f6c31896);
+  width: 95%; 
+  margin: 10px ;
+  background:linear-gradient(to right, #e2d2424f, #e4d7608f, #f5c42296);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .offer-details {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  /* justify-content: space-around; */
 }
 .offer-details img {
-  width: 60px; 
-  height: auto;
-  margin-right: 10px;
+  width: 35px; 
   border-radius: 50%;
-  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.5));
+  margin: 0 20px 0 10px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
   transition: filter 0.3s ease-in-out; 
+}
+.text-details, .card-details{
+  margin: 2px 0 0 0;
 }
 .saved-amount {
   color: #4CAF50;
-  margin-top: 27px;
+  margin: 20px 0 0 3rem;
 }
 
 .save-money-button {
-  background-color: #4CAF50; /* Green color */
+  background-color: #4CAF50; 
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px; /* Adjust font size as needed */
+  font-size: 16px; 
   transition: background-color 0.3s ease;
 }
 .save-money-button:hover {
-  background-color: #45a049; /* Darker green color on hover */
+  background-color: #45a049; 
 }
 p{
   font-size: small;
 }
 h6{
   margin-top: 5px;
+}
+.card-details p{
+  margin-bottom: 10px;
 }

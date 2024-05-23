@@ -20,7 +20,7 @@ import { AccountsComponent } from './Models/User/accounts/accounts.component';
 import { UserProfileComponent } from './Models/User/user-profile/user-profile.component';
 import { AppGuideComponent } from './Models/User/app-guide/app-guide.component';
 import { NeedHelpComponent } from './Models/User/need-help/need-help.component';
-
+import { LocationComponent } from './Models/User/location/location.component';
 
 
 const routes: Routes = [
@@ -45,6 +45,8 @@ const routes: Routes = [
   { path: 'prod-subs', component: ProdSubsComponent},
   { path: 'payment', component: PaymentComponent },
   { path: 'product-details/:index', component: ProductDetailsComponent },
+  { path: 'location', component: LocationComponent },
+
   ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

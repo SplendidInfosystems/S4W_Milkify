@@ -2,28 +2,38 @@
     <button mat-icon-button (click)="goBack()">
         <mat-icon>arrow_back</mat-icon>
       </button>
-          <h3>App Guide</h3>
+          <h3>Application Guide</h3>
 </div>
 
 <div class="guide-main">
-<h6><strong>I want to?</strong></h6>
-<div class="guide-card">
-    <h2 class="section-title">Place an Order</h2>
-    </div>
-
-    <div class="guide-card">
-        <h5 class="section-title">Add a vacation</h5>
+    <div *ngIf="!infoToShow">
+        <h6>I want to?</h6>
+        <div *ngFor="let option of guideOptions" class="guide-card" (click)="showInfo(option)">
+            <h5 class="section-title">{{ option }}</h5>
         </div>
-        <div class="guide-card">
-            <h5 class="section-title">Recharge my wallet</h5>
-            </div>
-            <div class="guide-card">
-                <h5 class="section-title">Payment History</h5>
-                </div>
-                <div class="guide-card">
-                    <h5 class="section-title">Vew my Bill</h5>
-                    </div>
-                    <div class="guide-card">
-                        <h5 class="section-title">View current Offers</h5>
-                        </div>
+
+    </div>
+    <div class="guide-main">
+        <div *ngIf="infoToShow" class="info-container">
+            <button class="close-button" (click)="goBacktoCards()">✕</button>
+            <p class="info-title">{{ infoToShow.title }}</p>
+            <ul class="info-list">
+                <li *ngFor="let desc of infoToShow.description">{{ desc }}</li>
+            </ul>
+            <button *ngIf="infoToShow.buttonLabel" class="green-button" (click)="goBack()">{{ infoToShow.buttonLabel }}</button>
+            <ul *ngIf="infoToShow.description2" class="info-list">
+                <p class="info-title">Subscription</p>
+                <li *ngFor="let desc of infoToShow.description2">{{ desc }}</li>
+            </ul>
+            <button *ngIf="infoToShow.buttonLabel2" class="green-button" style="margin-left: 5.2rem;"  (click)="goBack()">{{ infoToShow.buttonLabel2 }}</button>
+            <ul *ngIf="infoToShow.note" class="info-list">
+                <li *ngFor="let note of infoToShow.note"><strong></strong> {{ note }}</li>
+            </ul>
+        </div>
+    </div>
+    
+
 </div>
+
+
+

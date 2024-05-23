@@ -7,7 +7,7 @@ import { ProductDetailsComponent } from './Components/product-details/product-de
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
@@ -38,6 +38,7 @@ import { AccountsComponent } from './Models/User/accounts/accounts.component';
 import { AppGuideComponent } from './Models/User/app-guide/app-guide.component';
 import { NeedHelpComponent } from './Models/User/need-help/need-help.component';
 import { UserProfileComponent } from './Models/User/user-profile/user-profile.component';
+import { LocationComponent } from './Models/User/location/location.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { UserProfileComponent } from './Models/User/user-profile/user-profile.co
     AccountsComponent,
     AppGuideComponent,
     NeedHelpComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    LocationComponent
   
   ],
   imports: [
@@ -80,7 +82,8 @@ import { UserProfileComponent } from './Models/User/user-profile/user-profile.co
     MatCardModule,
     MatRadioModule,
     MatIconModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   
   ],
   providers: [

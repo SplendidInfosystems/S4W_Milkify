@@ -1,0 +1,101 @@
+<div class="location-main">
+  <div class="top-bar">
+    <button class="close-btn" (click)="close()">X</button>
+    <div class="input-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Try Sector 75 etc"
+        id="searchBox"
+      />
+      <span class="input-group-addon">
+        <i class="fa fa-search"></i>
+      </span>
+    </div>
+  </div>
+
+  <div class="map-container" id="map">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d242118.1700623942!2d73.69815214410158!3d18.524545038215777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9d9ee343!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1716378134597!5m2!1sen!2sin"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </div>
+
+  <div *ngIf="showLocationPopup" class="location-popup">
+    <div class="popup-content">
+      <p style="text-align: start">
+        For a better experience, turn on device location, which uses Google's
+        location service.
+      </p>
+      <div class="popup-button">
+        <button (click)="toggleLocationPopup()">No, thanks</button>
+        <button (click)="enableLocation()">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="added-card">🏘️ 4810 Milkify members in your area!</p>
+
+  <div class="delivery-location">
+    <p>Select Delivery Location</p>
+    <div class="address">
+      <p>
+        <mat-icon>location_on</mat-icon>
+        <strong>{{ currentLocation }}</strong>
+      </p>
+    </div>
+    <button (click)="openPopup()">ENTER COMPLETE ADDRESS</button>
+    <div *ngIf="isPopupVisible" class="popup-backdrop">
+      <div class="popup">
+        <h2>Enter Your Complete Address</h2>
+        <form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+          <label for="street">Street:</label>
+          <input id="street" formControlName="street" type="text" required />
+          <div
+            *ngIf="
+              addressForm.controls['street'].invalid &&
+              addressForm.controls['street'].touched
+            "
+          >
+            Street is required.
+          </div>
+          <label for="city">City:</label>
+          <input id="city" formControlName="city" type="text" required />
+          <div
+            *ngIf="
+              addressForm.controls['city'].invalid &&
+              addressForm.controls['city'].touched
+            "
+          >
+            City is required.
+          </div>
+          <label for="state">State:</label>
+          <input id="state" formControlName="state" type="text" required />
+          <div
+            *ngIf="
+              addressForm.controls['state'].invalid &&
+              addressForm.controls['state'].touched
+            "
+          >
+            State is required.
+          </div>
+          <label for="zip">Zip Code:</label>
+          <input id="zip" formControlName="zip" type="text" required />
+          <div
+            *ngIf="
+              addressForm.controls['zip'].invalid &&
+              addressForm.controls['zip'].touched
+            "
+          >
+            Zip Code is required.
+          </div>
+          <button type="submit" [disabled]="addressForm.invalid">
+            Confirm
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

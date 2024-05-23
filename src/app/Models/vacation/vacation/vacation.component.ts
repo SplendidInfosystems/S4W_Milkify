@@ -21,6 +21,6 @@ export class VacationComponent implements OnInit {
     this.router.navigate(['add-vac']);
   }
   goBack(): void {
-    this.router.navigate(['/subscription']);
+    this.router.navigate(['/prod-subs']);
   }
 }

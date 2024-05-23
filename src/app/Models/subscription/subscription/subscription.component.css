@@ -319,8 +319,9 @@
     margin-left: 10px;
   }
   .awesome-button {
-    padding: 10px 20px;
-   color: #4caf50;
+    padding: 10px 0;
+    margin-bottom: 0;
+   color: #04B56C;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
@@ -330,7 +331,7 @@
   /* Add styles for new buttons */
   .pause-sub-button , .confirm-button {
     padding: 8px 20px;
-    background-color:#4caf50;
+    background-color:#04B56C;
     color: white;
     border: none;
     border-radius: 5px;
