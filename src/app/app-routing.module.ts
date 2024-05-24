@@ -22,6 +22,8 @@ import { AppGuideComponent } from './Models/User/app-guide/app-guide.component';
 import { NeedHelpComponent } from './Models/User/need-help/need-help.component';
 import { LocationComponent } from './Models/User/location/location.component';
 import { OffersComponent } from './Components/offers/offers.component';
+import { ReferComponent } from './Components/refer/refer.component';
+
 
 
 const routes: Routes = [
@@ -32,6 +34,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'vacation', component: VacationComponent },
   { path: 'add-vac', component: AddVacComponent },
+  { path: 'refer', component: ReferComponent },
   { path: 'subscription', component: SubscriptionComponent },
   { path: 'my-sub', component: MySubComponent},
   { path: 'accounts', component: AccountsComponent },

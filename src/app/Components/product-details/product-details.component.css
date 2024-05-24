@@ -3,22 +3,23 @@
     padding: 0;
 }
 
-.back-icon {
-    position: absolute;
-    top: 10px;
-    left: 10px;
+.back-icon  {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    border: none;
+    margin: 10px 15px;
     font-size: 20px;
-}
+    background-color: transparent;
+  }
 
 .logo {
-    padding: 10px;
+    padding: 0px;
     height: 50vh;
     text-align: center;
     border-radius: 5px;
 }
 
 .logo img {
-    margin-top: 50px;
     width: 100%;
     height: auto;
 }
@@ -44,10 +45,6 @@
     justify-content: space-around;
 }
 
-.cart {
-    display: flex;
-    flex-direction: row;
-}
 
 .add {
     margin-right: 25px;
@@ -73,7 +70,7 @@
     font-size: 15px;
 }
 
-.cart {
+.art {
     background-color: #F2FBF8;
     border: 1px solid #04B56C;
     color: #04B56C;
@@ -81,80 +78,76 @@
     border-radius: 5px;
     height: 33px;
     margin-left: 145px;
+    display: flex;
     width: 28%;
     margin-top: 10px;
     justify-content: space-around;
 }
 
-.cart p {
-    margin: 0;
-
-}
-
-.sum {
+ 
+  .sum {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    border-top: 1px solid gray;
     padding: 10px;
-    margin-top: 10px;
 }
-
-.plan h2,
-.plan1 h2 {
-    font-size: 15px;
+.mat-form-field input{
+  width: 70px;
+}
+.plan {
+  display: flex;
+  align-items: center;
 }
 
 .cart {
-    display: flex;
-    align-items: center;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .cart p {
-    margin: 0;
+  margin: 0;
+  padding-right: 10px;
+  font-size: 20px;
+  text-align: center;
+  color:#04B56C;
+  font-weight: 400;
 }
 
-.fa-edit {
+.cart i {
+  cursor: pointer;
+}
+.types h2{
+  font-size: 20px;
+  padding: 8px;
+  border-top: 1px solid gray;
+}
+
+.plan,
+.cart {
+    flex: 1; /* This will make both divs take up equal space */
+    margin-right: 10px; /* Add some spacing between the divs */
+}
+
+  .plan h2,
+  .plan1 h2 {
+    font-size: 15px;
+  }
+
+  .fa-edit {
     color: #666;
     cursor: pointer;
-}
-
-.plan .cart {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    height: 33px;
-    width: 100%;
-    margin-left: 0;
-    justify-content: space-around;
-}
-
-.plan1 .cart {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    height: 33px;
-    width: 80%;
-    margin-left: 0;
-    justify-content: space-around;
-}
-
-.plan1 {
-    margin-left: 54px;
-}
-
-.cart p input {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    height: 33px;
-    width: 100%;
-    margin-right: -45px;
-}
+  }
+  
 
 .descript {
     border-top: 1px solid gray;
     padding-top: 10px;
-    height: 70vh;
+    height: 60vh;
+    background-color: #F2FBF8;
 }
 
 
@@ -205,27 +198,3 @@
 .add-address:hover {
     background-color: #04B56C;
 }
-
-/* Customizing datepicker appearance */
-::ng-deep .mat-calendar-body-selected {
-    background-color: blue !important;
-  }
-  
-  /* Adding a Done button */
-  ::ng-deep .mat-datepicker-content {
-    position: relative;
-  }
-  
-  ::ng-deep .mat-datepicker-actions {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 16px;
-    background-color: #f5f5f5;
-  }
-  
-  ::ng-deep .mat-datepicker-actions .mat-button {
-    margin-right: 8px;
-  }
-  

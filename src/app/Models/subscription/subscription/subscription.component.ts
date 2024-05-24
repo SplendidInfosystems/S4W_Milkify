@@ -19,7 +19,9 @@ export class SubscriptionComponent implements OnInit {
   quantity = 1;
   totalPrice = 27;
   isSubscriptionTypesVisible = false;
-  selectedSubscription = 'Select Subscription';
+  startDate: Date = new Date();
+  endDate: Date = new Date();
+  selectedSubscription = 'Daily';
   defaultDate = new Date();
   showResumePopup = false;
   showCancelPopup = false;
@@ -28,6 +30,7 @@ export class SubscriptionComponent implements OnInit {
   showCancellationPopup: boolean = false;
   showPausePopup: boolean = false;
   showPausedDurationPopup: boolean = false;
+  endDateInput: any;
   
   constructor(
     private router: Router,
@@ -69,7 +72,23 @@ export class SubscriptionComponent implements OnInit {
   selectSubscription(subscription: string): void {
     this.selectedSubscription = subscription;
     this.isSubscriptionTypesVisible = false;
-  }
+    if (subscription === 'Daily') {
+      // Open the calendar when "Daily" subscription is selected
+      if (this.picker) {
+        this.picker.open();
+      }
+    }
+
+    if (subscription === 'Weekly') {
+        this.router.navigate(['/weekly']);
+    }
+}
+onStartDateSelected(selectedDate: Date) {
+  const endDate = new Date(selectedDate.getFullYear(), 11, 31);
+  this.dateAdapter.setLocale('en'); // Set locale if necessary
+  this.endDateInput._startInput.value = selectedDate;
+  this.endDateInput._endInput.value = endDate;
+}
   openCalendar(): void {
     if (this.picker) {
       this.picker.open();

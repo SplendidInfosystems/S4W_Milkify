@@ -1,4 +1,7 @@
-
+.orderpage{
+    background-color: #f1f7f7;
+    padding-bottom: 30px;
+}
 .orders-main{
     background-color: #f1f7f7;
     padding-top: 5px;
@@ -7,6 +10,7 @@
 .orders-header {
     display: flex;
     align-items: center;
+    background-color: #fff;
         padding: 10px 20px;
 }
 .orders-header h3{
@@ -87,7 +91,88 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
+  .red {
+    border: 1px solid #ccc;
+    width: 90%;
+    border-radius: 20px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .on, .in ,.it{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 20px;
+  }
+  .can{
+    padding: 10px;
+    padding-top: 10px;
+    background-color: #fff;
+    border-radius: 20px;
+  }
+  .on p, .in p {
+    margin: 0; /* Remove default margin for <p> elements */
+  }
+  .grt{
+    color: #04B56C;
+  }
+  .it p{
+    margin: 0;
+    font-weight: 400;
+  }
   
   .confirm-button:hover {
     background-color: #45a049; /* Darker green on hover */
   }
+  .apps {
+    margin: 20px; 
+  }
+  .apps h4 {
+    font-size: 15px;
+    /* font-weight: 600; */
+  }
+  .apps p {
+    font-size: 15px; 
+    font-weight: 500;
+    text-align: center;
+  }
+  
+  .line-above {
+    border-top: 1px solid #ccc;
+    margin-top: 20px; /* Adjust as needed */
+}
+  .dotted-card {
+    border: 2px dotted #04B56C;
+    background: linear-gradient(45deg, #04b56c73, white);
+    padding: 9px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    margin: 15px auto;
+    /* border-top: 1px solid gray; */
+}
+.dot-card-details {
+    display: flex;
+    align-items: center;
+}
+.dot-card-details img {
+    width: 40px; 
+    height: 40px; 
+    margin-right: 15px;
+}
+.text-details h6 {
+    margin: 0;
+    font-size: 14px; 
+    color: #333;
+}
+.text {
+    color: #04B56C;
+    font-weight: 500;
+    background-color: #f1f7f7;
+    height: 30px;
+    padding-top: 15px;
+}

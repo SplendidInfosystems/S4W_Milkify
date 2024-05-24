@@ -26,7 +26,7 @@ export class AccountsComponent {
   }
 
   goBack(): void {
-    this.router.navigate(['/subscription']);
+    this.router.navigate(['/prod-subs']);
   }
   navigateToUserProfile() {
     this.router.navigate(['/user-profile']);

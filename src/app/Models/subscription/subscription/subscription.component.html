@@ -1,7 +1,7 @@
 <div class="product">
-    <button class="back-icon" (click)="goBack()">
-      <mat-icon>arrow_back</mat-icon>
-    </button>
+  <div class="back-icon" (click)="goBack()">
+    <i class="fas fa-chevron-left"></i>
+</div>
   
     <div class="Carousel">
       <ngb-carousel *ngIf="images && images.length > 0">
@@ -29,7 +29,7 @@
             <p><strong>₹{{ totalPrice }}</strong> <span> ₹45.50</span></p>
         </div>
         
-        <div class="cart">
+        <div class="Cart">
           <button (click)="decreaseValue()">-</button>
           <span>{{ quantity }}</span>
           <button (click)="increaseValue()">+</button>
@@ -54,10 +54,12 @@
             <p class="saved-amount"><strong>Know More</strong></p>
          </div>    
   </div>
+
+  <div class="types">
+  <h2>Subscription type</h2>
 </div>
     <div class="sum">
       <div class="plan">
-        <h2>Subscription type</h2>
         <div class="cart">
           <p *ngIf="!isSubscriptionTypesVisible" (click)="toggleSubscriptionTypes()">{{ selectedSubscription }}</p>
           <ng-container *ngIf="isSubscriptionTypesVisible">
@@ -69,7 +71,22 @@
           <i class="fas fa-edit" (click)="toggleSubscriptionTypes()"></i>
         </div>
       </div>
-   
+
+
+        <div class="plan1">
+        <mat-form-field appearance="fill">
+          <mat-label>Start Date</mat-label>
+          <div class="flex">
+              <mat-date-range-input [rangePicker]="picker">
+                  <input matStartDate #startDateInput placeholder="Start date" (dateChange)="onStartDateSelected($event.value)">
+                  <input matEndDate #endDateInput placeholder="End date">
+                </mat-date-range-input>
+          </div>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+    </div>
+      
     </div>
 
     <div class="descript">
@@ -168,13 +185,4 @@
   
    </div>
 
-   <!-- <ng-template #noSubscriptionTemplate>
-    <div class="my-sub-horizontal-card">
-      <img src="https://img.freepik.com/free-vector/gnome-lying-stump-infront-blank-banner-cartoon-style-white-background_1308-44417.jpg?w=740&t=st=1715572279~exp=1715572879~hmac=2f14a902b1aca6169f80dcdf71b2f26e5dccea3f315eecff33f8a2a6914895b5">
-      <div class="my-sub-card-details">
-        <h6><strong>No Subscriptions</strong></h6>
-        <p>Card Description Lorem ipsum dolor sit amet, 
-          Nullam accumsan eu in dui.</p>
-      </div>
-    </div>
-  </ng-template> -->
+  

@@ -79,10 +79,24 @@ input[type="date"]::placeholder {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
-  /* .form-group {
-    margin-bottom: 24px;
+  .head {
+    text-align: center;
+    margin-left: 5%;
+    font-size: 20px;
+    margin-top: 8px;
   }
-   */
+  
+  .head p {
+    margin-top: 10px;
+    font-weight: 500;
+  }
+.back-icon {
+    top: 10px;
+    left: 20px;
+    margin-left: 10px;
+    display: flex;
+    font-size: 20px;
+  }
   .input-field {
     width: 100%;
     padding: 8px;

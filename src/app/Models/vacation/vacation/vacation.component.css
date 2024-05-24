@@ -8,12 +8,24 @@
     align-items: center;
         padding: 10px 20px;
 }
-.vacation-header h3{
+.head {
     text-align: center;
-    margin: 7px;
+    margin-left: 5%;
     font-size: 20px;
+    margin-top: 8px;
+  }
+  
+  .head p {
+    margin-top: 10px;
     font-weight: 500;
-}
+  }
+.back-icon {
+    top: 10px;
+    left: 20px;
+    margin-left: 10px;
+    display: flex;
+    font-size: 20px;
+  }
 .vacation-main p{
     text-align: center;
 }

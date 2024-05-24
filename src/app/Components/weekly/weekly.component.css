@@ -14,7 +14,7 @@
   .back-icon {
     top: 10px;
     left: 20px;
-    margin-left: 10px;
+    margin-left: 25px;
     display: flex;
     font-size: 20px;
   }
@@ -32,7 +32,7 @@
   
   
 .popular-items {
-    margin-right: -10px;
+    margin-right: 0px;
     display: flex;
     flex-direction: row;
   }
@@ -118,7 +118,7 @@
     padding: 15px;
     border: 1px solid green;
     border-radius: 10px;
-    margin-left: 10px;
+   margin: 10px;
     margin-top: 10px;
   }
   
@@ -154,7 +154,7 @@
     padding: 15px;
     border: 1px solid green;
     border-radius: 10px;
-    margin-left: 10px;
+   margin: 10px;
     margin-top: 10px;
   }
   .select-quantity p{

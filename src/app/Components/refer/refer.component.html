@@ -1,0 +1,79 @@
+<div class="refer">
+    <header class="header">
+        <div class="back-icon" (click)="goBack()">
+          <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="head">
+          <p>Recommended Better Living</p>
+        </div>
+        <div class="balance" >
+            <p>T&C</p>
+        </div>
+    
+      </header>
+
+          <div class="logo">
+            <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220808182732/Learn-and-Earn-with-GeeksforGeeks-Referral-Program.jpg" alt="" />
+          </div>
+
+<div class="allset">
+<div class="all">
+          <div class="content">
+            <div class="pending">
+                <p class="color">{{balance}}</p>
+                <p>Pending</p>
+            </div>
+            <div class="success">
+                <p class="color2">{{balance}}</p>
+                <p>Successful</p>
+            </div>
+          <div class="earned">
+              <p>₹{{balance}}</p>
+              <p>Earned</p>
+          </div>
+        </div>
+          <mat-progress-bar class="set" mode="determinate" value="5"></mat-progress-bar>
+          <div class="count">
+            <p>₹{{balance}}/₹{{Rebalance}}</p>
+          </div>
+          </div>
+        
+         
+          
+          <div class="timeline">
+            <div *ngFor="let item of event" class="timeline-event">
+              <div class="timeline-point-track-container">
+                <div class="timeline-point" [ngClass]="item?.status === 'R' ? 'heighlight' : '' " > </div>
+                  <div class="timeline-track" [ngClass]="item?.status === 'R' ? 'heighlight' : '' "></div>
+                </div>
+                  <div class="timeline-content">
+                    <span>{{ item.content }}</span>
+                  </div>
+            </div>
+          </div>
+          
+          
+
+          <div class="bottom">
+
+            <div class="contact" (click)="openContact('9011841601')">
+              <span>Contact are</span><p> waiting for an invite</p>
+              <i class="fas fa-chevron-right"></i>
+          </div>
+          
+        
+          
+          <div class="refer-now-container">
+            <div class="referal" (click)="openWhatsApp('8237718610')">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/800px-WhatsApp.svg.png" alt="WhatsApp Icon">
+              <p>Refer Now</p>
+          </div>
+          
+          <div class="icons-container" (click)="openShareContent()">
+            <mat-icon class="share-icon">share</mat-icon>
+        </div>
+        
+        </div>
+          </div>
+</div>
+        

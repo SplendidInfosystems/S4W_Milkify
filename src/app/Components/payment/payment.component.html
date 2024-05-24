@@ -8,20 +8,21 @@
         </div>
         <div class="balance" ><i class="fas fa-ellipsis-h"></i></div>
       </header>
-    <div class="selection">
+      <div class="selection">
         <div class="act">
            <p>Amount to pay</p>
-           <h4>₹250</h4>
+           <h4>{{ amountToPay | currency:'INR' }}</h4>
         </div>
         <div class="react">
           <p>Cashback</p>
-          <h4>₹0</h4>
+          <h4>{{ cashback | currency:'INR' }}</h4>
         </div>
         <div class="deact">
           <p>To be credited</p>
-          <h4>₹250</h4>
+          <h4>{{ toBeCredited | currency:'INR' }}</h4>
         </div>
-    </div>
+      </div>
+      
     
     <div class="apps">
       <h4>UPI Apps</h4>

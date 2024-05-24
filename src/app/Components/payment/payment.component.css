@@ -20,7 +20,7 @@
     .back-icon {
       top: 10px;
       left: 20px;
-      margin-left: 10px;
+      margin-left: 20px;
       display: flex;
       font-size: 20px;
     }
@@ -57,6 +57,9 @@
   
   .act {
       border-right: 1px solid gray;
+  }
+  .act h4,.react h4, .deact h4{
+    font-size: 17px;
   }
   
   .react {
