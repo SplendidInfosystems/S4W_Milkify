@@ -21,7 +21,7 @@ export class ProdSubsComponent {
     ],
     [
       { icon: 'receipt', name: 'Referral', route: 'refer' },
-      { icon: 'local_offer', name: 'Offer Zone', route: 'offer-zone' },
+      { icon: 'local_offer', name: 'Offer Zone', route: 'offers' },
       { icon: '', name: '', route: '' }
     ]
   ];

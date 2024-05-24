@@ -21,6 +21,7 @@ import { UserProfileComponent } from './Models/User/user-profile/user-profile.co
 import { AppGuideComponent } from './Models/User/app-guide/app-guide.component';
 import { NeedHelpComponent } from './Models/User/need-help/need-help.component';
 import { LocationComponent } from './Models/User/location/location.component';
+import { OffersComponent } from './Components/offers/offers.component';
 
 
 const routes: Routes = [
@@ -46,6 +47,7 @@ const routes: Routes = [
   { path: 'payment', component: PaymentComponent },
   { path: 'product-details/:index', component: ProductDetailsComponent },
   { path: 'location', component: LocationComponent },
+  { path: 'offers', component: OffersComponent },
 
   ];
 @NgModule({

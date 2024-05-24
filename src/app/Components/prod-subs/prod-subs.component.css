@@ -57,6 +57,9 @@ flex-direction: row;
     height: 40px;
     margin-right: 15px;
   }
+  .card-icons {
+    font-size: 35px;
+  }
   
   .card-details {
     flex: 1;

@@ -39,6 +39,7 @@ import { AppGuideComponent } from './Models/User/app-guide/app-guide.component';
 import { NeedHelpComponent } from './Models/User/need-help/need-help.component';
 import { UserProfileComponent } from './Models/User/user-profile/user-profile.component';
 import { LocationComponent } from './Models/User/location/location.component';
+import { OffersComponent } from './Components/offers/offers.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { LocationComponent } from './Models/User/location/location.component';
     AppGuideComponent,
     NeedHelpComponent,
     UserProfileComponent,
-    LocationComponent
+    LocationComponent,
+    OffersComponent
   
   ],
   imports: [

@@ -1,0 +1,35 @@
+<div class="offers-header">
+    <button mat-icon-button (click)="goBack()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h3>Offers</h3>
+  </div>
+  
+  <div class="offers-container">
+    
+    <div class="promo-container">
+      <div class="promo-code">
+        <form [formGroup]="promoForm" (ngSubmit)="applyPromoCode()">
+          <input type="text" formControlName="promoCode" placeholder="Enter Promo Code">
+          <button type="submit">Apply</button>
+        </form>
+        <p *ngIf="invalidCode" class="error-message">Invalid code</p>
+      </div>
+    </div>
+
+    <div class="offer-card" *ngFor="let offer of offers">
+      <div class="offer-content">
+        <div class="offer-details">
+          <span class="offer-type">{{ offer.type }}</span>
+          <h6><strong>{{ offer.discount }}</strong></h6>
+          <p>{{ offer.description }}</p>
+          <p class="validity">*Offer valid till {{ offer.validity | date:'dd/MM/yyyy' }}</p>
+        </div>
+        <div class="offer-image">
+          <img [src]="offer.image" alt="Offer Image">
+        </div>
+        <div class="coupon-applied">Coupon code applied</div>
+      </div>
+
+  </div>
+  </div>

@@ -1,0 +1,132 @@
+.offers-container {
+    background-color: #f1f7f7;
+    padding-top: 5px;
+    padding-bottom: 10px;
+  }
+  
+  .offers-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  .offers-header h3 {
+    text-align: center;
+    margin: 5px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  
+  .offers-header button,
+  .mat-icon {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  
+  .offers-header button img,
+  .mat-icon {
+    width: 30px;
+    height: auto;
+  }
+  
+  .offers-header button:hover {
+    transform: scale(1.1);
+  }
+  .promo-container {
+    width: 97%;
+    margin: 7px;
+    height: auto;
+    display: grid;
+    background-color: #fff;
+    border-radius: 15px;
+    border: none;
+  }
+  
+  .promo-code {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 9px;
+  }
+  
+  .promo-code input {
+    flex: 1;
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    width: calc(82% - 10px);
+  }
+  
+  .promo-code button {
+    padding: 8px 16px;
+    background-color: #5773e3;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    align-self: flex-start;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 8px;
+  }
+  
+  .offer-card {
+    display: flex;
+    position: relative;
+    border-radius: 8px;
+    margin: 10px 5px 5px 8px;
+    overflow: hidden;
+    background-color: #aadf937d;
+  }
+  
+  .offer-content {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .offer-details {
+    flex: 1;
+    padding: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .offer-type {
+    display: inline-block;
+    background-color: #00b86c;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  
+  .offer-image {
+    width: 30%;
+  }
+  
+  .offer-image img {
+    max-width: 100%;
+    height: auto;
+    margin: 40px 0 0 0;
+  }
+  
+  .validity {
+    font-size: 12px;
+    color: #888;
+  }
+  
+  .coupon-applied {
+    background-color: #b4ddfb;
+    padding: 4px 8px;
+    border-radius: 4px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+  }
