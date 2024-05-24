@@ -24,6 +24,7 @@
     "@fortawesome/angular-fontawesome": "^0.14.1",
     "@ng-bootstrap/ng-bootstrap": "^16.0.0",
     "@popperjs/core": "^2.11.8",
+    "@syncfusion/ej2-layouts": "^25.2.3",
     "bootstrap": "^5.3.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

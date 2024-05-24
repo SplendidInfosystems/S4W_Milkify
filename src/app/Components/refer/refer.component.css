@@ -1,6 +1,6 @@
 .refer{ 
     padding-bottom: 70px;
-    height: 105vh;
+    height: 100vh;
 }
 .ref{
   background-color: #F0F7F7;
@@ -25,7 +25,7 @@
   .back-icon {
     top: 10px;
     left: 20px;
-    margin-left: 10px;
+    margin-left: 20px;
     display: flex;
     font-size: 20px;
   }
@@ -124,7 +124,7 @@
 
 .referal p{
   font-size: 18px;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 .referal{
   display: flex;
@@ -150,8 +150,9 @@
 }
 
 .referal img{
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
+  margin-top: 8px;
 }
 .share-icon {
   font-size: 25px; 
@@ -167,7 +168,7 @@
 .contact p {
   margin: 0;
   color: red;
-  margin-right: 35%;
+  margin-right: 39%;
 }
 
 .contact i {
@@ -183,4 +184,53 @@
   border-radius: 20px;
   z-index: 999; 
   
+}
+
+.timeline{
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  padding: 1rem;
+  margin-top: 10px;
+}
+
+.timeline-event{
+  display: flex;
+  position: relative;
+  min-height: 70px;
+}
+.timeline-event:last-child{
+  min-height: 0;
+}
+.timeline-content{
+  flex: 1;
+  padding: 0 1rem;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: 'Roboto', "Helvetica Neue", sans-serif;
+}
+.timeline-point-track-container{
+  flex: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.timeline-point{
+  display: flex;
+  align-self: baseline;
+  border: 2px solid #04B56C;
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+  background-color: #fff;
+}
+
+.timeline-track{
+  flex-grow: 1;
+  background-color: #04B56C;
+  width: 4px;
+}
+.heighlight{
+  background-color: #04B56C;
+  /* box-shadow: 0 4px 8px; */
 }

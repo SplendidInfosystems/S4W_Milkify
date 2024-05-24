@@ -40,23 +40,19 @@
         
          
           
-          <mat-vertical-stepper [linear]="false" #stepper class="ref" >
-            <mat-step [stepControl]="firstFormGroup">
-              <form [formGroup]="firstFormGroup">
-                <ng-template matStepLabel>Refer Your Friends to Country Delight</ng-template>
-      
-              </form>
-            </mat-step>
-            <mat-step [stepControl]="secondFormGroup">
-              <form [formGroup]="secondFormGroup">
-                <ng-template matStepLabel>Friends do their first recharge</ng-template>
-              </form>
-            </mat-step>
-            <mat-step>
-              <ng-template matStepLabel>Win up to Rs. 100 on every recommendation</ng-template>
-            </mat-step>
-          </mat-vertical-stepper>
-
+          <div class="timeline">
+            <div *ngFor="let item of event" class="timeline-event">
+              <div class="timeline-point-track-container">
+                <div class="timeline-point" [ngClass]="item?.status === 'R' ? 'heighlight' : '' " > </div>
+                  <div class="timeline-track" [ngClass]="item?.status === 'R' ? 'heighlight' : '' "></div>
+                </div>
+                  <div class="timeline-content">
+                    <span>{{ item.content }}</span>
+                  </div>
+            </div>
+          </div>
+          
+          
 
           <div class="bottom">
 

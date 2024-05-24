@@ -11,7 +11,7 @@ export class AccountsComponent {
   
   constructor(private router :Router){}
   goBack(): void {
-    this.router.navigate(['/subscription']);
+    this.router.navigate(['/prod-subs']);
   }
   navigateToUserProfile() {
     this.router.navigate(['/user-profile']);

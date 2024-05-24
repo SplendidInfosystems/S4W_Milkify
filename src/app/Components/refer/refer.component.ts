@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
   styleUrl: './refer.component.css'
 })
 export class ReferComponent {
+
+  @Input() value: any[] =[];
   balance=0;
   Rebalance=1500;
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
@@ -15,11 +17,16 @@ export class ReferComponent {
  
   firstFormGroup: FormGroup = this._formBuilder.group({firstCtrl: ['']});
   secondFormGroup: FormGroup = this._formBuilder.group({secondCtrl: ['']});
+  event: any[] = [];
 
-
-  ngOnInit(): void {
-  
+  ngOnInit() {
+    this.event = [
+      { content: 'Refer Your friends to Milify',status:'R'},
+      { content: 'Friends do their first recharge' ,status:'R'},
+      { content: 'Win up to Rs. 100 on every recommendation' },
+    ]
   }
+  
   openShareContent(): void {
     if (navigator.share) {
       navigator.share({

@@ -1,9 +1,11 @@
 
 <div class="vacation-header">
-    <button mat-icon-button (click)="goBack()">
-      <mat-icon>arrow_back</mat-icon>
-    </button>
-    <h3>Vacations</h3>
+  <div class="back-icon" (click)="goBack()">
+    <i class="fas fa-chevron-left"></i>
+</div>
+<div class="head">
+    <p>Vacation</p>
+</div>
   </div>
   <div class="vacation-main" *ngIf="!vacation; else vacationTemplate">
     <div class="vacation-section">

@@ -135,7 +135,11 @@ export class ProductDetailsComponent {
       this.picker.open();
     }
   }
-
+  closeCalendar(): void {
+    if (this.picker) {
+      this.picker.close();
+    }
+  }
   onStartDateSelected(selectedDate: Date) {
     const endDate = new Date(selectedDate.getFullYear(), 11, 31);
     this.dateAdapter.setLocale('en'); // Set locale if necessary

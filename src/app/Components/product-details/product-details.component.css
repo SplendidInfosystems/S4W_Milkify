@@ -45,10 +45,6 @@
     justify-content: space-around;
 }
 
-.cart {
-    display: flex;
-    flex-direction: row;
-}
 
 .add {
     margin-right: 25px;
@@ -74,7 +70,7 @@
     font-size: 15px;
 }
 
-.cart {
+.art {
     background-color: #F2FBF8;
     border: 1px solid #04B56C;
     color: #04B56C;
@@ -87,79 +83,71 @@
     margin-top: 10px;
     justify-content: space-around;
 }
-.subscription-options {
+
+ 
+  .sum {
     display: flex;
     flex-direction: row;
-  }
-  
-  .subscription-options p {
-    margin-bottom: 10px;
-  }
-  
-  .subscription-options i {
-    display: none;
-  }
-  
-  .cart:hover i {
-    display: inline;
-  }
-  
+    justify-content: space-between;
+    padding: 10px;
+}
+.mat-form-field input{
+  width: 70px;
+}
+.plan {
+  display: flex;
+  align-items: center;
+}
+
+.cart {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
 
 .cart p {
-    margin: 0;
-   
+  margin: 0;
+  padding-right: 10px;
+  font-size: 20px;
+  text-align: center;
+  color:#04B56C;
+  font-weight: 400;
 }
 
-.sum {
-    display: flex;
-    justify-content: space-between;
-    border-top: 1px solid gray;
-    padding: 10px;
-    margin-top: 10px;
+.cart i {
+  cursor: pointer;
+}
+.types h2{
+  font-size: 20px;
+  padding: 8px;
+  border-top: 1px solid gray;
 }
 
-.plan h2,
-.plan1 h2 {
+.plan,
+.cart {
+    flex: 1; /* This will make both divs take up equal space */
+    margin-right: 10px; /* Add some spacing between the divs */
+}
+
+  .plan h2,
+  .plan1 h2 {
     font-size: 15px;
-}
+  }
 
-.plan .cart {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    height: 33px;
-    width: 100%;
-    margin-left: 0;
-    justify-content: space-around;
-}
-
-.plan1 .cart {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    height: 33px;
-    width: 80%;
-    margin-left: 0;
-    justify-content: space-around;
-}
-
-.plan1 {
-    margin-left: 54px;
-}
-
-.cart p input {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    height: 33px;
-    width: 100%;
-    margin-right: -45px;
-}
+  .fa-edit {
+    color: #666;
+    cursor: pointer;
+  }
+  
 
 .descript {
     border-top: 1px solid gray;
     padding-top: 10px;
-    height: 70vh;
+    height: 60vh;
+    background-color: #F2FBF8;
 }
 
 
@@ -210,144 +198,3 @@
 .add-address:hover {
     background-color: #04B56C;
 }
-
-/* Customizing datepicker appearance */
-::ng-deep .mat-calendar-body-selected {
-    background-color: blue !important;
-  }
-  
-  /* Adding a Done button */
-  ::ng-deep .mat-datepicker-content {
-    position: relative;
-  }
-  
-  ::ng-deep .mat-datepicker-actions {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 16px;
-    background-color: #f5f5f5;
-  }
-  
-  ::ng-deep .mat-datepicker-actions .mat-button {
-    margin-right: 8px;
-  }
-  
-  .alternate-calendar {
-    position: relative;
-  }
-  .alternate-calendar button {
-    position: absolute;
-    bottom: 0;
-    right: 50%;
-    transform: translateX(50%);
-    background-color: #41A5E1;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-top: 20px;
-    color: #fff;
-    padding: 0px 10px; /* Adjust padding as needed */
-    width: auto; /* Let the width adjust based on content */
-}
-
-.carted {
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    height: 50px;
-    justify-content: space-around;
-  }
-  .summation{
-   width: 60%;
-  }
-  .carted p {
-    margin: 0; /* Remove default margin for <p> */
-    cursor: pointer; /* Change cursor to pointer on hover for better UX */
-  }
-  
-  .carted label {
-    margin-right: 20px; /* Add space between radio buttons */
-    cursor: pointer; /* Change cursor to pointer on hover for better UX */
-  }
-  
-  .carted label:last-child {
-    margin-right: 0; /* Remove margin from the last radio button */
-  }
-  
-  /* Style the radio buttons */
-  .carted input[type="radio"] {
-    display: none; /* Hide the default radio button */
-  }
-  
-  /* Style the custom radio button */
-  .carted input[type="radio"] + span {
-    position: relative;
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    border: 1px solid #aaa;
-    border-radius: 50%;
-    margin-right: 5px;
-  }
-  
-  /* Style the custom radio button when checked */
-  .carted input[type="radio"]:checked + span::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 10px;
-    height: 10px;
-    background-color: #333;
-    border-radius: 50%;
-  }
-  
-  /* Style the edit icon */
-  .carted i {
-    margin-left: 10px;
-    cursor: pointer;
-  }
-  .plan {
-    margin-top: 20px; /* Add spacing above the content */
-  }
-  
-  .plan h2 {
-    margin-bottom: 10px; /* Add spacing below the heading */
-  }
-  
-/* Style the mat-form-field container */
-.mat-form-field {
-    width: 100%; /* Set width to 100% */
-    margin-top: 10px; /* Add top margin for spacing */
-  }
-  
-  /* Style the input inside mat-form-field */
-  .mat-form-field input {
-    width: calc(100% - 42px); /* Adjust width to accommodate the datepicker toggle */
-  }
-  
-  /* Style the datepicker toggle */
-  .mat-datepicker-toggle {
-    margin-left: -24px; /* Adjust margin to align with the input */
-    cursor: pointer; /* Change cursor to pointer on hover */
-  }
-  
-  /* Style the mat-datepicker-toggle icon */
-  .mat-datepicker-toggle-icon {
-    color: #757575; /* Set icon color */
-  }
-  
-  /* Optional: Style the datepicker calendar */
-  .mat-datepicker-content {
-    border-radius: 4px; /* Set border radius */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow */
-  }
-  
-  .flex{
-    display: flex;
-    width: 500px;
-  }
