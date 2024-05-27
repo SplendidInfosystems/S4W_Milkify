@@ -134,7 +134,7 @@
   .two,
   .three {
     background-color: #fff;
-    border: 1px solid #b2b2b2;
+    border: 2px solid #b2b2b2;
     background-color: #fff;
     color: #000;
     width: 20%;
@@ -142,7 +142,17 @@
     text-align: center;
     border-radius: 10px;
   }
+  .confirmation {
+    text-align: center;
+    color:#fff;
+    height: 30px;
+    margin-top: 65px;
+    background-color: rgb(2, 51, 2);
+  }
   
+  .celebration-animation {
+    display: inline-block;
+  }
   .one p,
   .two p,
   .three p{
@@ -160,6 +170,13 @@
     margin-top: 30px;
     margin-bottom: 10px;
   }
+
+  
+  .selected {
+    border-color: #04B56C; /* Highlight border color */
+  }
+  
+  
   .select{
    
     padding-top: 20px;

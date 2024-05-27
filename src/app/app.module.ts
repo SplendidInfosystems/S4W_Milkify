@@ -43,6 +43,7 @@ import { LocationComponent } from './Models/User/location/location.component';
 import { OffersComponent } from './Components/offers/offers.component';
 import { ReferComponent } from './Components/refer/refer.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import { LegalComponent } from './Models/User/legal/legal.component';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     LocationComponent,
     OffersComponent,
     UserProfileComponent,
-    ReferComponent
+    ReferComponent,
+    LegalComponent
   
   ],
   imports: [

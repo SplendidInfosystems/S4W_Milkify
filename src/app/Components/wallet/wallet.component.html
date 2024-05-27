@@ -20,21 +20,18 @@
         <input type="radio" [(ngModel)]="selectedOption" value="Setup autopay">
         <span>Setup autopay</span>
       </label>
-    
-  
-   
       <div *ngIf="selectedOption === 'Setup autopay'" class="autopay-section">
         <div class="current">
           ₹{{ Balance }}
         </div>
         <div class="top">
-          <div class="one">
+          <div class="one" [class.selected]="selectedAmount === 1500" (click)="selectAmount(1500)">
             <p> ₹1500</p>
           </div>
-          <div class="two">
+          <div class="two" [class.selected]="selectedAmount === 8250" (click)="selectAmount(8250)">
             <p> ₹8250</p>
           </div>
-          <div class="three">
+          <div class="three" [class.selected]="selectedAmount === 15000" (click)="selectAmount(15000)">
             <p> ₹15000</p>
           </div>
         </div>
@@ -63,17 +60,17 @@
         </div>
         <div class="truth">Get flat Rs.500 Cashback</div>
       </div>
-      <div class="top">
-        <div class="one">
-          <p> ₹1500</p>
+        <div class="top">
+          <div class="one" [class.selected]="selectedAmount === 1500" (click)="selectAmount(1500)">
+            <p> ₹1500</p>
+          </div>
+          <div class="two" [class.selected]="selectedAmount === 8250" (click)="selectAmount(8250)">
+            <p> ₹8250</p>
+          </div>
+          <div class="three" [class.selected]="selectedAmount === 15000" (click)="selectAmount(15000)">
+            <p> ₹15000</p>
+          </div>
         </div>
-        <div class="two">
-          <p> ₹8250</p>
-        </div>
-        <div class="three">
-          <p> ₹15000</p>
-        </div>
-      </div>
       <div class="take">
         <p>Recommended Offers</p>
       </div>
@@ -125,8 +122,14 @@
       </ng-template>
     </ngb-carousel>
 
+
+    <div *ngIf="selectedAmount" class="confirmation">
+      <p>Autopay offer applied, cashback of ₹150</p>
+      <div class="celebration-animation">
+  
+      </div>
   
   <div class="address-price">
-    <button class="add-address" [routerLink]="['/payment']">Pay ₹{{ totalPrice }}</button> 
+    <button class="add-address" [routerLink]="['/payment']"  (click)="payAmount()">Pay ₹{{ selectedAmount }}</button>
   </div>
 </div>

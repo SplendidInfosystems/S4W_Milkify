@@ -1,0 +1,39 @@
+<header class="legal-header">
+    <div class="back-icon" (click)="goBack()">
+        <i class="fas fa-chevron-left"></i>
+    </div>
+    <div class="head">
+        <p>Legal</p>
+    </div>
+</header>
+
+<div class="legal-main">
+    <div *ngIf="!infoToShow">
+      <div *ngFor="let option of legalOptions" class="legal-card" (click)="showInfo(option)">
+        <h5 class="section-title">{{ option }}</h5>
+      </div>
+    </div>
+  
+    <div class="legal-set">
+      <div *ngIf="infoToShow" class="info-container">
+        <button class="close-button" (click)="goBacktoCards()">✕</button>
+        <p class="info-title">{{ infoToShow.title }}</p>
+        <ul class="info-list">
+          <li *ngFor="let desc of infoToShow.description">{{ desc }}</li>
+        </ul>
+        <button *ngIf="infoToShow.buttonLabel" class="green-button" (click)="goBack()">{{ infoToShow.buttonLabel }}</button>
+        <ul *ngIf="infoToShow.description2" class="info-list">
+          <p class="info-title">Subscription</p>
+          <li *ngFor="let desc of infoToShow.description2">{{ desc }}</li>
+        </ul>
+        <button *ngIf="infoToShow.buttonLabel2" class="green-button" style="margin-left: 5.2rem;"  (click)="goBack()">{{ infoToShow.buttonLabel2 }}</button>
+        <ul *ngIf="infoToShow.note" class="info-list">
+          <li *ngFor="let note of infoToShow.note"><strong></strong> {{ note }}</li>
+          <!-- <li>{{ list }}</li> -->
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+
+

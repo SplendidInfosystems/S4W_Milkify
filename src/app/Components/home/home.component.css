@@ -15,7 +15,7 @@
 
 .hero-image {
   max-width: 15%;
-  margin: 5px 15px 0px 10px;
+  margin: 5px 30px 0px 10px;
   border-radius: 50%;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .header-right {
-  padding: 10px;
+  padding: 0px;
   margin-top: 5px;
 }
 
@@ -249,3 +249,4 @@
 .promo-banner::after {
   content: "";
 }
+

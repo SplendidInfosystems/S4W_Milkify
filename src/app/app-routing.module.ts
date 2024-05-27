@@ -23,6 +23,7 @@ import { NeedHelpComponent } from './Models/User/need-help/need-help.component';
 import { LocationComponent } from './Models/User/location/location.component';
 import { OffersComponent } from './Components/offers/offers.component';
 import { ReferComponent } from './Components/refer/refer.component';
+import { LegalComponent } from './Models/User/legal/legal.component';
 
 
 
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'vacation', component: VacationComponent },
   { path: 'add-vac', component: AddVacComponent },
   { path: 'refer', component: ReferComponent },
+  { path: 'legal', component: LegalComponent },
   { path: 'subscription', component: SubscriptionComponent },
   { path: 'my-sub', component: MySubComponent},
   { path: 'accounts', component: AccountsComponent },
@@ -48,7 +50,7 @@ const routes: Routes = [
   { path: 'weekly', component: WeeklyComponent },
   { path: 'prod-subs', component: ProdSubsComponent},
   { path: 'payment', component: PaymentComponent },
-  { path: 'product-details/:index', component: ProductDetailsComponent },
+  { path: 'product-details', component: ProductDetailsComponent },
   { path: 'location', component: LocationComponent },
   { path: 'offers', component: OffersComponent },
 

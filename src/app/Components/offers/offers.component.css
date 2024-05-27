@@ -10,21 +10,25 @@
     padding: 10px 20px;
   }
   
-  .offers-header h3 {
-    text-align: center;
-    margin: 5px;
-    font-size: 20px;
-    font-weight: 500;
-  }
   
-  .offers-header button,
-  .mat-icon {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-  }
+.back-icon {
+  top: 10px;
+  left: 20px;
+  margin-left: 10px;
+  display: flex;
+  font-size: 20px;
+}
+.head {
+  text-align: center;
+  margin-left: 5%;
+  font-size: 20px;
+  margin-top: 8px;
+}
+
+.head p {
+  margin-top: 10px;
+  font-weight: 500;
+}
   
   
   .offers-header button img,

@@ -1,32 +1,46 @@
-.app-guide-header {
+.legal-header {
     display: flex;
     align-items: center;
-        padding: 10px 20px;
-}
-.back-icon {
-  top: 10px;
-  left: 20px;
-  margin-left: 10px;
-  display: flex;
-  font-size: 20px;
-}
-.head {
-  text-align: center;
-  margin-left: 5%;
-  font-size: 20px;
-  margin-top: 8px;
-}
-
-.head p {
-  margin-top: 10px;
-  font-weight: 500;
-}
- .guide-main{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    padding: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+ 
+  .back-icon {
+    top: 10px;
+    left: 20px;
+    margin-left: 25px;
+    display: flex;
+    font-size: 20px;
+  }
+  .head {
+    text-align: center;
+    margin-left: 5%;
+    font-size: 20px;
+    margin-top: 10px;
+  }
+  
+  .head p {
+    margin-top: 10px;
+    font-weight: 500;
+  }
+  .legal-main{
     background-color: #f1f7f7;
-    padding-top: 5px;
+    padding-top: 70px;
     height: 100%;
 }
-.guide-card {
+.legal-set{
+  background-color: #f1f7f7;
+  padding-top: 5px;
+  height: 100%;
+}
+.legal-card {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -50,7 +64,7 @@
     color: grey;
     margin-left: 15px;
   }
-  /* Simple styling for the guide information */
+
 .info-container {
   padding: 20px;
   position: relative;
