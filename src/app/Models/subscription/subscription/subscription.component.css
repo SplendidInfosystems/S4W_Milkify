@@ -375,21 +375,16 @@
 }
 .sub-type{
   display: flex;
-  flex-direction: row;
-  border: 1px solid #ccc;
-  background-color: #fff;
-margin-left: 10px;
-  border-radius: 10px;
-  width: 75%;
-  margin-top: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    margin-left: 10px;
+    border-radius: 10px;
+    width: 85%;
+    justify-content: space-evenly;
 
 }
-.typed p{
+.typed p, .edit{
   text-align: center;
-  margin-left: 20px;
-  padding-top: 10px;
+  padding-top: 15px;
 }
-.edit{
-  text-align: center;
-  padding-top: 10px;
-}
+
