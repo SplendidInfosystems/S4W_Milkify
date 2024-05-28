@@ -5,6 +5,7 @@
 .ref{
   background-color: #F0F7F7;
 }
+
 .header {
     display: flex;
     align-items: center;
@@ -190,14 +191,14 @@
   display: flex;
   flex-grow: 1;
   flex-direction: column;
-  padding: 1rem;
+  padding: .5rem;
   margin-top: 10px;
 }
 
 .timeline-event{
   display: flex;
   position: relative;
-  min-height: 70px;
+  min-height: 50px;
 }
 .timeline-event:last-child{
   min-height: 0;

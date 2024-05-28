@@ -19,35 +19,35 @@ export class HomeComponent implements OnInit {
 
   popularItems = [
     {
-      name: 'Milkify Cream Milk',
+      name: 'Cream Milk',
       price: '₹50',
       litre: '300ml',
       image:
         'https://cdnasd.countrydelight.in/New_product_image/BM_1646846227411_1665204467802.png',
     },
     {
-      name: 'Milkify Cow Milk',
+      name: 'Cow Milk',
       price: '₹45',
       litre: '400ml',
       image:
         'https://cdnasd.countrydelight.in/New_product_image/CM_1646845937535_1665058250996.png',
     },
     {
-      name: 'Milkify  Fat Milk',
+      name: ' Fat Milk',
       price: '₹65',
       litre: '550ml',
       image:
         'https://cdnasd.countrydelight.in/New_product_image/LFCM-Milk_1646989764729_1665057281149.png',
     },
     {
-      name: 'Milkify Buffalo Milk',
+      name: 'Buffalo Milk',
       price: '₹60',
       litre: '450ml',
       image:
         'https://cdnasd.countrydelight.in/New_product_image/BM_1646846227411_1665204467802.png',
     },
     {
-      name: 'Milkify Cow Milk',
+      name: ' Cow Milk',
       price: '₹45',
       litre: '550ml',
       image:
