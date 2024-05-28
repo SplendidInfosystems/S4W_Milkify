@@ -9,20 +9,20 @@
     </div>
     <div class="balance" [ngClass]="{ 'zero-balance': currentBalance === 0, 'positive-balance': currentBalance > 0 }">
       Balance: <br>
-      ₹{{ currentBalance }}
+    <p>  ₹{{ currentBalance }}</p>
     </div>
   </header>
-  
+   
   
   <div class="select">
     <div class="autopay">
       <label class="radio-leb">
         <input type="radio" [(ngModel)]="selectedOption" value="Setup autopay">
-        <span>Setup autopay</span>
+        <h6>Setup autopay</h6>
       </label>
       <div *ngIf="selectedOption === 'Setup autopay'" class="autopay-section">
         <div class="current">
-          ₹{{ Balance }}
+         <h5> ₹{{ Balance }}</h5>
         </div>
         <div class="top">
           <div class="one" [class.selected]="selectedAmount === 1500" (click)="selectAmount(1500)">
@@ -36,7 +36,7 @@
           </div>
         </div>
         <div class="text">
-          <span>It will recharge automatically when your wallet balance goes below <h3>₹100</h3></span>
+          <p>It will recharge automatically when your wallet balance goes below <span>₹100</span></p>
         </div>
       </div>
     </div>
@@ -44,11 +44,11 @@
   
   
   <div class="recharge">
-    <label class="radio-label">
+    
+    <label class="radio-leb">
       <input type="radio" [(ngModel)]="selectedOption" value="recharge">
-      <span>Recharge Once</span>
+      <h6>Recharge Once</h6>
     </label>
-  
   
   
     <!-- Recharge section -->

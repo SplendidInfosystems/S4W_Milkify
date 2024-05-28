@@ -11,25 +11,28 @@
       <div class="selection">
         <div class="act">
            <p>Amount to pay</p>
-           <h4>{{ amountToPay | currency:'INR' }}</h4>
+           <h6>{{ amountToPay | currency:'INR' }}</h6>
         </div>
         <div class="react">
           <p>Cashback</p>
-          <h4>{{ cashback | currency:'INR' }}</h4>
+          <h6>{{ cashback | currency:'INR' }}</h6>
         </div>
         <div class="deact">
           <p>To be credited</p>
-          <h4>{{ toBeCredited | currency:'INR' }}</h4>
+          <h6>{{ toBeCredited | currency:'INR' }}</h6>
         </div>
       </div>
       
     
     <div class="apps">
-      <h4>UPI Apps</h4>
+      <h6>UPI Apps</h6>
       <div class="sub">
       <div class="big">
+
       <div class="method" *ngFor="let item of popularItems; let i = index">
-      <img [src]="item.image" alt="">
+      <div class="social">
+        <img [src]="item.image">
+      </div>
       <p>{{ item.name }}</p>
     </div>
     </div>
@@ -49,8 +52,9 @@
     
     </div>
     </div>
+
     <div class="apps">
-      <h4>Credit/Debit Card</h4>
+      <h6>Credit/Debit Card</h6>
       </div>
     <div class="red">
       <i class="fas fa-credit-card"></i>
@@ -59,7 +63,7 @@
     </div>
     
     <div class="apps">
-      <h4>CRED pay</h4>
+      <h6>CRED pay</h6>
       </div>
     <div class="red1">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO7umyVq0E2ImajLXXiyMPzj3_cufBp1-imbtv4o3RwQ&s" alt="">
@@ -68,7 +72,7 @@
     </div>
     
     <div class="apps">
-      <h4>Pluxee(Sodexo)Card</h4>
+      <h6>Pluxee(Sodexo)Card</h6>
       </div>
     <div class="red1">
       <i class="fas fa-credit-card"></i>
@@ -76,7 +80,7 @@
       <i class="fas fa-chevron-right"></i>
     </div>
     <div class="apps">
-      <h4>Netbanking</h4>
+      <h6>Netbanking</h6>
       </div>
     <div class="red1">
       <i class="fas fa-university netbanking-icon"></i>
@@ -84,7 +88,7 @@
       <i class="fas fa-chevron-right"></i>
     </div>
     <div class="apps">
-      <h4>Wallet</h4>
+      <h6>Wallet</h6>
       </div>
     <div class="red1">
       <img src="https://m.economictimes.com/thumb/msid-107312198,width-1200,height-900,resizemode-4,imgsize-6574/paytm-etonline.jpg" alt="">

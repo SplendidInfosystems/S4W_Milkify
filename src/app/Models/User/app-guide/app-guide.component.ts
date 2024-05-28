@@ -124,8 +124,5 @@ export class AppGuideComponent {
     }
     this.showDetails = this.infoToShow == null;
   }
-  // closeInfo(): void {
-  //   this.infoToShow = null;
-  //   this.showDetails = true;
-  // }
+  
 }

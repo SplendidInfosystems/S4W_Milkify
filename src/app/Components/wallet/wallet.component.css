@@ -36,7 +36,7 @@
     margin-left: 25%;
   }
   
-  .zero-balance {
+  .balance p {
     color: red;
   }
   
@@ -96,12 +96,12 @@
     margin-top: 20px;
   }
   
-  .radio-label {
+  .radio-leb {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
   }
-  .radio-label span{
-    margin-top: 5px;
+  .radio-leb h6{
+    margin-top: 3px;
   }
   
   .radio-label input[type="radio"] {
@@ -123,7 +123,7 @@
   }
   
   .current{
-    margin-left: 30px;
+    margin-top: 15px;
   }
   .current1{
     margin-left: 10px;
@@ -133,14 +133,13 @@
   .one,
   .two,
   .three {
+    border: 2px solid #b2b2b24a;
     background-color: #fff;
-    border: 2px solid #b2b2b2;
-    background-color: #fff;
-    color: #000;
-    width: 20%;
+    color: #00000082;
+    width: 25%;
     height: 5vh;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 20px;
   }
   .confirmation {
     text-align: center;
@@ -156,19 +155,24 @@
   .one p,
   .two p,
   .three p{
-    margin-top: 10px;
+    margin-top: 8px;
   }
   
   .top{
     display: flex;
-    justify-content: space-evenly;
-   margin-top: 30px;
+    
+    justify-content: space-around;
+    border-top: 1px solid #80808070;
+    padding-top: 10px;
   }
   
   .text{
     text-align: center;
-    margin-top: 30px;
-    margin-bottom: 10px;
+    margin-top: 25px;
+  }
+  .text span{
+    font-size: 20px;
+    font-weight: 500;
   }
 
   
@@ -229,27 +233,27 @@
   
   
   .rain{
-    width: 100%;
-    height: 75px;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
+    
     border: 3px dashed #54937B; 
-    padding: 10px;
-   border-radius: 15px;
+   border-style:dashed;
+   max-width: 100%;
+   height: 75px;
+   margin: 0 0px 10px 12px;
+   padding: 10px;
    display: flex;
+   border-radius: 15px;
    justify-content: space-between;
-   border-style: dotted;
   }
   
   .rain1{
-    width: 100%;
+    max-width: 100%;
     height: 75px;
-    border: 2px solid #ccc;
-    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    margin: 0 0px 5px 12px;
     padding: 10px;
     display: flex;
+    border-radius: 15px;
     justify-content: space-between;
-   border-radius: 15px;
   }
   .container{
     width: 41vh;
@@ -279,6 +283,7 @@
   
   .emit {
     display: flex;
+    padding-bottom: 5px;
   }
   
   .current1 {

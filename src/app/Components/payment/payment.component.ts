@@ -28,12 +28,12 @@ export class PaymentComponent {
     {
       name: 'GPAY',
       image:
-        'https://static1.anpoimages.com/wordpress/wp-content/uploads/2020/11/05/Google-Pay-India-Tez-new-icon.jpg',
+        'https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-pay-icon.png',
     }, 
     {
       name: 'PHONEPE',
       image:
-        'https://gumlet-images.assettype.com/afaqs%2Fimport%2Fall%2Fnews%2Fimages%2Fnews_story_grfx%2F2018%2F03%2F52495%2FPhonePe.jpg?auto=format%2Ccompress&w=1200',
+        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAZlBMVEVHcExyQqptOqdyQaqjgMjw5vePabtmMaOFWbWWccF/U7KQbLt9UrGDWbS/p9l4Sa6LZLlfJZ9dIZ7///9ZG5zs5fRPAJdiK6Hd0+pWDpqScb3QwuL49vvm3/CDW7Ovl86jiMa6pNQiGQV4AAAAEXRSTlMA4PHGKQaB+1w+o6NzsxiMmM8UagcAAAEwSURBVCiRhZLbcoQgEEQVL4C7rmFAEHHV/P9PZrhqJVuVfrAsj9NOY1dVUddyxnhbfRAfCDUoWk+/edsYAIECAUCH7s56ikRpGzjeEX6xQfin6/cBiQLty1z0e0vptEiiaZab+LZBemQK5BUS1NkLFinPQgcPWdwBZcHJbdVKRWOfKAyqffXaN6TrHih8YUKfQmh0LNoirLOrPRccWpZwdfE40PeZcuPsbKx+y9mquKFh1SPtahFS4aHKWf+ByfYDRFuWoZNy13eIC3GaNloxg8NEGQLp0iF46mLKAsf8T8LRns4dc4HG/5cXgfxZffsmNN118lG6TNLUpBEKtMfsAjTP3MnmogpiVR5XY0cBN28sRamQp4wUjJP1rXyhuH1N8TkS2rCu+iPO+mnq2a3vPzDHKbhqwKZ/AAAAAElFTkSuQmCC',
     }, 
   
    

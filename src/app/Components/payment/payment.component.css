@@ -42,13 +42,16 @@
     .selection {
       display: flex;
       justify-content: space-between;
-      border: 2px solid #ccc;
+      /* border: 2px solid #ccc; */
       padding-top: 67px;
+      background-color: #fff;
       
   }
   .act p, .react p, .deact p{
-      margin-bottom: 0rem;
-      color: #8d8989;
+    margin-bottom: 0;
+    padding-top: 2px;
+    font-size: 12px;
+    color: #8d8989d6;
   }
   .act, .react, .deact {
       flex: 1;
@@ -56,24 +59,26 @@
   }
   
   .act {
-      border-right: 1px solid gray;
+      border-right: 0.1px solid lightgray;
+
   }
-  .act h4,.react h4, .deact h4{
+  .act h6,.react h6, .deact h6{
     font-size: 17px;
   }
   
   .react {
-      border-right: 1px solid gray;
+      border-right: 0.1px solid lightgray;
+
   }
   
-  .deact h4{
-      color: #04B56C; 
+  .deact h6{
+      color: #2b966d; 
   }
   
   .apps {
     margin: 20px; 
   }
-  .apps h4 {
+  .apps h6 {
     font-size: 15px;
     font-weight: 600;
   }
@@ -85,36 +90,43 @@
   
   .sub{
     border-radius: 20px;
-    border: 2px solid #ccc;
+    border:0.1px solid lightgray;
+
     background-color: #fff;
   }
   .big{
     display: flex; 
     flex-direction: row;
-   
-    margin-top: 10px; 
-    padding: 20px;
+    margin: 10px 0 -10px 0;
+    padding: 5px;
   
   }
   .method {
     margin: 0 10px; 
   }
-  
-  .method img {
-    width: 55px; 
-    height: 40px; 
-    border: 2px solid #dbdada;
-    border-radius: 10px;
+  .social{
+    width: 43px;
     background-color: #F1F7F7;
+    border-radius: 10px;
+    border: 1px solid #dbdada;
+
   }
-  
+   .social
+    img {
+      width: 40px;
+      height: 40px;
+      padding: 5px;
+     
+  }
+ 
   .method p {
     margin-top: 5px;
   }
   
   .new {
     margin-top: 10px;
-    border-top: 1px solid gray;
+    border-top: 0.1px solid lightgray;
+
   }
   
   .add-upi {
@@ -142,7 +154,8 @@
   .add-upi p {
     padding: 10px;
     border-radius: 10px;
-    color: #0AB36E;
+    color: #2b966d;
+    font-weight: 500;
   }
   
   .upi-input {
@@ -190,8 +203,9 @@
   }
   .red p{
     margin-top: 13px;
-    color: #04B56C;
+    color: #2b966d;
     margin-right: 140px;
+    font-weight: 500;
   }
   
   .red1{
