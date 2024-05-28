@@ -9,13 +9,13 @@ import { Router } from '@angular/router';
 export class LegalComponent {
   infoToShow: { title: string, description: string[], buttonLabel?: string, description2?: string[], buttonLabel2?: string, note?: string[] } | null = null;
   showDetails: boolean = true;
-  // list: string[] = ['Information We Collect'];
+
 
   constructor(private router: Router) { }
 
   goBacktoCards() {
     this.infoToShow = null;
-    this.showDetails = true; // Show the cards again
+    this.showDetails = true; 
   }
 
   goBack() {

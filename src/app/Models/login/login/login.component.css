@@ -110,3 +110,12 @@
     text-align: center;
     color: #04B56C;
 }
+.disabled-button {
+    background-color: gray;
+    /* Add any other disabled button styles */
+}
+
+.enabled-button {
+    background-color: green;
+    /* Add any other enabled button styles */
+}

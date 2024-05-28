@@ -3,7 +3,6 @@
     padding-bottom: 30px;
 }
 .orders-main{
-    background-color: #f1f7f7;
     padding-top: 5px;
     height: 100%;
 }
@@ -12,13 +11,27 @@
     align-items: center;
     background-color: #fff;
         padding: 10px 20px;
+        border-bottom: 1px solid #ccc;
+        
 }
-.orders-header h3{
-    text-align: center;
-    margin: 7px;
+.back-icon {
+    top: 10px;
+    left: 20px;
+    margin-left: 10px;
+    display: flex;
     font-size: 20px;
+  }
+  .head {
+    text-align: center;
+    margin-left: 5%;
+    font-size: 20px;
+    margin-top: 8px;
+  }
+  
+  .head p {
+    margin-top: 10px;
     font-weight: 500;
-}
+  }
 .orders-header button {
     background: none;
      border: none;

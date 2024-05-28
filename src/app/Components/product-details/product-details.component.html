@@ -53,46 +53,51 @@
             <p>₹{{ totalPrice }}</p>
         </div>
         <div class="art">
-            <p (click)="increaseValue()">+</p>
-            <span>{{ quantity }}</span>
             <p (click)="decreaseValue()">-</p>
+            <span>{{ quantity }}</span>
+            <p (click)="increaseValue()">+</p>
         </div>
     </div>
 </div>
-
-
-<div class="types">
-    <h2>Subscription type</h2>
+<div class="offer-card">
+    <div class="offer-details">
+      <p><strong>You are saving <span style="color: #04B56C;">$18.55</span>(20% OFF)with VIP</strong></p>
+    </div>
   </div>
-      <div class="sum">
-        <div class="plan">
-          <div class="cart">
-            <p *ngIf="!isSubscriptionTypesVisible" (click)="toggleSubscriptionTypes()">{{ selectedSubscription }}</p>
-            <ng-container *ngIf="isSubscriptionTypesVisible">
-              <p (click)="selectSubscription('Daily')">Daily</p>
-              <p (click)="selectSubscription('Alternate')">Alternate</p>
-              <p (click)="selectSubscription('Weekly')">Weekly</p>
-              <p (click)="selectSubscription('One Time')">One Time</p>
-            </ng-container>
-            <i class="fas fa-edit" (click)="toggleSubscriptionTypes()"></i>
-          </div>
-        </div>
-  
-  
-          <div class="plan1">
-          <mat-form-field appearance="fill">
-            <mat-label>Start Date</mat-label>
-            <div class="flex">
-                <mat-date-range-input [rangePicker]="picker">
-                    <input matStartDate #startDateInput placeholder="Start date" (dateChange)="onStartDateSelected($event.value)">
-                    <input matEndDate #endDateInput placeholder="End date">
-                  </mat-date-range-input>
+
+      <div class="subscript">
+        <div class="script">
+            <h2>Subscription type</h2>
+            <div class="sub-type">
+                <div class="typed">
+                <p *ngIf="!isSubscriptionTypesVisible" (click)="toggleSubscriptionTypes()">{{ selectedSubscription }}</p>
+                <ng-container *ngIf="isSubscriptionTypesVisible">
+                  <p (click)="selectSubscription('Daily')">Daily</p>
+                  <p (click)="selectSubscription('Alternate')">Alternate</p>
+                  <p (click)="selectSubscription('Weekly')">Weekly</p>
+                  <p (click)="selectSubscription('One Time')">One Time</p>
+                </ng-container>
             </div>
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-date-range-picker #picker></mat-date-range-picker>
-            </mat-form-field>
-      </div>
-        
+               <div class="edit"> <i class="fas fa-edit" (click)="toggleSubscriptionTypes()"></i></div>
+            </div>
+        </div>
+        <div class="date">
+            <h2>Start Date</h2>
+            <form [formGroup]="form">
+                <mat-form-field appearance="fill">
+                  <mat-label>Select a date</mat-label>
+                  <input matInput [matDatepicker]="picker" formControlName="selectedDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </form>
+              
+              <div *ngIf="alternateDates.length > 0">
+                <ul>
+                  <li *ngFor="let date of alternateDates">{{ date | date }}</li>
+                </ul>
+              </div>
+        </div>
       </div>
 
 <div class="descript">
