@@ -25,27 +25,29 @@
     </div>
 </div>
 <div class="select-days">
-    <p>Select Days</p>
-    <ul>
-      <li *ngFor="let day of days" (click)="toggleDaySelection(day)" [class.selected]="selectedDays.includes(day)">
-        {{ day }}
-      </li>
-    </ul>
-  </div>
-  
-  <div class="select-quantity">
-    <p>Select quantity per day</p>
-    <div *ngFor="let selectedDay of selectedDays" class="selected-day">
-      <div class="mid">
-        <div class="day">{{ selectedDay }}</div>
-        <div class="cart">
-          <p (click)="increaseValue(selectedDay)">+</p>
-          <span>{{ dayQuantities[selectedDay] || 1}}</span>
-          <p (click)="decreaseValue(selectedDay)">-</p>
-        </div>
+  <p>Select Days</p>
+  <ul>
+    <li *ngFor="let day of days" (click)="toggleDaySelection(day)" [class.selected]="selectedDays.includes(day)">
+      {{ day}} 
+    </li>
+  </ul>
+</div>
+
+<div class="select-quantity">
+  <p>Select quantity per day</p>
+  <div *ngFor="let selectedDay of selectedDays" class="selected-day">
+    <div class="mid">
+      <div class="day">{{ getFullDayName(selectedDay) }}</div> 
+      <div class="cart">
+        <p (click)="decreaseValue(selectedDay)">-</p>
+        <span>{{ dayQuantities[selectedDay] || 1 }}</span>
+        <p (click)="increaseValue(selectedDay)">+</p>
       </div>
     </div>
   </div>
+</div>
+
+  
   <ng-container *ngIf="showError">
     <p style="color: red;">Please select at least one day.</p>
 </ng-container>

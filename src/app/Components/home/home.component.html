@@ -52,7 +52,7 @@
       </div>
       <div class="popular-item" *ngFor="let item of popularItems; let i = index">
         <button class="side-button">20% off</button>
-        <a [routerLink]="['/product-details', i]">
+        <a [routerLink]="['/product-details']">
           <div class="promo-banner"></div>
           <img [src]="item.image" alt="{{ item.name }}">
         </a>
@@ -61,7 +61,7 @@
         </div>
         <p>{{ item.litre }}</p>
         <p><strong>{{ item.price }}</strong></p>
-        <button mat-button class="add-button" [routerLink]="['/product-details',i]">Add</button>
+        <button mat-button class="add-button" [routerLink]="['/product-details']">Add</button>
 
       </div>
     </div>

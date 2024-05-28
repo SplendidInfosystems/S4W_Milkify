@@ -43,14 +43,16 @@
             <p>Let’s get started</p>
         </div>
         <div class="num">
-            <input type="tel" id="mobileNumberInput" placeholder=" Enter Mobile number" [(ngModel)]="mobileNumber"
-                pattern="[0-9]{10}" required #mobileInput="ngModel">
-            <button (click)="sendOTP(); mobileInput.control.markAsTouched(); navigateToNextPage()"
-                [disabled]="mobileInput.invalid || otpSent">Continue</button>
-            <div *ngIf="mobileInput.invalid && mobileInput.touched" class="error-message">
-                Invalid number
-            </div>
-        </div>
+    <input type="tel" id="mobileNumberInput" placeholder="Enter Mobile number" [(ngModel)]="mobileNumber"
+        pattern="[0-9]{10}" required #mobileInput="ngModel">
+        <button (click)="sendOTP(); mobileInput.control.markAsTouched(); navigateToNextPage()"
+        [disabled]="mobileInput.invalid || mobileNumber.length !== 10 || otpSent">Continue</button>
+    
+    <div *ngIf="mobileInput.invalid && mobileInput.touched" class="error-message">
+        Invalid number
+    </div>
+</div>
+
         <div class="message">
             <p>By Signing up you accept to<br>&nbsp;&nbsp;
                 Terms and conditions</p>

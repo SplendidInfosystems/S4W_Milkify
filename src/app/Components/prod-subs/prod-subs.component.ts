@@ -23,6 +23,7 @@ export class ProdSubsComponent {
       { icon: 'receipt', name: 'Referral', route: 'refer' },
       { icon: 'local_offer', name: 'Offer Zone', route: 'offers' },
       { icon: '', name: '', route: '' }
+  
     ]
   ];
   
@@ -31,10 +32,10 @@ export class ProdSubsComponent {
     return headers[index] || ''; 
   }
   cards = [
-    { image: 'account_circle', title: 'Account & Preference', description: 'Edit Address', route: '/accounts' },
-    { image: 'account_balance_wallet', title: 'Wallet and payments', description: 'Add Money', route: '/wallet' },
+    { image: 'account_circle', title: 'Account & Preference', description: 'Edit Address,Delivery Preferences', route: '/accounts' },
+    { image: 'account_balance_wallet', title: 'Wallet and payments', description: 'Add Money,Add or Saved Cards', route: '/wallet' },
     { image: 'help', title: '   Need Helps ?     ', description: 'Call or Chat  with us', route: '/need-help' },
-    { image: 'assignment_turned_in', title: 'Legal', description: 'Terms and Condition', route: '/legal' },
+    { image: 'assignment_turned_in', title: 'Legal', description: 'Privacy, Terms and Condition', route: '/legal' },
    
   ];
   navigateToCol(route: string): void {

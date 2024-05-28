@@ -1,7 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatDateRangeInput, MatDateRangePicker, MatDatepicker } from '@angular/material/datepicker';
+import { MatCalendarCellClassFunction, MatDateRangeInput, MatDateRangePicker, MatDatepicker } from '@angular/material/datepicker';
 import { DateAdapter } from '@angular/material/core';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -23,6 +25,8 @@ export class ProductDetailsComponent {
   quantity: number = 1;
   totalPrice: number = this.price;
   subscriptionTypes: string[] = ['Daily', 'Alternate', 'Weekly', 'One Time'];
+  form!: FormGroup;
+alternateDates: Date[] = [];
 
   
   @ViewChild('startDateInput') startDateInput!: MatDateRangeInput<Date>; 
@@ -32,9 +36,18 @@ export class ProductDetailsComponent {
   @ViewChild(MatDateRangePicker) datePicker!: MatDateRangePicker<Date>; 
   @ViewChild('picker') picker: MatDatepicker<Date> | undefined;
 
-  constructor(private router: Router,private dateAdapter: DateAdapter<Date>) {
+
+  constructor(private dateAdapter: DateAdapter<Date>, private fb: FormBuilder,private router: Router) {
     this.defaultDate = new Date();
+    this.form = this.fb.group({
+      selectedDate: [null]
+    });
+
+    this.form.get('selectedDate')?.valueChanges.subscribe(date => {
+      this.calculateAlternateDates(date);
+    });
   }
+
   toggleSubscriptionTypes() {
     this.isSubscriptionTypesVisible = !this.isSubscriptionTypesVisible;
   }
@@ -92,41 +105,14 @@ export class ProductDetailsComponent {
       
       if (subscriptionType === 'Daily') {
         this.openCalendar();
-        this.selectDailyDates(this.defaultDate);
       } else if (subscriptionType === 'Alternate') {
         this.openCalendar();
-        this.selectAlternateDate(this.defaultDate);
       }
     }
   }
   
 
-  selectDailyDates(event: Date) {
-    const selectedDate = new Date(event);
-    const lastDayOfMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 0).getDate();
-    const alternateDates = [];
-
-    for (let i = 1; i <= lastDayOfMonth; i += 2) {
-      alternateDates.push(new Date(selectedDate.getFullYear(), selectedDate.getMonth(), i));
-    }
-    this.alternateSelectedDate = alternateDates.slice();
-  }
-
-  selectAlternateDate(event: Date) {
-    const selectedDate = new Date(event);
-    const today = new Date(); 
-    const dailyDates = [];
-    for (let i = selectedDate.getDate(); i <= selectedDate.getDate(); i++) {
-      const currentDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), i);
-      if (currentDate >= today) {
-        dailyDates.push(currentDate);
-      }
-    }
-    this.alternateSelectedDate = dailyDates.slice();
-    dailyDates.forEach(date => {
-      this.picker?.select(date);
-    });
-  }
+ 
   
   
 
@@ -146,5 +132,32 @@ export class ProductDetailsComponent {
     this.endDateInput._startInput.value = selectedDate;
     this.endDateInput._endInput.value = endDate;
   }
+  calculateAlternateDates(selectedDate: Date) {
+    if (!selectedDate) {
+      this.alternateDates = [];
+      return;
+    }
+    this.alternateDates = [];
+    for (let i = -15; i <= 15; i++) {
+      if (i !== 0 && Math.abs(i) % 2 === 0) {
+        const alternateDate = new Date(selectedDate);
+        alternateDate.setDate(selectedDate.getDate() + i);
+        this.alternateDates.push(alternateDate);
+      }
+    }
+  }
+
+  dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
+    if (view === 'month') {
+      const date = cellDate.getDate();
+      return this.alternateDates.some(d => d.getTime() === cellDate.getTime()) ? 'alternate-date' : '';
+    }
+    return '';
+  };
 
 }
+
+
+
+
+

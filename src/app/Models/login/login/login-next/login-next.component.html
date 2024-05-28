@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="back-icon">
+  <div class="back-icon" (click)="goBack()">
       <i class="fas fa-chevron-left"></i>
     </div>
     <div class="OTP-verify">
@@ -22,7 +22,8 @@
         <div *ngIf="showResendOption">
           <button (click)="resend()">Resend</button>
         </div>
-        <button (click)="verifyOTP()">Verify & Proceed</button>
+        <button *ngIf="showVerifyButton" (click)="verifyOTP()">Verify & Proceed</button>
+        
       </div>
     </div>
 </div>

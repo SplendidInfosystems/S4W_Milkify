@@ -17,9 +17,14 @@ export class LoginNextComponent {
   resendDisabled: boolean = false;
   otpVerificationFailed: boolean = false;
   showResendOption: boolean = false;
+  showVerifyButton: boolean = true;
 
   constructor(private router: Router) {
     this.startCountdownTimer();
+  }
+
+  goBack(): void {
+    this.router.navigate(['/login']);
   }
 
   onOtpInput(index: number): void {
@@ -56,6 +61,7 @@ export class LoginNextComponent {
     this.remainingTime = 40;
     this.startCountdownTimer();
     this.showResendOption = false;
+    this.showVerifyButton = true; // Show the "Verify & Proceed" button again after resend
     // Add logic to actually resend the OTP
   }
 
@@ -65,6 +71,7 @@ export class LoginNextComponent {
       if (this.remainingTime <= 0) {
         clearInterval(this.countdownInterval);
         this.showResendOption = true;
+        this.showVerifyButton = false; // Hide the "Verify & Proceed" button when time is over
       }
     }, 1000);
   }

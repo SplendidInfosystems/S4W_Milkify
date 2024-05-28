@@ -356,3 +356,40 @@
     border-top: 1px solid gray;
   }
   
+.subscript{
+  display: flex;
+  flex-direction: row;
+  /* justify-content:space-evenly; */
+    border-top: 1px solid gray;
+    background-color: #F2FBF8;
+}
+.script h2{
+  padding: 10px;
+  font-size: 15px;
+  margin: auto;
+}
+.date h2{
+  padding: 10px;
+  font-size: 15px;
+  margin: auto;
+}
+.sub-type{
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #ccc;
+  background-color: #fff;
+margin-left: 10px;
+  border-radius: 10px;
+  width: 75%;
+  margin-top: 5px;
+
+}
+.typed p{
+  text-align: center;
+  margin-left: 20px;
+  padding-top: 10px;
+}
+.edit{
+  text-align: center;
+  padding-top: 10px;
+}

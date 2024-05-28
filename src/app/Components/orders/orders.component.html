@@ -1,11 +1,13 @@
 <div class="orderpage">
 <div class="orders-header">
-    <button mat-icon-button (click)="goBack()">
-        <mat-icon>arrow_back</mat-icon>
-      </button>
-          <h3>Order History</h3>
+  <div class="back-icon" (click)="goBack()">
+    <i class="fas fa-chevron-left"></i>
+  </div>
+  <div class="head">
+    <p>Order History</p>
+  </div>
 </div>
-<div class="text">
+<!-- <div class="text">
   <p>Yay! You are saving ₹18.50 on this order</p>
 </div>
 <div class="line-above">
@@ -80,13 +82,13 @@
     <p>Weight shown are indicative you will be billed as per actual weight deliverd</p>
 
   </div>
-</div>
-<!-- <div class="orders-main">
+</div> -->
+<div class="orders-main">
     <img src="https://cdn-icons-gif.flaticon.com/15309/15309814.gif">
     <h6><strong>No Orders</strong></h6>
     <p >You haven't made any orders,<br>
     please explore our healthy <br>products.</p>
-    <button mat-raised-button color="primary" class="order-button"  (click)="goToProductDetails()">EXPLORE PRODUCTS</button> -->
+    <button mat-raised-button color="primary" class="order-button"  (click)="goToProductDetails()">EXPLORE PRODUCTS</button>
     <div *ngIf="showCancelPopup" class="modal-overlay" (click)="closeCancelPopup()">
         <div class="modal-content" (click)="$event.stopPropagation()">
           <h5><strong>Please select a reason for cancellation</strong></h5>

@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MatDatepicker } from '@angular/material/datepicker';
+import { MatCalendarCellClassFunction, MatDatepicker } from '@angular/material/datepicker';
 import { DateAdapter } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SubscriptionService } from '../../../Services/subscription.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-subscription',
   templateUrl: './subscription.component.html',
@@ -18,6 +19,7 @@ export class SubscriptionComponent implements OnInit {
   price = 27;
   quantity = 1;
   totalPrice = 27;
+  alternateDates: Date[] = [];
   isSubscriptionTypesVisible = false;
   startDate: Date = new Date();
   endDate: Date = new Date();
@@ -31,14 +33,25 @@ export class SubscriptionComponent implements OnInit {
   showPausePopup: boolean = false;
   showPausedDurationPopup: boolean = false;
   endDateInput: any;
+  form: any;
   
   constructor(
     private router: Router,
     private dateAdapter: DateAdapter<Date>,
     private snackBar: MatSnackBar,
     private subscriptionService: SubscriptionService,
-    private route: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute,
+    private fb: FormBuilder
+  ) {
+    this.defaultDate = new Date();
+    this.form = this.fb.group({
+      selectedDate: [null]
+    });
+
+    this.form.get('selectedDate')?.valueChanges.subscribe((date: Date) => {
+      this.calculateAlternateDates(date);
+    });
+  }
   ngOnInit(): void {
     this.defaultDate = new Date();
     const subscriptionData = this.subscriptionService.getSubscriptionData();
@@ -82,12 +95,6 @@ export class SubscriptionComponent implements OnInit {
     if (subscription === 'Weekly') {
         this.router.navigate(['/weekly']);
     }
-}
-onStartDateSelected(selectedDate: Date) {
-  const endDate = new Date(selectedDate.getFullYear(), 11, 31);
-  this.dateAdapter.setLocale('en'); // Set locale if necessary
-  this.endDateInput._startInput.value = selectedDate;
-  this.endDateInput._endInput.value = endDate;
 }
   openCalendar(): void {
     if (this.picker) {
@@ -158,4 +165,32 @@ onStartDateSelected(selectedDate: Date) {
     //   duration: 3000,
     // });
   }
+  onStartDateSelected(selectedDate: Date) {
+    const endDate = new Date(selectedDate.getFullYear(), 11, 31);
+    this.dateAdapter.setLocale('en'); // Set locale if necessary
+    this.endDateInput._startInput.value = selectedDate;
+    this.endDateInput._endInput.value = endDate;
+  }
+  calculateAlternateDates(selectedDate: Date) {
+    if (!selectedDate) {
+      this.alternateDates = [];
+      return;
+    }
+    this.alternateDates = [];
+    for (let i = -15; i <= 15; i++) {
+      if (i !== 0 && Math.abs(i) % 2 === 0) {
+        const alternateDate = new Date(selectedDate);
+        alternateDate.setDate(selectedDate.getDate() + i);
+        this.alternateDates.push(alternateDate);
+      }
+    }
+  }
+
+  dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
+    if (view === 'month') {
+      const date = cellDate.getDate();
+      return this.alternateDates.some(d => d.getTime() === cellDate.getTime()) ? 'alternate-date' : '';
+    }
+    return '';
+  };
 }

@@ -25,7 +25,6 @@
 }
 
 .details {
-    margin-top: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -37,6 +36,19 @@
 
 .tales h3 {
     font-size: 17px;
+}
+.offer-card {
+  width: 95%;
+  padding: 9px;
+  margin: 5px auto;
+  background: linear-gradient(to right, #e2d2424f, #e4d7608f, #f6c31896);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+.offer-card p{
+  margin: 0;
 }
 
 .mid {
@@ -84,64 +96,7 @@
     justify-content: space-around;
 }
 
- 
-  .sum {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 10px;
-}
-.mat-form-field input{
-  width: 70px;
-}
-.plan {
-  display: flex;
-  align-items: center;
-}
 
-.cart {
-  display: flex;
-  flex-direction:column;
-  align-items: center;
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.cart p {
-  margin: 0;
-  padding-right: 10px;
-  font-size: 20px;
-  text-align: center;
-  color:#04B56C;
-  font-weight: 400;
-}
-
-.cart i {
-  cursor: pointer;
-}
-.types h2{
-  font-size: 20px;
-  padding: 8px;
-  border-top: 1px solid gray;
-}
-
-.plan,
-.cart {
-    flex: 1; /* This will make both divs take up equal space */
-    margin-right: 10px; /* Add some spacing between the divs */
-}
-
-  .plan h2,
-  .plan1 h2 {
-    font-size: 15px;
-  }
-
-  .fa-edit {
-    color: #666;
-    cursor: pointer;
-  }
-  
 
 .descript {
     border-top: 1px solid gray;
@@ -149,6 +104,7 @@
     height: 60vh;
     background-color: #F2FBF8;
 }
+
 
 
 .descript h2 {
@@ -197,4 +153,45 @@
 
 .add-address:hover {
     background-color: #04B56C;
+}
+
+
+.subscript{
+  display: flex;
+  flex-direction: row;
+  /* justify-content:space-evenly; */
+    border-top: 1px solid gray;
+    background-color: #F2FBF8;
+}
+.script h2{
+  padding: 10px;
+  font-size: 15px;
+  margin: auto;
+}
+.date h2{
+  padding: 10px;
+  font-size: 15px;
+  margin: auto;
+}
+.sub-type{
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-evenly; */
+  border: 1px solid #ccc;
+  background-color: #fff;
+margin-left: 10px;
+  border-radius: 10px;
+  width: 75%;
+  margin-top: 5px;
+  /* margin-bottom: 10px;  */
+  /* padding: 5px; */
+}
+.typed p{
+  text-align: center;
+  margin-left: 20px;
+  padding-top: 10px;
+}
+.edit{
+  text-align: center;
+  padding-top: 10px;
 }

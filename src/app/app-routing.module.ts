@@ -31,6 +31,7 @@ const routes: Routes = [
   { path: '', component: LoginComponent },
  
   { path: 'login-next', component: LoginNextComponent},
+  { path: 'login', component: LoginComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'vacation', component: VacationComponent },
