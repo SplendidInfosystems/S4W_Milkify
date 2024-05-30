@@ -1,15 +1,13 @@
-
 <div class="my-sub-header">
   <div class="back-icon" (click)="goBack()">
     <i class="fas fa-chevron-left"></i>
-</div>
-<div class="head">
+  </div>
+  <div class="head">
     <p>My Subscription</p>
-</div>
+  </div>
 </div>
 <div class="my-sub-main">
-    
-<div *ngIf="hasSubscriptionData; else noSubscriptionTemplate">
+  <div *ngIf="hasSubscriptionData; else noSubscriptionTemplate">
     <div class="product-card">
       <div class="products-main">
         <div class="product-image">
@@ -19,29 +17,23 @@
         <div class="product-details">
           <h6>Cow Milk</h6>
           <p class="subtext">450ml</p>
-            <div class="qty-div">
-              <!-- <p>{{ daily }}</p> -->
-              <p>Qty: {{ quantity }}</p>
+          <div class="qty-div">
+            <p>Qty: {{ quantity }}</p>
+          </div>
+          <div class="price-edit">
+            <div class="add">
+              <p><strong>₹{{ subscriptionData.price }}</strong> <span>₹45.50</span></p>
             </div>
-
-            <div class="price-edit">
-              <div class="add">
-                <p><strong>₹{{ subscriptionData.price }}</strong> <span>₹45.50</span></p>
-              </div>
-                <button class="edit-button" [routerLink]="['/subscription']">Edit</button>
-            </div>
-
-
-        </div>
-      </div>
-  
-      <div class="additional-cards"> 
-        <div class="offer-card">
-          <div class="offer-details">
-            <h6>You are saving <span style="color: #04B56C;">$18.55</span>  (40% OFF) with <strong style="color: #04B56C;">VIP</strong></h6>
+            <button class="edit-button" [routerLink]="['/subscription']">Edit</button>
           </div>
         </div>
-       
+      </div>
+      <div class="additional-cards">
+        <div class="offer-card">
+          <div class="offer-details">
+            <h6>You are saving <span style="color: #04B56C;">$18.55</span> (40% OFF) with <strong style="color: #04B56C;">VIP</strong></h6>
+          </div>
+        </div>
         <div class="grey-card">
           <p>Offer applicable on max 2 units.</p>
         </div>
@@ -54,10 +46,9 @@
             <p class="saved-amount"><strong>Know More</strong></p>
           </div>
         </div>
-      </div> 
+      </div>
     </div>
   </div>
-  
   <ng-template #noSubscriptionTemplate>
     <div class="my-sub-horizontal-card">
       <img src="https://img.freepik.com/free-vector/gnome-lying-stump-infront-blank-banner-cartoon-style-white-background_1308-44417.jpg?w=740&t=st=1715572279~exp=1715572879~hmac=2f14a902b1aca6169f80dcdf71b2f26e5dccea3f315eecff33f8a2a6914895b5">
@@ -68,5 +59,4 @@
       </div>
     </div>
   </ng-template>
-  
 </div>
