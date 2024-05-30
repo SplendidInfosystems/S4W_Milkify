@@ -41,19 +41,19 @@ export class LoginComponent implements OnInit {
 
     this.otpSent = true;
     console.log('OTP sent to:', this.mobileNumber);
-    // this.router.navigate(['/next-page']);
+
+    // Navigate to the next page with the mobile number
+    this.router.navigate(['/login-next'], { queryParams: { mobileNumber: this.mobileNumber } });
   }
 
   isMobileNumberRegistered(mobileNumber: string): boolean {
-    return mobileNumber !== '8698650582';
+    return mobileNumber !== '';
   }
 
   verifyOTP(): void {
-
     if (this.otp === '123456') {
       this.otpVerified = true;
       console.log('OTP verified successfully.');
-
       this.router.navigate(['/home']);
     } else {
       alert('Invalid OTP. Please try again.');
@@ -61,12 +61,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
-
-
   private isValidMobileNumber(number: string): boolean {
     return /^\d{10}$/.test(number);
   }
-
 
   resendOTP(): void {
     // Resend OTP logic...

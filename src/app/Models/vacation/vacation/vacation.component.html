@@ -1,34 +1,38 @@
-
 <div class="vacation-header">
   <div class="back-icon" (click)="goBack()">
     <i class="fas fa-chevron-left"></i>
-</div>
-<div class="head">
-    <p>Vacation</p>
-</div>
   </div>
-  <div class="vacation-main" *ngIf="!vacation; else vacationTemplate">
+  <div class="head">
+    <p>Vacation</p>
+  </div>
+  <div class="add-icon" (click)="goToAddVacation()">
+    <i class="fas fa-plus"></i>
+  </div>
+</div>
+
+<div class="vacation-main">
+  <div *ngIf="showVacationDates; else noVacations">
+    <div class="vacation" *ngFor="let vac of vacation; let i = index">
+      <div class="vacation-card-row">
+        <div class="vacation-column">
+          <p>Start Date</p>
+          <p>{{ vac.startDate | date }}</p>
+        </div>
+        <div class="divider"></div>
+        <div class="vacation-column">
+          <p>End Date</p>
+          <p>{{ vac.endDate | date }}</p>
+        </div>
+      </div>
+      
+      <button mat-raised-button color="primary" (click)="editVacation(i)">Edit Vacation</button>
+    </div>
+  </div>
+  <ng-template #noVacations>
     <div class="vacation-section">
       <img src="https://img.freepik.com/premium-photo/sustainable-travel-photo-abstract-expressionism-art-white-background_873925-1022238.jpg?w=740" />
       <p>You have no vacations added</p>
       <h6 (click)="goToAddVacation()">ADD VACATION</h6>
     </div>
-  </div>
-  <ng-template #vacationTemplate>
-    <div class="vacation">
-      <div class="vacation-card-row">
-        <div class="vacation-column">
-          <p>Start Date</p>
-          <p>{{ vacation.startDate | date }}</p>
-        </div>
-        <div class="divider"></div>
-        <div class="vacation-column">
-          <p>End Date</p>
-          <p>{{ vacation.endDate}}</p>
-        </div>
-      </div>
-      
-      <!-- <p style="text-align: center;"  (click)="goToAddVacation()">Add Vacation</p> -->
-      <button mat-raised-button color="primary" (click)="goToAddVacation()">Add Vacation</button>
-    </div>
   </ng-template>
+</div>

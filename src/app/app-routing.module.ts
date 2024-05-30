@@ -36,6 +36,11 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'vacation', component: VacationComponent },
   { path: 'add-vac', component: AddVacComponent },
+
+
+  { path: 'edit-vacation/:id', component: AddVacComponent },
+
+  
   { path: 'refer', component: ReferComponent },
   { path: 'legal', component: LegalComponent },
   { path: 'subscription', component: SubscriptionComponent },

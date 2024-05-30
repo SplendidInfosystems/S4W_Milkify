@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class SubscriptionComponent implements OnInit {
   images = [
-    'https://content.jdmagicbox.com/comp/delhi/s6/011pxx11.xx11.191015075931.b6s6/catalogue/country-delight-okhla-industrial-area-delhi-milk-dairy-nlw19dbmil.jpg',
+    'https://images.jdmagicbox.com/comp/delhi/s6/011pxx11.xx11.191015075931.b6s6/catalogue/country-delight-okhla-industrial-area-delhi-milk-dairy-0l3apfgg1l.jpg',
     'https://s3.us-west-2.amazonaws.com/customer-app-cards/promotions/milk_1628769125586.png',
     'https://content.jdmagicbox.com/comp/delhi/s6/011pxx11.xx11.191015075931.b6s6/catalogue/country-delight-okhla-industrial-area-delhi-milk-dairy-nlw19dbmil.jpg',
   ];
@@ -112,9 +112,9 @@ export class SubscriptionComponent implements OnInit {
     };
     this.subscriptionService.saveSubscriptionData(subscriptionData);
     
-    this.snackBar.open('Subscription confirmed successfully!', 'Close', {
-      duration: 3000,
-    });
+    // this.snackBar.open('Subscription confirmed successfully!', 'Close', {
+    //   duration: 3000,
+    // });
     this.router.navigate(['/my-sub']);
   }
   resumeSubscription(event: Event) {
@@ -193,4 +193,10 @@ export class SubscriptionComponent implements OnInit {
     }
     return '';
   };
+  shareOnWhatsApp(): void {
+    const message = encodeURIComponent('Message on whatsapp for new offers!');
+    const url = encodeURIComponent('https://img.freepik.com/premium-photo/sustainable-travel-photo-abstract-expressionism-art-white-background_873925-1022238.jpg?w=740');
+    const whatsappUrl = `https://wa.me/?text=${message}%20${url}`;
+    window.open(whatsappUrl, '_blank');
+  }
 }

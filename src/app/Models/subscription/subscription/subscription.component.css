@@ -2,6 +2,10 @@
     margin: 0;
     padding: 0;
   }
+  .main{
+    background-color: #f1f7f7;
+
+  }
   .back-icon {
     top: 10px;
     left: 20px;
@@ -23,18 +27,23 @@
     border-radius: 5px;
   }
   .logo img {
-    /* margin-top: 50px; */
     width: 100%;
     height: auto;
+    position: relative;
+
   }
   .details {
-    margin-top: 10px;
     display: flex;
+    gap: 4rem;
     flex-direction: row;
     justify-content: space-around;
   }
   .tales {
     margin-top: 10px;
+  }
+  .tales p{
+    margin: 0;
+    font-size: 12px;
   }
   .tales h3 {
     font-size: 17px;
@@ -42,14 +51,15 @@
   .mid {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    align-items: center;
   }
   .Cart {
     display: flex;
     flex-direction: row;
   }
   .add p {
-    margin: 0;
+    margin: 0; 
 }
 .add p span {
     text-decoration: line-through;
@@ -63,10 +73,9 @@
     padding: 5px;
     border-radius: 5px;
     height: 33px;
-    margin-left: 75px;
-    width: 35%;
-    margin-top: 10px;
-    justify-content: space-around;
+    width: 29%;
+    margin: 10px 0 0 75px;
+    
   }
   .tail p {
     margin: 0;
@@ -81,9 +90,10 @@
     padding: 5px;
     border-radius: 5px;
     height: 35px;
-    margin-left: 120px;
-    width: 28%;
-    justify-content: space-around;
+    margin-left: 150px;
+    width: 29%;
+    display: flex;
+    justify-content: space-evenly;
   }
   .Cart button{
     padding: 0;
@@ -157,6 +167,9 @@
     cursor: pointer;
     font-size: 16px;
   }
+  .add-sub span{
+    margin-right: 8rem;
+  }
   .add-sub:hover {
     background-color: #04B56C;
   }
@@ -165,19 +178,28 @@
     height: 100%;
   }
   .offer-card {
-    width: 95%;
-    padding: 9px;
-    margin: 5px auto;
+    width: 93%;
+    padding: 6px;
+    margin: 10px auto;
     background: linear-gradient(to right, #e2d2424f, #e4d7608f, #f6c31896);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-  
-  .offer-card p, .grey-card p{
+  .offer-details h6{
+    font-size: 14px;
+    margin: 0 5px;
+    font-weight: bold;
+    }
+    .offer-card p{
+      margin: 0;
+    }
+   .grey-card p{
     margin: 0;
+    font-size: 14px;
+    color: grey
   }
   .grey-card{
-    width: 95%;
+    width: 93%;
     padding: 5px;
     text-align: center;
     margin: 8px auto;
@@ -185,41 +207,40 @@
     background-color: rgb(211, 202, 202);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  .line-above {
-    border-top: 1px solid #ccc;
-    margin-top: 20px; /* Adjust as needed */
-}
+ 
   .dotted-card {
-    border: 2px dotted #04B56C;
+    border: 1px dashed #04B56C;
     background: linear-gradient(45deg, #04b56c73, white);
-    padding: 9px;
+    padding: 2px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 95%;
-    margin: 15px auto;
-    /* border-top: 1px solid gray; */
+    width: 93%;
+    margin: 10px auto;
 }
 .dot-card-details {
     display: flex;
     align-items: center;
 }
 .dot-card-details img {
-    width: 50px; 
-    height: 50px; 
-    margin-right: 15px;
+  width: 40px;
+  height: 40px;
+  margin-right: 11px;
 }
-.text-details h6 {
-    margin: 0;
-    font-size: 1rem; 
-    color: #333;
+.text-details p {
+  font-size: 13px;
+  margin-right: 13px;
+  color: #333;
 }
 .saved-amount {
-    margin: 10px 0 0 0;
-    font-size: 0.9rem; 
+    margin: 0;
     color: #04B56C;
-    font-weight: bold;
     cursor: pointer;
+    font-size: 13px;
 }
+.subtext{
+  font-size: 12px;
+}
+
 
 .edit-mode {
   display: flex;
@@ -368,6 +389,11 @@
   font-size: 15px;
   margin: auto;
 }
+.mat-mdc-text-field-wrapper {
+  width: 70%;
+  z-index: 0;
+  height: 5vh;
+}
 .date h2{
   padding: 10px;
   font-size: 15px;
@@ -376,15 +402,62 @@
 .sub-type{
   display: flex;
     border: 1px solid #ccc;
-    background-color: #fff;
     margin-left: 10px;
     border-radius: 10px;
-    width: 85%;
+    width: 60%;
+    height: 5vh;
     justify-content: space-evenly;
 
 }
 .typed p, .edit{
   text-align: center;
-  padding-top: 15px;
+  padding-top: 5px;
 }
+
+.side-button {
+  position: absolute;
+  left: 10px;
+  bottom: 41px;
+  z-index: 1;
+  background: linear-gradient(135deg, #FEE58C 0%, #FEE58C 100%);
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 2px 5px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.whatsapp {
+  position: absolute;
+  bottom: 35px; 
+  right: 15px; 
+  width: 40px;  
+  height: 40px; 
+  background: transparent;
+  border: none;
+  padding: 5px; 
+}
+.custom-form-field {
+  width: 70%;  
+  margin: 0 auto; 
+}
+
+.custom-input {
+  height: 30px;  
+  padding: 0 10px;  
+  text-align: center; 
+  border-radius: 10px; 
+}
+
+/* Override Angular Material styles */
+.custom-form-field .mat-form-field-outline {
+  border-radius: 10px;  
+}
+.date h2 {
+  text-align: center;  
+}
+
 

@@ -14,35 +14,42 @@
       <div class="products-main">
         <div class="product-image">
           <img [src]="subscriptionData.images[0]" alt="Product Image">
+          <button class="side-button">20% off</button>
         </div>
         <div class="product-details">
-          <h6><strong>Cow Milk</strong></h6>
-          <p>450ml</p>
-          <div class="add">
-            <p><strong>₹{{ subscriptionData.price }}</strong> <span>₹45.50</span></p>
-          </div>
-          <button class="edit-button" [routerLink]="['/subscription']">Edit</button>
-        
+          <h6>Cow Milk</h6>
+          <p class="subtext">450ml</p>
+            <div class="qty-div">
+              <!-- <p>{{ daily }}</p> -->
+              <p>Qty: {{ quantity }}</p>
+            </div>
+
+            <div class="price-edit">
+              <div class="add">
+                <p><strong>₹{{ subscriptionData.price }}</strong> <span>₹45.50</span></p>
+              </div>
+                <button class="edit-button" [routerLink]="['/subscription']">Edit</button>
+            </div>
+
+
         </div>
       </div>
   
       <div class="additional-cards"> 
         <div class="offer-card">
           <div class="offer-details">
-            <p><strong>You are saving <span style="color: #04B56C;">$18.55</span> with VIP</strong></p>
+            <h6>You are saving <span style="color: #04B56C;">$18.55</span>  (40% OFF) with <strong style="color: #04B56C;">VIP</strong></h6>
           </div>
         </div>
        
         <div class="grey-card">
           <p>Offer applicable on max 2 units.</p>
         </div>
-   
-        <div class="line-above"></div>
         <div class="dotted-card">
           <div class="dot-card-details">
             <img src="https://cdn-icons-png.freepik.com/512/3960/3960581.png?ga=GA1.1.1335550155.1713184366" alt="Icon">
             <div class="text-details">
-              <h6><strong>100% off on every delivery after 5 deliveries</strong></h6>
+              <p><strong>Order for 5 Days, get next 5 Days Free</strong></p>
             </div>
             <p class="saved-amount"><strong>Know More</strong></p>
           </div>
