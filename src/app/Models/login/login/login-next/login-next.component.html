@@ -1,29 +1,36 @@
 <div class="container">
   <div class="back-icon" (click)="goBack()">
-      <i class="fas fa-chevron-left"></i>
+    <i class="fas fa-chevron-left"></i>
+  </div>
+  <div class="OTP-verify">
+    <h3>OTP Verification</h3>
+    <p>We have sent a Verification code to +91{{ mobileNumber }}</p>
+    <div class="otp-input">
+      <input type="text" maxlength="1" (input)="onOtpInput(0)" (keydown)="onOtpKeydown($event, 0)" #otpInput>
+      <input type="text" maxlength="1" (input)="onOtpInput(1)" (keydown)="onOtpKeydown($event, 1)" #otpInput>
+      <input type="text" maxlength="1" (input)="onOtpInput(2)" (keydown)="onOtpKeydown($event, 2)" #otpInput>
+      <input type="text" maxlength="1" (input)="onOtpInput(3)" (keydown)="onOtpKeydown($event, 3)" #otpInput>
+      <input type="text" maxlength="1" (input)="onOtpInput(4)" (keydown)="onOtpKeydown($event, 4)" #otpInput>
+      <input type="text" maxlength="1" (input)="onOtpInput(5)" (keydown)="onOtpKeydown($event, 5)" #otpInput>
     </div>
-    <div class="OTP-verify">
-      <h3>OTP Verification</h3>
-      <p>We have sent a Verification code to +919421665674</p>
-      <div class="otp-input">
-        <input type="text" maxlength="1" (input)="onOtpInput(0)" (keydown)="onOtpKeydown($event, 0)" #otpInput>
-        <input type="text" maxlength="1" (input)="onOtpInput(1)" (keydown)="onOtpKeydown($event, 1)" #otpInput>
-        <input type="text" maxlength="1" (input)="onOtpInput(2)" (keydown)="onOtpKeydown($event, 2)" #otpInput>
-        <input type="text" maxlength="1" (input)="onOtpInput(3)" (keydown)="onOtpKeydown($event, 3)" #otpInput>
-        <input type="text" maxlength="1" (input)="onOtpInput(4)" (keydown)="onOtpKeydown($event, 4)" #otpInput>
-        <input type="text" maxlength="1" (input)="onOtpInput(5)" (keydown)="onOtpKeydown($event, 5)" #otpInput>
+    <div class="otp">
+      <div *ngIf="otpVerificationFailed" class="error-message">
+        Invalid OTP. Please try again.
       </div>
-      <div class="otp">
-        <div *ngIf="otpVerificationFailed" class="error-message">
-          Invalid OTP. Please try again.
-        </div>
-        <p *ngIf="!otpVerificationFailed && otpVerified">OTP verified. Proceeding...</p>
-        <p *ngIf="!showResendOption">Didn't receive the OTP? Retry in: {{ remainingTime }}</p>
-        <div *ngIf="showResendOption">
-          <button (click)="resend()">Resend</button>
-        </div>
-        <button *ngIf="showVerifyButton" (click)="verifyOTP()">Verify & Proceed</button>
-        
+      <p *ngIf="!otpVerificationFailed && otpVerified">OTP verified. Proceeding...</p>
+      <p *ngIf="!showResendOption">Didn't receive the OTP? Retry in: {{ remainingTime }}</p>
+      <div *ngIf="showResendOption">
+        <button (click)="resend()">Resend</button>
       </div>
+      <button *ngIf="showVerifyButton" (click)="verifyOTP()">Verify & Proceed</button>
     </div>
+  </div>
+
+  <!-- Modal -->
+  <div *ngIf="showModal" class="modal-backdrop" (click)="closeModal()"></div>
+  <div *ngIf="showModal" class="modal-content">
+    <h1>Error</h1>
+    <p>{{ modalMessage }}</p>
+    <button (click)="closeModal()">OK</button>
+  </div>
 </div>

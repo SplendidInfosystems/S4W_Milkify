@@ -11,7 +11,7 @@ export class ProdSubsComponent {
   rows = [
     [ 
       { icon: 'inventory', name: 'Products', route: 'home' },
-      { icon: 'subscriptions', name: 'Subscription', route: 'subscription' },
+      { icon: 'subscriptions', name: 'My Subscription', route: 'my-sub' },
       { icon: 'beach_access', name: 'Vacation', route: 'vacation' }
     ], 
     [

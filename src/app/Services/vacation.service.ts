@@ -1,17 +1,28 @@
-// vacation.service.ts
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
 export class VacationService {
-  private vacationData = new BehaviorSubject<any>(null);
-  vacationData$ = this.vacationData.asObservable();
-  constructor() { }
+  private vacationDataSubject = new BehaviorSubject<any[]>([]);
+  vacationData$ = this.vacationDataSubject.asObservable();
+
   setVacationData(data: any) {
-    this.vacationData.next(data);
+    const currentData = this.vacationDataSubject.value;
+    this.vacationDataSubject.next([...currentData, data]);
   }
-  getVacationData(): Observable<any> {
-    return this.vacationData.asObservable();
+
+  getVacationDataById(id: number) {
+    const currentData = this.vacationDataSubject.value;
+    return currentData[id];
+  }
+
+  updateVacationData(id: number, data: any) {
+    const currentData = this.vacationDataSubject.value;
+    if (currentData[id]) {
+      currentData[id] = data;
+      this.vacationDataSubject.next([...currentData]);
+    }
   }
 }

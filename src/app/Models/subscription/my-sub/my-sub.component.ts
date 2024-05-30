@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class MySubComponent {
   subscriptionData: any;
   hasSubscriptionData: boolean = false;
+  quantity: number = 5;
   constructor(
     private router: Router,
     private subscriptionService: SubscriptionService
