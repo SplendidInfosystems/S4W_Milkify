@@ -40,24 +40,38 @@
 
     <div class="Loginscreen">
         <div class="login">
-            <p>Let’s get started</p>
+          <p>Let’s get started</p>
         </div>
         <div class="num">
-            <input type="tel" id="mobileNumberInput" placeholder="Enter Mobile number" [(ngModel)]="mobileNumber"
-            pattern="[0-9]{10}" required #mobileInput="ngModel">
-    <button (click)="sendOTP(); mobileInput.control.markAsTouched(); navigateToNextPage()"
+          <input type="tel" id="mobileNumberInput" placeholder="Enter Mobile number" [(ngModel)]="mobileNumber"
+            pattern="[0-9]{10}" required #mobileInput="ngModel">        
+          <button (click)="sendOTP(); mobileInput.control.markAsTouched(); navigateToNextPage()"
             [disabled]="mobileInput.invalid || mobileNumber.length !== 10 || otpSent">Continue</button>
-    
-    <div *ngIf="mobileInput.invalid && mobileInput.touched" class="error-message">
-        Invalid number
-    </div>
-    
-</div>
-
-        <div class="message">
-            <p>By Signing up you accept to<br>&nbsp;&nbsp;
-                Terms and conditions</p>
+        
+          <div *ngIf="mobileInput.invalid && mobileInput.touched" class="error-message">
+            Invalid number
+          </div> 
         </div>
+    
+        <div class="message">
+          <p>By Signing up you accept to<br>&nbsp;&nbsp; Terms and conditions</p>
+        </div>
+      </div>
+    
+      <!-- Mobile Number Popup -->
+      <!-- <ng-template #mobilePopup let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title">Enter Mobile Number</h4>
+        </div>
+        <div class="modal-body">
+          <input type="tel" class="form-control" placeholder="Enter Mobile number" [(ngModel)]="mobileNumber"
+            pattern="[0-9]{10}" required #mobileInput="ngModel">
+          <div *ngIf="mobileInput.invalid && mobileInput.touched" class="error-message">
+            Invalid number
+          </div> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="modal.close()" [disabled]="mobileInput.invalid || mobileNumber.length !== 10">Submit</button>
+        </div>
+      </ng-template> -->
     </div>
-
-</div>

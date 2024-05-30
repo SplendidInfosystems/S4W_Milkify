@@ -10,7 +10,7 @@
     margin: 10px 15px;
     font-size: 20px;
     background-color: transparent;
-  }
+}
 
 .logo {
     padding: 0px;
@@ -38,17 +38,17 @@
     font-size: 17px;
 }
 .offer-card {
-  width: 95%;
-  padding: 9px;
-  margin: 5px auto;
-  background: linear-gradient(to right, #e2d2424f, #e4d7608f, #f6c31896);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
+    width: 95%;
+    padding: 9px;
+    margin: 5px auto;
+    background: linear-gradient(to right, #e2d2424f, #e4d7608f, #f6c31896);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
 }
 
 .offer-card p{
-  margin: 0;
+    margin: 0;
 }
 
 .mid {
@@ -157,34 +157,39 @@
 
 
 .subscript{
-  display: flex;
-  flex-direction: row;
-  /* justify-content:space-evenly; */
+    display: flex;
+    flex-direction: row;
+      /* justify-content:space-evenly; */
     border-top: 1px solid gray;
     background-color: #F2FBF8;
 }
 .script h2{
-  padding: 10px;
-  font-size: 15px;
-  margin: auto;
+    padding: 10px;
+    font-size: 15px;
+    margin: auto;
 }
 .date h2{
-  padding: 10px;
-  font-size: 15px;
-  margin: auto;
+    padding: 10px;
+    font-size: 15px;
+    margin: auto;
 }
 .sub-type{
-  display: flex;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  margin-left: 10px;
-  border-radius: 10px;
-  width: 85%;
-  justify-content: space-evenly;
-  /* margin-top: 5px; */
+    display: flex;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    margin-left: 10px;
+    border-radius: 10px;
+    width: 85%;
+    justify-content: space-evenly;
+      /* margin-top: 5px; */
 }
 .typed p, .edit{
-  text-align: center;
-  padding-top: 15px;
+    text-align: center;
+    padding-top: 15px;
 }
 
+::ng-deep .mat-calendar-body-cell.selected-date .mat-calendar-body-cell-content {
+    background-color: #04B56C !important;
+    color: #fff !important;
+    border-radius: 50%;
+  }

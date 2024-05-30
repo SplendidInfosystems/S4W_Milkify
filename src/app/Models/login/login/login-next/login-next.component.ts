@@ -18,6 +18,7 @@ export class LoginNextComponent {
   otpVerificationFailed: boolean = false;
   showResendOption: boolean = false;
   showVerifyButton: boolean = true;
+  isOtpFieldEmpty: boolean = true; // Add this property
 
   constructor(private router: Router) {
     this.startCountdownTimer();
@@ -33,6 +34,7 @@ export class LoginNextComponent {
     if (currentInput.value.length === 1 && index < otpInputArray.length - 1) {
       otpInputArray[index + 1].nativeElement.focus();
     }
+    this.checkOtpFieldStatus(); // Call the method to check OTP field status
   }
 
   onOtpKeydown(event: KeyboardEvent, index: number): void {
@@ -41,6 +43,12 @@ export class LoginNextComponent {
     if (event.key === 'Backspace' && currentInput.value.length === 0 && index > 0) {
       otpInputArray[index - 1].nativeElement.focus();
     }
+    this.checkOtpFieldStatus(); // Call the method to check OTP field status
+  }
+
+  checkOtpFieldStatus(): void {
+    const enteredOtp = this.otpInputs.toArray().map(input => input.nativeElement.value).join('');
+    this.isOtpFieldEmpty = enteredOtp.trim().length === 0;
   }
 
   verifyOTP(): void {

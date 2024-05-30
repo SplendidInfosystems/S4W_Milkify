@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-login',
@@ -15,11 +16,15 @@ export class LoginComponent implements OnInit {
   remainingTime: string = '';
   otpVerificationFailed: any;
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
-  constructor(private router: Router) { }
+  constructor(private router: Router, private modalService: NgbModal) { }
 
 
   ngOnInit(): void {
   }
+  openPopup(content: any) {
+    this.modalService.open(content, { centered: true });
+  }
+
 
   sendOTP(): void {
     if (!this.isValidMobileNumber(this.mobileNumber)) {

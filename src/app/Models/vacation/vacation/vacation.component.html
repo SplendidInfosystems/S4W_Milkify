@@ -11,7 +11,7 @@
     <div class="vacation-section">
       <img src="https://img.freepik.com/premium-photo/sustainable-travel-photo-abstract-expressionism-art-white-background_873925-1022238.jpg?w=740" />
       <p>You have no vacations added</p>
-      <p (click)="goToAddVacation()">Add Vacation</p>
+      <h6 (click)="goToAddVacation()">ADD VACATION</h6>
     </div>
   </div>
   <ng-template #vacationTemplate>
@@ -24,7 +24,7 @@
         <div class="divider"></div>
         <div class="vacation-column">
           <p>End Date</p>
-          <p>{{ vacation.endDate | date }}</p>
+          <p>{{ vacation.endDate}}</p>
         </div>
       </div>
       

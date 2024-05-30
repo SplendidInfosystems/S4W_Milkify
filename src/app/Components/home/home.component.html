@@ -5,15 +5,19 @@
       <h3>Morning Delivery</h3>
       <p>6:00 AM - 9:00 AM</p>
     </div>
-    <div class="box">
-      <div class="tab" [routerLink]="['/wallet']"><i class="fas fa-wallet"></i></div>
-    </div>
+  <div class="box">
+  <div class="tab" [routerLink]="['/wallet']">
+    <i class="fas fa-wallet"></i>
+    <span class="badge">₹0</span>
+  </div>
+</div>
+
   </header>
 
   <div class="popup-card">
     <div class="popup-content">
-      <p class="small-text">There is no order scheduled for tomorrow</p>
-      <button class="no-order-btn" [routerLink]="['/product-details']">Add item</button>
+      <h3 class="small-text">There is no order scheduled for tomorrow</h3>
+      <button class="no-order-btn" [routerLink]="['/product-details']">Add Item</button>
     </div>
   </div>
 
@@ -56,13 +60,13 @@
           <div class="promo-banner"></div>
           <img [src]="item.image" alt="{{ item.name }}">
         </a>
-        <div class="desc">
-          <h3>{{ item.name }}</h3>
-        </div>
+        <h3>{{ item.name }}</h3>
+       
         <p>{{ item.litre }}</p>
-        <p><strong>{{ item.price }}</strong></p>
-        <span> ₹45.50</span>
-        <button mat-button class="add-button" [routerLink]="['/product-details']">Add</button>
+        <p><h6>{{ item.price }}</h6>
+          <span> ₹45.50</span>
+      
+        <button mat-button class="add-button" [routerLink]="['/product-details']">ADD</button>
 
       </div>
     </div>

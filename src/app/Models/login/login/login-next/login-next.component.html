@@ -22,8 +22,7 @@
         <div *ngIf="showResendOption">
           <button (click)="resend()">Resend</button>
         </div>
-        <button *ngIf="showVerifyButton" (click)="verifyOTP()">Verify & Proceed</button>
-        
+        <button [disabled]="isOtpFieldEmpty || !showVerifyButton" (click)="verifyOTP()">Verify & Proceed</button> 
       </div>
     </div>
 </div>

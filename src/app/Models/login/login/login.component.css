@@ -30,11 +30,11 @@
 .message p {
     padding: 15px;
     text-align: center;
-    margin-top: 20%;
+    margin-top: 30%;
     font-size: 14px;
     color: rgb(79, 78, 78);
-    font-family: 'Arial', sans-serif;
-    font-weight: bold;
+    /* font-family: 'Arial', sans-serif; */
+    font-weight: 500;
 }
 
 .carousel-caption p {
@@ -97,6 +97,11 @@
     cursor: pointer;
     margin-bottom: 10px;
     transition: background-color 0.3s ease;
+
+    &[disabled]{
+        background-color: #ccc;
+        color: #fff;
+    }
 }
 
 .num button:hover,
@@ -105,17 +110,16 @@
 }
 
 .success p {
-    font-family: 'Arial', sans-serif;
+    /* font-family: 'Arial', sans-serif; */
     font-size: 18px;
     text-align: center;
     color: #04B56C;
 }
-.disabled-button {
-    background-color: gray;
-    /* Add any other disabled button styles */
-}
+.country-logo {
+    width: 40px; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Adjust spacing as needed */
+    /* Add any additional styling as needed */
+  }
+  
 
-.enabled-button {
-    background-color: green;
-    /* Add any other enabled button styles */
-}
