@@ -11,8 +11,12 @@ import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent {
-  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
-  startDate: Date = new Date();
+  images = [
+    'https://cdnasd.countrydelight.in/New_product_image/LFCM-Milk_1646989764729_1665057281149.png',
+    'https://images.jdmagicbox.com/comp/delhi/s6/011pxx11.xx11.191015075931.b6s6/catalogue/country-delight-okhla-industrial-area-delhi-milk-dairy-0l3apfgg1l.jpg',
+    'https://cdnasd.countrydelight.in/New_product_image/dahilowfat/Low+Fat+Dahi2x.png',
+  ];
+    startDate: Date = new Date();
   endDate: Date = new Date();
   defaultDate: Date;
   selectedSubscription = 'Daily';
@@ -25,6 +29,7 @@ export class ProductDetailsComponent {
   subscriptionTypes: string[] = ['Daily', 'Alternate', 'Weekly', 'One Time'];
   form!: FormGroup;
   selectedDates: Date[] = [];
+  isEditing = false;
 
   @ViewChild('startDateInput') startDateInput!: MatDateRangeInput<Date>;
   @ViewChild('endDateInput') endDateInput!: MatDateRangeInput<Date>;
@@ -54,19 +59,27 @@ export class ProductDetailsComponent {
     this.router.navigate(['/home']);
   }
 
-  increaseValue(): void {
+  increaseValue() {
     this.quantity++;
-    this.calculateTotalPrice();
+    this.updateTotalPrice();
   }
-
-  decreaseValue(): void {
+  decreaseValue() {
     if (this.quantity > 1) {
       this.quantity--;
-      this.calculateTotalPrice();
+      this.updateTotalPrice();
+    } else {
+      this.quantity = 0;
+      this.isEditing = false;
     }
   }
 
-  calculateTotalPrice(): void {
+  addQuantity() {
+    this.quantity = 1;
+    this.isEditing = true;
+    this.updateTotalPrice();
+  }
+
+  updateTotalPrice() {
     this.totalPrice = this.price * this.quantity;
   }
 
@@ -124,5 +137,11 @@ export class ProductDetailsComponent {
     if (this.picker) {
       this.picker.close();
     }
+  }
+  shareOnWhatsApp(): void {
+    const message = encodeURIComponent('Message on whatsapp for new offers!');
+    const url = encodeURIComponent('https://img.freepik.com/premium-photo/sustainable-travel-photo-abstract-expressionism-art-white-background_873925-1022238.jpg?w=740');
+    const whatsappUrl = `https://wa.me/?text=${message}%20${url}`;
+    window.open(whatsappUrl, '_blank');
   }
 }

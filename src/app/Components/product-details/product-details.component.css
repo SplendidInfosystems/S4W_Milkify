@@ -2,7 +2,12 @@
     margin: 0;
     padding: 0;
 }
+.product {
+    padding-top: 5px;
+    height: 100%;
+    background-color: #f1f7f7;
 
+  }
 .back-icon  {
     cursor: pointer;
     transition: transform 0.2s ease;
@@ -12,135 +17,157 @@
     background-color: transparent;
 }
 
-.logo {
-    padding: 0px;
+.head {
+    text-align: center;
+    margin-left: 5%;
+    font-size: 20px;
+    margin-top: 8px;
+  }
+  .Carousel{
+    background-color: white;
+    margin: 15px;
+    border-radius: 10px;
+
+}
+  .logo {
+    padding: 10px;
     height: 50vh;
     text-align: center;
     border-radius: 5px;
-}
-
-.logo img {
+  }
+  .logo img {
     width: 100%;
     height: auto;
-}
+    position: relative;
 
-.details {
+  }
+  .details {
     display: flex;
+    gap: 4rem;
     flex-direction: row;
     justify-content: space-around;
-}
-
-.tales {
+  }
+  .tales {
     margin-top: 10px;
-}
-
-.tales h3 {
+  }
+  .tales p{
+    margin: 0;
+    font-size: 12px;
+  }
+  .tales h3 {
     font-size: 17px;
-}
-.offer-card {
-    width: 95%;
-    padding: 9px;
-    margin: 5px auto;
-    background: linear-gradient(to right, #e2d2424f, #e4d7608f, #f6c31896);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px;
-}
-
-.offer-card p{
-    margin: 0;
-}
-
-.mid {
+  }
+  .mid {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .Cart {
+    display: flex;
+    flex-direction: row;
+  }
+  .add p {
+    margin: 0; 
 }
-
-
-.add {
-    margin-right: 25px;
-    margin-top: 15px;
+.add p span {
+    text-decoration: line-through;
+    font-weight: normal;
 }
-
-.tail {
+.add p strong {
+    font-weight: bold;
+}
+  .tail {
     background: linear-gradient(135deg, #FEE58C 0%, #B4E856 100%);
-    padding: 5px;
+    padding: 1px;
     border-radius: 5px;
-    height: 33px;
-    margin-left: 75px;
-    width: 35%;
-    margin-top: 10px;
-    justify-content: space-around;
-}
-
-.tail p {
+    height: 20px;
+    width: 27%;
+    margin: 10px 0 0 75px;
+    
+  }
+  .tail p {
     margin: 0;
+    font-size: 13px;
     text-align: center;
     color: #000;
-    font-weight: 500;
-    font-size: 15px;
-}
-
-.art {
+    
+  }
+  .Cart {
     background-color: #F2FBF8;
     border: 1px solid #04B56C;
     color: #04B56C;
     padding: 5px;
     border-radius: 5px;
-    height: 33px;
-    margin-left: 145px;
+    height: 35px;
+    margin-left: 10rem;
+    width: 27%;
     display: flex;
-    width: 28%;
-    margin-top: 10px;
-    justify-content: space-around;
+    justify-content: space-evenly;
+  }
+  .Cart button{
+    padding: 0;
+    border: none;
+    background-color: transparent;
+  }
+  .sum {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+
 }
 
+.plan,
+.cart {
+    flex: 1; /* This will make both divs take up equal space */
+    margin-right: 10px; /* Add some spacing between the divs */
+}
 
+  .plan h2,
+  .plan1 h2 {
+    font-size: 15px;
+  }
 
-.descript {
+  .fa-edit {
+    color: #666;
+    cursor: pointer;
+  }
+  
+  .descript {
     border-top: 1px solid gray;
-    padding-top: 10px;
-    height: 60vh;
-    background-color: #F2FBF8;
-}
-
-
-
-.descript h2 {
-    font-size: 1.5em;
+    padding: 12px;
+    padding-bottom: 65px;
+    background-color: #f1f7f7;
+  }
+  .descript h6 {
     color: #333;
-    padding: 20px;
-}
-
-.descript ul {
+    padding: 10px;
+  }
+  .descript ul {
     list-style-type: disc;
     margin-top: 10px;
     margin-bottom: 20px;
-}
-
-.descript li {
-    font-size: 1.1em;
+  }
+  .descript li {
     color: #666;
     margin-bottom: 10px;
-}
-
-.address-price {
+  }
+  .subscription {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #fff; 
-    padding: 10px; 
+    background-color: #fff;
+    padding: 10px;
     box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 999; 
+    z-index: 999;
     text-align: center;
     display: flex;
-    justify-content: space-between; 
-    align-items: center; 
-}
-
-.add-address {
+    justify-content: space-between;
+    align-items: center;
+  }
+  .add-sub {
     width: 100%;
     background-color: #04B56C;
     color: #fff;
@@ -149,47 +176,163 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-}
-
-.add-address:hover {
+  }
+  .add-button {
+    padding: 5px 38px ;
+    font-size: 16px;
+    margin-top: 8px;
     background-color: #04B56C;
-}
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    margin-left: 10rem;
 
-
-.subscript{
+  }
+  .Cart {
+    background-color: #F2FBF8;
+    border: 1px solid #04B56C;
+    color: #04B56C;
+    padding: 5px;
+    border-radius: 5px;
+    height: 35px;
+    margin-left: 10rem;
+    width: 27%;
     display: flex;
-    flex-direction: row;
-      /* justify-content:space-evenly; */
+    justify-content: space-evenly;
+  }
+  .Cart button{
+    padding: 0;
+    border: none;
+    background-color: transparent;
+  }
+  .add-sub[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .add-sub span{
+    margin-right: 6rem;
+  }
+  .add-sub:hover {
+    background-color: #04B56C;
+  }
+  
+  .offer-card {
+    width: 93%;
+    padding: 6px;
+    margin: 10px auto;
+    background: linear-gradient(to right, #e2d2424f, #e4d7608f, #f6c31896);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+  .offer-details h6{
+    font-size: 14px;
+    margin: 0 5px;
+    font-weight: bold;
+    }
+    .offer-card p{
+      margin: 0;
+    }
+  
+
+
+
+.plan {
+    display: flex;
+    align-items: center;
+  }
+  
+  .cart {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .cart p {
+    margin: 0;
+    padding-right: 10px;
+    font-size: 20px;
+    text-align: center;
+    color:#04B56C;
+    font-weight: 400;
+  }
+  
+  .cart i {
+    cursor: pointer;
+  }
+  .types h2{
+    font-size: 20px;
+    padding: 8px;
+    border-top: 1px solid gray;
+  }
+  
+.subscript{
+  display: flex;
+  flex-direction: row;
+  /* justify-content:space-evenly; */
     border-top: 1px solid gray;
     background-color: #F2FBF8;
 }
 .script h2{
-    padding: 10px;
-    font-size: 15px;
-    margin: auto;
+  padding: 10px;
+  font-size: 15px;
+  margin: auto;
+}
+.mat-mdc-text-field-wrapper {
+  width: 70%;
+  z-index: 0;
+  height: 5vh;
 }
 .date h2{
-    padding: 10px;
-    font-size: 15px;
-    margin: auto;
+  padding: 10px;
+  font-size: 15px;
+  margin: auto;
 }
 .sub-type{
-    display: flex;
+  display: flex;
     border: 1px solid #ccc;
-    background-color: #fff;
     margin-left: 10px;
     border-radius: 10px;
-    width: 85%;
+    width: 60%;
+    height: 5vh;
     justify-content: space-evenly;
-      /* margin-top: 5px; */
+
 }
 .typed p, .edit{
-    text-align: center;
-    padding-top: 15px;
+  text-align: center;
+  padding-top: 5px;
 }
 
-::ng-deep .mat-calendar-body-cell.selected-date .mat-calendar-body-cell-content {
-    background-color: #04B56C !important;
-    color: #fff !important;
-    border-radius: 50%;
+.side-button {
+  position: absolute;
+  left: 10px;
+  bottom: 41px;
+  z-index: 1;
+  background: linear-gradient(135deg, #FEE58C 0%, #FEE58C 100%);
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 2px 5px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.whatsapp {
+  position: absolute;
+  bottom: 35px; 
+  right: 15px; 
+  width: 40px;  
+  height: 40px; 
+  background: transparent;
+  border: none;
+  padding: 5px; 
+}
+
+.add-sub[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
   }

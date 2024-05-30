@@ -1,8 +1,11 @@
-<div class="product">
+<!-- <div class="product"> -->
   <div class="back-icon" (click)="goBack()">
     <i class="fas fa-chevron-left"></i>
 </div>
   
+<div class="main">
+
+
     <div class="Carousel">
       <ngb-carousel *ngIf="images && images.length > 0">
         <ng-template ngbSlide *ngFor="let image of images">
@@ -16,7 +19,7 @@
       </ngb-carousel>
     </div>
   
-    <div class="main">
+    <!-- <div class="main"> -->
 
       <div class="details">
         <div class="tales">
@@ -33,12 +36,18 @@
             <p><strong style="font-size: 14px;">₹{{ totalPrice }}</strong> <span class="subtext"> ₹45.50</span></p>
         </div>
         
-        <div class="Cart">
+        <div class="Cart" *ngIf="isEditing; else addTemplate">
           <button (click)="decreaseValue()">-</button>
           <span>{{ quantity }}</span>
           <button (click)="increaseValue()">+</button>
         </div>
+        
+        <ng-template #addTemplate>
+          <button class="add-button" (click)="addQuantity()">Add</button>
+        </ng-template>
+
       </div>
+
       <div class="offer-card">
         <div class="offer-details">
           <h6>You are saving <span style="color: #04B56C;">$18.55</span>  (40% OFF) with <strong style="color: #04B56C;">VIP</strong></h6>
@@ -106,9 +115,11 @@
             
             </ul>
             </div>
-          
-            <div class="subscription" *ngIf="!isEditing; else editingTemplate">
-              <button class="add-sub" (click)="confirmSubscription()"><span>₹{{ totalPrice }} </span> Confirm Subscription</button>
+
+            <div class="subscription">
+              <button class="add-sub" (click)="confirmSubscription()" [disabled]="quantity < 1">
+                <span>₹{{ totalPrice }} </span> Confirm Subscription
+              </button>
             </div>
           
             <ng-template #editingTemplate>
@@ -191,4 +202,4 @@
   
    </div>
 
-  </div>
+  <!-- </div> -->

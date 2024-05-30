@@ -1,115 +1,116 @@
 
-<div class="product">
     <button class="back-icon" (click)="goBack()">
         <i class="fas fa-chevron-left"></i>
     </button>
   
-    
+    <div class="product">
 
     <div class="Carousel">
         <ngb-carousel *ngIf="images && images.length > 0">
-            <ng-template ngbSlide>
-                <div class="logo">
-                    <img src="https://content.jdmagicbox.com/comp/delhi/s6/011pxx11.xx11.191015075931.b6s6/catalogue/country-delight-okhla-industrial-area-delhi-milk-dairy-nlw19dbmil.jpg"
-                        alt="" />
-                </div>
-
-            </ng-template>
-            <ng-template ngbSlide>
-                <div class="logo">
-                    <img src="https://s3.us-west-2.amazonaws.com/customer-app-cards/promotions/milk_1628769125586.png"
-                        alt="" />
-                </div>
-
-            </ng-template>
-            <ng-template ngbSlide>
-                <div class="logo">
-                    <img src="https://content.jdmagicbox.com/comp/delhi/s6/011pxx11.xx11.191015075931.b6s6/catalogue/country-delight-okhla-industrial-area-delhi-milk-dairy-nlw19dbmil.jpg"
-                        alt="" />
-                </div>
-
-            </ng-template>
-            <ng-template ngbSlide>
-                <div class="logo">
-                    <img src="https://s3.us-west-2.amazonaws.com/customer-app-cards/promotions/milk_1628769125586.png"
-                        alt="" />
-                </div>
-
-            </ng-template>
+          <ng-template ngbSlide *ngFor="let image of images">
+            <div class="logo">
+              <img [src]="image"  />
+  
+              <button class="side-button">20% off</button>
+              <button class="whatsapp" ><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" (click)="shareOnWhatsApp()"></button>
+            </div>
+          </ng-template>
         </ngb-carousel>
-    </div>
-    <div class="details">
-        <div class="tales">
-            <h3>Buffalo Milk</h3>
+      </div>
+    
+    
+    
+      <div class="main">
+
+        <div class="details">
+          <div class="tales">
+            <h6><strong>Cow Milk</strong></h6>
             <p>450ml</p>
+          </div>
+          <div class="tail">
+            <p>Hormone Free</p>
+          </div>
         </div>
-        <div class="tail">
-            <p>Harmone Free</p>
-        </div>
-    </div>
-
-    <div class="mid">
-        <div class="add">
-            <p>₹{{ totalPrice }}</p>
-        </div>
-        <div class="art">
-            <p (click)="decreaseValue()">-</p>
+    
+        <div class="mid">
+          <div class="add">
+              <p><strong style="font-size: 14px;">₹{{ totalPrice }}</strong> <span class="subtext"> ₹45.50</span></p>
+          </div>
+          
+          <div class="Cart" *ngIf="isEditing; else addTemplate">
+            <button (click)="decreaseValue()">-</button>
             <span>{{ quantity }}</span>
-            <p (click)="increaseValue()">+</p>
+            <button (click)="increaseValue()">+</button>
+          </div>
+          
+          <ng-template #addTemplate>
+            <button class="add-button" (click)="addQuantity()">Add</button>
+          </ng-template>
+  
         </div>
-    </div>
-</div>
-<div class="offer-card">
-    <div class="offer-details">
-      <p><strong>You are saving <span style="color: #04B56C;">$18.55</span>(20% OFF)with VIP</strong></p>
-    </div>
-  </div>
-
-  <div class="subscript">
-    <div class="script">
-      <h2>Subscription type</h2>
-      <div class="sub-type">
-        <div class="typed">
-          <p *ngIf="!isSubscriptionTypesVisible" (click)="toggleSubscriptionTypes()">{{ selectedSubscription }}</p>
-          <ng-container *ngIf="isSubscriptionTypesVisible">
-            <p (click)="selectSubscription('Daily')">Daily</p>
-            <p (click)="selectSubscription('Alternate')">Alternate</p>
-            <p (click)="selectSubscription('Weekly')">Weekly</p>
-            <p (click)="selectSubscription('One Time')">One Time</p>
-          </ng-container>
+  
+        <div class="offer-card">
+          <div class="offer-details">
+            <h6>You are saving <span style="color: #04B56C;">$18.55</span>  (40% OFF) with <strong style="color: #04B56C;">VIP</strong></h6>
+          </div>
         </div>
-        <div class="edit">
-          <i class="fas fa-edit" (click)="toggleSubscriptionTypes()"></i>
-        </div>
+       
+       
+  
+    <div class="subscript">
+      <div class="script">
+          <h2>Subscription type</h2>
+          <div class="sub-type">
+              <div class="typed">
+              <p *ngIf="!isSubscriptionTypesVisible" (click)="toggleSubscriptionTypes()">{{ selectedSubscription }}</p>
+              <ng-container *ngIf="isSubscriptionTypesVisible">
+                <p (click)="selectSubscription('Daily')">Daily</p>
+                <p (click)="selectSubscription('Alternate')">Alternate</p>
+                <p (click)="selectSubscription('Weekly')">Weekly</p>
+                <p (click)="selectSubscription('One Time')">One Time</p>
+              </ng-container>
+          </div>
+             <div class="edit"> <i class="fas fa-edit" (click)="toggleSubscriptionTypes()"></i></div>
+          </div>
+      </div>
+      <div class="date">
+          <h2>Start Date</h2>
+          <form [formGroup]="form">
+              <mat-form-field appearance="outline">
+                <mat-label>Select a date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="selectedDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </form>
+            
+            <!-- <div *ngIf="alternateDates.length > 0">
+              <ul>
+                <li *ngFor="let date of alternateDates">{{ date | date }}</li>
+              </ul> -->
+            </div>
       </div>
     </div>
-    <div class="date">
-      <h2>Start Date</h2>
-      <form [formGroup]="form">
-        <mat-form-field appearance="outline">
-          <mat-label>Select a date</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="selectedDate" [matDatepickerFilter]="dateFilter">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker [dateClass]="dateClass"></mat-datepicker>
-        </mat-form-field>
-      </form>
-    </div>
-  </div>
-
-<div class="descript">
-    <h2>Product Description</h2>
-    <ul>
-        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod diam id arcu bibendum, at bibendum quam
-            vehicula.</li>
-        <li>Nulla facilisi. Duis vitae ex at eros iaculis tincidunt. Phasellus sed magna ultricies, venenatis lectus
-            non, efficitur justo.</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod diam id arcu bibendum, at bibendum quam
-            vehicula.</li>
-        <li>Nulla facilisi. Duis vitae ex at eros iaculis tincidunt. Phasellus sed magna ultricies, venenatis lectus
-            non, efficitur justo.</li>
-    </ul>
-</div>
-
-<div class="address-price">
+  
+  
+      <div class="descript">
+          <h6><strong>Product Description</strong></h6>     
+           <ul>
+                  <li>A glass of milk may become your kid's favourite drink with Country Delight Cow Milk.</li>
+                  <li>The natural sweetness of our cow's milk is the hallmark of purity and becomes an instant favourite among kids.</li>
+                  <li>Moreover, we source our milk from a mix of Desi Gir cows, desi Sahiwal cows, crossbred Holstein & Jersey cows.</li>
+                  <li> No preservatives, no milk powder or cream is added to the milk and the milk is not recombined in any form.</li>
+                  <li> We deliver the milk under the best cold chain right up to your doorstep..</li>
+              
+              </ul>
+              </div>
+              
+              <!-- <div class="address-price">
     <button class="add-address" [routerLink]="['/wallet']">₹{{ totalPrice }} Confirm Subcription</button> 
-</div>
+</div> -->
+
+<div class="subscription">
+    <button class="add-sub"  [routerLink]="['/wallet']" [disabled]="quantity < 1">
+      <span>₹{{ totalPrice }} </span> Confirm Subscription
+    </button>
+  </div>

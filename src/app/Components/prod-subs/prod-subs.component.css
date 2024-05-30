@@ -68,7 +68,7 @@ flex-direction: row;
   .card-details h6 {
     margin: 0;
   }
-  
+   
   .card-details p {
     margin: 5px 0 0;
   }
@@ -148,6 +148,6 @@ p{
 h6{
   margin-top: 5px;
 }
-.card-details p{
-  margin-bottom: 10px;
+.card-details p , .text-details p{
+  margin:0;
 }
