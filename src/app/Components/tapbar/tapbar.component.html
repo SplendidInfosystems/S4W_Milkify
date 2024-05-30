@@ -1,15 +1,26 @@
 <div class="tab-bar">
-  <div class="tab" [routerLink]="['/home']" [class.active-tab]="isActive('/home')"><i class="fas fa-home"></i></div>
-  <div class="tab" [routerLink]="['/transaction']" [class.active-tab]="isActive('/transaction')"><i
-    class="fas fa-exchange-alt"></i>
+  <div class="tab" [routerLink]="['/home']" [class.active-tab]="isActive('/home')">
+    <i class="fas fa-home"></i>
+    <span>Home</span>
   </div>
-  <div class="tab" [routerLink]="['/my-sub']" [class.active-tab]="isActive('/my-sub')"><i
-      class="fas fa-coins"></i></div>
-  <div class="tab" [routerLink]="['/refer']" [class.active-tab]="isActive('/refer')"><i class="fas fa-user-friends"></i>
+  <div class="tab" [routerLink]="['/transaction']" [class.active-tab]="isActive('/transaction')">
+    <i class="fas fa-exchange-alt"></i>
+    <span>Transaction</span>
   </div>
-  <div class="tab" [routerLink]="['/prod-subs']" [class.active-tab]="isActive('/prod-subs')"> 
-    <i class="fas fa-ellipsis-h"></i></div>
+  <div class="tab" [routerLink]="['/my-sub']" [class.active-tab]="isActive('/my-sub')">
+    <i class="fas fa-coins"></i>
+    <span>Subscription</span>
+  </div>
+  <div class="tab" [routerLink]="['/refer']" [class.active-tab]="isActive('/refer')">
+    <i class="fas fa-user-friends"></i>
+    <span>Refer</span>
+  </div>
+  <div class="tab" [routerLink]="['/prod-subs']" [class.active-tab]="isActive('/prod-subs')">
+    <i class="fas fa-ellipsis-h"></i>
+    <span>More</span>
+  </div>
 </div>
+
 
 
 <router-outlet></router-outlet>

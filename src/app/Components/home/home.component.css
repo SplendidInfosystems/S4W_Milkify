@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
 
 .landing-page {
@@ -15,7 +16,7 @@
 
 .hero-image {
   max-width: 15%;
-  margin: 5px 30px 0px 10px;
+  margin: 5px 15px 0px 10px;
   border-radius: 50%;
 }
 
@@ -32,19 +33,16 @@
   z-index: 1000;
 }
 
-.morning-delivery {
-  margin-right: -25px;
-}
-
 .header-right {
   padding: 0px;
   margin-top: 5px;
 }
 
 .header-right h3 {
-  font-size: 14px;
+  font-size: 15px;
   color: #333;
-  font-weight: 800;
+  font-weight: 700;
+
 }
 
 .header-right p {
@@ -56,7 +54,7 @@
   position: relative;
   width: 40px;
   height: 40px;
-  margin-left: 28%;
+  margin-left: 35%;
   border: 1px solid #b2b2b2;
   background-color: #fff;
   color: white;
@@ -87,8 +85,9 @@
 }
 
 .small-text {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .popup-content {
@@ -114,6 +113,7 @@
 .head h2 {
   font-size: 20px;
   font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .head img {
@@ -155,22 +155,26 @@
 }
 
 .popular-item img {
-  width: 100%;
+  width: 60%;
   border-radius: 5px;
-  margin: 10px 0px 15px 0;
+  margin: 10px 0px 15px 25px;
 }
 
 .popular-item h3 {
   font-size: 15px;
-  margin-bottom: 5px;
-  font-weight: 600;
+  margin-bottom: 20px;
+  font-weight: 550;
   margin-right: 10px;
 }
 
+
+
 .popular-item p {
-  font-size: 14px;
+  font-size: 12px;
   color: #555;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  display: flex;
+flex-direction: column;
 }
 
 .popular-item button:hover {
@@ -179,34 +183,42 @@
 
 .side-button {
   position: absolute;
-  top: 44%;
+  top: 37%;
   z-index: 1;
   background: linear-gradient(135deg, #FEE58C 0%, #FEE58C 100%);
-  color: #000;
+  color: #2f2e2e;
   border: none;
-  border-radius: 20px;
-  font-size: 12px;
+  font-size: 10px;
   padding: 2px 7px;
   cursor: pointer;
-  font-weight: bold;
-  text-transform: uppercase;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  width: 30%;
+  right: 72%;
+  /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); */
 }
+.popular-item h6 {
+   color: #000;
+   font-size: 14px;
+}
+
 
 .popular-item span {
   text-decoration: line-through;
   font-weight: normal;
+  color: rgb(102, 102, 102);
+  font-size: 12px;
 }
 
 .add-button {
   position: absolute;
-  bottom: 18px;
-  left: 75%;
+  bottom: 20px;
+  font-weight: 600;
+  left: 78%;
   transform: translateX(-50%);
   border-radius: 5px;
   padding: 5px 10px;
   background-color: #04B56C;
   color: #fff;
+  width: 35%;
   border: none;
   font-size: 12px;
   cursor: pointer;
@@ -214,12 +226,31 @@
 
 .no-order-btn {
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 6px 15px;
   background-color: #04B56C;
   color: #fff;
   border: none;
-  font-size: 12px;
+  font-size: 10px;
+  font-weight: 700;
   cursor: pointer;
+}
+.tab {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: -8px; /* Adjust as needed */
+  right: -6px; /* Adjust as needed */
+  background-color: red;
+  color: white;
+  border-radius: 15%;
+  width: 20px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
 }
 
 .add-button:hover {
@@ -250,4 +281,16 @@
 .promo-banner::after {
   content: "";
 }
+.bottom {
+  background-color: #b4ddfb;
+  padding: 4px 8px;
+  border-radius: 4px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 
+  margin-top: 30px;
+  font-size: small;
+
+  text-align: center;
+}

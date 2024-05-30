@@ -4,6 +4,7 @@
 }
 .ref{
   background-color: #F0F7F7;
+   
 }
 
 .header {
@@ -47,7 +48,7 @@
   .logo {
     padding: 10px;
     height: 30vh;
-    padding-top: 70px;
+    padding-top: 50px;
     text-align: center;
   }
   
@@ -63,20 +64,37 @@
     align-items: center;
     
 }
+.allset{
+   background-color: #DEE8E7;
+   border: 1px solid #b2b2b2;
+   border-radius: 20px; 
+   /* padding: 10px; */
+   width: 95%;
+   height: 22vh;
+   margin-top: 85px;
+   margin-left: 10px;
+}
+.allset .Terms{
+  padding: 10px;
+  font-size: 15px;
+  color: #373737;
+  font-weight: 500;
+}
 .all{
-    border: 1px solid #b2b2b2;
+    /* border: 1px solid #b2b2b2; */
     background-color: #fff;
     border-radius: 20px; 
-    margin-top: 115px;
+    /* margin-top: 115px; */
     padding: 10px;
-    width: 95%;
-    margin-left: 10px;
-   
+    width: 100%; 
 }
 .count{
     text-align: center;
     color: gray;
-    margin-top: 15px;
+    margin-top: 10px;
+}
+.count p{
+  margin-bottom: 0rem;
 }
 .set{
     margin-top: 10px;
@@ -91,31 +109,27 @@
 .pending p,
 .success p,
 .earned p {
-    margin: 5px 0;
-    font-size: 15px;
+    margin: 0;
+    font-size: 17px;
+}
+.pending span,
+.success span,
+.earned span{
+    margin: 0;
+    font-size: 13px;
 }
 .color{
     color: orangered;
+    font-weight: 600;
 }
 .color2{
     color: green;
+    font-weight: 600;
+}
+.color3{
+  font-weight: 500;
 }
 
-/* Add this to your component's CSS file */
-::ng-deep .mat-step-header {
-  display: flex;
-  align-items: center;
-}
-
-::ng-deep .mat-horizontal-stepper-header .mat-step-icon {
-  font-size: 24px; /* Adjust the font size as needed */
-  color: green; /* Set the color to green */
-}
-
-::ng-deep .mat-step-header .mat-step-icon-selected {
-  color: green; /* Set the color of the selected step to green */
-}
-/* Add this to your component's CSS file */
 .refer-now-container {
   display: flex;
   justify-content: space-between;
@@ -124,21 +138,23 @@
 }
 
 .referal p{
-  font-size: 18px;
+  font-size: 17px;
+  font-weight: 500;
   margin-top: 10px;
+  margin-left: 10px;
 }
 .referal{
   display: flex;
-  padding: 5px;
+  padding: 0px;
   justify-content:center;
   background-color: #04B56C;
   border: 1px solid #b2b2b2;
   color: #fff;
-  width: 70%;
+  width: 75%;
   text-align: center;
-  margin-left: 5%;
-  height:6vh;
-    border-radius: 5px; 
+  margin-left: 2%;
+  height: 48px;
+  border-radius: 5px; 
 }
 
 .icons-container {
@@ -151,26 +167,33 @@
 }
 
 .referal img{
-  width: 30px;
-  height: 30px;
-  margin-top: 8px;
+  width: 25px;
+  height: 25px;
+  margin-top: 10px;
 }
 .share-icon {
   font-size: 25px; 
+  color: #b2b2b2;
 }
 
 .contact {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
+  margin-top: 10px;
 }
 
 .contact p {
   margin: 0;
   color: red;
-  margin-right: 35%;
+  font-size: 14px;
+  margin-right: 16%;
 }
+.contact span {
+  font-size: 14px;
+
+}
+
 
 .contact i {
   color: #888;
@@ -190,9 +213,10 @@
 .timeline{
   display: flex;
   flex-grow: 1;
+  background-color: #F0F7F7;
   flex-direction: column;
-  padding: .5rem;
-  margin-top: 10px;
+  padding: .7rem;
+  height: 35vh;
 }
 
 .timeline-event{
@@ -208,7 +232,6 @@
   padding: 0 1rem;
   font-size: 16px;
   font-weight: 500;
-  font-family: 'Roboto', "Helvetica Neue", sans-serif;
 }
 .timeline-point-track-container{
   flex: 0;
@@ -233,5 +256,4 @@
 }
 .heighlight{
   background-color: #04B56C;
-  /* box-shadow: 0 4px 8px; */
 }

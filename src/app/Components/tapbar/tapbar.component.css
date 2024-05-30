@@ -49,3 +49,24 @@
 .content.active {
     display: block;
 }
+.tab-bar {
+    display: flex;
+  }
+  
+  .tab {
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .tab i {
+    display: block;
+  }
+  
+  .tab span {
+    display: block;
+    margin-top: 5px; 
+    font-size: 12px;
+  }
+  

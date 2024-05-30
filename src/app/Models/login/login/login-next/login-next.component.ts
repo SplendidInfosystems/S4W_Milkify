@@ -19,6 +19,7 @@ export class LoginNextComponent implements OnInit {
   countdownInterval: any;
   showModal: boolean = false;
   modalMessage: string = '';
+  isOtpFieldEmpty: boolean = true;
 
   constructor(private router: Router,  private loginService: LoginService) { }
 
@@ -37,6 +38,7 @@ export class LoginNextComponent implements OnInit {
     if (currentInput.value.length === 1 && index < otpInputArray.length - 1) {
       otpInputArray[index + 1].nativeElement.focus();
     }
+    this.checkOtpFieldStatus(); // Call the method to check OTP field status
   }
 
   onOtpKeydown(event: KeyboardEvent, index: number): void {
@@ -45,6 +47,12 @@ export class LoginNextComponent implements OnInit {
     if (event.key === 'Backspace' && currentInput.value.length === 0 && index > 0) {
       otpInputArray[index - 1].nativeElement.focus();
     }
+    this.checkOtpFieldStatus(); // Call the method to check OTP field status
+  }
+
+  checkOtpFieldStatus(): void {
+    const enteredOtp = this.otpInputs.toArray().map(input => input.nativeElement.value).join('');
+    this.isOtpFieldEmpty = enteredOtp.trim().length === 0;
   }
 
   verifyOTP(): void {
