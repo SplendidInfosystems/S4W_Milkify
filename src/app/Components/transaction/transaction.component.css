@@ -1,7 +1,7 @@
 .transaction-main{
     background-color: #f1f7f7;
     padding-top: 5px;
-    height: 65%;
+    height: 83%;
 }
 .transaction-header {
     display: flex;
@@ -30,6 +30,8 @@
   }
 .transaction-main p{
     text-align: center;
+    font-size: 15px;
+    font-weight: 400;
 }
 .transaction-header button {
     background: none;
@@ -48,19 +50,34 @@
 .transaction-wallet-balance {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    margin-left: 10px;
     margin-top: 10px; /* Adjust spacing */
 }
 .transaction-wallet-balance p {
-    margin-right: 10px; 
+    margin-right: 75px; 
+    margin-bottom: .2rem;
 }
-.transaction-wallet-balance button, .transaction-main button {
+.transaction-wallet-balance button {
     background-color: #04B56C; 
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 10px;
-    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    margin-right: 10px;
+    font-weight: 500;
+    padding: 8px 25px;
+}
+.transaction-main button {
+    background-color: #04B56C; 
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 8px 25px;
 }
 .transaction-main button {
     margin-left: 7rem;
@@ -68,3 +85,16 @@
 .no-trans{
     margin-top: 10px;
 }
+.no-trans h4{
+    font-weight: 500;
+    font-size: 18px;
+}
+.transaction-desc p{
+  font-size: 12px;
+  font-weight: 500;
+  color: #5d5d5d;
+}
+.transaction-desc h5{
+    font-size: 17px;
+    font-weight: 500;
+  }
