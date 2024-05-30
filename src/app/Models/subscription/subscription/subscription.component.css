@@ -439,24 +439,6 @@
   border: none;
   padding: 5px; 
 }
-.custom-form-field {
-  width: 70%;  
-  margin: 0 auto; 
-}
 
-.custom-input {
-  height: 30px;  
-  padding: 0 10px;  
-  text-align: center; 
-  border-radius: 10px; 
-}
-
-/* Override Angular Material styles */
-.custom-form-field .mat-form-field-outline {
-  border-radius: 10px;  
-}
-.date h2 {
-  text-align: center;  
-}
 
 

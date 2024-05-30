@@ -7,14 +7,10 @@
         <div class="row" *ngFor="let col of row">          
           <div class="col-icons">
             <mat-icon (click)="navigateToCol(col.route)">{{ col.icon }}</mat-icon>
-
           </div>
-
           <div class="col-text">
             <p>{{ col.name }}</p>
           </div>
-          
-          
         </div>
       </div>
     </div>

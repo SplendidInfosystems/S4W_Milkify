@@ -39,8 +39,11 @@ export class ProdSubsComponent {
    
   ];
   navigateToCol(route: string): void {
-    this.router.navigate([route]);
+    if (route) {
+      this.router.navigate([route]);
+    }
   }
+  
   navigateTo(card: { image: string; title: string; description: string; route: string }) {
     this.router.navigate([card.route]);
   }

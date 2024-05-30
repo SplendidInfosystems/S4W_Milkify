@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef, QueryList, ViewChildren } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { LoginService } from '../../../../Services/login.service';
 
 @Component({
   selector: 'app-login-next',
@@ -20,12 +21,10 @@ export class LoginNextComponent implements OnInit {
   modalMessage: string = '';
   isOtpFieldEmpty: boolean = true;
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router,  private loginService: LoginService) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.mobileNumber = params['mobileNumber'] || '';
-    });
+    this.mobileNumber = this.loginService.getMobileNumber();
     this.startCountdownTimer();
   }
 

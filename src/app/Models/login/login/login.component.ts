@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { LoginService } from '../../../Services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +17,7 @@ export class LoginComponent implements OnInit {
   otpVerificationFailed: any;
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
-  constructor(private router: Router) { }
-
+  constructor(private router: Router, private loginService: LoginService) { }
   ngOnInit(): void { }
 
   sendOTP(): void {
@@ -35,10 +34,10 @@ export class LoginComponent implements OnInit {
     }
 
     this.otpSent = true;
-    console.log('OTP sent to:', this.mobileNumber);
+    this.loginService.setMobileNumber(this.mobileNumber);
 
-    // Navigate to the next page with the mobile number
-    this.router.navigate(['/login-next'], { queryParams: { mobileNumber: this.mobileNumber } });
+    // Navigate to the next page
+    this.router.navigate(['/login-next']);
   }
 
   isMobileNumberRegistered(mobileNumber: string): boolean {
@@ -85,7 +84,7 @@ export class LoginComponent implements OnInit {
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
   }
 
-  navigateToNextPage() {
+  navigateToNextPage(): void {
     this.router.navigate(['/login-next']);
   }
 }
