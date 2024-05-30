@@ -2,18 +2,20 @@
     margin: 0;
     padding: 0;
   }
+
   .main{
     background-color: #f1f7f7;
-
   }
+
   .back-icon {
     top: 10px;
     left: 20px;
     margin-left: 10px;
     display: flex;
     font-size: 20px;
-  padding: 10px;
+    padding: 10px;
   }
+  
   .head {
     text-align: center;
     margin-left: 5%;
@@ -110,8 +112,8 @@
 
 .plan,
 .cart {
-    flex: 1; /* This will make both divs take up equal space */
-    margin-right: 10px; /* Add some spacing between the divs */
+    flex: 1; 
+    margin-right: 10px; 
 }
 
   .plan h2,
@@ -285,7 +287,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* flex: 1; */
     height: 1px;
     background-color: #ccc;
     margin-right: 10px;
@@ -314,21 +315,20 @@
     transition: background-color 0.3s ease;
   }
   .pause-sub-button:hover {
-    background-color: #429945; /* Darker yellow on hover */
+    background-color: #429945;
   }
   .cancel-sub-button {
     padding: 8px 20px;
-    background-color: #ffffff; /* Red color */
+    background-color: #ffffff; 
     color: red;
     border: solid 1px red;
     border-radius: 5px ;
-    /* margin: 10px 0; */
-      width: 100%;
+    width: 100%;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
   .cancel-sub-button:hover {
-    background-color: #faefed; /* Darker red on hover */
+    background-color: #faefed; 
   }
   .popup-products-card{
     display: flex;
@@ -380,9 +380,8 @@
 .subscript{
   display: flex;
   flex-direction: row;
-  /* justify-content:space-evenly; */
-    border-top: 1px solid gray;
-    background-color: #F2FBF8;
+  border-top: 1px solid gray;
+  background-color: #F2FBF8;
 }
 .script h2{
   padding: 10px;
