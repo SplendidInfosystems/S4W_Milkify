@@ -16,15 +16,10 @@ export class LoginComponent implements OnInit {
   remainingTime: string = '';
   otpVerificationFailed: any;
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
-  constructor(private router: Router, private modalService: NgbModal) { }
 
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {
-  }
-  openPopup(content: any) {
-    this.modalService.open(content, { centered: true });
-  }
-
+  ngOnInit(): void { }
 
   sendOTP(): void {
     if (!this.isValidMobileNumber(this.mobileNumber)) {

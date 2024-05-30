@@ -18,7 +18,7 @@ export class LoginNextComponent implements OnInit {
   countdownInterval: any;
   showModal: boolean = false;
   modalMessage: string = '';
-  isOtpFieldEmpty: boolean = false;
+  isOtpFieldEmpty: boolean = true;
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 
