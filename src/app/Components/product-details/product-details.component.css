@@ -2,17 +2,12 @@
     margin: 0;
     padding: 0;
 }
-.product {
-    padding-top: 5px;
-    height: 100%;
-    background-color: #f1f7f7;
 
-  }
 .back-icon  {
     cursor: pointer;
     transition: transform 0.2s ease;
     border: none;
-    margin: 22px 10px;
+    margin: 10px 15px;
     font-size: 20px;
     background-color: transparent;
 }
@@ -22,23 +17,22 @@
     height: 45vh;
     text-align: center;
     border-radius: 5px;
-  }
-  .logo img {
+}
+
+.logo img {
     width: 100%;
     height: auto;
-    position: relative;
+}
 
-  }
-  .details {
+.details {
     display: flex;
-    gap: 4rem;
     flex-direction: row;
     justify-content: space-around;
     background-color: #F2FBF8;
 }
 
 .tales {
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .tales h3 {
@@ -97,6 +91,7 @@
     width: 95%;
     margin-bottom: 10px;
     height: 45px;
+
     justify-content: space-evenly;
   }
   .forms-field p{
@@ -109,7 +104,7 @@
     display: none;
   }
   .mat-datepicker-toggle {
-    font-size: 10px; 
+    font-size: 10px; /* Adjust the font size as needed */
     color: #04B56C;
 }
 
@@ -157,12 +152,11 @@
   height: 26px;
   margin-left: 35%;
   width: 30%;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .tail p {
     margin: 0;
-    font-size: 13px;
     text-align: center;
     color: #000;
     font-weight: 500;
@@ -178,19 +172,9 @@
     height: 33px;
     margin-right: 15px;
     display: flex;
-    justify-content: space-evenly;
-  }
-  .Cart button{
-    padding: 0;
-    border: none;
-    background-color: transparent;
-  }
-  .sum {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 10px;
-
+    width: 28%;
+    margin-top: 10px;
+    justify-content: space-around;
 }
 
 .dotted-card {
@@ -225,12 +209,7 @@ margin-right: 11px;
   margin-left: 10px;
 }
 
-  .fa-edit {
-    color: #666;
-    cursor: pointer;
-  }
-  
-  .descript {
+.descript {
     border-top: 1px solid gray;
     padding: 12px;
     padding-bottom: 65px;
@@ -264,23 +243,7 @@ margin-right: 11px;
     justify-content: space-between;
     align-items: center;
   }
-  .add-sub {
-    width: 100%;
-    background-color: #04B56C;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  .add-sub span{
-    margin-right: 8rem;
-  }
-  .add-sub:hover {
-    background-color: #04B56C;
-  }
-
+ 
 .subscript{
     display: flex;
     flex-direction: row;
@@ -295,23 +258,17 @@ margin-right: 11px;
 margin-right: 30px;
 }
 .script h2{
-  padding: 10px;
-  font-size: 15px;
-  margin: auto;
-}
-.mat-mdc-text-field-wrapper {
-  width: 70%;
-  z-index: 0;
-  height: 5vh;
+    padding: 10px;
+    font-size: 15px;
+    margin: auto;
 }
 .date h2{
     padding: 10px;
     font-size: 15px;
-    margin: auto;
-    /* margin-left: 12px; */
+    margin: auto 5px;
 }
 .sub-type{
-  display: flex;
+    display: flex;
     border: 1px solid #ccc;
     background-color: #fff;
     margin-left: 8px;
@@ -320,7 +277,6 @@ margin-right: 30px;
     width: 80%;
     padding: 6px;
     justify-content: space-evenly;
-
 }
 .typed p, .edit{
     text-align: center;
@@ -334,34 +290,81 @@ margin-right: 30px;
     color: #04B56C;
 }
 
-.side-button {
-  position: absolute;
-  left: 10px;
-  top: 25px;
-  z-index: 1;
-  background: linear-gradient(135deg, #FEE58C 0%, #FEE58C 100%);
-  color: #000;
-  border: none;
-  border-radius: 5px;
-  font-size: 12px;
-  padding: 2px 5px;
-  cursor: pointer;
-  font-weight: bold;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
+::ng-deep .mat-calendar-body-cell.selected-date .mat-calendar-body-cell-content {
+    background-color: #04B56C !important;
+    color: #fff !important;
+    border-radius: 50%;
+  }
+  .add-button {
+    padding: 0px 27px;
+    font-size: 16px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+    background-color: #04B56C;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    margin-right: 20px;
 
-.whatsapp {
-  position: absolute;
-  bottom: 25px; 
-  right: 15px; 
-  width: 40px;  
-  height: 40px; 
-  background: transparent;
-  border: none;
-  padding: 5px; 
-}
+  }
+  .Cart {
+    background-color: #F2FBF8;
+    border: 1px solid #04B56C;
+    color: #04B56C;
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 5px;
+    height: 35px;
+    /* margin-left: -11rem; */
+    width: 27%;
+    margin-right: 20px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .Cart button{
+    padding: 0;
+    border: none;
+    background-color: transparent;
+  }  
+  .confirm-button {
+    padding: 8px 20px;
+    background-color:#04B56C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 10px 0;
+      width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .add-sub {
+    width: 100%;
+    background-color: #04B56C;
+    color: #fff;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .add-button {
+    padding: 0px 30px ;
+    font-size: 16px;
+    margin-top: 8px;
+    background-color: #04B56C;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    margin-right: 20px;
 
-.add-sub[disabled] {
+  }
+  .add-sub[disabled] {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+  .add-sub span{
+    margin-right: 6rem;
+  }
+  .add-sub:hover {
+    background-color: #04B56C;
   }

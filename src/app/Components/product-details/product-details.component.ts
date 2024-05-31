@@ -116,7 +116,16 @@ export class ProductDetailsComponent {
       }
     }
   }
-
+  confirmSubscription() {
+    const subscriptionData = {
+      images: this.images,
+      price: this.price,
+      quantity: this.quantity,
+      totalPrice: this.totalPrice,
+      subscriptionType: this.selectedSubscription,
+      date: this.defaultDate
+    };
+    }
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
     if (view === 'month') {
       return this.selectedDates.some(d => d.getTime() === cellDate.getTime()) ? 'selected-date' : '';

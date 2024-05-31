@@ -80,13 +80,22 @@
     background-color: #fff;
     border: 2px solid #56BD98;
     color: #000;
-    /* border-bottom: 1px solid gray; */
     margin-left: 10px;
-    padding: 13px;
+    padding: 10px 15px 6px;
     margin-right: 10px;
     border-radius: 20px;
     margin-top: 10px;
+    position: relative; 
   }
+  
+  .autopay i {
+    color: #6c6c6c;
+    position: absolute; 
+    top: 15px;
+    font-size: 20px;
+    right: 20px; 
+  }
+  
   .radio-leb input[type="radio"] {
     margin-right: 15px; 
     width: 9%;
@@ -96,11 +105,11 @@
     background-color: #fff;
     border: 2px solid #56BD98;
     color: #000;
-    border-bottom: 1px solid gray;
     margin-left: 10px;
-    padding: 13px;
+    padding: 10px 15px 6px;
     margin-right: 10px;
     border-radius: 20px;
+    position: relative;
     margin-top: 90px;
   }
   
@@ -356,7 +365,7 @@ margin-top: 10px;
 
 .counting input {
   border: none;
-  border-bottom: 1px solid #505050; /* Set bottom border */
+  border-bottom: 1px solid #b9b9b9; /* Set bottom border */
   outline: none; /* Remove default focus outline */
   background-color: transparent; /* Transparent background */
   width: 100%;

@@ -25,7 +25,7 @@
 
     <div *ngIf="selectedOption === 'recharge'" class="recharge-section">
       <div class="offer-set" *ngFor="let offer of offerSets">
-        <div class="offer1">
+        <div class="offer1" [routerLink]="['/payment']" (click)="payAmount()">
           <h4>{{ offer.cashback }}</h4>
           <p>Cashback</p>
         </div>
@@ -71,6 +71,7 @@
       <label class="radio-leb">
         <input type="radio" [(ngModel)]="selectedOption" value="Setup autopay">
         <h6>Setup autopay</h6>
+        <i class="fas fa-wallet"></i>
       </label>
       <div *ngIf="selectedOption === 'Setup autopay'" class="autopay-section">
         <div class="counting">
