@@ -14,7 +14,7 @@ export class SubscriptionComponent implements OnInit {
   images = [
     'https://images.jdmagicbox.com/comp/delhi/s6/011pxx11.xx11.191015075931.b6s6/catalogue/country-delight-okhla-industrial-area-delhi-milk-dairy-0l3apfgg1l.jpg',
     'https://s3.us-west-2.amazonaws.com/customer-app-cards/promotions/milk_1628769125586.png',
-    'https://content.jdmagicbox.com/comp/delhi/s6/011pxx11.xx11.191015075931.b6s6/catalogue/country-delight-okhla-industrial-area-delhi-milk-dairy-nlw19dbmil.jpg',
+    'https://cdnasd.countrydelight.in/New_product_image/BM_1646846227411_1665204467802.png'
   ];
   price = 27;
   quantity = 1;
@@ -74,8 +74,18 @@ export class SubscriptionComponent implements OnInit {
     if (this.quantity > 1) {
       this.quantity--;
       this.updateTotalPrice();
+    } else {
+      this.quantity = 0;
+      this.isEditing = false;
     }
   }
+
+  addQuantity() {
+    this.quantity = 1;
+    this.isEditing = true;
+    this.updateTotalPrice();
+  }
+
   updateTotalPrice() {
     this.totalPrice = this.price * this.quantity;
   }
@@ -115,8 +125,8 @@ export class SubscriptionComponent implements OnInit {
     // this.snackBar.open('Subscription confirmed successfully!', 'Close', {
     //   duration: 3000,
     // });
-    this.router.navigate(['/my-sub']);
-  }
+    this.router.navigate(['/my-sub'], { queryParams: { fromSubscription: true } });
+    }
   resumeSubscription(event: Event) {
     event.preventDefault();
     this.showResumePopup = true;

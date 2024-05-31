@@ -1,5 +1,4 @@
 
-<div class="product">
     <button class="back-icon" (click)="goBack()">
         <i class="fas fa-chevron-left"></i>
     </button>
@@ -22,23 +21,29 @@
         <div class="tales">
             <h3>Buffalo Milk</h3>
             <p>450ml</p>
+          </div>
+          <div class="tail">
+            <p>Hormone Free</p>
+          </div>
         </div>
-        <div class="tail">
-            <p>Harmone Free</p>
-        </div>
-    </div>
-
-    <div class="mid">
-        <div class="add">
-            <p>₹{{ totalPrice }}</p>
-        </div>
-        <div class="art">
-            <p (click)="decreaseValue()">-</p>
+    
+        <div class="mid">
+          <div class="add">
+              <p><strong style="font-size: 14px;">₹{{ totalPrice }}</strong> <span class="subtext"> ₹45.50</span></p>
+          </div>
+          
+          <div class="Cart" *ngIf="isEditing; else addTemplate">
+            <button (click)="decreaseValue()">-</button>
             <span>{{ quantity }}</span>
-            <p (click)="increaseValue()">+</p>
+            <button (click)="increaseValue()">+</button>
+          </div>
+          
+          <ng-template #addTemplate>
+            <button class="add-button" (click)="addQuantity()">Add</button>
+          </ng-template>
+  
         </div>
-    </div>
-</div>
+    
 <div class="cover">
 <div class="offer-card">
     <div class="offer-details">
@@ -73,6 +78,41 @@
         <div class="edit">
           <i class="fas fa-edit" (click)="toggleSubscriptionTypes()"></i>
         </div>
+       
+       
+  
+    <div class="subscript">
+      <div class="script">
+          <h2>Subscription type</h2>
+          <div class="sub-type">
+              <div class="typed">
+              <p *ngIf="!isSubscriptionTypesVisible" (click)="toggleSubscriptionTypes()">{{ selectedSubscription }}</p>
+              <ng-container *ngIf="isSubscriptionTypesVisible">
+                <p (click)="selectSubscription('Daily')">Daily</p>
+                <p (click)="selectSubscription('Alternate')">Alternate</p>
+                <p (click)="selectSubscription('Weekly')">Weekly</p>
+                <p (click)="selectSubscription('One Time')">One Time</p>
+              </ng-container>
+          </div>
+             <div class="edit"> <i class="fas fa-edit" (click)="toggleSubscriptionTypes()"></i></div>
+          </div>
+      </div>
+      <div class="date">
+          <h2>Start Date</h2>
+          <form [formGroup]="form">
+              <mat-form-field appearance="outline">
+                <mat-label>Select a date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="selectedDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </form>
+            
+            <!-- <div *ngIf="alternateDates.length > 0">
+              <ul>
+                <li *ngFor="let date of alternateDates">{{ date | date }}</li>
+              </ul> -->
+            </div>
       </div>
     </div>
     <div class="date">

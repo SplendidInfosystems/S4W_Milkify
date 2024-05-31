@@ -5,6 +5,9 @@
 
   .main{
     background-color: #f1f7f7;
+    padding-top: 5px;
+    height: 100%;
+
   }
 
   .back-icon {
@@ -13,7 +16,7 @@
     margin-left: 10px;
     display: flex;
     font-size: 20px;
-    padding: 10px;
+    padding: 22px 10px;
   }
 
   .head {
@@ -22,11 +25,16 @@
     font-size: 20px;
     margin-top: 8px;
   }
+  .Carousel{
+    background-color: white;
+    margin: 15px;
+    border-radius: 10px;
+
+}
   .logo {
     padding: 10px;
     height: 45vh;
     text-align: center;
-    border-radius: 5px;
   }
   .logo img {
     width: 100%;
@@ -72,15 +80,16 @@
 }
   .tail {
     background: linear-gradient(135deg, #FEE58C 0%, #B4E856 100%);
-    padding: 5px;
+    padding: 1px;
     border-radius: 5px;
-    height: 33px;
-    width: 29%;
+    height: 20px;
+    width: 27%;
     margin: 10px 0 0 75px;
     
   }
   .tail p {
     margin: 0;
+    font-size: 13px;
     text-align: center;
     color: #000;
     
@@ -92,8 +101,8 @@
     padding: 5px;
     border-radius: 5px;
     height: 35px;
-    margin-left: 150px;
-    width: 29%;
+    margin-left: 10rem;
+    width: 27%;
     display: flex;
     justify-content: space-evenly;
   }
@@ -169,8 +178,24 @@
     cursor: pointer;
     font-size: 16px;
   }
+  .add-button {
+    padding: 5px 38px ;
+    font-size: 16px;
+    margin-top: 8px;
+    background-color: #04B56C;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    margin-left: 10rem;
+
+  }
+  
+  .add-sub[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
   .add-sub span{
-    margin-right: 8rem;
+    margin-right: 6rem;
   }
   .add-sub:hover {
     background-color: #04B56C;
@@ -462,7 +487,7 @@ margin-left: 10px;
 .side-button {
   position: absolute;
   left: 10px;
-  bottom: 41px;
+  top: 25px;
   z-index: 1;
   background: linear-gradient(135deg, #FEE58C 0%, #FEE58C 100%);
   color: #000;
@@ -477,7 +502,7 @@ margin-left: 10px;
 
 .whatsapp {
   position: absolute;
-  bottom: 35px; 
+  bottom: 30px; 
   right: 15px; 
   width: 40px;  
   height: 40px; 
