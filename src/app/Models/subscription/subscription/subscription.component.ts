@@ -12,15 +12,16 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class SubscriptionComponent implements OnInit {
   images = [
-    'https://images.jdmagicbox.com/comp/delhi/s6/011pxx11.xx11.191015075931.b6s6/catalogue/country-delight-okhla-industrial-area-delhi-milk-dairy-0l3apfgg1l.jpg',
-    'https://s3.us-west-2.amazonaws.com/customer-app-cards/promotions/milk_1628769125586.png',
-    'https://cdnasd.countrydelight.in/New_product_image/BM_1646846227411_1665204467802.png'
+    'https://content.jdmagicbox.com/comp/delhi/s6/011pxx11.xx11.191015075931.b6s6/catalogue/country-delight-okhla-industrial-area-delhi-milk-dairy-nlw19dbmil.jpg',
+    'https://imgmedia.lbb.in/media/2021/06/60d2e2cda7f7900b57c7ccce_1624433357587.jpg',
+    'https://content.jdmagicbox.com/comp/delhi/s6/011pxx11.xx11.191015075931.b6s6/catalogue/country-delight-okhla-industrial-area-delhi-milk-dairy-nlw19dbmil.jpg',
+    'https://qph.cf2.quoracdn.net/main-qimg-30d4572669a338e4b3dc089de2c587ca'
   ];
   price = 27;
   quantity = 1;
   date = '30 may 2024';
   selectedDates: Date[] = [];
-  totalPrice = 27;
+  // totalPrice = 27;
   alternateDates: Date[] = [];
   isSubscriptionTypesVisible = false;
   startDate: Date = new Date();
@@ -36,7 +37,7 @@ export class SubscriptionComponent implements OnInit {
   showPausedDurationPopup: boolean = false;
   endDateInput: any;
   form: any;
-  
+  totalPrice = this.price * this.quantity;
   constructor(
     private router: Router,
     private dateAdapter: DateAdapter<Date>,
@@ -54,9 +55,9 @@ export class SubscriptionComponent implements OnInit {
   }
   ngOnInit(): void {
     this.defaultDate = new Date();
-    const subscriptionData = this.subscriptionService.getSubscriptionData();
-    this.isEditing = !!subscriptionData; // Determine if we're editing based on existing data
-  
+    this.subscriptionService.isEditing$.subscribe(isEditing => {
+      this.isEditing = isEditing;
+    });
     this.route.queryParams.subscribe((params: { [x: string]: any; }) => {
       if (params['subscriptionCancelled']) {
         this.showCancellationPopup = true;
@@ -66,27 +67,27 @@ export class SubscriptionComponent implements OnInit {
   goBack(): void {
     this.router.navigate(['/prod-subs']);
   }
-  increaseValue() {
+  
+  increaseValue(): void {
     this.quantity++;
     this.updateTotalPrice();
   }
-  decreaseValue() {
+
+  decreaseValue(): void {
     if (this.quantity > 1) {
       this.quantity--;
-      this.updateTotalPrice();
     } else {
       this.quantity = 0;
-      this.isEditing = false;
     }
-  }
-
-  addQuantity() {
-    this.quantity = 1;
-    this.isEditing = true;
     this.updateTotalPrice();
   }
 
-  updateTotalPrice() {
+  addQuantity(): void {
+    this.quantity++;  // Directly increment the quantity
+    this.updateTotalPrice();
+  }
+
+  updateTotalPrice(): void {
     this.totalPrice = this.price * this.quantity;
   }
   toggleSubscriptionTypes() {
@@ -121,12 +122,8 @@ export class SubscriptionComponent implements OnInit {
       date: this.defaultDate
     };
     this.subscriptionService.saveSubscriptionData(subscriptionData);
-    
-    // this.snackBar.open('Subscription confirmed successfully!', 'Close', {
-    //   duration: 3000,
-    // });
     this.router.navigate(['/my-sub'], { queryParams: { fromSubscription: true } });
-    }
+  }
   resumeSubscription(event: Event) {
     event.preventDefault();
     this.showResumePopup = true;

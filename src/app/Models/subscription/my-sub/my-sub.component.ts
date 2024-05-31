@@ -35,4 +35,8 @@ export class MySubComponent {
   goBack(): void {
     this.router.navigate(['/subscription']);
   }
+  editSubscription(): void {
+    this.subscriptionService.setEditingState(true);
+    this.router.navigate(['/subscription']);
+  }
 }

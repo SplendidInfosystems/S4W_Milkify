@@ -16,15 +16,15 @@
         </div>
         <div class="product-details">
           <h6>Cow Milk</h6>
-          <p class="subtext">450ml</p>
+          <p class="subtext" >450ml</p>
           <div class="qty-div">
-            <p>Qty: {{ quantity }}</p>
+            <p>Daily, Qty: {{ quantity }}</p>
           </div>
           <div class="price-edit">
             <div class="add">
               <p><strong>₹{{ subscriptionData.price }}</strong> <span>₹45.50</span></p>
             </div>
-            <button class="edit-button" [routerLink]="['/subscription']">Edit</button>
+            <button class="edit-button" (click)="editSubscription()">Edit</button>
           </div>
         </div>
       </div>
