@@ -1,25 +1,21 @@
 .container {
   height: 100vh;
 }
-
 .otp button:hover {
   background-color: #04B56C;
 }
-
 .back-icon {
   position: absolute;
   top: 30px;
   left: 30px;
   font-size: 20px;
 }
-
 .error-message {
   color: red;
   margin-left: 5px;
   text-align: center;
   font-family: 'Arial', sans-serif;
 }
-
 .resend p {
   color: rgb(79, 78, 78);
   text-align: center;
@@ -27,32 +23,24 @@
   font-family: 'Arial', sans-serif;
 }
 
+
 .OTP-verify {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   margin-top: 18%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
-
 .OTP-verify p {
   font-size: 13px;
   margin-top: 15px;
 }
-
 .OTP-verify h3 {
   font-size: 20px;
   font-weight: 500;
 }
-
 .otp-input {
   margin-top: 20px;
-  display: flex;
-  justify-content: center;
 }
-
 .otp-input input {
   width: 40px;
   height: 30px;
@@ -61,30 +49,35 @@
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-
 .otp {
   text-align: center;
   margin-top: 20px;
 }
-
-.otp-button {
-  width: 100%;
-  padding: 10px;
-  height: 50px;
+.otp input[type="text"] {
+  width: 200px;
+  height: 40px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.otp button {
+  width: 300px;
+  height: 40px;
   background-color: #04B56C;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 20px;
-  transition: background-color 0.3s ease;
+  font-size: 16px;
+  margin-top: 520px;
+  
+  &[disabled]{
+    background-color: #ccc;
+    color: #333;
 }
-
-.otp-button[disabled] {
-  background-color: #ccc;
-  color: #fff;
 }
-
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -94,7 +87,6 @@
   background: rgba(0, 0, 0, 0.5);
   z-index: 999;
 }
-
 .modal-content {
   position: fixed;
   top: 50%;
@@ -106,11 +98,10 @@
   z-index: 1000;
   text-align: center;
   width: 80%;
-  border-radius: 10px;
+    border-radius: 10px;
 }
-
-.modal-content button {
-  border: none;
-  color: #04B56C;
+.modal-content button{
+  border:none;
+  color:#04B56C;
   background: transparent;
 }

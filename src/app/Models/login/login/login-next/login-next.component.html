@@ -22,7 +22,6 @@
       <button *ngIf="showVerifyButton" (click)="verifyOTP()" [disabled]="isOtpFieldEmpty">Verify & Proceed</button>
     </div>
   </div>
-
   <!-- Modal -->
   <div *ngIf="showModal" class="modal-backdrop" (click)="closeModal()"></div>
   <div *ngIf="showModal" class="modal-content">

@@ -1,7 +1,6 @@
 import { Component, OnInit, ElementRef, QueryList, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../../../../Services/login.service';
-
 @Component({
   selector: 'app-login-next',
   templateUrl: './login-next.component.html',
@@ -20,18 +19,14 @@ export class LoginNextComponent implements OnInit {
   showModal: boolean = false;
   modalMessage: string = '';
   isOtpFieldEmpty: boolean = true;
-
   constructor(private router: Router, private loginService: LoginService) { }
-
   ngOnInit(): void {
     this.mobileNumber = this.loginService.getMobileNumber();
     this.startCountdownTimer();
   }
-
   goBack(): void {
     this.router.navigate(['/login']);
   }
-
   onOtpInput(index: number): void {
     const otpInputArray = this.otpInputs.toArray();
     const currentInput = otpInputArray[index].nativeElement;
@@ -40,7 +35,6 @@ export class LoginNextComponent implements OnInit {
     }
     this.checkOtpFieldStatus();
   }
-
   onOtpKeydown(event: KeyboardEvent, index: number): void {
     const otpInputArray = this.otpInputs.toArray();
     const currentInput = otpInputArray[index].nativeElement;
@@ -49,12 +43,10 @@ export class LoginNextComponent implements OnInit {
     }
     this.checkOtpFieldStatus();
   }
-
   checkOtpFieldStatus(): void {
     const enteredOtp = this.otpInputs.toArray().map(input => input.nativeElement.value).join('');
     this.isOtpFieldEmpty = enteredOtp.trim().length !== 6;
   }
-
   verifyOTP(): void {
     const enteredOtp = this.otpInputs.toArray().map(input => input.nativeElement.value).join('');
     if (enteredOtp === this.otp) {
@@ -67,18 +59,15 @@ export class LoginNextComponent implements OnInit {
       this.showModal = true;
     }
   }
-
   closeModal(): void {
     this.showModal = false;
   }
-
   resend(): void {
     this.remainingTime = 40;
     this.startCountdownTimer();
     this.showResendOption = false;
     this.showVerifyButton = true;
   }
-
   startCountdownTimer(): void {
     this.countdownInterval = setInterval(() => {
       this.remainingTime--;
