@@ -1,8 +1,22 @@
 <div class="payment">
     <header class="header">
-        <div class="back-icon" (click)="goBack()">
-          <i class="fas fa-chevron-left"></i>
-        </div>
+      <div class="back-icon" (click)="goBack()">
+        <i class="fas fa-chevron-left"></i>
+      </div>
+      
+ <div *ngIf="showCancellationPopup" class="modal-overlay" (click)="goBack()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h3>Cancel Transaction</h3>
+    <p>Are you sure, you want to exit?</p>
+    <button class="yes-button" [routerLink]="['/wallet']" >Yes</button>
+      <button class="confirm-button" (click)="closeCancellationPopup()">No</button>
+    
+  </div>
+</div>
+ 
+      
+ 
+        
         <div class="head">
           <p>Payment Options</p>
         </div>
