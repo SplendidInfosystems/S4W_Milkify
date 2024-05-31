@@ -12,7 +12,6 @@ export class LoginNextComponent implements OnInit {
   mobileNumber: string = '';
   otp: string = '123456';
   otpVerified: boolean = false;
-  otpVerificationFailed: boolean = false;
   showResendOption: boolean = false;
   showVerifyButton: boolean = true;
   remainingTime: number = 40;
@@ -62,7 +61,7 @@ export class LoginNextComponent implements OnInit {
       this.router.navigate(['/home']);
     } else {
       this.otpVerified = false;
-      this.otpVerificationFailed = true;
+      
       this.modalMessage = 'OTP Verification failed for this mobile number';
       this.showModal = true;
     }

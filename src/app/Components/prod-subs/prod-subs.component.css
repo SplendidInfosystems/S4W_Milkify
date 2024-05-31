@@ -4,12 +4,24 @@
     background-color: #f1f7f7;
     padding: 10px;
   } 
- 
+  .sub-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
+  }
+  
   .column {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin: 5px 10px;
+    
+  }
+  
+  .column h6 {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #333;
   }
   
   .column-main {
@@ -18,18 +30,31 @@
   }
   
   .row {
-    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
     text-align: center;
+    width: 100%;
   }
   
   .col-icons mat-icon {
     margin-right: 10px;
-    width: 55px;
+    width: 30px;
     height: 30px;
+    cursor: pointer;
+    color: #172f25e3;
   }
   
   .col-text p {
     margin: 0;
+    font-size: 1em;
+    color: #555;
+  }
+  
+  @media (max-width: 480px) {
+    .column {
+      width: 100%; /* For 1 column on small screens */
+    }
   }
   
   .card-container {
@@ -40,37 +65,55 @@
     padding-bottom: 70px;
   }
   
-  .card {
-    display: flex;
-    align-items: center;
-    width:95%;
+  .offer-card, .card {
+    width: 95%;
     margin: 10px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 10px;
     background-color: white;
-flex-direction: row;
+  }
+  
+  .offer-card {
+    background: linear-gradient(to right, #f3eca54f, #f5e9798f, #f5d15b96);
+    }
+  
+  .offer-details, .card {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+  
+  .offer-details img {
+    width: 35px;
+    border-radius: 50%;
+    margin: 0 20px 0 10px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
+    transition: filter 0.3s ease-in-out;
+  }
+  
+  .text-details, .card-details {
+    flex: 1;
   }
   
   .card-icons {
     width: 40px;
     height: 40px;
     margin-right: 15px;
-  }
-  .card-icons {
     font-size: 35px;
+    color: #313439;
   }
   
-  .card-details {
-    flex: 1;
-  }
-  
-  .card-details h6 {
+  .card-details h6, .text-details h6 {
     margin: 0;
+    font-size: 1em;
+    color: #333;
   }
-   
-  .card-details p {
+  
+  .card-details p, .text-details p {
     margin: 5px 0 0;
+    /* font-size: 0.875em; */
+    color: #555;
   }
   
   .card-main {
@@ -91,6 +134,12 @@ flex-direction: row;
     width: 40px;
     height: auto;
     margin-left: 10px;
+    font-size: 35px;
+    color: #313439;
+  }
+  
+  .image-button:hover {
+    color: #555;
   }
   
   .card-icons:hover,
@@ -98,56 +147,36 @@ flex-direction: row;
     filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.7));
   }
   
-.image-button:hover {
-  color: #555;
-}
-
-.offer-card {
-  width: 95%; 
-  margin: 10px ;
-  background:linear-gradient(to right, #e2d2424f, #e4d7608f, #f5c42296);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-.offer-details {
-  display: flex;
-  align-items: center;
-  /* justify-content: space-around; */
-}
-.offer-details img {
-  width: 35px; 
-  border-radius: 50%;
-  margin: 0 20px 0 10px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
-  transition: filter 0.3s ease-in-out; 
-}
-.text-details, .card-details{
-  margin: 2px 0 0 0;
-}
-.saved-amount {
-  color: #4CAF50;
-  margin: 20px 0 0 3rem;
-}
-
-.save-money-button {
-  background-color: #4CAF50; 
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px; 
-  transition: background-color 0.3s ease;
-}
-.save-money-button:hover {
-  background-color: #45a049; 
-}
-p{
-  font-size: small;
-}
-h6{
-  margin-top: 5px;
-}
-.card-details p , .text-details p{
-  margin:0;
-}
+  .saved-amount {
+    color: #4CAF50;
+    margin: 20px 0 0 3rem;
+    font-size: 0.875em;
+  }
+  
+  .save-money-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .save-money-button:hover {
+    background-color: #45a049;
+  }
+  
+  p {
+    font-size: small;
+  }
+  
+  h6 {
+    margin-top: 5px;
+  }
+  
+  .card-details p, .text-details p {
+    margin: 0;
+  }
+  

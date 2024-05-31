@@ -125,8 +125,8 @@ export class SubscriptionComponent implements OnInit {
     // this.snackBar.open('Subscription confirmed successfully!', 'Close', {
     //   duration: 3000,
     // });
-    this.router.navigate(['/my-sub']);
-  }
+    this.router.navigate(['/my-sub'], { queryParams: { fromSubscription: true } });
+    }
   resumeSubscription(event: Event) {
     event.preventDefault();
     this.showResumePopup = true;

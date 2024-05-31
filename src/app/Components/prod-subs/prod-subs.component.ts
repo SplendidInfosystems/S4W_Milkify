@@ -11,7 +11,7 @@ export class ProdSubsComponent {
   rows = [
     [ 
       { icon: 'inventory', name: 'Products', route: 'home' },
-      { icon: 'subscriptions', name: 'My Subscription', route: 'my-sub' },
+      { icon: 'subscriptions', name: 'Subscription', route: 'my-sub' },
       { icon: 'beach_access', name: 'Vacation', route: 'vacation' }
     ], 
     [
@@ -21,7 +21,7 @@ export class ProdSubsComponent {
     ],
     [
       { icon: 'receipt', name: 'Referral', route: 'refer' },
-      { icon: 'local_offer', name: 'Offer Zone', route: 'offers' },
+      { icon: 'local_activity', name: 'Offer Zone', route: 'offers' },
       { icon: '', name: '', route: '' }
   
     ]
@@ -32,10 +32,10 @@ export class ProdSubsComponent {
     return headers[index] || ''; 
   }
   cards = [
-    { image: 'account_circle', title: 'Account & Preference', description: 'Edit Address,Delivery Preferences', route: '/accounts' },
-    { image: 'account_balance_wallet', title: 'Wallet and payments', description: 'Add Money,Add or Saved Cards', route: '/wallet' },
-    { image: 'help', title: '   Need Helps ?     ', description: 'Call or Chat  with us', route: '/need-help' },
-    { image: 'assignment_turned_in', title: 'Legal', description: 'Privacy, Terms and Condition', route: '/legal' },
+    { image: 'person', title: 'Account & Preference', description: 'Edit Address,Delivery Preferences', route: '/accounts' },
+    { image: 'credit_card', title: 'Wallet and payments', description: 'Add Money,Add or Saved Cards', route: '/wallet' },
+    { image: 'help_outline', title: '   Need Help?     ', description: 'Call or Chat  with us', route: '/need-help' },
+    { image: 'security', title: 'Legal', description: 'Privacy, Terms and Condition', route: '/legal' },
    
   ];
   navigateToCol(route: string): void {
