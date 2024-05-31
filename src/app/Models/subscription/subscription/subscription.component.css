@@ -16,7 +16,7 @@
     margin-left: 10px;
     display: flex;
     font-size: 20px;
-    padding: 10px;
+    padding: 22px 10px;
   }
   
   .head {
@@ -33,9 +33,8 @@
 }
   .logo {
     padding: 10px;
-    height: 50vh;
+    height: 40vh;
     text-align: center;
-    border-radius: 5px;
   }
   .logo img {
     width: 100%;
@@ -442,7 +441,7 @@
 .side-button {
   position: absolute;
   left: 10px;
-  bottom: 41px;
+  top: 25px;
   z-index: 1;
   background: linear-gradient(135deg, #FEE58C 0%, #FEE58C 100%);
   color: #000;
@@ -457,7 +456,7 @@
 
 .whatsapp {
   position: absolute;
-  bottom: 35px; 
+  bottom: 30px; 
   right: 15px; 
   width: 40px;  
   height: 40px; 

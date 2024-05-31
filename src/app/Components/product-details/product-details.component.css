@@ -12,7 +12,7 @@
     cursor: pointer;
     transition: transform 0.2s ease;
     border: none;
-    margin: 10px 15px;
+    margin: 22px 10px;
     font-size: 20px;
     background-color: transparent;
 }
@@ -31,7 +31,7 @@
 }
   .logo {
     padding: 10px;
-    height: 50vh;
+    height: 40vh;
     text-align: center;
     border-radius: 5px;
   }
@@ -308,7 +308,7 @@
 .side-button {
   position: absolute;
   left: 10px;
-  bottom: 41px;
+  top: 25px;
   z-index: 1;
   background: linear-gradient(135deg, #FEE58C 0%, #FEE58C 100%);
   color: #000;
@@ -323,7 +323,7 @@
 
 .whatsapp {
   position: absolute;
-  bottom: 35px; 
+  bottom: 25px; 
   right: 15px; 
   width: 40px;  
   height: 40px; 
