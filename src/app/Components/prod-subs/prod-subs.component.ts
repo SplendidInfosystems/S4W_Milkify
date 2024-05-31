@@ -32,12 +32,16 @@ export class ProdSubsComponent {
     return headers[index] || ''; 
   }
   cards = [
-    { image: 'person', title: 'Account & Preference', description: 'Edit Address,Delivery Preferences', route: '/accounts' },
-    { image: 'credit_card', title: 'Wallet and payments', description: 'Add Money,Add or Saved Cards', route: '/wallet' },
-    { image: 'help_outline', title: '   Need Help?     ', description: 'Call or Chat  with us', route: '/need-help' },
-    { image: 'security', title: 'Legal', description: 'Privacy, Terms and Condition', route: '/legal' },
-   
+    {
+      items: [
+        { image: 'account_circle', title: 'Account & Preference', description: 'Edit Address, Delivery Preferences', route: '/accounts' },
+        { image: 'account_balance_wallet', title: 'Wallet and Payments', description: 'Add Money, Add or Saved Cards', route: '/wallet' },
+        { image: 'help', title: 'Need Helps?', description: 'Call or Chat with us', route: '/need-help' },
+        { image: 'assignment_turned_in', title: 'Legal', description: 'Privacy, Terms and Condition', route: '/legal' },
+      ]
+    }
   ];
+  
   navigateToCol(route: string): void {
     if (route) {
       this.router.navigate([route]);

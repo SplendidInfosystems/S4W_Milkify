@@ -1,10 +1,9 @@
 <div class="prod-subs-container">
-    
   <div class="sub-container">
     <div class="column" *ngFor="let row of rows; let i = index">
       <h6>{{ getColumnHeader(i) }}</h6>
       <div class="column-main">
-        <div class="row" *ngFor="let col of row">          
+        <div class="row" *ngFor="let col of row">
           <div class="col-icons">
             <mat-icon (click)="navigateToCol(col.route)">{{ col.icon }}</mat-icon>
           </div>
@@ -15,38 +14,37 @@
       </div>
     </div>
   </div>
-  
-  
-  
+
   <div class="card-container">
+
     <div class="offer-card">
       <div class="offer-details">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNLcY9blokt-3clokg1ua8PMFLuph-4Ihp3g&s" />
+        <img src="https://png.pngtree.com/element_our/20200702/ourlarge/pngtree-vector-crown-vip-icon-element-image_2280858.jpg" alt="Icon" />
         <div class="text-details">
           <h6><span style="color: #4CAF50;">VIP</span> Membership</h6>
-          <p>You are a VIP Member</p>
+          <p class="text-details-para">You are a VIP Member</p>
         </div>
-        <p class="saved-amount"><strong>Saved $0.0</strong></p>
+        <p class="saved-amount">Saved $0.0</p>
       </div>
     </div>
-  
+
     <div class="card" *ngFor="let card of cards">
-      <mat-icon class="card-icons">{{ card.image }}</mat-icon>
-  
-      <div class="card-details">
-        <h6>{{ card.title }}</h6>
-        <p>{{ card.description }}</p>
-      </div>
-      
-      <div class="card-main">
-        <button class="image-button" (click)="navigateTo(card)">
-          <mat-icon>chevron_right</mat-icon>
-        </button>
+      <div class="card-item" *ngFor="let item of card.items">
+        <mat-icon class="card-icons">{{ item.image }}</mat-icon>
+        <div class="card-details">
+          <h6>{{ item.title }}</h6>
+          <p class="light-grey-text">{{ item.description }}</p>
+        </div>
+        <div class="card-main">
+          <button class="image-button" (click)="navigateTo(item)">
+            <mat-icon>chevron_right</mat-icon>
+          </button>
+        </div>
       </div>
     </div>
+
   </div>
-  
-      
-  </div>
-  
-  <app-tapbar></app-tapbar>
+
+</div>
+
+<app-tapbar></app-tapbar>

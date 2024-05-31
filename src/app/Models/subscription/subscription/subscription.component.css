@@ -18,7 +18,7 @@
     font-size: 20px;
     padding: 22px 10px;
   }
-  
+
   .head {
     text-align: center;
     /* margin-left: 5%; */
@@ -32,8 +32,8 @@
 
 }
   .logo {
-    /* padding: 10px; */
-    height: 40vh;
+    padding: 10px;
+    height: 45vh;
     text-align: center;
   }
   .logo img {
@@ -183,14 +183,14 @@ margin-left: 5px;
     font-size: 16px;
   }
   .add-button {
-    padding: 5px 38px ;
+    padding: 5px 35px;
     font-size: 16px;
     margin-top: 8px;
     background-color: #04B56C;
     color: #fff;
     border: none;
     border-radius: 8px;
-    margin-left: 11rem;
+    margin-left: 10rem;
 
   }
   
@@ -227,7 +227,7 @@ margin-left: 5px;
    
    .grey-card p{
     margin: 0;
-    font-size: 14px;
+    font-size: 12px;
     color: grey
   }
   .grey-card{
@@ -235,9 +235,9 @@ margin-left: 5px;
     padding: 2px;
     text-align: center;
     margin: 8px auto;
-    border-radius: 5px;
-    background-color: rgb(232 235 231 / 59%);
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    border-radius: 10px;
+    background-color: rgb(211, 202, 202);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
  
   .dotted-card {
@@ -405,7 +405,7 @@ margin-left: 5px;
   .cart i {
     cursor: pointer;
   }
-  .types h2{
+  /* .types h2{
     font-size: 20px;
     padding: 8px;
     border-top: 1px solid gray;
@@ -414,37 +414,75 @@ margin-left: 5px;
 .subscript{
   display: flex;
   flex-direction: row;
-  border-bottom: 1px solid lightgray;
+  border-top: 1px solid gray;
   background-color: #F2FBF8;
 }
 .script h2{
-  padding: 10px;
-  font-size: 15px;
-  margin: auto;
-}
-.mat-mdc-text-field-wrapper {
-  width: 70%;
-  z-index: 0;
-  height: 5vh;
+    padding: 10px;
+    font-size: 15px;
+    margin: auto;
 }
 .date h2{
-  padding: 10px;
-  font-size: 15px;
-  margin: auto;
+    padding: 10px;
+    font-size: 15px;
+    margin: auto;
+    /* margin-left: 12px; */
 }
 .sub-type{
   display: flex;
-    /* border: 1px solid #ccc; */
+    border: 1px solid #ccc;
     margin-left: 10px;
     border-radius: 10px;
-    width: 60%;
-    height: 5vh;
+    margin-bottom: 10px;
+    width: 80%;
+    padding: 6px;
     justify-content: space-evenly;
-
 }
 .typed p, .edit{
-  text-align: center;
-  padding-top: 5px;
+    text-align: center;
+    margin-top:5px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    /* padding-top: 15px; */
+}
+.edit i{
+    color: #04B56C;
+}
+
+::ng-deep .mat-calendar-body-cell.selected-date .mat-calendar-body-cell-content {
+    background-color: #04B56C !important;
+    color: #fff !important;
+    border-radius: 50%;
+  }
+
+  .forms-field{
+    display: flex;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    margin-left: 10px;
+    border-radius: 10px;
+    width: 95%;
+    margin-bottom: 10px;
+    height: 45px;
+    /* padding: 0; */
+    justify-content: space-evenly;
+    /* text-align: center; */
+    /* justify-content: space-between; */
+  }
+  .forms-field p{
+    /* padding: 8px 8px; */
+    margin-top: 15px;
+font-size: 12px;
+font-weight: 500;
+margin-left: 10px;
+  }
+  .forms-field input{
+    display: none;
+  }
+  .mat-datepicker-toggle {
+    font-size: 10px; /* Adjust the font size as needed */
+    color: #04B56C;
 }
 
 .side-button {

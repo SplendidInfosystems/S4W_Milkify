@@ -19,7 +19,9 @@ export class SubscriptionComponent implements OnInit {
   ];
   price = 27;
   quantity = 1;
-  // totalPrice = 27;
+  date = '30 may 2024';
+  selectedDates: Date[] = [];
+  totalPrice = 27;
   alternateDates: Date[] = [];
   isSubscriptionTypesVisible = false;
   startDate: Date = new Date();
@@ -49,9 +51,7 @@ export class SubscriptionComponent implements OnInit {
       selectedDate: [null]
     });
 
-    this.form.get('selectedDate')?.valueChanges.subscribe((date: Date) => {
-      this.calculateAlternateDates(date);
-    });
+   
   }
   ngOnInit(): void {
     this.defaultDate = new Date();
@@ -172,33 +172,32 @@ export class SubscriptionComponent implements OnInit {
     //   duration: 3000,
     // });
   }
-  onStartDateSelected(selectedDate: Date) {
-    const endDate = new Date(selectedDate.getFullYear(), 11, 31);
-    this.dateAdapter.setLocale('en'); // Set locale if necessary
-    this.endDateInput._startInput.value = selectedDate;
-    this.endDateInput._endInput.value = endDate;
-  }
-  calculateAlternateDates(selectedDate: Date) {
-    if (!selectedDate) {
-      this.alternateDates = [];
+  calculateSelectedDates(startDate: Date): void {
+    if (!startDate) {
+      this.selectedDates = [];
       return;
     }
-    this.alternateDates = [];
-    for (let i = -15; i <= 15; i++) {
-      if (i !== 0 && Math.abs(i) % 2 === 0) {
-        const alternateDate = new Date(selectedDate);
-        alternateDate.setDate(selectedDate.getDate() + i);
-        this.alternateDates.push(alternateDate);
+
+    const endDate = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0);
+    this.selectedDates = [];
+
+    for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+      if (this.selectedSubscription === 'Daily' || (this.selectedSubscription === 'Alternate' && d.getDate() % 2 === startDate.getDate() % 2)) {
+        this.selectedDates.push(new Date(d));
       }
     }
   }
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
     if (view === 'month') {
-      const date = cellDate.getDate();
-      return this.alternateDates.some(d => d.getTime() === cellDate.getTime()) ? 'alternate-date' : '';
+      return this.selectedDates.some(d => d.getTime() === cellDate.getTime()) ? 'selected-date' : '';
     }
     return '';
+  };
+
+  dateFilter = (date: Date | null): boolean => {
+    const today = new Date();
+    return date ? date >= today : false;
   };
   shareOnWhatsApp(): void {
     const message = encodeURIComponent('Message on whatsapp for new offers!');
