@@ -22,9 +22,9 @@
       <div *ngIf="showResendOption">
         <button (click)="resend()">Resend</button>
       </div>
-      <button *ngIf="showVerifyButton" (click)="verifyOTP()">Verify & Proceed</button>
+      <button *ngIf="showVerifyButton" (click)="verifyOTP()" [disabled]="!otp" class="otp-button">Verify & Proceed</button>
     </div>
-  </div>
+    
 
   <!-- Modal -->
   <div *ngIf="showModal" class="modal-backdrop" (click)="closeModal()"></div>

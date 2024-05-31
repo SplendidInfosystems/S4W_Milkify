@@ -32,7 +32,7 @@ export class WalletComponent {
   currentBalance: number = 0;
   ReBalance: number = 250;
   Balance: number = 1000;
-  selectedOption: string = "Setup autopay"; 
+  selectedOption: string = "recharge"; 
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
   price: number = 1000;
   selectedAmount: number = 1000;
@@ -41,6 +41,7 @@ export class WalletComponent {
   showPopup: boolean = false;
   couponCode: string = '1234';
   errorMessage: string = '';
+  userInput: number = 1000;
 
   constructor(private router: Router) { }
 
@@ -51,6 +52,12 @@ export class WalletComponent {
   goBack(): void {
     this.router.navigate(['/home']);
   }
+  offerSets: any[] = [
+    { cashback: '₹100', rechargeAmount: '₹500' },
+    { cashback: '₹200', rechargeAmount: '₹1500' },
+    { cashback: '₹300', rechargeAmount: '₹3000' },
+    { cashback: '₹500', rechargeAmount: '₹5000' },
+  ];
 
   toggleOption(option: string): void {
     this.selectedOption = option;

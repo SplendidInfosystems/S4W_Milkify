@@ -75,7 +75,7 @@
   border-radius: 5px;
 }
 
-.otp button {
+.otp-button {
   width: 300px;
   height: 40px;
   background-color: #04B56C;
@@ -84,13 +84,15 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  margin-top: 520px;
-  
-  &[disabled]{
-    background-color: #ccc;
-    color: #333;
+  margin-top: 520px; /* Adjusted margin for better positioning */
 }
+
+.otp-button[disabled] {
+  background-color: #ccc;
+  color: #333;
+  cursor: not-allowed;
 }
+
 
 .modal-backdrop {
   position: fixed;

@@ -59,42 +59,38 @@
         </div>
       </div>
 
-  <div class="subscript">
-    <div class="script">
-        <h2>Subscription type</h2>
-        <div class="sub-type">
+      <div class="subscript">
+        <div class="script">
+          <h2>Subscription type</h2>
+          <div class="sub-type">
             <div class="typed">
-            <p *ngIf="!isSubscriptionTypesVisible" (click)="toggleSubscriptionTypes()">{{ selectedSubscription }}</p>
-            <ng-container *ngIf="isSubscriptionTypesVisible">
-              <p (click)="selectSubscription('Daily')">Daily</p>
-              <p (click)="selectSubscription('Alternate')">Alternate</p>
-              <p (click)="selectSubscription('Weekly')">Weekly</p>
-              <p (click)="selectSubscription('One Time')">One Time</p>
-            </ng-container>
-        </div>
-           <div class="edit"> <i class="fas fa-edit" (click)="toggleSubscriptionTypes()"></i></div>
-        </div>
-    </div>
-    <div class="date">
-        <h2>Start Date</h2>
-        <form [formGroup]="form">
-            <mat-form-field appearance="outline">
-              <mat-label>Select a date</mat-label>
-              <input matInput [matDatepicker]="picker" formControlName="selectedDate">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-          </form>
-          
-          <div *ngIf="alternateDates.length > 0">
-            <ul>
-              <li *ngFor="let date of alternateDates">{{ date | date }}</li>
-            </ul>
+              <p *ngIf="!isSubscriptionTypesVisible" (click)="toggleSubscriptionTypes()">{{ selectedSubscription }}</p>
+              <ng-container *ngIf="isSubscriptionTypesVisible">
+                <p (click)="selectSubscription('Daily')">Daily</p>
+                <p (click)="selectSubscription('Alternate')">Alternate</p>
+                <p (click)="selectSubscription('Weekly')">Weekly</p>
+                <p (click)="selectSubscription('One Time')">One Time</p>
+              </ng-container>
+            </div>
+            <div class="edit">
+              <i class="fas fa-edit" (click)="toggleSubscriptionTypes()"></i>
+            </div>
           </div>
+        </div>
+        <div class="date">
+          <h2>Start Date</h2>
+          <form [formGroup]="form">
+            <div class="forms-field" >
+              <p>{{ date }}</p>
+              <input matInput [matDatepicker]="picker" formControlName="selectedDate" [matDatepickerFilter]="dateFilter">
+              <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+              <mat-datepicker #picker [dateClass]="dateClass"></mat-datepicker>
+            </div>
+          </form>
+        </div>
     </div>
-  </div>
-
-
+    
+    
     <div class="descript">
         <h6><strong>Product Description</strong></h6>     
          <ul>

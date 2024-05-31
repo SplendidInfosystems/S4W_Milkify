@@ -11,10 +11,16 @@ import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent {
-  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
+  images = [
+    'https://content.jdmagicbox.com/comp/delhi/s6/011pxx11.xx11.191015075931.b6s6/catalogue/country-delight-okhla-industrial-area-delhi-milk-dairy-nlw19dbmil.jpg',
+    'https://imgmedia.lbb.in/media/2021/06/60d2e2cda7f7900b57c7ccce_1624433357587.jpg',
+    'https://content.jdmagicbox.com/comp/delhi/s6/011pxx11.xx11.191015075931.b6s6/catalogue/country-delight-okhla-industrial-area-delhi-milk-dairy-nlw19dbmil.jpg',
+    'https://qph.cf2.quoracdn.net/main-qimg-30d4572669a338e4b3dc089de2c587ca'
+  ];
   startDate: Date = new Date();
   endDate: Date = new Date();
   defaultDate: Date;
+  date = '31 may 2024';
   selectedSubscription = 'Daily';
   isSubscriptionTypesVisible: boolean = false;
   price: number = 53;
@@ -124,5 +130,11 @@ export class ProductDetailsComponent {
     if (this.picker) {
       this.picker.close();
     }
+  }
+  shareOnWhatsApp(): void {
+    const message = encodeURIComponent('Message on whatsapp for new offers!');
+    const url = encodeURIComponent('https://img.freepik.com/premium-photo/sustainable-travel-photo-abstract-expressionism-art-white-background_873925-1022238.jpg?w=740');
+    const whatsappUrl = `https://wa.me/?text=${message}%20${url}`;
+    window.open(whatsappUrl, '_blank');
   }
 }

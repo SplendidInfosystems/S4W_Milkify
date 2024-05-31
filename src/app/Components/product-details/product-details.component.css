@@ -14,7 +14,7 @@
 
 .logo {
     padding: 0px;
-    height: 50vh;
+    height: 45vh;
     text-align: center;
     border-radius: 5px;
 }
@@ -28,6 +28,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    background-color: #F2FBF8;
 }
 
 .tales {
@@ -35,7 +36,13 @@
 }
 
 .tales h3 {
-    font-size: 17px;
+    font-size: 16px;
+    margin-bottom: 0rem;
+}
+.tales p{
+    margin-bottom: 0rem;
+    font-size: 13px;
+    color: #6d6d6d;
 }
 .offer-card {
     width: 95%;
@@ -43,10 +50,15 @@
     margin: 5px auto;
     background: linear-gradient(to right, #e2d2424f, #e4d7608f, #f6c31896);
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: bold;
+  
 }
-
+.cover{
+    background-color: #F2FBF8;
+}
 .offer-card p{
     margin: 0;
 }
@@ -54,24 +66,92 @@
 .mid {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+    background-color: #F2FBF8;
+}
+.grey-card p{
+    margin: 0;
+    font-size: 12px;
+    color: grey
+  }
+  .grey-card{
+    width: 95%;
+    padding: 5px;
+    text-align: center;
+    margin: 8px auto;
+    border-radius: 10px;
+    background-color:#E2ECEB;
+  }
+  .forms-field{
+    display: flex;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    margin-left: 10px;
+    border-radius: 10px;
+    width: 95%;
+    margin-bottom: 10px;
+    height: 45px;
+    justify-content: space-evenly;
+  }
+  .forms-field p{
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 10px;
+  }
+  .forms-field input{
+    display: none;
+  }
+  .mat-datepicker-toggle {
+    font-size: 10px; 
+    color: #04B56C;
 }
 
 
-.add {
-    margin-right: 25px;
+.side-button {
+  position: absolute;
+  left: 10px;
+  bottom: 15px;
+  z-index: 1;
+  background: linear-gradient(135deg, #FEE58C 0%, #FEE58C 100%);
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 2px 5px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.whatsapp {
+  position: absolute;
+  bottom:10px; 
+  right: 15px; 
+  width: 40px;  
+  height: 40px; 
+  background: transparent;
+  border: none;
+  padding: 5px; 
+}
+
+
+
+
+.add p{
+    margin-left: 12px;
     margin-top: 15px;
 }
 
+
 .tail {
-    background: linear-gradient(135deg, #FEE58C 0%, #B4E856 100%);
-    padding: 5px;
-    border-radius: 5px;
-    height: 33px;
-    margin-left: 75px;
-    width: 35%;
-    margin-top: 10px;
-    justify-content: space-around;
+  background: linear-gradient(135deg, #FEE58C 0%, #B4E856 100%);
+  padding: 4px;
+  border-radius: 5px;
+  height: 26px;
+  margin-left: 35%;
+  width: 30%;
+  margin-top: 10px;
 }
 
 .tail p {
@@ -79,7 +159,7 @@
     text-align: center;
     color: #000;
     font-weight: 500;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 .art {
@@ -89,58 +169,80 @@
     padding: 5px;
     border-radius: 5px;
     height: 33px;
-    margin-left: 145px;
+    margin-right: 15px;
     display: flex;
     width: 28%;
     margin-top: 10px;
     justify-content: space-around;
 }
 
-
+.dotted-card {
+  border: 1px dashed #04B56C;
+  background: linear-gradient(45deg, #04b56c73, white);
+  padding: 2px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 95%;
+  margin: 10px auto;
+}
+.dot-card-details {
+  display: flex;
+  align-items: center;
+}
+.dot-card-details span{
+  font-size: 14px;
+  font-weight: 500;
+}
+.dot-card-details img {
+width: 40px;
+height: 40px;
+margin-right: 11px;
+}
+.saved-amount {
+  margin: 0;
+  color: #04B56C;
+  cursor: pointer;
+  display: flex;
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: 10px;
+}
 
 .descript {
     border-top: 1px solid gray;
-    padding-top: 10px;
-    height: 60vh;
-    background-color: #F2FBF8;
-}
-
-
-
-.descript h2 {
-    font-size: 1.5em;
+    padding: 12px;
+    padding-bottom: 65px;
+    background-color: #f1f7f7;
+  }
+  .descript h6 {
     color: #333;
-    padding: 20px;
-}
-
-.descript ul {
+    padding: 10px;
+  }
+  .descript ul {
     list-style-type: disc;
     margin-top: 10px;
     margin-bottom: 20px;
-}
-
-.descript li {
-    font-size: 1.1em;
+  }
+  .descript li {
     color: #666;
     margin-bottom: 10px;
-}
+  }
 
-.address-price {
+.subscription {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #fff; 
-    padding: 10px; 
-    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 999; 
+    background-color: #fff;
+    padding: 10px;
+    /* box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1); */
+    z-index: 999;
     text-align: center;
     display: flex;
-    justify-content: space-between; 
-    align-items: center; 
-}
-
-.add-address {
+    justify-content: space-between;
+    align-items: center;
+  }
+  .add-sub {
     width: 100%;
     background-color: #04B56C;
     color: #fff;
@@ -149,19 +251,26 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-}
-
-.add-address:hover {
+  }
+  .add-sub span{
+    margin-right: 8rem;
+  }
+  .add-sub:hover {
     background-color: #04B56C;
-}
-
+  }
 
 .subscript{
     display: flex;
     flex-direction: row;
-      /* justify-content:space-evenly; */
-    border-top: 1px solid gray;
+    justify-content: space-between;
     background-color: #F2FBF8;
+    border-top: 2px solid #ccc;
+}
+.script{
+    margin-left: 10px;
+}
+.date{
+margin-right: 30px;
 }
 .script h2{
     padding: 10px;
@@ -172,19 +281,29 @@
     padding: 10px;
     font-size: 15px;
     margin: auto;
+    /* margin-left: 12px; */
 }
 .sub-type{
     display: flex;
     border: 1px solid #ccc;
     background-color: #fff;
-    margin-left: 10px;
+    margin-left: 8px;
     border-radius: 10px;
-    width: 85%;
+    margin-bottom: 10px;
+    width: 80%;
+    padding: 6px;
     justify-content: space-evenly;
 }
 .typed p, .edit{
     text-align: center;
-    padding-top: 15px;
+    margin-top:5px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    /* padding-top: 15px; */
+}
+.edit i{
+    color: #04B56C;
 }
 
 ::ng-deep .mat-calendar-body-cell.selected-date .mat-calendar-body-cell-content {
