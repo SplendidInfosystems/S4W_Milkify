@@ -32,7 +32,6 @@
 
 }
   .logo {
-    padding: 10px;
     height: 45vh;
     text-align: center;
   }
@@ -209,36 +208,35 @@ margin-left: 5px;
     height: 100%;
   }
   .offer-card {
-    width: 93%;
-    padding: 6px;
-    margin: 10px auto;
-    background: linear-gradient(to right, #fff, #e4d7608f, #efd06996);
-        border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-  .offer-details h6{
-    font-size: 14px;
-    margin: 0 5px;
-    /* font-weight: bold; */
-    }
-    .offer-card p{
-      margin: 0;
-    }
-   
-   .grey-card p{
-    margin: 0;
-    font-size: 12px;
-    color: grey
-  }
-  .grey-card{
-    width: 93%;
-    padding: 2px;
-    text-align: center;
-    margin: 8px auto;
+    width: 95%;
+    padding: 9px;
+    margin: 5px auto;
+    background: linear-gradient(to right, #e2d2424f, #e4d7608f, #f6c31896);
     border-radius: 10px;
-    background-color: rgb(211, 202, 202);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: bold;
+  
+}
+
+.offer-card p{
+    margin: 0;
+}
+
+    .grey-card p{
+      margin: 0;
+      font-size: 12px;
+      color: grey
+    }
+    .grey-card{
+      width: 95%;
+      padding: 5px;
+      text-align: center;
+      margin: 8px auto;
+      border-radius: 10px;
+      background-color:#E2ECEB;
+    }
  
   .dotted-card {
     border: 1px dashed #04B56C;
@@ -246,35 +244,32 @@ margin-left: 5px;
     padding: 2px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 93%;
-    margin: 13px auto;
-}
-.dot-card-details {
+    width: 95%;
+    margin: 10px auto;
+  }
+  .dot-card-details {
     display: flex;
     align-items: center;
-    padding: 5px;
-}
-.dot-card-details img {
-  width: 30px;
-  height: 30px;
+  }
+  .dot-card-details span{
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .dot-card-details img {
+  width: 40px;
+  height: 40px;
   margin-right: 11px;
-}
-.text-details{
-  text-align: center;
-}
-.text-details p {
-  font-size: 13px;
-  margin: 0 10px 0 0;
-  color: #333;
-}
-.saved-amount {
+  }
+  .saved-amount {
     margin: 0;
     color: #04B56C;
     cursor: pointer;
-    font-size: 13px;
-}
-
-
+    display: flex;
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: 10px;
+  }
+  
 
 .edit-mode {
   display: flex;
@@ -405,50 +400,53 @@ margin-left: 5px;
   .cart i {
     cursor: pointer;
   }
-  /* .types h2{
-    font-size: 20px;
-    padding: 8px;
-    border-top: 1px solid gray;
-  }
-  
+ 
 .subscript{
   display: flex;
   flex-direction: row;
-  border-top: 1px solid gray;
+  justify-content: space-between;
   background-color: #F2FBF8;
+  border-top: 2px solid #ccc;
+}
+.script{
+  margin-left: 10px;
+}
+.date{
+margin-right: 30px;
 }
 .script h2{
-    padding: 10px;
-    font-size: 15px;
-    margin: auto;
+  padding: 10px;
+  font-size: 15px;
+  margin: auto;
 }
 .date h2{
-    padding: 10px;
-    font-size: 15px;
-    margin: auto;
-    /* margin-left: 12px; */
+  padding: 10px;
+  font-size: 15px;
+  margin: auto 5px;
 }
 .sub-type{
   display: flex;
-    border: 1px solid #ccc;
-    margin-left: 10px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    width: 80%;
-    padding: 6px;
-    justify-content: space-evenly;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  margin-left: 8px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  width: 80%;
+  padding: 6px;
+  justify-content: space-evenly;
 }
 .typed p, .edit{
-    text-align: center;
-    margin-top:5px;
-    font-size: 13px;
-    font-weight: 500;
-    margin-bottom: 5px;
-    /* padding-top: 15px; */
+  text-align: center;
+  margin-top:5px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  /* padding-top: 15px; */
 }
 .edit i{
-    color: #04B56C;
+  color: #04B56C;
 }
+
 
 ::ng-deep .mat-calendar-body-cell.selected-date .mat-calendar-body-cell-content {
     background-color: #04B56C !important;
@@ -465,17 +463,14 @@ margin-left: 5px;
     width: 95%;
     margin-bottom: 10px;
     height: 45px;
-    /* padding: 0; */
+
     justify-content: space-evenly;
-    /* text-align: center; */
-    /* justify-content: space-between; */
   }
   .forms-field p{
-    /* padding: 8px 8px; */
-    margin-top: 15px;
-font-size: 12px;
-font-weight: 500;
-margin-left: 10px;
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 10px;
   }
   .forms-field input{
     display: none;

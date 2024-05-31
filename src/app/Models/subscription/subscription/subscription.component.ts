@@ -21,7 +21,7 @@ export class SubscriptionComponent implements OnInit {
   quantity = 1;
   date = '30 may 2024';
   selectedDates: Date[] = [];
-  totalPrice = 27;
+  // totalPrice = 27;
   alternateDates: Date[] = [];
   isSubscriptionTypesVisible = false;
   startDate: Date = new Date();
