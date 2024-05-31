@@ -27,10 +27,7 @@
   font-family: 'Arial', sans-serif;
 }
 
-
-
 .OTP-verify {
-
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
@@ -86,10 +83,10 @@
   font-size: 16px;
   margin-top: 520px;
   
-  &[disabled]{
+  &[disabled] {
     background-color: #ccc;
     color: #333;
-}
+  }
 }
 
 .modal-backdrop {
@@ -113,10 +110,11 @@
   z-index: 1000;
   text-align: center;
   width: 80%;
-    border-radius: 10px;
+  border-radius: 10px;
 }
-.modal-content button{
-  border:none;
-  color:#04B56C;
+
+.modal-content button {
+  border: none;
+  color: #04B56C;
   background: transparent;
 }

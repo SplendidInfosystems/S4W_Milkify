@@ -21,7 +21,7 @@ export class LoginNextComponent implements OnInit {
   modalMessage: string = '';
   isOtpFieldEmpty: boolean = true;
 
-  constructor(private router: Router,  private loginService: LoginService) { }
+  constructor(private router: Router, private loginService: LoginService) { }
 
   ngOnInit(): void {
     this.mobileNumber = this.loginService.getMobileNumber();
@@ -38,7 +38,7 @@ export class LoginNextComponent implements OnInit {
     if (currentInput.value.length === 1 && index < otpInputArray.length - 1) {
       otpInputArray[index + 1].nativeElement.focus();
     }
-    this.checkOtpFieldStatus(); // Call the method to check OTP field status
+    this.checkOtpFieldStatus();
   }
 
   onOtpKeydown(event: KeyboardEvent, index: number): void {
@@ -47,12 +47,12 @@ export class LoginNextComponent implements OnInit {
     if (event.key === 'Backspace' && currentInput.value.length === 0 && index > 0) {
       otpInputArray[index - 1].nativeElement.focus();
     }
-    this.checkOtpFieldStatus(); // Call the method to check OTP field status
+    this.checkOtpFieldStatus();
   }
 
   checkOtpFieldStatus(): void {
     const enteredOtp = this.otpInputs.toArray().map(input => input.nativeElement.value).join('');
-    this.isOtpFieldEmpty = enteredOtp.trim().length === 0;
+    this.isOtpFieldEmpty = enteredOtp.trim().length !== 6;
   }
 
   verifyOTP(): void {

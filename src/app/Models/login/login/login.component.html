@@ -1,67 +1,66 @@
 <div class="container">
     <ngb-carousel *ngIf="images && images.length > 0">
-        <ng-template ngbSlide>
-            <div class="logo">
-                <img src="..\assets\Images\logo.png" alt="" />
-            </div>
-            <div class="carousel-caption">
-                <p>Enjoy farm-fresh Milk!</p>
-            </div>
-        </ng-template>
-        <ng-template ngbSlide>
-            <div class="logo">
-                <img src="https://s3.us-west-2.amazonaws.com/customer-app-cards/promotions/milk_1628769125586.png"
-                    alt="" />
-            </div>
-            <div class="carousel-caption">
-                <p>100% Natural Milk</p>
-            </div>
-        </ng-template>
-        <ng-template ngbSlide>
-            <div class="logo">
-                <img src="https://cdnasd.countrydelight.in/cdproductimg/new-website/Mask%20Group%2030651%403x_1672914970413.webp"
-                    alt="" />
-            </div>
-            <div class="carousel-caption">
-                <p>Just Pure Honest Milk At Your Doorstep</p>
-            </div>
-        </ng-template>
-        <ng-template ngbSlide>
-            <div class="logo">
-                <img src="https://cdni.iconscout.com/illustration/premium/thumb/shopping-order-delivery-tracking-4268120-3550584.png"
-                    alt="" />
-            </div>
-            <div class="carousel-caption">
-                <p>Order Delivery</p>
-            </div>
-        </ng-template>
+      <ng-template ngbSlide>
+        <div class="logo">
+          <img src="..\assets\Images\logo.png" alt="" />
+        </div>
+        <div class="carousel-caption">
+          <p>Enjoy farm-fresh Milk!</p>
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <div class="logo">
+          <img src="https://s3.us-west-2.amazonaws.com/customer-app-cards/promotions/milk_1628769125586.png" alt="" />
+        </div>
+        <div class="carousel-caption">
+          <p>100% Natural Milk</p>
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <div class="logo">
+          <img src="https://cdnasd.countrydelight.in/cdproductimg/new-website/Mask%20Group%2030651%403x_1672914970413.webp" alt="" />
+        </div>
+        <div class="carousel-caption">
+          <p>Just Pure Honest Milk At Your Doorstep</p>
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <div class="logo">
+          <img src="https://cdni.iconscout.com/illustration/premium/thumb/shopping-order-delivery-tracking-4268120-3550584.png" alt="" />
+        </div>
+        <div class="carousel-caption">
+          <p>Order Delivery</p>
+        </div>
+      </ng-template>
     </ngb-carousel>
-
+  
     <div class="Loginscreen">
-        <div class="login">
-          <p>Let’s get started</p>
+      <div class="login">
+        <p>Let’s get started</p>
+      </div>
+      <div class="num">
+        <input type="tel" id="mobileNumberInput" placeholder="Enter Mobile number" [(ngModel)]="mobileNumber"
+               pattern="[0-9]{10}" required maxlength="10" #mobileInput="ngModel">
+        <button (click)="sendOTP(); mobileInput.control.markAsTouched(); navigateToNextPage()"
+                [disabled]="mobileInput.invalid || mobileNumber.length !== 10 || otpSent">Continue</button>
+  
+        <div *ngIf="mobileInput.invalid && mobileInput.touched" class="error-message">
+          Invalid number
         </div>
-        <div class="num">
-            <input type="tel" id="mobileNumberInput" placeholder="Enter Mobile number" [(ngModel)]="mobileNumber"
-                   pattern="[0-9]{10}" required #mobileInput="ngModel">
-            <button (click)="sendOTP(); mobileInput.control.markAsTouched(); navigateToNextPage()"
-                    [disabled]="mobileInput.invalid || mobileNumber.length !== 10 || otpSent">Continue</button>
-    
-            <div *ngIf="mobileInput.invalid && mobileInput.touched" class="error-message">
-                Invalid number
-            </div>
-    
-            <!-- <div *ngIf="mobileNumber">
-                <p>You entered: {{ mobileNumber }}</p>
-            </div> -->
+      </div>
+  
+      <div class="otp-section" *ngIf="otpSent">
+        <input type="text" placeholder="Enter OTP" [(ngModel)]="otp" maxlength="6" required #otpInput="ngModel">
+        <button (click)="verifyOTP()" [disabled]="otp.length !== 6">Verify OTP</button>
+        <div *ngIf="otpVerificationFailed" class="error-message">
+          Invalid OTP. Please try again.
         </div>
-   
-    
-     
-
-        <div class="message">
-            <p>By Signing up you accept to<br>&nbsp;&nbsp;
-                Terms and conditions</p>
-        </div>
+      </div>
+  
+      <div class="message">
+        <p>By Signing up you accept to<br>&nbsp;&nbsp;
+          Terms and conditions</p>
+      </div>
     </div>
-</div>
+  </div>
+  

@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   otp: string = '';
   resendDisabled: boolean = false;
   remainingTime: string = '';
-  otpVerificationFailed: any;
+  otpVerificationFailed: boolean = false;
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
   constructor(private router: Router, private loginService: LoginService) { }
@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
     } else {
       alert('Invalid OTP. Please try again.');
       this.otpVerified = false;
+      this.otpVerificationFailed = true;
     }
   }
 
