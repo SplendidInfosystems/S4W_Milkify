@@ -11,7 +11,7 @@ export class ProdSubsComponent {
   rows = [
     [ 
       { icon: 'inventory', name: 'Products', route: 'home' },
-      { icon: 'subscriptions', name: 'My Subscription', route: 'my-sub' },
+      { icon: 'subscriptions', name: 'Subscription', route: 'my-sub' },
       { icon: 'beach_access', name: 'Vacation', route: 'vacation' }
     ], 
     [
@@ -21,8 +21,8 @@ export class ProdSubsComponent {
     ],
     [
       { icon: 'receipt', name: 'Referral', route: 'refer' },
-      { icon: 'local_offer', name: 'Offer Zone', route: 'offers' },
-      
+      { icon: 'local_activity', name: 'Offer Zone', route: 'offers' },
+      { icon: '', name: '', route: '' }
   
     ]
   ];

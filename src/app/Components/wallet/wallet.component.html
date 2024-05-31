@@ -13,6 +13,59 @@
   </header>
 
 
+
+
+  <div class="recharge">
+
+    <label class="radio-leb">
+      <input type="radio" [(ngModel)]="selectedOption" value="recharge">
+      <h6>Recharge Once</h6>
+    </label>
+
+
+    <div *ngIf="selectedOption === 'recharge'" class="recharge-section">
+      <div class="offer-set" *ngFor="let offer of offerSets">
+        <div class="offer1">
+          <h4>{{ offer.cashback }}</h4>
+          <p>Cashback</p>
+        </div>
+        <div class="avail">
+          <div class="sub">
+            <p>Recharge with</p>
+            <h4>{{ offer.rechargeAmount }}</h4>
+          </div>
+          <div class="dotted"></div>
+          <div class="sub1">
+            <span>AVAIL NOW</span>
+            <div class="arrow">
+              <i class="fas fa-arrow-right"[routerLink]="['/payment']" (click)="payAmount()"></i>
+            </div>
+          </div>
+        </div>
+     
+    
+     </div>
+     <div class="counting">
+      <input type="number" [(ngModel)]="userInput" placeholder="Enter a different Amount">
+    </div>
+    
+  
+      
+      <div class="code" (click)="openNamePopup()">
+        <p>Have a coupon code?</p>
+      </div>
+
+      <div *ngIf="showNamePopup" class="modal-overlay" (click)="closeNamePopup()">
+        <div class="modal-content" (click)="$event.stopPropagation()">
+          <p>Have a coupon code?</p>
+          <input [(ngModel)]="couponCode" placeholder="Enter coupon code..." />
+          <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+          <button class="confirm-button" (click)="saveName()">Apply</button>
+        </div>
+      </div>
+    </div>
+   
+  </div>
   <div class="select">
     <div class="autopay">
       <label class="radio-leb">
@@ -20,8 +73,8 @@
         <h6>Setup autopay</h6>
       </label>
       <div *ngIf="selectedOption === 'Setup autopay'" class="autopay-section">
-        <div class="current">
-          <h5> ₹{{ Balance }}</h5>
+        <div class="counting">
+          <input type="number" [(ngModel)]="userInput" placeholder="Enter a different Amount">
         </div>
         <div class="top">
           <div class="one" [class.selected]="selectedAmount === 1500" (click)="selectAmount(1500)">
@@ -42,38 +95,8 @@
   </div>
 
 
-  <div class="recharge">
 
-    <label class="radio-leb">
-      <input type="radio" [(ngModel)]="selectedOption" value="recharge">
-      <h6>Recharge Once</h6>
-    </label>
-
-
-    <div *ngIf="selectedOption === 'recharge'" class="recharge-section">
-     
-          </div>
-
-      
-      <div class="code" (click)="openNamePopup()">
-        <p>Have a coupon code?</p>
-      </div>
-
-      <!-- Coupon code modal -->
-      <div *ngIf="showNamePopup" class="modal-overlay" (click)="closeNamePopup()">
-        <div class="modal-content" (click)="$event.stopPropagation()">
-          <p>Have a coupon code?</p>
-          <input [(ngModel)]="couponCode" placeholder="Enter coupon code..." />
-          <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
-          <button class="confirm-button" (click)="saveName()">Apply</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-
+  
   <ngb-carousel *ngIf="images && images.length > 0">
     <ng-template ngbSlide>
       <div class="logo">
@@ -90,13 +113,11 @@
   </ngb-carousel>
 
 
-  <div *ngIf="selectedAmount" class="confirmation">
-    <p>Autopay offer applied, cashback of ₹150</p>
-    <div class="celebration-animation">
 
-    </div>
+
+
 
     <div class="address-price">
       <button class="add-address" [routerLink]="['/payment']" (click)="payAmount()">Pay ₹{{ selectedAmount }}</button>
     </div>
-  </div>
+</div>

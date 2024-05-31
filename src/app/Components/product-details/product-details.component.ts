@@ -12,13 +12,15 @@ import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 })
 export class ProductDetailsComponent {
   images = [
-    'https://cdnasd.countrydelight.in/New_product_image/LFCM-Milk_1646989764729_1665057281149.png',
-    'https://images.jdmagicbox.com/comp/delhi/s6/011pxx11.xx11.191015075931.b6s6/catalogue/country-delight-okhla-industrial-area-delhi-milk-dairy-0l3apfgg1l.jpg',
-    'https://cdnasd.countrydelight.in/New_product_image/dahilowfat/Low+Fat+Dahi2x.png',
+    'https://content.jdmagicbox.com/comp/delhi/s6/011pxx11.xx11.191015075931.b6s6/catalogue/country-delight-okhla-industrial-area-delhi-milk-dairy-nlw19dbmil.jpg',
+    'https://imgmedia.lbb.in/media/2021/06/60d2e2cda7f7900b57c7ccce_1624433357587.jpg',
+    'https://content.jdmagicbox.com/comp/delhi/s6/011pxx11.xx11.191015075931.b6s6/catalogue/country-delight-okhla-industrial-area-delhi-milk-dairy-nlw19dbmil.jpg',
+    'https://qph.cf2.quoracdn.net/main-qimg-30d4572669a338e4b3dc089de2c587ca'
   ];
-    startDate: Date = new Date();
+  startDate: Date = new Date();
   endDate: Date = new Date();
   defaultDate: Date;
+  date = '31 may 2024';
   selectedSubscription = 'Daily';
   isSubscriptionTypesVisible: boolean = false;
   price: number = 53;

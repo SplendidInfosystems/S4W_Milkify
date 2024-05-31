@@ -7,7 +7,7 @@
   </div>
 </div>
 <div class="my-sub-main">
-  <div *ngIf="hasSubscriptionData; else noSubscriptionTemplate">
+  <div *ngIf="hasSubscriptionData; else staticTemplate">
     <div class="product-card">
       <div class="products-main">
         <div class="product-image">
@@ -49,7 +49,7 @@
       </div>
     </div>
   </div>
-  <ng-template #noSubscriptionTemplate>
+  <ng-template #staticTemplate>
     <div class="my-sub-horizontal-card">
       <img src="https://img.freepik.com/free-vector/gnome-lying-stump-infront-blank-banner-cartoon-style-white-background_1308-44417.jpg?w=740&t=st=1715572279~exp=1715572879~hmac=2f14a902b1aca6169f80dcdf71b2f26e5dccea3f315eecff33f8a2a6914895b5">
       <div class="my-sub-card-details">

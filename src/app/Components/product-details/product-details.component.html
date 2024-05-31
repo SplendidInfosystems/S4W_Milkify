@@ -3,28 +3,23 @@
         <i class="fas fa-chevron-left"></i>
     </button>
   
-    <div class="product">
-
     <div class="Carousel">
-        <ngb-carousel *ngIf="images && images.length > 0">
-          <ng-template ngbSlide *ngFor="let image of images">
-            <div class="logo">
-              <img [src]="image"  />
-  
-              <button class="side-button">20% off</button>
-              <button class="whatsapp" ><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" (click)="shareOnWhatsApp()"></button>
-            </div>
-          </ng-template>
-        </ngb-carousel>
-      </div>
-    
-    
-    
-      <div class="main">
+      <ngb-carousel *ngIf="images && images.length > 0">
+        <ng-template ngbSlide *ngFor="let image of images">
+          <div class="logo">
+            <img [src]="image"  />
 
-        <div class="details">
-          <div class="tales">
-            <h6><strong>Cow Milk</strong></h6>
+            <button class="side-button">20% off</button>
+            <button class="whatsapp" ><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" (click)="shareOnWhatsApp()"></button>
+          </div>
+        </ng-template>
+      </ngb-carousel>
+    </div>
+
+   
+    <div class="details">
+        <div class="tales">
+            <h3>Buffalo Milk</h3>
             <p>450ml</p>
           </div>
           <div class="tail">
@@ -48,11 +43,40 @@
           </ng-template>
   
         </div>
-  
-        <div class="offer-card">
-          <div class="offer-details">
-            <h6>You are saving <span style="color: #04B56C;">$18.55</span>  (40% OFF) with <strong style="color: #04B56C;">VIP</strong></h6>
-          </div>
+    
+<div class="cover">
+<div class="offer-card">
+    <div class="offer-details">
+      <p>You are saving <span style="color: #04B56C;">$18.55</span>(20% OFF)with <span style="color: #04B56C;">VIP</span></p>
+    </div>
+  </div>
+  <div class="grey-card">
+    <p>Offer applicable on max 2 units.</p>
+  </div>
+  <div class="dotted-card">
+    <div class="dot-card-details">
+      <img src="https://cdn-icons-png.freepik.com/512/3960/3960581.png?ga=GA1.1.1335550155.1713184366" alt="Icon">
+      <div class="text-details">
+        <span>Order for 5 Days, get next 5 Days Free</span>
+      </div>
+      <p class="saved-amount">Know More</p>
+    </div>
+  </div>
+  <div class="subscript">
+    <div class="script">
+      <h2>Subscription type</h2>
+      <div class="sub-type">
+        <div class="typed">
+          <p *ngIf="!isSubscriptionTypesVisible" (click)="toggleSubscriptionTypes()">{{ selectedSubscription }}</p>
+          <ng-container *ngIf="isSubscriptionTypesVisible">
+            <p (click)="selectSubscription('Daily')">Daily</p>
+            <p (click)="selectSubscription('Alternate')">Alternate</p>
+            <p (click)="selectSubscription('Weekly')">Weekly</p>
+            <p (click)="selectSubscription('One Time')">One Time</p>
+          </ng-container>
+        </div>
+        <div class="edit">
+          <i class="fas fa-edit" (click)="toggleSubscriptionTypes()"></i>
         </div>
        
        
@@ -91,26 +115,32 @@
             </div>
       </div>
     </div>
-  
-  
-      <div class="descript">
-          <h6><strong>Product Description</strong></h6>     
-           <ul>
-                  <li>A glass of milk may become your kid's favourite drink with Country Delight Cow Milk.</li>
-                  <li>The natural sweetness of our cow's milk is the hallmark of purity and becomes an instant favourite among kids.</li>
-                  <li>Moreover, we source our milk from a mix of Desi Gir cows, desi Sahiwal cows, crossbred Holstein & Jersey cows.</li>
-                  <li> No preservatives, no milk powder or cream is added to the milk and the milk is not recombined in any form.</li>
-                  <li> We deliver the milk under the best cold chain right up to your doorstep..</li>
-              
-              </ul>
-              </div>
-              
-              <!-- <div class="address-price">
-    <button class="add-address" [routerLink]="['/wallet']">₹{{ totalPrice }} Confirm Subcription</button> 
-</div> -->
+    <div class="date">
+      <h2>Start Date</h2>
+      <form [formGroup]="form">
+        <div class="forms-field" >
+         <p><mat-label>Select date</mat-label></p> 
+          <input matInput [matDatepicker]="picker" formControlName="selectedDate" [matDatepickerFilter]="dateFilter">
+          <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+          <mat-datepicker #picker [dateClass]="dateClass"></mat-datepicker>
+        </div>
+      </form>
+    </div>
+</div>
+  </div>
+
+  <div class="descript">
+    <h6><strong>Product Description</strong></h6>     
+     <ul>
+            <li>A glass of milk may become your kid's favourite drink with Country Delight Cow Milk.</li>
+            <li>The natural sweetness of our cow's milk is the hallmark of purity and becomes an instant favourite among kids.</li>
+            <li>Moreover, we source our milk from a mix of Desi Gir cows, desi Sahiwal cows, crossbred Holstein & Jersey cows.</li>
+            <li> No preservatives, no milk powder or cream is added to the milk and the milk is not recombined in any form.</li>
+            <li> We deliver the milk under the best cold chain right up to your doorstep..</li>
+        
+        </ul>
+        </div>
 
 <div class="subscription">
-    <button class="add-sub"  [routerLink]="['/wallet']" [disabled]="quantity < 1">
-      <span>₹{{ totalPrice }} </span> Confirm Subscription
-    </button>
+    <button class="add-sub"><span>₹{{ totalPrice }} </span> Confirm Subscription</button>
   </div>
