@@ -1,9 +1,11 @@
-    <div class="back-icon" (click)="goBack()">
-      <i class="fas fa-chevron-left"></i>
-  </div>
+<div class="head">
+  <div class="back-icon" (click)="goBack()">
+    <i class="fas fa-chevron-left"></i>
+</div>
 
-  
-<div class="main">
+
+</div>
+<!-- <div class="main"> -->
 
 
     <div class="Carousel">
@@ -13,18 +15,25 @@
             <img [src]="image"  />
 
             <button class="side-button">20% off</button>
-            <button class="whatsapp" ><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" (click)="shareOnWhatsApp()"></button>
+
+            <div class="whatsapp-container">
+              <button class="whatsapp" (click)="shareOnWhatsApp()">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+              </button>
+            </div>
+            
+
           </div>
         </ng-template>
       </ngb-carousel>
     </div>
   
-    <!-- <div class="main"> -->
+    <div class="main">
 
       <div class="details">
         <div class="tales">
-          <h6><strong>Cow Milk</strong></h6>
-          <p>450ml</p>
+          <h6>Cow Milk</h6>
+          <p>450 ml</p>
         </div>
         <div class="tail">
           <p>Hormone Free</p>
@@ -33,10 +42,10 @@
   
       <div class="mid">
         <div class="add">
-            <p><strong style="font-size: 14px;">₹{{ totalPrice }}</strong> <span class="subtext"> ₹45.50</span></p>
+            <p><strong style="font-size: 14px;">₹{{ totalPrice }}</strong> <span> ₹45.50</span></p>
         </div>
         
-        <div class="Cart" *ngIf="isEditing; else addTemplate">
+        <div class="Cart" *ngIf="quantity > 0; else addTemplate">
           <button (click)="decreaseValue()">-</button>
           <span>{{ quantity }}</span>
           <button (click)="increaseValue()">+</button>
@@ -45,19 +54,23 @@
         <ng-template #addTemplate>
           <button class="add-button" (click)="addQuantity()">Add</button>
         </ng-template>
+     
 
       </div>
 
       <div class="offer-card">
         <div class="offer-details">
-          <h6>You are saving <span style="color: #04B56C;">$18.55</span>  (40% OFF) with <strong style="color: #04B56C;">VIP</strong></h6>
+          <h6>You are saving <span style="color: #04B56C;">$18.55</span>  (40% OFF) with
+            <strong style="color: #04B56C;">VIP</strong></h6>
         </div>
       </div>
      
       <div class="grey-card">
         <p>Offer applicable on max 2 units.</p>
       </div>
+
       <div class="line-above"></div>
+
       <div class="dotted-card">
         <div class="dot-card-details">
           <img src="https://cdn-icons-png.freepik.com/512/3960/3960581.png?ga=GA1.1.1335550155.1713184366" alt="Icon">
@@ -116,18 +129,37 @@
             </ul>
             </div>
 
-            <div class="subscription">
+            <!-- <div class="subscription">
               <button class="add-sub" (click)="confirmSubscription()" [disabled]="quantity < 1">
                 <span>₹{{ totalPrice }} </span> Confirm Subscription
               </button>
+            </div> -->
+            
+            <div class="subscription">
+              <ng-container *ngIf="!isEditing; else editingTemplate">
+                <button class="add-sub" (click)="confirmSubscription()" [disabled]="quantity < 1">
+                  <span>₹{{ totalPrice }} </span> Confirm Subscription
+                </button>
+              </ng-container>
+              <ng-template #editingTemplate>
+                <div class="subscription edit-mode">
+                  <button class="resume-sub" (click)="resumeSubscription($event)">Resume Subscription</button>
+                  <button class="cancel-sub" (click)="cancelSubscription()">Cancel Subscription</button>
+                </div>
+              </ng-template>
             </div>
-          
-            <ng-template #editingTemplate>
+            
+            
+            
+
+
+
+            <!-- <ng-template #editingTemplate>
               <div class="subscription edit-mode">
                 <button class="resume-sub" (click)="resumeSubscription($event)">Resume Subscription</button>
                 <button class="cancel-sub" (click)="cancelSubscription()">Cancel Subscription</button>
               </div>
-            </ng-template>
+            </ng-template> -->
             <div *ngIf=" showResumePopup" class="modal-overlay" (click)="closeResumePopup()">
               <div class="modal-content" (click)="$event.stopPropagation()">
                 <h5><strong>Subscription Resumed</strong></h5>

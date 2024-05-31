@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,4 +15,11 @@ export class SubscriptionService {
   clearSubscriptionData() {
     this.subscriptionData = null;
   }
+  private editingSubject = new BehaviorSubject<boolean>(false);
+  isEditing$ = this.editingSubject.asObservable();
+
+  setEditingState(isEditing: boolean) {
+    this.editingSubject.next(isEditing);
+  }
+
 }

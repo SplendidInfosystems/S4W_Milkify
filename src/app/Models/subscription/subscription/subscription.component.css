@@ -21,18 +21,18 @@
   
   .head {
     text-align: center;
-    margin-left: 5%;
+    /* margin-left: 5%; */
     font-size: 20px;
-    margin-top: 8px;
+    /* margin-top: 8px; */
   }
   .Carousel{
-    background-color: white;
-    margin: 15px;
+    /* background-color: white;
+    margin: 15px; */
     border-radius: 10px;
 
 }
   .logo {
-    padding: 10px;
+    /* padding: 10px; */
     height: 40vh;
     text-align: center;
   }
@@ -44,9 +44,10 @@
   }
   .details {
     display: flex;
-    gap: 4rem;
+    gap: 5rem;
     flex-direction: row;
     justify-content: space-around;
+    margin-top: 15px;
   }
   .tales {
     margin-top: 10px;
@@ -55,14 +56,16 @@
     margin: 0;
     font-size: 12px;
   }
-  .tales h3 {
+  .tales h6 {
     font-size: 17px;
+    margin: 0;
   }
   .mid {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+    margin-top: 15px;
   }
   .Cart {
     display: flex;
@@ -73,7 +76,8 @@
 }
 .add p span {
     text-decoration: line-through;
-    font-weight: normal;
+margin-left: 5px;
+    font-size: 12px;
 }
 .add p strong {
     font-weight: bold;
@@ -82,7 +86,7 @@
     background: linear-gradient(135deg, #FEE58C 0%, #B4E856 100%);
     padding: 1px;
     border-radius: 5px;
-    height: 20px;
+    height: 21px;
     width: 27%;
     margin: 10px 0 0 75px;
     
@@ -101,7 +105,7 @@
     padding: 5px;
     border-radius: 5px;
     height: 35px;
-    margin-left: 10rem;
+    margin-left: 11rem;
     width: 27%;
     display: flex;
     justify-content: space-evenly;
@@ -186,7 +190,7 @@
     color: #fff;
     border: none;
     border-radius: 8px;
-    margin-left: 10rem;
+    margin-left: 11rem;
 
   }
   
@@ -208,18 +212,19 @@
     width: 93%;
     padding: 6px;
     margin: 10px auto;
-    background: linear-gradient(to right, #e2d2424f, #e4d7608f, #f6c31896);
-    border-radius: 10px;
+    background: linear-gradient(to right, #fff, #e4d7608f, #efd06996);
+        border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
   .offer-details h6{
     font-size: 14px;
     margin: 0 5px;
-    font-weight: bold;
+    /* font-weight: bold; */
     }
     .offer-card p{
       margin: 0;
     }
+   
    .grey-card p{
     margin: 0;
     font-size: 14px;
@@ -227,12 +232,12 @@
   }
   .grey-card{
     width: 93%;
-    padding: 5px;
+    padding: 2px;
     text-align: center;
     margin: 8px auto;
-    border-radius: 10px;
-    background-color: rgb(211, 202, 202);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    background-color: rgb(232 235 231 / 59%);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   }
  
   .dotted-card {
@@ -242,20 +247,24 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 93%;
-    margin: 10px auto;
+    margin: 13px auto;
 }
 .dot-card-details {
     display: flex;
     align-items: center;
+    padding: 5px;
 }
 .dot-card-details img {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   margin-right: 11px;
+}
+.text-details{
+  text-align: center;
 }
 .text-details p {
   font-size: 13px;
-  margin-right: 13px;
+  margin: 0 10px 0 0;
   color: #333;
 }
 .saved-amount {
@@ -264,9 +273,7 @@
     cursor: pointer;
     font-size: 13px;
 }
-.subtext{
-  font-size: 12px;
-}
+
 
 
 .edit-mode {
@@ -366,7 +373,9 @@
     width: 50px;
     height: 50px;
   }
-
+.para p {
+  margin: 0;
+}
   .mat-form-field input{
     width: 70px;
   }
@@ -405,7 +414,7 @@
 .subscript{
   display: flex;
   flex-direction: row;
-  border-top: 1px solid gray;
+  border-bottom: 1px solid lightgray;
   background-color: #F2FBF8;
 }
 .script h2{
@@ -425,7 +434,7 @@
 }
 .sub-type{
   display: flex;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     margin-left: 10px;
     border-radius: 10px;
     width: 60%;
@@ -454,16 +463,37 @@
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.whatsapp {
-  position: absolute;
-  bottom: 30px; 
-  right: 15px; 
-  width: 40px;  
-  height: 40px; 
-  background: transparent;
-  border: none;
-  padding: 5px; 
+
+.line-above{
+  border: 1px solid lightgray ;
+  margin: 2px 0;
 }
 
+.whatsapp-container {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 45px;
+  height: 45px;
+  border: 1px solid lightgrey;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+.whatsapp {
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.whatsapp img {
+  width: 40px;
+  height: 40px;
+}
 
 

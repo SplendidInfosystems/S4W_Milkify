@@ -32,17 +32,17 @@
     display: flex;
     align-items: center;
     margin: 20px 10px;
-    padding: 10px;
+    padding: 15px;
     border: 1px solid #83bddd;
     background-color: #e2f4ff;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .my-sub-horizontal-card img {
-    width: 40%;
+    width: 30%;
     border-radius: 25px;
     height: auto;
-    margin-right: 10px;
+    margin-right: 12px;
 }
 .my-sub-card-details {
     flex-grow: 1;
@@ -81,41 +81,46 @@
     position: relative;
 }
 .product-image img {
-    width: 60%;
+    width: 80%;
     height: auto;
-    margin-left: 10px;
+    margin:20px 0 0 10px;
 }
 .product-details {
     flex: 1;
     padding: 10px;
 }
+.product-details h6{
+    margin: 0;
+}
 .subtext{
     font-size: 12px;
     margin-bottom: 0;
+    color: lightgray;
 }
 .products-main{
     display: flex;
     align-items: center;
     background-color: white;
+    padding-top: 5px;
 }
-.add p {
+.product-details p {
     margin: 0;
-    font-size: 13px;
+    font-size: 12px;
 }
-.add p span {
+.product-details span {
     color: lightgray;
     text-decoration: line-through;
-    font-weight: normal;
-
-    margin-left: 2px;
+    font-size: 12px;    
+    margin-left: 8px;
 }
-.add p strong {
+.product-details p strong {
     font-weight: bold;
 }
 .price-edit{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 6.4rem;
+    /* justify-content: space-between; */
 }
 
 .edit-button {
@@ -136,7 +141,7 @@
     padding: 6px;
     margin: 10px auto;
     background: linear-gradient(to right, #f9f8f14f, #f5e97357, #f6c3184a);
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
   .offer-details h6{
@@ -147,6 +152,7 @@
     .offer-card p{
       margin: 0;
     }
+   
    .grey-card p{
     margin: 0;
     font-size: 14px;
@@ -157,28 +163,32 @@
     padding: 2px;
     text-align: center;
     margin: 8px auto;
-    border-radius: 10px;
-    background-color:rgb(225 229 231 / 63%);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    background-color: rgb(211, 202, 202);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   }
  
   .dotted-card {
     border: 1px dashed #04B56C;
-    background: linear-gradient(54deg, #3ef9ac4a, white);
+    background: linear-gradient(45deg, #04b56c73, white);
     padding: 2px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 93%;
-    margin: 10px auto;
+    margin: 13px auto;
 }
 .dot-card-details {
     display: flex;
     align-items: center;
+    padding: 5px;
 }
 .dot-card-details img {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   margin-right: 11px;
+}
+.text-details{
+  text-align: center;
 }
 .text-details p {
   font-size: 13px;
@@ -191,9 +201,7 @@
     cursor: pointer;
     font-size: 13px;
 }
-.subtext{
-  font-size: 12px;
-}
+
 
 .additional-cards{
     background-color: white;
@@ -201,7 +209,7 @@
 .side-button {
     position: absolute;
     left: 10px;
-    top: -22px;
+    top: 1px;
     z-index: 1;
     background: linear-gradient(135deg, #fbeebf 0%, #f7e7ab4a 100%);
     color: #000;
@@ -215,10 +223,12 @@
   }
   .qty-div{
     font-weight: 500;
-    width: 50px;
+    width: 80px;
     background-color: #f1f7f7;
     border-radius: 5px;
     text-align: center;
     margin-top: 5px;
+    margin-bottom: 15px;
     font-size: 12px;
   }
+
