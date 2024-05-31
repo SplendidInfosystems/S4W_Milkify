@@ -14,15 +14,14 @@
       <input type="text" maxlength="1" (input)="onOtpInput(5)" (keydown)="onOtpKeydown($event, 5)" #otpInput>
     </div>
     <div class="otp">
-     
-      <p *ngIf=" otpVerified">OTP verified. Proceeding...</p>
+      <p *ngIf="!otpVerificationFailed && otpVerified">OTP verified. Proceeding...</p>
       <p *ngIf="!showResendOption">Didn't receive the OTP? Retry in: {{ remainingTime }}</p>
       <div *ngIf="showResendOption">
         <button (click)="resend()">Resend</button>
       </div>
-      <button *ngIf="showVerifyButton" (click)="verifyOTP()" [disabled]="!otp" class="otp-button">Verify & Proceed</button>
+      <button *ngIf="showVerifyButton" (click)="verifyOTP()" [disabled]="isOtpFieldEmpty">Verify & Proceed</button>
     </div>
-    
+  </div>
 
   <!-- Modal -->
   <div *ngIf="showModal" class="modal-backdrop" (click)="closeModal()"></div>
