@@ -2,6 +2,16 @@
   <div class="back-icon" (click)="goBack()">
     <i class="fas fa-chevron-left"></i>
   </div>
+  <div *ngIf="showCancellationPopup" class="modal-overlay" (click)="goBack()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <p>Do you want to enter mobile number again?</p>
+      <div class="button-container">
+        <button class="confirm-button" (click)="closeCancellationPopup()">No</button>
+        <button class="yes-button" [routerLink]="['/login']">Yes</button>
+      </div>
+    </div>
+  </div>
+
   <div class="OTP-verify">
     <h3>OTP Verification</h3>
     <p>We have sent a Verification code to +91{{ mobileNumber }}</p>

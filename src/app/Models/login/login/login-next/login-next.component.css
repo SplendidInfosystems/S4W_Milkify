@@ -22,8 +22,6 @@
   margin-top: 10px;
   font-family: 'Arial', sans-serif;
 }
-
-
 .OTP-verify {
   background-color: #fff;
   padding: 20px;
@@ -72,11 +70,10 @@
   cursor: pointer;
   font-size: 16px;
   margin-top: 520px;
-  
-  &[disabled]{
+  &[disabled] {
     background-color: #ccc;
     color: #333;
-}
+  }
 }
 .modal-backdrop {
   position: fixed;
@@ -97,11 +94,51 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   text-align: center;
-  width: 80%;
-    border-radius: 10px;
+  width: 90%; /* Increase width of modal popup */
+  border-radius: 10px;
 }
-.modal-content button{
-  border:none;
-  color:#04B56C;
+.modal-content button {
+  border: none;
+  color: #04B56C;
   background: transparent;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 90%; /* Adjusted width for larger modal */
+  border-radius: 10px;
+  text-align: center;
+}
+.modal-content p {
+  margin-bottom: 20px;
+}
+.modal-content .button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.modal-content .yes-button, .modal-content .confirm-button {
+  color: blue;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.modal-content .yes-button:hover, .modal-content .confirm-button:hover {
+  background-color: darkblue;
 }
