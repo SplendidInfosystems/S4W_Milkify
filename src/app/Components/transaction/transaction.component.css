@@ -41,18 +41,18 @@
     transition: transform 0.2s ease;
 }
 .mat-icon {
-    width: 30px; /* Adjust as needed */
+    width: 30px; 
     height: auto;
 }
 .mat-icon:hover {
-    transform: scale(1.1); /* Adjust scale factor as needed */
+    transform: scale(1.1); 
 }
 .transaction-wallet-balance {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-left: 10px;
-    margin-top: 10px; /* Adjust spacing */
+    margin-top: 10px; 
 }
 .transaction-wallet-balance p {
     margin-right: 75px; 

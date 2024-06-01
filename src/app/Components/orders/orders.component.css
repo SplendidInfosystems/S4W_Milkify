@@ -59,18 +59,17 @@
             height: auto;
 }
  .order-button {
-    background-color: #04B56C; /* Set button color */
-    color: white; /* Set text color */
+    background-color: #04B56C; 
+    color: white; 
     border: none;
     cursor: pointer;
     border-radius:5px;
-    padding: 8px 16px; /* Adjust padding */
+    padding: 8px 16px; 
 }
 .order-button {
     margin-left: 6rem;
 }
 
-/* Styles for modal overlay and content */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -97,7 +96,7 @@
    }
   .confirm-button {
     padding: 10px 20px;
-    background-color: #04B56C; /* Green color */
+    background-color: #04B56C; 
     color: white;
     border: none;
     border-radius: 5px;
@@ -128,7 +127,7 @@
     border-radius: 20px;
   }
   .on p, .in p {
-    margin: 0; /* Remove default margin for <p> elements */
+    margin: 0; 
   }
   .grt{
     color: #04B56C;
@@ -139,14 +138,13 @@
   }
   
   .confirm-button:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: #45a049; 
   }
   .apps {
     margin: 20px; 
   }
   .apps h4 {
     font-size: 15px;
-    /* font-weight: 600; */
   }
   .apps p {
     font-size: 15px; 
@@ -156,7 +154,7 @@
   
   .line-above {
     border-top: 1px solid #ccc;
-    margin-top: 20px; /* Adjust as needed */
+    margin-top: 20px; 
 }
   .dotted-card {
     border: 2px dotted #04B56C;
@@ -166,7 +164,6 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 95%;
     margin: 15px auto;
-    /* border-top: 1px solid gray; */
 }
 .dot-card-details {
     display: flex;

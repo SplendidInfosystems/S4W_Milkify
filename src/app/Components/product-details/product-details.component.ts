@@ -125,7 +125,7 @@ export class ProductDetailsComponent {
       subscriptionType: this.selectedSubscription,
       date: this.defaultDate
     };
-    }
+  }
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
     if (view === 'month') {
       return this.selectedDates.some(d => d.getTime() === cellDate.getTime()) ? 'selected-date' : '';

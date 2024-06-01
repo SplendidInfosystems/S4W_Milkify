@@ -13,9 +13,9 @@
   margin: 5px 10px;
 }
 .column h6 {
-  margin-top: 3vh;
-  margin-left: 1vh;
+  margin: 3vh 0 15px 1vh;
 }
+
 .column-main {
   display: flex;
   align-items: flex-start;
@@ -152,8 +152,9 @@
 p {
   font-size: small;
 }
-h6 {
+.text-details h6 {
   margin-top: 5px;
+  margin-bottom: .2rem;
 }
 .card-details p,
 .text-details p {

@@ -1,5 +1,4 @@
 .location-main {
-  /* padding: 16px; */
   height: 65%;
   background-color: beige;
 }
@@ -35,7 +34,6 @@
   top: 43%;
   transform: translateY(-50%);
   left: 15px;
-  /* pointer-events: none;  */
 }
 
 .form-control {
@@ -79,7 +77,6 @@
 }
 .locate-me {
   display: block;
-  /* margin:7rem auto 0; */
   margin-left: 6rem;
   padding: 8px 16px;
   background-color: white;

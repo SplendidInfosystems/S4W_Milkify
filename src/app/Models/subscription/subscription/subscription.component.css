@@ -21,15 +21,10 @@
 
   .head {
     text-align: center;
-    /* margin-left: 5%; */
     font-size: 20px;
-    /* margin-top: 8px; */
   }
   .Carousel{
-    /* background-color: white;
-    margin: 15px; */
     border-radius: 10px;
-
 }
   .logo {
     height: 45vh;
@@ -427,7 +422,6 @@ margin-right: 30px;
 .sub-type{
   display: flex;
   border: 1px solid #ccc;
-  background-color: #fff;
   margin-left: 8px;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -441,7 +435,6 @@ margin-right: 30px;
   font-size: 13px;
   font-weight: 500;
   margin-bottom: 5px;
-  /* padding-top: 15px; */
 }
 .edit i{
   color: #04B56C;
@@ -457,7 +450,6 @@ margin-right: 30px;
   .forms-field{
     display: flex;
     border: 1px solid #ccc;
-    background-color: #fff;
     margin-left: 10px;
     border-radius: 10px;
     width: 95%;
@@ -476,7 +468,7 @@ margin-right: 30px;
     display: none;
   }
   .mat-datepicker-toggle {
-    font-size: 10px; /* Adjust the font size as needed */
+    font-size: 10px; 
     color: #04B56C;
 }
 
