@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+
 @Component({
   selector: 'app-wallet',
   templateUrl: './wallet.component.html',
@@ -41,10 +43,18 @@ export class WalletComponent {
   invalidCoupon: any;
   showInvalidCouponPopup: boolean = false;
   showCancellationPopup: boolean = false;
-  constructor(private router: Router) { }
+
+  constructor(private router: Router, private location: Location) { }
+
   ngOnInit(): void { }
+
   goBack(): void {
-    this.router.navigate(['/transaction']);
+    if (localStorage.getItem('fromTransactionPage')) {
+      localStorage.removeItem('fromTransactionPage'); // Clear the flag
+      this.router.navigate(['/transaction']);
+    } else {
+      this.router.navigate(['/home']);
+    }
   }
 
   offerSets: any[] = [
@@ -53,6 +63,7 @@ export class WalletComponent {
     { cashback: '₹300', rechargeAmount: '₹3000' },
     { cashback: '₹500', rechargeAmount: '₹5000' },
   ];
+
   toggleOption(option: string): void {
     this.selectedOption = option;
   }
@@ -60,9 +71,11 @@ export class WalletComponent {
   selectAmount(amount: number): void {
     this.selectedAmount = amount;
   }
+
   payAmount(): void {
     console.log("Payment amount:", this.selectedAmount);
   }
+
   closeCancellationPopup() {
     this.showCancellationPopup = false;
     this.router.navigate([], {
@@ -79,13 +92,16 @@ export class WalletComponent {
       element.remove();
     }
   }
+
   openNamePopup(): void {
     this.showNamePopup = true;
     this.errorMessage = ''; // Reset error message when opening the popup
   }
+
   closeNamePopup(): void {
     this.showNamePopup = false;
   }
+
   saveName(): void {
     // Here you can add the logic to validate the coupon code
     if (this.couponCode !== 'valid_coupon_code') {
@@ -96,9 +112,11 @@ export class WalletComponent {
       // Coupon code is valid, do something
     }
   }
+
   navigateToNextPage(): void {
     this.router.navigate(['/login-next']);
   }
+
   closeErrorMessagePopup() {
     this.showErrorMessagePopup = false;
   }

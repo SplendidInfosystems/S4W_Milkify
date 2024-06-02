@@ -12,7 +12,8 @@
     <p>Current Wallet Balance</p>
     <h5>₹ 0.0</h5>
   </div>
-  <button [routerLink]="['/wallet']">Add Money</button>
+  <button (click)="navigateToWallet()">Add Money</button>
+
 </div>
 <div class="transaction-main">
   <div class="no-trans">
