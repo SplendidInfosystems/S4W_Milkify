@@ -44,7 +44,7 @@ export class WalletComponent {
   constructor(private router: Router) { }
   ngOnInit(): void { }
   goBack(): void {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/transaction']);
   }
 
   offerSets: any[] = [
