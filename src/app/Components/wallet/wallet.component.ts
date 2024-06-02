@@ -46,6 +46,7 @@ export class WalletComponent {
   goBack(): void {
     this.router.navigate(['/home']);
   }
+
   offerSets: any[] = [
     { cashback: '₹100', rechargeAmount: '₹500' },
     { cashback: '₹200', rechargeAmount: '₹1500' },
@@ -55,6 +56,7 @@ export class WalletComponent {
   toggleOption(option: string): void {
     this.selectedOption = option;
   }
+
   selectAmount(amount: number): void {
     this.selectedAmount = amount;
   }

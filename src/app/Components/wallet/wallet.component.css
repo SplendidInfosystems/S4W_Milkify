@@ -230,72 +230,12 @@
 .error-message {
   color: red;
 }
-.offer-set {
-  display: flex;
-  flex-direction: row;
-  margin-top: 10px;
-}
-.offer1 {
-  background: linear-gradient(135deg, #75c147 0%, #1eba62 100%);
-  border-radius: 10px;
-  color: #fff;
-  text-align: center;
-  padding: 15px 20px;
-  width: 32%;
-}
-.offer1 p {
-  font-size: 14px;
-}
-.offer1 h4 {
-  margin-bottom: 0rem;
-  margin-top: 10px;
-}
-.avail {
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  background-color: #fff;
-  border: 1px solid #04b56c;
-  border-radius: 10px;
-}
-.dotted {
-  border-right: 3px dotted #757575;
-  padding: 30px 0px;
-  margin: 21px 18px;
-}
-.sub {
-  padding: 0px 10px;
-  color: #727272;
-}
-.sub h4 {
-  font-size: 18px;
-}
-.sub p {
-  margin-bottom: 0rem;
-  font-size: 10px;
-  font-weight: 500;
-  margin-top: 28px;
-}
-.sub1 {
-  padding: 0px 15px 0px 0px;
-  margin-top: 25px;
-  color: #727272;
-}
+
 .sub1 span {
   font-size: 12px;
   font-weight: 500;
 }
-.arrow {
-  background-color: #1eba62;
-  border-radius: 10px;
-  width: 100%;
-  margin-top: 5px;
-  margin-left: 10px;
-  width: 45%;
-  color: #fff;
-  font-size: 10px;
-  padding: 0px 10px;
-}
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -333,10 +273,7 @@
     align-items: center;
     font-weight: unset;
 }
-.close-button i {
-  font-size: 4vh;
-  font-weight: 700;
-}
+
 
 .input-couponCode {
   margin-top: 3vh;
@@ -374,31 +311,11 @@
   border: none;
   padding: 13px 20px;
   border-radius: 5px;
-  cursor: pointer;
 }
 .confirm-button:hover {
   background-color: #1ea645;
 }
-.count-bar {
-  position: relative;
-  height: 25px;
-  border-radius: 8px;
-  background-color: #e4e4e4;
-}
-.count-fill {
-  height: 100%;
-  border-radius: 8px;
-  background-color: #1eba62;
-}
-.count-text {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #fff;
-  font-weight: bold;
-  text-align: center;
-}
+
 .modal {
   display: none;
 }
@@ -457,4 +374,308 @@
 .error-modal-content p{
   font-size: 18px;
   margin-top: 10px;
+}
+
+.radio-leb {
+  display: flex;
+  align-items: flex-start;
+}
+
+.radio-leb h6 {
+  margin-top: 3px;
+}
+
+.radio-label input[type="radio"] {
+  margin-right: 10px;
+  width: 5%;
+  margin-top: 6px;
+}
+
+.tab {
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: gray;
+}
+
+.current {
+  margin-top: 15px;
+}
+
+.current1 {
+  margin-left: 10px;
+  margin-top: 15px;
+}
+
+.one,
+.two,
+.three {
+  border: 2px solid #b2b2b24a;
+  background-color: #fff;
+  color: #00000082;
+  width: 25%;
+  height: 5vh;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.one p,
+.two p,
+.three p {
+  margin-top: 8px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 10px;
+}
+
+.text {
+  margin-top: 25px;
+  font-size: 14px;
+  color: #666565;
+}
+
+.text span {
+  font-size: 20px;
+  color: #000;
+  font-weight: 500;
+}
+
+.selected {
+  border-color: #04b56c;
+}
+
+.wallet {
+  background-color: #f0f7f7;
+  height: 100vh;
+  padding-top: 10px;
+}
+
+.address-price {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-address {
+  width: 100%;
+  background-color: #04b56c;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.autopay .label {
+  display: inline-block;
+  padding: 20px;
+}
+
+
+.error-message {
+  color: red;
+}
+
+.offer-set {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
+
+.offer1 {
+  background: linear-gradient(135deg, #75c147 0%, #1eba62 100%);
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
+  padding: 15px 20px;
+  width: 32%;
+}
+
+.offer1 p {
+  font-size: 14px;
+}
+
+.offer1 h4 {
+  margin-bottom: 0rem;
+  margin-top: 10px;
+}
+
+.avail {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  background-color: #fff;
+  border: 1px solid #04b56c;
+  border-radius: 10px;
+}
+
+.dotted {
+  border-right: 3px dotted #757575;
+  padding: 30px 0px;
+  margin: 21px 18px;
+}
+
+.sub {
+  padding: 0px 10px;
+  color: #727272;
+}
+
+.sub h4 {
+  font-size: 18px;
+}
+
+.sub p {
+  margin-bottom: 0rem;
+  font-size: 10px;
+  font-weight: 500;
+  margin-top: 28px;
+}
+
+.sub1 {
+  padding: 0px 15px 0px 0px;
+  margin-top: 25px;
+  color: #727272;
+}
+
+.sub1 span {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.arrow {
+  background-color: #1eba62;
+  border-radius: 10px;
+  width: 100%;
+  margin-top: 5px;
+  margin-left: 10px;
+  width: 45%;
+  color: #fff;
+  font-size: 10px;
+  padding: 0px 10px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  animation: slideUp 0.5s ease-in-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.close-button {
+  position: absolute;
+    top: -22%;
+    right: 43%;
+    color: #ffff;
+    font-size: 32px;
+    cursor: pointer;
+    background-color: #43423e;
+    border-radius: 51%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: unset;
+}
+.close-button i {
+  font-size: 3vh;
+  font-weight: 600;
+}
+
+/* Add this to your existing CSS file */
+.input-couponCode {
+  margin-top: 3vh;
+  height: 50px;
+  font-size: 16px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: calc(100% - -1px);
+  box-sizing: border-box;
+}
+
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px 5px 0 0;
+  text-align: center;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  height: 30%;
+}
+
+.error {
+  border: 1px solid red;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+
+.count-bar {
+  position: relative;
+  height: 25px;
+  border-radius: 8px;
+  background-color: #e4e4e4;
+}
+
+.count-fill {
+  height: 100%;
+  border-radius: 8px;
+  background-color: #1eba62;
+}
+
+.count-text {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+}
+
+.modal {
+  display: none;
+}
+
+.modal.show {
+  display: flex;
 }
