@@ -103,25 +103,37 @@
 .counting {
   position: relative;
   width: 100%;
-  display: flex;
+  /* display: flex; */
   align-items: center;
   flex-direction: row;
   margin-top: 10px;
   
 }
+
+.error-message {
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  font-size: 8px;
+  margin-top: 10px;
+  color: red; /* Setting the error message color */
+}
+
 .counting input {
   border: none;
-  border-bottom: 1px solid #b9b9b9; 
-  outline: none; 
-  background-color: transparent; 
+  border-bottom: 1px solid #b9b9b9;
+  outline: none;
+  background-color: transparent;
   width: 100%;
-  padding: 5px; 
-  box-sizing: border-box; 
+  margin-bottom: 10px;
+  padding: 5px;
+  box-sizing: border-box;
 }
 
 .counting input:focus {
-  border-bottom-color: #505050; 
+  border-bottom-color: red; /* Changing the bottom border color on focus */
 }
+
 .radio-leb {
   display: flex;
   align-items: flex-start;
@@ -170,7 +182,7 @@
 .top {
   display: flex;
   justify-content: space-around;
-  padding-top: 10px;
+  padding-top: 30px;
 }
 .text {
   margin-top: 25px;
@@ -366,6 +378,16 @@
 }
 
 .add-address {
+  width: 100%;
+  background-color: #04b56c;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.proceed-button {
   width: 100%;
   background-color: #04b56c;
   color: #fff;

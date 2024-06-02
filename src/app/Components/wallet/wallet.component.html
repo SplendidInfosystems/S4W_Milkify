@@ -38,7 +38,7 @@
         </div>
       </div>
       <div class="counting">
-        <input type="number" [(ngModel)]="userInput" placeholder="Enter a different Amount">
+        <input type="number" [(ngModel)]="userInput" placeholder="Enter a different Amount" (input)="onChange()">
       </div>
       <div class="code" (click)="openNamePopup()">
         <p>Have a coupon code?</p>
@@ -78,7 +78,10 @@
       <div *ngIf="selectedOption === 'Setup autopay'" class="autopay-section">
         <div class="counting">
           <input type="number" [(ngModel)]="userInput" placeholder="Enter a different Amount">
+          <div class="error-message" *ngIf="userInput < 1000" style="color: red;">Enter an amount between ₹1000 - ₹15000</div>
         </div>
+        
+      
         <div class="top">
           <div class="one" [class.selected]="selectedAmount === 1500" (click)="selectAmount(1500)">
             <p> ₹1500</p>
@@ -109,6 +112,8 @@
     </ng-template>
   </ngb-carousel>
   <div class="address-price">
-    <button class="add-address" [routerLink]="['/payment']" (click)="payAmount()">Pay ₹{{ selectedAmount }}</button>
+    <button *ngIf="showPayButton" class="add-address" [routerLink]="['/payment']" (click)="payAmount()">Pay ₹{{ selectedAmount }}</button>
+    <button *ngIf="!showPayButton" class="proceed-button" (click)="proceed()">Proceed</button>
   </div>
+  
 </div>

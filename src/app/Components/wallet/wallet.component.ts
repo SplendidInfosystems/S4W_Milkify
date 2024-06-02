@@ -41,6 +41,7 @@ export class WalletComponent {
   errorMessage: string = '';
   userInput: number = 1000;
   invalidCoupon: any;
+  showPayButton: boolean = true;
   showInvalidCouponPopup: boolean = false;
   showCancellationPopup: boolean = false;
 
@@ -50,7 +51,7 @@ export class WalletComponent {
 
   goBack(): void {
     if (localStorage.getItem('fromTransactionPage')) {
-      localStorage.removeItem('fromTransactionPage'); // Clear the flag
+      localStorage.removeItem('fromTransactionPage'); 
       this.router.navigate(['/transaction']);
     } else {
       this.router.navigate(['/home']);
@@ -75,6 +76,17 @@ export class WalletComponent {
   payAmount(): void {
     console.log("Payment amount:", this.selectedAmount);
   }
+  proceed() {
+    this.router.navigate(['/payment']); 
+  }
+onChange() {
+
+  if (!this.userInput || this.userInput < 1000) {
+    this.showPayButton = true;
+  } else {
+    this.showPayButton = false;
+  }
+}
 
   closeCancellationPopup() {
     this.showCancellationPopup = false;
