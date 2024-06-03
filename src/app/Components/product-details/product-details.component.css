@@ -243,6 +243,38 @@ margin-right: 11px;
     background-color: #F2FBF8;
     border-top: 2px solid #ccc;
 }
+.subscription-cards {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  overflow-x: auto;
+  margin: 10px 0;
+  gap: 10px;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.subscription-type, .start-date {
+  width: 48%; /* Adjust as needed */
+}
+
+.subscription-cards p {
+  margin: 0;
+  padding: 10px;
+  border: 1px solid #04B56C;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  flex: 1 0 auto;
+  text-align: center;
+  font-size: 14px;
+}
+.subscription-cards p:hover {
+  background-color: #04B56C;
+  color: #fff;
+}
 .script{
     margin-left: 10px;
 }
@@ -268,6 +300,10 @@ margin-right: 30px;
     width: 80%;
     padding: 6px;
     justify-content: space-evenly;
+}
+.typed{
+  display: flex;
+  flex-direction: row;
 }
 .typed p, .edit{
     text-align: center;

@@ -32,6 +32,7 @@ export class ProductDetailsComponent {
   form!: FormGroup;
   selectedDates: Date[] = [];
   isEditing = false;
+  
 
   @ViewChild('startDateInput') startDateInput!: MatDateRangeInput<Date>;
   @ViewChild('endDateInput') endDateInput!: MatDateRangeInput<Date>;
@@ -57,6 +58,7 @@ export class ProductDetailsComponent {
     this.isSubscriptionTypesVisible = !this.isSubscriptionTypesVisible;
   }
 
+ 
   goBack(): void {
     this.router.navigate(['/home']);
   }
@@ -92,13 +94,15 @@ export class ProductDetailsComponent {
     this.endDate = new Date(this.startDate.getFullYear(), this.startDate.getMonth() + 1, 0);
 
     if (subscriptionType === 'One Time') {
-      this.datePicker.open();
+      this.openCalendar();
     } else if (subscriptionType === 'Weekly') {
       this.router.navigate(['/weekly']);
     } else {
       this.calculateSelectedDates(this.startDate);
       this.openCalendar();
     }
+    this.selectedSubscription = subscriptionType;
+    this.toggleSubscriptionTypes(); 
   }
 
   calculateSelectedDates(startDate: Date): void {
