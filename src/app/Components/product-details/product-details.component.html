@@ -28,16 +28,20 @@
 
 <div class="mid">
   <div class="add">
-    <p><strong style="font-size: 14px;">₹{{ totalPrice }}</strong> <span class="subtext"> ₹45.50</span></p>
+      <p><strong style="font-size: 14px;">₹{{ totalPrice }}</strong> <span> ₹45.50</span></p>
   </div>
-  <div class="Cart" *ngIf="isEditing; else addTemplate">
+  
+  <div class="Cart" *ngIf="quantity > 0; else addTemplate">
     <button (click)="decreaseValue()">-</button>
     <span>{{ quantity }}</span>
     <button (click)="increaseValue()">+</button>
   </div>
+  
   <ng-template #addTemplate>
     <button class="add-button" (click)="addQuantity()">Add</button>
   </ng-template>
+
+
 </div>
 
 <div class="cover">

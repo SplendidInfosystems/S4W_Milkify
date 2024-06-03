@@ -11,12 +11,12 @@ export class ProdSubsComponent {
   rows = [
     [ 
       { icon: 'inventory', name: 'Products', route: 'home' },
-      { icon: 'subscriptions', name: 'My Subscriptions', route: 'my-sub' },
+      { icon: 'subscriptions', name: 'Subscription', route: 'my-sub' },
       { icon: 'beach_access', name: 'Vacation', route: 'vacation' }
     ], 
     [
       { icon: 'shopping_cart', name: 'Order History', route: 'orders' },
-      { icon: 'payment', name: 'Transactions', route: 'transaction' },
+      { icon: 'payment', name: 'Transaction', route: 'transaction' },
       { icon: 'date_range ', name: 'Monthly Bill', route: 'bills' }
     ],
     [
