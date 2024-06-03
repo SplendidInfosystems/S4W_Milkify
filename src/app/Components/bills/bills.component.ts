@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bills',
@@ -19,7 +20,7 @@ export class BillsComponent {
     'June': 0
   };
 
-  constructor(private location: Location) {
+  constructor(private location: Location,private router:Router) {
     const currentDate = new Date();
     const currentMonthIndex = currentDate.getMonth(); // JavaScript months are 0-based
     this.currentMonth = this.months[currentMonthIndex];
@@ -27,7 +28,8 @@ export class BillsComponent {
   }
 
   goBack(): void {
-    this.location.back();
+    // this.location.back();
+    this.router.navigate(['/prod-subs']);
   }
 
   showPreviousMonth(): void {

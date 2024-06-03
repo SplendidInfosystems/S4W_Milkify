@@ -28,10 +28,15 @@
 
 .bills-header p {
     text-align: center;
-    margin-left: 13vh;
+    margin-left: 11vh;
     font-size: 20px;
     margin-top: 8px;
 }
+.head p {
+    margin-top: 10px;
+    font-weight: 500;
+  }
+    
 
 .bills-header button, .mat-icon {
     background: none;
