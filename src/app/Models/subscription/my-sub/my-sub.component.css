@@ -188,6 +188,8 @@
   }
   .text-details p{
     margin-bottom: 0;
+    font-size: 12px;
+    font-weight: 600;
   }
   .dot-card-details img {
   width: 40px;

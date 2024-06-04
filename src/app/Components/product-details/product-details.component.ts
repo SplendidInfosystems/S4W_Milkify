@@ -31,7 +31,7 @@ export class ProductDetailsComponent {
   subscriptionTypes: string[] = ['Daily', 'Alternate', 'Weekly', 'One Time'];
   form!: FormGroup;
   selectedDates: Date[] = [];
-  isEditing = false;
+  // isEditing = false;
   
 
   @ViewChild('startDateInput') startDateInput!: MatDateRangeInput<Date>;
@@ -73,13 +73,13 @@ export class ProductDetailsComponent {
       this.updateTotalPrice();
     } else {
       this.quantity = 0;
-      this.isEditing = false;
+      // this.isEditing = false;
     }
   }
 
   addQuantity() {
     this.quantity = 1;
-    this.isEditing = true;
+    // this.isEditing = true;
     this.updateTotalPrice();
   }
 

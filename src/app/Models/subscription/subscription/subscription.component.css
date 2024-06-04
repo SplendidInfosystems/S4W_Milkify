@@ -411,51 +411,95 @@ margin-left: 5px;
   .cart i {
     cursor: pointer;
   }
- 
-.subscript{
+  .subscript{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #F2FBF8;
+    border-top: 2px solid #ccc;
+}
+.subscription-cards {
   display: flex;
-  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  /* overflow-x: auto; */
+  margin: 10px 0;
+  gap: 10px;
+}
+.row {
+  display: flex;
   justify-content: space-between;
-  background-color: #F2FBF8;
-  border-top: 2px solid #ccc;
+}
+
+.subscription-type, .start-date {
+  width: 48%; /* Adjust as needed */
+  
+}
+
+
+.start-date h2{
+  /* margin-left: 40%; */
+  text-align: center;
+}
+
+.subscription-cards p {
+  margin: 0;
+  padding: 10px;
+  border: 1px solid #04B56C;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  flex: 1 0 auto;
+  text-align: center;
+  font-size: 14px;
+}
+.subscription-cards p:hover {
+  background-color: #04B56C;
+  color: #fff;
 }
 .script{
-  margin-left: 10px;
+    margin-left: 10px;
 }
 .date{
 margin-right: 30px;
 }
 .script h2{
-  padding: 10px;
-  font-size: 15px;
-  margin: auto;
+    padding: 10px 7px;
+    font-size: 15px;
+    margin: auto;
 }
 .date h2{
-  padding: 10px;
-  font-size: 15px;
-  margin: auto 5px;
+    padding: 10px;
+    font-size: 15px;
+    margin: auto 5px;
 }
 .sub-type{
-  display: flex;
-  border: 1px solid #ccc;
-  margin-left: 8px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  width: 80%;
-  padding: 6px;
-  justify-content: space-evenly;
-}
-.typed p, .edit{
-  text-align: center;
-  margin-top:5px;
-  font-size: 13px;
-  font-weight: 500;
-  margin-bottom: 5px;
-}
-.edit i{
-  color: #04B56C;
+    margin-left: 8px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+   
 }
 
+.typed{
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #ccc;
+  width: 80%;
+  padding: 6px;
+  border-radius: 10px;
+  justify-content: space-evenly;
+}
+
+.typed p, .edit{
+    text-align: center;
+    margin-top:5px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.edit i{
+    color: #04B56C;
+}
 
 ::ng-deep .mat-calendar-body-cell.selected-date .mat-calendar-body-cell-content {
     background-color: #04B56C !important;
@@ -466,12 +510,11 @@ margin-right: 30px;
   .forms-field{
     display: flex;
     border: 1px solid #ccc;
-    margin-left: 10px;
+    margin-left: 32px;
     border-radius: 10px;
-    width: 95%;
+    width: 100%;
     margin-bottom: 10px;
     height: 45px;
-
     justify-content: space-evenly;
   }
   .forms-field p{
