@@ -218,8 +218,9 @@
     </div>
     <p class="sub-label"><span>Select Duration</span></p>
     <div class="selection">
+
       <div class="option">
-        <input type="radio" id="1day" name="duration" value="1day">
+        <input type="radio" id="1day" name="duration" value="1day" (change)="onOptionChange($event)">
         <div class="lab-info">
           <label for="1day">For Next 1 Day</label>
         <p class="sub-label">Starting from Today</p>
@@ -227,15 +228,15 @@
       </div>
       
       <div class="option">
-        <input type="radio" id="7days" name="duration" value="7days">
+        <input type="radio" id="7days" name="duration" value="7days" (change)="onOptionChange($event)">
         <div class="lab-info">
           <label for="7days">For Next 7 Days</label>
-        <p class="sub-label">Starting 18th May 2024</p>
+          <p class="sub-label">Starting from Today</p>
         </div>
       </div>
       
       <div class="option">
-        <input type="radio" id="custom" name="duration" value="custom" (click)="openModal()">
+        <input type="radio" id="custom" name="duration" value="custom" (change)="onOptionChange($event); openModal()">
         <label for="custom">Custom Dates</label>
       </div>
       
@@ -269,8 +270,11 @@
             </div>
           </div>
       
-          <button class="btn btn-primary" (click)="handleDatesSelection()">Confirm Date & Pause</button>
-          <button class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+          <button class="btn btn-primary" (click)="handleDatesSelection()" [disabled]="!areDatesSelected()">
+            Confirm Date & Pause
+          </button>
+
+          <!-- <button class="btn btn-secondary" (click)="closeModal()">Cancel</button> -->
         </div>
       </div>
       
@@ -278,8 +282,9 @@
     </div>
     
     <div class="button-divider-confirm">
-      <button class="confirm-button" (click)="confirmPause()">Confirm</button>
-    </div>
+      <button class="confirm-button" (click)="confirmPause()" [disabled]="!isDurationSelected()">
+        Confirm
+      </button>
   </div>
 </div>
 
