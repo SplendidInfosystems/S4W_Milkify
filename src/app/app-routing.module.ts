@@ -4,14 +4,14 @@ import { HomeComponent } from './Components/home/home.component';
 
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { WalletComponent } from './Components/wallet/wallet.component';
-import { PaymentComponent } from './Components/payment/payment.component';
-import { WeeklyComponent } from './Components/weekly/weekly.component';
+import { PaymentComponent } from './Components/wallet/payment/payment.component';
+import { WeeklyComponent } from './Models/subscription/weekly/weekly.component';
 import { LoginNextComponent } from './Models/login/login/login-next/login-next.component';
 import { LoginComponent } from './Models/login/login/login.component';
 import { ProdSubsComponent } from './Components/prod-subs/prod-subs.component';
-import { TransactionComponent } from './Components/transaction/transaction.component';
+import { TransactionComponent } from './Components/wallet/transaction/transaction.component';
 import { OrdersComponent } from './Components/orders/orders.component';
-import { BillsComponent } from './Components/bills/bills.component';
+import { BillsComponent } from './Models/subscription/bills/bills.component';
 import { VacationComponent } from './Models/vacation/vacation/vacation.component';
 import { AddVacComponent } from './Models/vacation/add-vac/add-vac.component';
 import { SubscriptionComponent } from './Models/subscription/subscription/subscription.component';
@@ -21,7 +21,7 @@ import { UserProfileComponent } from './Models/User/user-profile/user-profile.co
 import { AppGuideComponent } from './Models/User/app-guide/app-guide.component';
 import { NeedHelpComponent } from './Models/User/need-help/need-help.component';
 import { LocationComponent } from './Models/User/location/location.component';
-import { OffersComponent } from './Components/offers/offers.component';
+import { OffersComponent } from './Models/subscription/offers/offers.component';
 import { ReferComponent } from './Components/refer/refer.component';
 import { LegalComponent } from './Models/User/legal/legal.component';
 
