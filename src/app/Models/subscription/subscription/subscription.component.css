@@ -326,7 +326,18 @@ margin-left: 5px;
     background-color: #45a049; 
   }
  
-  .pause-sub-button , .confirm-button {
+  .pause-sub-button  {
+    padding: 8px 20px;
+    background-color:#04B56C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 10px 0;
+      width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .confirm-button {
     padding: 8px 20px;
     background-color:#04B56C;
     color: white;
@@ -581,14 +592,14 @@ margin-right: 30px;
   /* margin-top: 20px; */
 }
 
-.confirm-button {
+/* .confirm-button {
   background-color: #04B56C;
   color: white;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5px;
-}
+} */
 
 .confirm-button:hover {
   background-color: #0ba364;
