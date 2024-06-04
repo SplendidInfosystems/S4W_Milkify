@@ -21,10 +21,15 @@
 
   .head {
     text-align: center;
+    /* margin-left: 5%; */
     font-size: 20px;
+    /* margin-top: 8px; */
   }
   .Carousel{
+    /* background-color: white;
+    margin: 15px; */
     border-radius: 10px;
+
 }
   .logo {
     height: 45vh;
@@ -427,6 +432,7 @@ margin-right: 30px;
 .sub-type{
   display: flex;
   border: 1px solid #ccc;
+  background-color: #fff;
   margin-left: 8px;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -440,6 +446,7 @@ margin-right: 30px;
   font-size: 13px;
   font-weight: 500;
   margin-bottom: 5px;
+  /* padding-top: 15px; */
 }
 .edit i{
   color: #04B56C;
@@ -455,6 +462,7 @@ margin-right: 30px;
   .forms-field{
     display: flex;
     border: 1px solid #ccc;
+    background-color: #fff;
     margin-left: 10px;
     border-radius: 10px;
     width: 95%;
@@ -473,7 +481,7 @@ margin-right: 30px;
     display: none;
   }
   .mat-datepicker-toggle {
-    font-size: 10px; 
+    font-size: 10px; /* Adjust the font size as needed */
     color: #04B56C;
 }
 
@@ -624,7 +632,9 @@ margin-right: 30px;
 .date-picker-container {
   margin-top: 10px;
 }
-
+.date-picker label{
+  font-size: 12px;;
+}
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -653,7 +663,7 @@ margin-right: 30px;
 }
 
 .calendar-container {
-  margin: 20px 0;
+  margin-bottom: 5px;
 }
 
 .calendar-header {
@@ -687,7 +697,9 @@ margin-right: 30px;
 }
 
 .angled-btn {
-  padding: 10px 20px;
+  padding: 10px 0px;
+  color: #04B56C;
+  font-size: 20px;
   border: none;
   background: transparent;
   border-radius: 5px;
@@ -707,4 +719,11 @@ margin-right: 30px;
 }
 .sub-item{
   font-size: 12px;
+}
+/* CSS for the disabled button */
+button.confirm-button:disabled , button.btn-primary:disabled{
+  background-color: #cccccc; /* Light gray background */
+  color: #666666; /* Darker gray text */
+  cursor: not-allowed; /* Change cursor to not-allowed */
+  opacity: 0.6; /* Slightly transparent */
 }

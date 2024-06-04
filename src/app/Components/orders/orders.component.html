@@ -91,7 +91,7 @@
     <button mat-raised-button color="primary" class="order-button"  (click)="goToProductDetails()">EXPLORE PRODUCTS</button>
     <div *ngIf="showCancelPopup" class="modal-overlay" (click)="closeCancelPopup()">
         <div class="modal-content" (click)="$event.stopPropagation()">
-          <h5><strong>Please select a reason for cancellation</strong></h5>
+          <h6>Please select a reason for cancellation</h6>
           <ul>
             <li><input type="radio" name="reason" value="Too Expensive"> Too Expensive</li>
             <li><input type="radio" name="reason" value="Not Satisfied"> Not Satisfied</li>

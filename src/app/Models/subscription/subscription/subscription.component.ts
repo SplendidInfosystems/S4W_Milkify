@@ -25,6 +25,7 @@ export class SubscriptionComponent implements OnInit {
   days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   calendarDates: Date[] = [];
   currentMonth: Date = new Date(); 
+  selectedDuration: string | null = null;
 
   price = 27;
   quantity = 1;
@@ -185,12 +186,13 @@ export class SubscriptionComponent implements OnInit {
   }
 
   confirmPause() {
-    // Logic to pause the subscription
-    this.showPausePopup = false;
-    this.showPausedDurationPopup = true;
-    this.checkAndCloseCancelPopup();
+    if (this.isDurationSelected()) {
+      // Logic to pause the subscription
+      this.showPausePopup = false;
+      this.showPausedDurationPopup = true;
+      this.checkAndCloseCancelPopup();
+    }
   }
-
   closePausedDurationPopup() {
     this.showPausedDurationPopup = false;
     // this.snackBar.open('Your subscription has been paused.', 'Close', {
@@ -285,11 +287,22 @@ export class SubscriptionComponent implements OnInit {
     this.currentMonth = new Date(this.currentMonth.setMonth(this.currentMonth.getMonth() - 1));
     this.generateCalendar(this.currentMonth);
   }
+  areDatesSelected(): boolean {
+    return this.selectedStartDate !== null && this.selectedEndDate !== null;
+  }
 
   handleDatesSelection() {
     console.log('Start Date:', this.selectedStartDate);
     console.log('End Date:', this.selectedEndDate);
     this.closeModal();
   }
+  onOptionChange(event: Event) {
+    const target = event.target as HTMLInputElement;
+    this.selectedDuration = target.value;
+  }
 
+  isDurationSelected(): boolean {
+    return this.selectedDuration !== null;
+  }
+  
 }
