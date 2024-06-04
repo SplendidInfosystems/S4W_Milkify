@@ -5,6 +5,7 @@ import { DateAdapter } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SubscriptionService } from '../../../Services/subscription.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-subscription',
   templateUrl: './subscription.component.html',
@@ -17,6 +18,14 @@ export class SubscriptionComponent implements OnInit {
     'https://content.jdmagicbox.com/comp/delhi/s6/011pxx11.xx11.191015075931.b6s6/catalogue/country-delight-okhla-industrial-area-delhi-milk-dairy-nlw19dbmil.jpg',
     'https://qph.cf2.quoracdn.net/main-qimg-30d4572669a338e4b3dc089de2c587ca'
   ];
+
+  showModal = false;
+  selectedStartDate: Date | null = null;
+  selectedEndDate: Date | null = null;
+  days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  calendarDates: Date[] = [];
+  currentMonth: Date = new Date(); 
+
   price = 27;
   quantity = 1;
   date = '30 may 2024';
@@ -51,7 +60,7 @@ export class SubscriptionComponent implements OnInit {
       selectedDate: [null]
     });
 
-   
+    this.generateCalendar(new Date());
   }
   ngOnInit(): void {
     this.defaultDate = new Date();
@@ -124,20 +133,26 @@ export class SubscriptionComponent implements OnInit {
     this.subscriptionService.saveSubscriptionData(subscriptionData);
     this.router.navigate(['/my-sub'], { queryParams: { fromSubscription: true } });
   }
+
   resumeSubscription(event: Event) {
     event.preventDefault();
     this.showResumePopup = true;
+    this.checkAndCloseCancelPopup();
   }
-  
+
   cancelSubscription() {
     this.showCancelPopup = true;
   }
+
   closeResumePopup() {
     this.showResumePopup = false;
+    this.checkAndCloseCancelPopup();
   }
+
   closeCancelPopup() {
     this.showCancelPopup = false;
   }
+
   confirmCancelSubscription() {
     this.showCancelPopup = false; // Close the cancel subscription popup
     console.log('Subscription canceled successfully!');
@@ -146,8 +161,10 @@ export class SubscriptionComponent implements OnInit {
     // });
     this.router.navigate(['/orders'], { queryParams: { showCancelPopup: true } });
   }
+
   closeCancellationPopup() {
     this.showCancellationPopup = false;
+    this.checkAndCloseCancelPopup();
     this.router.navigate([], {
       queryParams: {
         subscriptionCancelled: null
@@ -155,22 +172,37 @@ export class SubscriptionComponent implements OnInit {
       queryParamsHandling: 'merge'
     });
   }
+
   pauseSubscription() {
+    console.log('Pause subscription clicked');
     this.showPausePopup = true;
+    this.checkAndCloseCancelPopup();
   }
+
   closePausePopup() {
     this.showPausePopup = false;
+    this.checkAndCloseCancelPopup();
   }
+
   confirmPause() {
     // Logic to pause the subscription
     this.showPausePopup = false;
     this.showPausedDurationPopup = true;
+    this.checkAndCloseCancelPopup();
   }
+
   closePausedDurationPopup() {
     this.showPausedDurationPopup = false;
     // this.snackBar.open('Your subscription has been paused.', 'Close', {
     //   duration: 3000,
     // });
+    this.checkAndCloseCancelPopup();
+  }
+
+  checkAndCloseCancelPopup() {
+    if (!this.showResumePopup && !this.showPausePopup && !this.showPausedDurationPopup && !this.showCancellationPopup) {
+      this.closeCancelPopup();
+    }
   }
   calculateSelectedDates(startDate: Date): void {
     if (!startDate) {
@@ -205,4 +237,59 @@ export class SubscriptionComponent implements OnInit {
     const whatsappUrl = `https://wa.me/?text=${message}%20${url}`;
     window.open(whatsappUrl, '_blank');
   }
+  
+  openModal() {
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
+  }
+
+  generateCalendar(month: Date) {
+    const firstDay = new Date(month.getFullYear(), month.getMonth(), 1);
+    const lastDay = new Date(month.getFullYear(), month.getMonth() + 1, 0);
+
+    this.calendarDates = [];
+    for (let i = firstDay.getDay(); i > 0; i--) {
+      this.calendarDates.push(new Date(firstDay.getFullYear(), firstDay.getMonth(), firstDay.getDate() - i));
+    }
+
+    for (let day = firstDay.getDate(); day <= lastDay.getDate(); day++) {
+      this.calendarDates.push(new Date(firstDay.getFullYear(), firstDay.getMonth(), day));
+    }
+  }
+
+  isDateSelected(date: Date): boolean {
+    if (!this.selectedStartDate || !this.selectedEndDate) return false;
+    return date >= this.selectedStartDate && date <= this.selectedEndDate;
+  }
+
+  selectDate(date: Date) {
+    if (!this.selectedStartDate || this.selectedEndDate) {
+      this.selectedStartDate = date;
+      this.selectedEndDate = null;
+    } else if (date < this.selectedStartDate) {
+      this.selectedStartDate = date;
+    } else {
+      this.selectedEndDate = date;
+    }
+  }
+
+  nextMonth() {
+    this.currentMonth = new Date(this.currentMonth.setMonth(this.currentMonth.getMonth() + 1));
+    this.generateCalendar(this.currentMonth);
+  }
+
+  previousMonth() {
+    this.currentMonth = new Date(this.currentMonth.setMonth(this.currentMonth.getMonth() - 1));
+    this.generateCalendar(this.currentMonth);
+  }
+
+  handleDatesSelection() {
+    console.log('Start Date:', this.selectedStartDate);
+    console.log('End Date:', this.selectedEndDate);
+    this.closeModal();
+  }
+
 }

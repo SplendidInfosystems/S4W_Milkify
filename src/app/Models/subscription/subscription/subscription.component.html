@@ -153,32 +153,33 @@
             </ng-template> -->
             <div *ngIf=" showResumePopup" class="modal-overlay" (click)="closeResumePopup()">
               <div class="modal-content" (click)="$event.stopPropagation()">
-                <h5><strong>Subscription Resumed</strong></h5>
-                <p>Your subscription of cow milk has been resumed</p>
+                <h6>Subscription Resumed</h6>
+                <p class="sub-label">Your subscription of cow milk has been resumed</p>
                 <div class="divider">
                   </div>
-                  <p class="awesome-button" (click)="closeResumePopup()">Awesome</p>
+                  <p class="awesome-button" (click)="closeResumePopup()">Awesome!</p>
                     
                </div>
             </div>
         <div *ngIf="showCancelPopup" class="modal-overlay" (click)="closeCancelPopup()">
           <div class="modal-content" (click)="$event.stopPropagation()">
-        <h5><strong>Cancel Subscription</strong></h5>
-            <p>If you are cancelling for a certain period of time you can pause the  <br>
+
+            <h6>Cancel Subscription</h6>
+            <p class="sub-label">If you are cancelling for a certain period of time you can pause the 
               subscription rather than cancelling.</p>
         <div class="popup-products-card">
             <div class="popup-img">
-              <img src="https://content.jdmagicbox.com/comp/delhi/s6/011pxx11.xx11.191015075931.b6s6/catalogue/country-delight-okhla-industrial-area-delhi-milk-dairy-nlw19dbmil.jpg">
+              <img src="https://cdnasd.countrydelight.in/New_product_image/CM_1646845937535_1665058250996.png">
             </div>
             
               <div class="para">
-                <p><strong>Cow Milk</strong></p>
-              <p>450 ml</p>
+                <p>Cow Milk</p>
+              <p class="sub-label">450 ml</p>
               </div>
-              <p><strong>25$</strong></p>
+              <p class="sub-item">₹36</p>
             </div>
             <div class="button-divider">
-              <button class="pause-sub-button" (click)="closeCancelPopup()">Pause Subscription</button>
+              <button class="pause-sub-button"  (click)="pauseSubscription()">Pause Subscription</button>
               <button class="cancel-sub-button" (click)="confirmCancelSubscription()">Cancel Subscription</button>
             </div>
           </div>
@@ -187,8 +188,8 @@
         <!-- Popup for cancellation -->
         <div *ngIf="showCancellationPopup" class="modal-overlay" (click)="closeCancellationPopup()">
           <div class="modal-content" (click)="$event.stopPropagation()">
-            <h3>Subscription Cancelled</h3>
-            <p>Your subscription has been cancelled.</p>
+            <h6>Subscription Cancelled</h6>
+            <p class="sub-label">Your subscription has been cancelled.</p>
               <button class="confirm-button" (click)="closeCancellationPopup()">Okay</button>
             
           </div>
@@ -196,30 +197,95 @@
 
         <!-- Pause subscription popup -->
 <div *ngIf="showPausePopup" class="modal-overlay" (click)="closePausePopup()">
-    <div class="modal-content" (click)="$event.stopPropagation()">
-      <h3>Pause Subscription</h3>
-      <p>Please select the duration for pausing your subscription:</p>
-      <ul>
-        <li><input type="radio" name="pauseDuration" value="1 Week"> 1 Week</li>
-        <li><input type="radio" name="pauseDuration" value="2 Weeks"> 2 Weeks</li>
-        <li><input type="radio" name="pauseDuration" value="1 Month"> 1 Month</li>
-        <li><input type="radio" name="pauseDuration" value="2 Months"> 2 Months</li>
-      </ul>
-      <div class="button-divider">
-        <button class="confirm-button" (click)="confirmPause()">Confirm</button>
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h6>Pause Subscription</h6>
+    <p class="sub-label">If you are cancelling for a certain period of time you can pause the subscription rather than cancelling.</p>
+    <div class="subscription-item">
+      <img src="https://cdnasd.countrydelight.in/New_product_image/CM_1646845937535_1665058250996.png">
+      <div class="subscription-details">
+        <p>Cow Milk</p>
+        <p class="sub-label">450 ml</p>
       </div>
+      <p class="sub-item">₹36 <span class="original-price">₹45.50</span></p>
+    </div>
+    <p class="sub-label"><span>Select Duration</span></p>
+    <div class="selection">
+      <div class="option">
+        <input type="radio" id="1day" name="duration" value="1day">
+        <div class="lab-info">
+          <label for="1day">For Next 1 Day</label>
+        <p class="sub-label">Starting from Today</p>
+        </div>
+      </div>
+      
+      <div class="option">
+        <input type="radio" id="7days" name="duration" value="7days">
+        <div class="lab-info">
+          <label for="7days">For Next 7 Days</label>
+        <p class="sub-label">Starting 18th May 2024</p>
+        </div>
+      </div>
+      
+      <div class="option">
+        <input type="radio" id="custom" name="duration" value="custom" (click)="openModal()">
+        <label for="custom">Custom Dates</label>
+      </div>
+      
+      <div class="modal-overlay" *ngIf="showModal">
+        <div class="modal-content" (click)="$event.stopPropagation()">
+          <h6>Pause Subscription</h6>
+          <div class="date-picker">
+            <div>
+              <label for="startDate">Start Date</label>
+              <div>{{ selectedStartDate ? (selectedStartDate | date: 'dd MMM yyyy') : 'Select Start Date' }}</div>
+            </div>
+            <div>
+              <label for="endDate">End Date</label>
+              <div>{{ selectedEndDate ? (selectedEndDate | date: 'dd MMM yyyy') : 'Select End Date' }}</div>
+            </div>
+          </div>
+          
+          <div class="calendar-container">
+            <div class="calendar-header">
+              <button (click)="previousMonth()" class="angled-btn">&lt;</button>
+              <span>{{ currentMonth | date: 'MMMM yyyy' }}</span>
+              <button (click)="nextMonth()" class="angled-btn">&gt;</button>
+            </div>
+            <div class="calendar">
+              <div class="header" *ngFor="let day of days">{{ day }}</div>
+              <div class="day" *ngFor="let date of calendarDates" 
+                   [class.selected]="isDateSelected(date)" 
+                   (click)="selectDate(date)">
+                {{ date.getDate() }}
+              </div>
+            </div>
+          </div>
+      
+          <button class="btn btn-primary" (click)="handleDatesSelection()">Confirm Date & Pause</button>
+          <button class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+        </div>
+      </div>
+      
+      
+    </div>
+    
+    <div class="button-divider-confirm">
+      <button class="confirm-button" (click)="confirmPause()">Confirm</button>
     </div>
   </div>
-  <!-- Pause duration confirmation popup -->
-  <div *ngIf="showPausedDurationPopup" class="modal-overlay" (click)="closePausedDurationPopup()">
-    <div class="modal-content" (click)="$event.stopPropagation()">
-      <h3>Subscription Paused</h3>
-      <p>Your subscription has been paused for the selected duration.</p>
-      <div class="button-divider">
-        <button class="confirm-button" (click)="closePausedDurationPopup()">Okay</button>
-      </div>
+</div>
+
+<!-- Pause duration confirmation popup -->
+<div *ngIf="showPausedDurationPopup" class="modal-overlay" (click)="closePausedDurationPopup()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h6>Subscription Paused</h6>
+    <p class="sub-label">Your subscription has been paused for the selected duration.</p>
+    <div class="button-divider">
+      <p class="awesome-button" (click)="closePausedDurationPopup()">Awesome!</p>
+
     </div>
   </div>
+</div>
   
   
   

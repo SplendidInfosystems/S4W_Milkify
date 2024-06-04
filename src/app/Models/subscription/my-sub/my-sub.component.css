@@ -31,7 +31,7 @@
 .my-sub-horizontal-card {
     display: flex;
     align-items: center;
-    margin: 20px 10px;
+    margin: 20px 15px;
     padding: 15px;
     border: 1px solid #83bddd;
     background-color: #e2f4ff;
@@ -104,7 +104,7 @@
     padding-top: 5px;
 }
 .product-details p {
-    margin: 0;
+    margin: 5px auto;
     font-size: 12px;
 }
 .product-details span {
@@ -119,7 +119,7 @@
 .price-edit{
     display: flex;
     align-items: center;
-    gap: 6.4rem;
+    /* gap: 6.4rem; */
     /* justify-content: space-between; */
 }
 
@@ -127,80 +127,84 @@
     background-color: #04B56C;
     color: #fff;
     border: none;
-    padding: 6px 20px;
+    padding: 8px 25px;
     border-radius: 8px;
     font-size: 12px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-left: 7em;
 }
 .edit-button:hover {
     background-color: #07aa66;
 }
 .offer-card {
-    width: 93%;
+    width: 95%;
     padding: 6px;
-    margin: 10px auto;
-    background: linear-gradient(to right, #f9f8f14f, #f5e97357, #f6c3184a);
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-  .offer-details h6{
-    font-size: 14px;
-    margin: 0 5px;
-    font-weight: bold;
-    }
-    .offer-card p{
-      margin: 0;
-    }
-   
-   .grey-card p{
-    margin: 0;
-    font-size: 14px;
-    color: grey
-  }
-  .grey-card{
-    width: 93%;
-    padding: 2px;
-    text-align: center;
-    margin: 8px auto;
-    border-radius: 5px;
-    background-color: rgb(211, 202, 202);
+    margin: 5px auto;
+    background:linear-gradient(to right, #f7f7f34f, #f5ed9d8f, #f7d66796);
+    border-radius: 10px;
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-  }
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: bold;
+  
+}
+.offer-details h6{
+    margin-bottom: 0;
+}
+.offer-card p{
+    margin: 0;
+}
+
+    .grey-card p{
+      margin: 0;
+      font-size: 12px;
+      color: grey
+    }
+    .grey-card{
+      width: 95%;
+      padding: 5px;
+      text-align: center;
+      margin: 8px auto;
+      border-radius: 10px;
+      background-color:#E2ECEB;
+    }
  
   .dotted-card {
     border: 1px dashed #04B56C;
-    background: linear-gradient(45deg, #04b56c73, white);
+    background: linear-gradient(to right, #04b56c73, white);
     padding: 2px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 93%;
-    margin: 13px auto;
-}
-.dot-card-details {
+    width: 95%;
+    margin: 10px auto;
+  }
+  .dot-card-details {
     display: flex;
     align-items: center;
-    padding: 5px;
-}
-.dot-card-details img {
-  width: 30px;
-  height: 30px;
+  }
+  .dot-card-details span{
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .text-details p{
+    margin-bottom: 0;
+  }
+  .dot-card-details img {
+  width: 40px;
+  height: 40px;
   margin-right: 11px;
-}
-.text-details{
-  text-align: center;
-}
-.text-details p {
-  font-size: 13px;
-  margin: 0;
-  color: #333;
-}
-.saved-amount {
+  }
+  .saved-amount {
     margin: 0;
     color: #04B56C;
     cursor: pointer;
-    font-size: 13px;
-}
+    display: flex;
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: 10px;
+  }
+  
 
 
 .additional-cards{
@@ -209,7 +213,7 @@
 .side-button {
     position: absolute;
     left: 10px;
-    top: 1px;
+    top: -3px;
     z-index: 1;
     background: linear-gradient(135deg, #fbeebf 0%, #f7e7ab4a 100%);
     color: #000;
