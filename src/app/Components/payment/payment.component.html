@@ -1,98 +1,107 @@
 <div class="payment">
-    <header class="header">
-        <div class="back-icon" (click)="goBack()">
-          <i class="fas fa-chevron-left"></i>
-        </div>
-        <div class="head">
-          <p>Payment Options</p>
-        </div>
-        <div class="balance" ><i class="fas fa-ellipsis-h"></i></div>
-      </header>
-      <div class="selection">
-        <div class="act">
-           <p>Amount to pay</p>
-           <h6>{{ amountToPay | currency:'INR' }}</h6>
-        </div>
-        <div class="react">
-          <p>Cashback</p>
-          <h6>{{ cashback | currency:'INR' }}</h6>
-        </div>
-        <div class="deact">
-          <p>To be credited</p>
-          <h6>{{ toBeCredited | currency:'INR' }}</h6>
-        </div>
+  <header class="header">
+    <div class="back-icon" (click)="goBack()">
+      <i class="fas fa-chevron-left"></i>
+    </div>
+
+    <div *ngIf="showCancellationPopup" class="modal-overlay" (click)="goBack()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <h3>Cancel Transaction</h3>
+        <p>Are you sure, you want to exit?</p>
+        <button class="yes-button" [routerLink]="['/wallet']">Yes</button>
+        <button class="confirm-button" (click)="closeCancellationPopup()">No</button>
       </div>
-      
-    
-    <div class="apps">
-      <h6>UPI Apps</h6>
-      <div class="sub">
+    </div>
+
+    <div class="head">
+      <p>Payment Options</p>
+    </div>
+    <div class="balance"><i class="fas fa-ellipsis-h"></i></div>
+  </header>
+  <div class="selection">
+    <div class="act">
+      <p>Amount to pay</p>
+      <h6>{{ amountToPay | currency:'INR' }}</h6>
+    </div>
+    <div class="react">
+      <p>Cashback</p>
+      <h6>{{ cashback | currency:'INR' }}</h6>
+    </div>
+    <div class="deact">
+      <p>To be credited</p>
+      <h6>{{ toBeCredited | currency:'INR' }}</h6>
+    </div>
+  </div>
+
+
+  <div class="apps">
+    <h6>UPI Apps</h6>
+    <div class="sub">
       <div class="big">
+        <div class="method" *ngFor="let item of popularItems; let i = index">
+          <div class="social">
+            <img [src]="item.image">
+          </div>
+          <p>{{ item.name }}</p>
+        </div>
+      </div>
 
-      <div class="method" *ngFor="let item of popularItems; let i = index">
-      <div class="social">
-        <img [src]="item.image">
-      </div>
-      <p>{{ item.name }}</p>
-    </div>
-    </div>
-    
-    <div class="new">
-      <div class="add-upi">
-        <div class="add-button" (click)="addUPI()">+</div>
-        <p>Add New UPI ID</p>
-      </div>
-      <div *ngFor="let upiID of upiIDs; let i = index" class="upi-input">
-        <input type="text" [(ngModel)]="upiIDs[i]" placeholder="Enter UPI ID">
-        <button (click)="removeUPI(i)">Add</button>
+      <div class="new">
+        <div class="add-upi">
+          <div class="add-button" (click)="addUPI()">+</div>
+          <p>Add New UPI ID</p>
+        </div>
+        <div *ngFor="let upiID of upiIDs; let i = index" class="upi-input">
+          <input type="text" [(ngModel)]="upiIDs[i]" placeholder="Enter UPI ID">
+          <button (click)="removeUPI(i)">Add</button>
+        </div>
       </div>
     </div>
-    
-    
-    
-    </div>
-    </div>
+  </div>
 
-    <div class="apps">
-      <h6>Credit/Debit Card</h6>
-      </div>
-    <div class="red">
-      <i class="fas fa-credit-card"></i>
-      <p>Pay via cards</p>
-      <i class="fas fa-chevron-right"></i>
-    </div>
-    
-    <div class="apps">
-      <h6>CRED pay</h6>
-      </div>
-    <div class="red1">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO7umyVq0E2ImajLXXiyMPzj3_cufBp1-imbtv4o3RwQ&s" alt="">
-      <p>CRED pay</p>
-      <i class="fas fa-chevron-right"></i>
-    </div>
-    
-    <div class="apps">
-      <h6>Pluxee(Sodexo)Card</h6>
-      </div>
-    <div class="red1">
-      <i class="fas fa-credit-card"></i>
-      <p>SODEXO</p>
-      <i class="fas fa-chevron-right"></i>
-    </div>
-    <div class="apps">
-      <h6>Netbanking</h6>
-      </div>
-    <div class="red1">
-      <i class="fas fa-university netbanking-icon"></i>
-      <p>View All</p>
-      <i class="fas fa-chevron-right"></i>
-    </div>
-    <div class="apps">
-      <h6>Wallet</h6>
-      </div>
-    <div class="red1">
-      <img src="https://m.economictimes.com/thumb/msid-107312198,width-1200,height-900,resizemode-4,imgsize-6574/paytm-etonline.jpg" alt="">
-      <p>Paytm</p>
-      <i class="fas fa-chevron-right"></i>
-    </div>
-    </div>
+  <div class="apps">
+    <h6>Credit/Debit Card</h6>
+  </div>
+  <div class="red">
+    <i class="fas fa-credit-card"></i>
+    <p>Pay via cards</p>
+    <i class="fas fa-chevron-right"></i>
+  </div>
+
+  <div class="apps">
+    <h6>CRED pay</h6>
+  </div>
+  <div class="red1">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO7umyVq0E2ImajLXXiyMPzj3_cufBp1-imbtv4o3RwQ&s"
+      alt="">
+    <p>CRED pay</p>
+    <i class="fas fa-chevron-right"></i>
+  </div>
+
+  <div class="apps">
+    <h6>Pluxee(Sodexo)Card</h6>
+  </div>
+  <div class="red1">
+    <i class="fas fa-credit-card"></i>
+    <p>SODEXO</p>
+    <i class="fas fa-chevron-right"></i>
+  </div>
+  <div class="apps">
+    <h6>Netbanking</h6>
+  </div>
+  <div class="red1">
+    <i class="fas fa-university netbanking-icon"></i>
+    <p>View All</p>
+    <i class="fas fa-chevron-right"></i>
+  </div>
+  <div class="apps">
+    <h6>Wallet</h6>
+  </div>
+  <div class="red1">
+    <img
+      src="https://m.economictimes.com/thumb/msid-107312198,width-1200,height-900,resizemode-4,imgsize-6574/paytm-etonline.jpg"
+      alt="">
+    <p>Paytm</p>
+    <i class="fas fa-chevron-right"></i>
+  </div>
+</div>

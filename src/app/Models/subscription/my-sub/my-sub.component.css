@@ -119,8 +119,7 @@
 .price-edit{
     display: flex;
     align-items: center;
-    /* gap: 6.4rem; */
-    /* justify-content: space-between; */
+    gap: 6.4rem;
 }
 
 .edit-button {

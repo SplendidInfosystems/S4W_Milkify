@@ -75,12 +75,9 @@
   margin-bottom: 10px;
   color: gray;
 }
-/* p{
-  color: gray;
-} */
+
 .info-list {
   list-style-type: disc;
-  /* margin-left: 20px; */
 }
 
 .green-button {

@@ -57,18 +57,22 @@
       <div class="popular-item" *ngFor="let item of popularItems; let i = index">
         <button class="side-button">20% off</button>
         <a [routerLink]="['/product-details']">
-          <div class="promo-banner"></div>
-          <img [src]="item.image" alt="{{ item.name }}">
+            <div class="promo-banner"></div>
+            <img [src]="item.image" alt="{{ item.name }}">
         </a>
         <h3>{{ item.name }}</h3>
        
         <p>{{ item.litre }}</p>
         <p><h6>{{ item.price }}</h6>
-          <span> ₹45.50</span>
-      
+            <span> ₹45.50</span>
+        
         <button mat-button class="add-button" [routerLink]="['/product-details']">ADD</button>
-
-      </div>
+    
+        <div class="additional-content">
+          <p>Saving ₹18.5 with VIP</p>
+        </div>
+    </div>
+    
     </div>
   </main>
 </div>

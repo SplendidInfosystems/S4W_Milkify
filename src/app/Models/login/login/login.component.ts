@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../../../Services/login.service';
 
@@ -15,9 +15,40 @@ export class LoginComponent implements OnInit {
   resendDisabled: boolean = false;
   remainingTime: string = '';
   otpVerificationFailed: boolean = false;
+  showCancellationPopup: boolean = false;
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
   constructor(private router: Router, private loginService: LoginService) { }
+
+  
+
+  @Output() cancelConfirmed = new EventEmitter<boolean>();
+  @Output() popupClosed = new EventEmitter<boolean>();
+
+  confirmCancel() {
+    this.cancelConfirmed.emit(true);
+  }
+
+  closePopup() {
+    this.popupClosed.emit(false);
+  }
+
+
+  closeCancellationPopup() {
+    this.showCancellationPopup = false;
+    this.router.navigate([], {
+      queryParams: {
+        subscriptionCancelled: null
+      },
+      queryParamsHandling: 'merge'
+    });
+  }
+
+ 
+
+  goBack(): void {
+    this.showCancellationPopup = true;
+  }
   ngOnInit(): void { }
 
   sendOTP(): void {

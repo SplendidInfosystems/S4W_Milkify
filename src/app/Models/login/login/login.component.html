@@ -18,7 +18,9 @@
     </ng-template>
     <ng-template ngbSlide>
       <div class="logo">
-        <img src="https://cdnasd.countrydelight.in/cdproductimg/new-website/Mask%20Group%2030651%403x_1672914970413.webp" alt="" />
+        <img
+          src="https://cdnasd.countrydelight.in/cdproductimg/new-website/Mask%20Group%2030651%403x_1672914970413.webp"
+          alt="" />
       </div>
       <div class="carousel-caption">
         <p>Just Pure Honest Milk At Your Doorstep</p>
@@ -26,7 +28,9 @@
     </ng-template>
     <ng-template ngbSlide>
       <div class="logo">
-        <img src="https://cdni.iconscout.com/illustration/premium/thumb/shopping-order-delivery-tracking-4268120-3550584.png" alt="" />
+        <img
+          src="https://cdni.iconscout.com/illustration/premium/thumb/shopping-order-delivery-tracking-4268120-3550584.png"
+          alt="" />
       </div>
       <div class="carousel-caption">
         <p>Order Delivery</p>
@@ -40,13 +44,37 @@
     </div>
     <div class="num">
       <input type="tel" id="mobileNumberInput" placeholder="Enter Mobile number" [(ngModel)]="mobileNumber"
-             pattern="[0-9]{10}" required maxlength="10" #mobileInput="ngModel">
+        pattern="[0-9]{10}" required maxlength="10" #mobileInput="ngModel" (click)="goBack()">
       <button (click)="sendOTP(); mobileInput.control.markAsTouched(); navigateToNextPage()"
-              [disabled]="mobileInput.invalid || mobileNumber.length !== 10 || otpSent">Continue</button>
+        [disabled]="mobileInput.invalid || mobileNumber.length !== 10 || otpSent">Continue</button>
 
-      <div *ngIf="mobileInput.invalid && mobileInput.touched" class="error-message">
-        Invalid number
+
+    </div>
+    <div *ngIf="showCancellationPopup" class="modal-overlay" (click)="goBack()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-content-wrapper">
+          <div class="image-container">
+            <h3>Get started</h3>
+          </div>
+          <div class="input-container">
+            <img src="https://cdn.britannica.com/97/1597-050-008F30FA/Flag-India.jpg" alt="">
+            <input type="tel" id="mobileNumberInput" placeholder="Enter Mobile number" [(ngModel)]="mobileNumber"
+              pattern="[0-9]{10}" required maxlength="10" #mobileInput="ngModel">
+          </div>
+        </div>
+        <button (click)="sendOTP(); mobileInput.control.markAsTouched(); navigateToNextPage()"
+          [disabled]="mobileInput.invalid || mobileNumber.length !== 10 || otpSent">Continue</button>
+
+        <div *ngIf="mobileInput.invalid && mobileInput.touched" class="error-message">
+          Invalid number
+        </div>
+        <div class="min-message">
+          <p>By Continuing, you agree to our <br>&nbsp;&nbsp;
+            Terms of service & Privacy of Policy</p>
+        </div>
+        <div class="border"></div>
       </div>
+
     </div>
 
     <div class="otp-section" *ngIf="otpSent">

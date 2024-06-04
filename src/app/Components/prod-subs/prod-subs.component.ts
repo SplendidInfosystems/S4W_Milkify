@@ -16,7 +16,7 @@ export class ProdSubsComponent {
     ], 
     [
       { icon: 'shopping_cart', name: 'Order History', route: 'orders' },
-      { icon: 'payment', name: 'Transactions', route: 'transaction' },
+      { icon: 'payment', name: 'Transaction', route: 'transaction' },
       { icon: 'date_range ', name: 'Monthly Bill', route: 'bills' }
     ],
     [

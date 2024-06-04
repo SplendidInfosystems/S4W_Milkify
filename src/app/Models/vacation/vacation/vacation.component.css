@@ -37,21 +37,22 @@
     transition: transform 0.2s ease;
 }
 .mat-icon {
-    width: 30px; /* Adjust as needed */
+    width: 30px; 
     height: auto;
 }
 .mat-icon:hover {
-    transform: scale(1.1); /* Adjust scale factor as needed */
+    transform: scale(1.1); 
 }
 
 .vacation-section {
-    margin-top: 20px; /* Adjust spacing */
+    margin-top: 20px; 
 }
+
 .vacation-section img {
     width: 65%;
     border-radius: 10px;
     margin: 20px 10px 1rem 4rem;
-            height: auto;
+    height: auto;
 }
 .vacation-section p {
     margin-top: 10px;
@@ -64,7 +65,7 @@
   text-align: center;
 }
 .vacation-section p:hover {
-    color: #555; /* Change color on hover */
+    color: #555; 
     cursor: pointer;
 } 
   .vacation-card-row  {
@@ -84,7 +85,7 @@
   
   .divider {
     border-right: 1px solid #ccc;
-    height: 50px; /* Adjust height as needed */
+    height: 50px; 
     margin: 0 10px;
   }
   

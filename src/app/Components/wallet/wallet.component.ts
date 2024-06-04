@@ -1,28 +1,25 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-wallet',
   templateUrl: './wallet.component.html',
-  styleUrls: ['./wallet.component.css'] ,
+  styleUrls: ['./wallet.component.css'],
   animations: [
-    trigger('celebration', [
-      state('active', style({
-        transform: 'scale(1)',
-        opacity: 1
+    trigger('slideUpAnimation', [
+      state('void', style({
+        transform: 'translateY(100%)'
       })),
-      transition('void => active', [
-        style({
-          transform: 'scale(0.5)',
-          opacity: 0
-        }),
-        animate('500ms cubic-bezier(.17,.67,.83,.67)')
+      transition(':enter', [
+        animate('300ms ease-in', style({
+          transform: 'translateY(0)'
+        }))
       ]),
-      transition('active => void', [
-        animate('500ms cubic-bezier(.17,.67,.83,.67)', style({
-          transform: 'scale(0.5)',
-          opacity: 0
+      transition(':leave', [
+        animate('300ms ease-in', style({
+          transform: 'translateY(100%)'
         }))
       ])
     ])
@@ -32,26 +29,35 @@ export class WalletComponent {
   currentBalance: number = 0;
   ReBalance: number = 250;
   Balance: number = 1000;
-  selectedOption: string = "recharge"; 
+  showErrorMessagePopup: boolean = false;
+  selectedOption: string = "recharge";
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
   price: number = 1000;
   selectedAmount: number = 1000;
-  totalPrice: number = this.price; 
+  totalPrice: number = this.price;
   showNamePopup: boolean = false;
   showPopup: boolean = false;
-  couponCode: string = '1234';
+  couponCode: string = '';
   errorMessage: string = '';
   userInput: number = 1000;
+  invalidCoupon: any;
+  showPayButton: boolean = true;
+  showInvalidCouponPopup: boolean = false;
+  showCancellationPopup: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private location: Location) { }
 
-  ngOnInit(): void {
-  
-  }
+  ngOnInit(): void { }
 
   goBack(): void {
-    this.router.navigate(['/home']);
+    if (localStorage.getItem('fromTransactionPage')) {
+      localStorage.removeItem('fromTransactionPage'); 
+      this.router.navigate(['/transaction']);
+    } else {
+      this.router.navigate(['/home']);
+    }
   }
+
   offerSets: any[] = [
     { cashback: '₹100', rechargeAmount: '₹500' },
     { cashback: '₹200', rechargeAmount: '₹1500' },
@@ -62,6 +68,7 @@ export class WalletComponent {
   toggleOption(option: string): void {
     this.selectedOption = option;
   }
+
   selectAmount(amount: number): void {
     this.selectedAmount = amount;
   }
@@ -69,6 +76,28 @@ export class WalletComponent {
   payAmount(): void {
     console.log("Payment amount:", this.selectedAmount);
   }
+  proceed() {
+    this.router.navigate(['/payment']); 
+  }
+onChange() {
+
+  if (!this.userInput || this.userInput < 1000) {
+    this.showPayButton = true;
+  } else {
+    this.showPayButton = false;
+  }
+}
+
+  closeCancellationPopup() {
+    this.showCancellationPopup = false;
+    this.router.navigate([], {
+      queryParams: {
+        subscriptionCancelled: null
+      },
+      queryParamsHandling: 'merge'
+    });
+  }
+
   removeSection(section: string): void {
     const element = document.querySelector(`.${section}`);
     if (element) {
@@ -77,7 +106,6 @@ export class WalletComponent {
   }
 
   openNamePopup(): void {
-  
     this.showNamePopup = true;
     this.errorMessage = ''; // Reset error message when opening the popup
   }
@@ -88,12 +116,20 @@ export class WalletComponent {
 
   saveName(): void {
     // Here you can add the logic to validate the coupon code
-    if (this.couponCode === '1234') { 
-      this.showNamePopup = false;
-      this.errorMessage = ''; // Reset error message
+    if (this.couponCode !== 'valid_coupon_code') {
+      this.invalidCoupon = true;
+      this.errorMessage = "There is no current running offer with this coupon code";
+      this.showErrorMessagePopup = true;
     } else {
-    
-      this.errorMessage = 'There is no current running offer with this coupon code.';
+      // Coupon code is valid, do something
     }
+  }
+
+  navigateToNextPage(): void {
+    this.router.navigate(['/login-next']);
+  }
+
+  closeErrorMessagePopup() {
+    this.showErrorMessagePopup = false;
   }
 }

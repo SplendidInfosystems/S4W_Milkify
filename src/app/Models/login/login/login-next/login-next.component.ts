@@ -19,13 +19,24 @@ export class LoginNextComponent implements OnInit {
   showModal: boolean = false;
   modalMessage: string = '';
   isOtpFieldEmpty: boolean = true;
+  showCancellationPopup: boolean = false;
   constructor(private router: Router, private loginService: LoginService) { }
   ngOnInit(): void {
     this.mobileNumber = this.loginService.getMobileNumber();
     this.startCountdownTimer();
   }
+  closeCancellationPopup() {
+    this.showCancellationPopup = false;
+    this.router.navigate([], {
+      queryParams: {
+        subscriptionCancelled: null
+      },
+      queryParamsHandling: 'merge'
+    });
+  }
+ 
   goBack(): void {
-    this.router.navigate(['/login']);
+    this.showCancellationPopup = true;
   }
   onOtpInput(index: number): void {
     const otpInputArray = this.otpInputs.toArray();

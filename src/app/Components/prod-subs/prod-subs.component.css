@@ -6,17 +6,14 @@
   background-color: #f1f7f7;
   padding: 10px;
 }
-
 .column {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   margin: 5px 10px;
 }
-
 .column h6 {
-  margin-top: 3vh;
-  margin-left: 1vh;
+  margin: 3vh 0 15px 1vh;
 }
 
 .column-main {
@@ -24,29 +21,24 @@
   align-items: flex-start;
   margin-top: 1vh;
 }
-
 .row {
   margin-left: 5px;
   text-align: center;
 }
-
 .col-icons,
 .col-text {
   display: flex;
   align-items: center;
 }
-
 .col-icons mat-icon {
  width: 60%;
  height: 100%;
  /* color: #73ebba; */
 }
-
 .col-text p {
   margin: 0;
   font-size: 14px;
 }
-
 .card-container {
   display: flex;
   justify-content: space-around;
@@ -55,7 +47,6 @@
   padding-bottom: 70px;
   width: 100%;
 }
-
 .card {
   display: flex;
   flex-direction: column;
@@ -67,7 +58,6 @@
   padding: 10px;
   background-color: white;
 }
-
 .card-item {
   display: flex;
   align-items: center;
@@ -75,27 +65,21 @@
   padding: 2vh 7px;
   border-bottom: 1px solid #e0e0e0; 
 }
-
 .card-item:last-child {
   border-bottom: none; 
 }
-
 .card-icons {
   margin-right: 15px;
 }
-
 .card-details {
   flex: 1;
 }
-
 .card-details h6 {
   margin: 0;
 }
-
 .card-details p {
   margin: 5px 0 0;
 }
-
 .card-main {
   display: flex;
   align-items: center;
@@ -103,7 +87,6 @@
 .text-details-para{
   margin-bottom: 1vh;
 }
-
 .image-button {
   border: none;
   background-color: transparent;
@@ -112,22 +95,18 @@
   color: lightgrey; 
   transition: all 0.3s ease;
 }
-
 .image-button .mat-icon {
   width: 40px;
   height: auto;
   margin-left: 10px;
 }
-
 .card-icons:hover,
 .image-button .mat-icon:hover {
   filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.7));
 }
-
 .image-button:hover {
   color: #555;
 }
-
 .offer-card {
   width: 95%;
   margin: 10px;
@@ -135,13 +114,11 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 .offer-details {
   display: flex;
   align-items: center;
   padding: 1vh;
 }
-
 .offer-details img {
   width: 35px;
   border-radius: 50%;
@@ -149,19 +126,16 @@
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
   transition: filter 0.3s ease-in-out;
 }
-
 .text-details,
 .card-details {
   margin: 2px 0 0 0;
 }
-
 .saved-amount {
   color: #4CAF50;
   margin: 33px 0px 0 4rem;
   font-size: 14px;
   word-spacing: 2px;
 }
-
 .save-money-button {
   background-color: #4CAF50;
   color: white;
@@ -172,24 +146,20 @@
   font-size: 16px;
   transition: background-color 0.3s ease;
 }
-
 .save-money-button:hover {
   background-color: #45a049;
 }
-
 p {
   font-size: small;
 }
-
-h6 {
+.text-details h6 {
   margin-top: 5px;
+  margin-bottom: .2rem;
 }
-
 .card-details p,
 .text-details p {
   margin: 0;
 }
-
 .light-grey-text {
   color: #998d8d;;
 }

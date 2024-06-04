@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,10 +11,37 @@ export class PaymentComponent {
   cashback: number = 0;
   toBeCredited: number = this.amountToPay - this.cashback;
   upiIDs: string[] = [];
+  
+  showCancellationPopup: boolean = false;
   constructor(private router: Router) { }
   
+
+  @Output() cancelConfirmed = new EventEmitter<boolean>();
+  @Output() popupClosed = new EventEmitter<boolean>();
+
+  confirmCancel() {
+    this.cancelConfirmed.emit(true);
+  }
+
+  closePopup() {
+    this.popupClosed.emit(false);
+  }
+
+
+  closeCancellationPopup() {
+    this.showCancellationPopup = false;
+    this.router.navigate([], {
+      queryParams: {
+        subscriptionCancelled: null
+      },
+      queryParamsHandling: 'merge'
+    });
+  }
+
+ 
+
   goBack(): void {
-    this.router.navigate(['/wallet']);
+    this.showCancellationPopup = true;
   }
 
   addUPI(): void {
