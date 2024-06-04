@@ -69,7 +69,7 @@
         <div class="subscription-type">
           <h2>Subscription type</h2>
           <div class="sub-type">
-            <div class="typed">
+            <div class="typed" [ngClass]="{'edit-mode': isSubscriptionTypesVisible}">
               <div class="subscription-cards" *ngIf="isSubscriptionTypesVisible" (click)="toggleSubscriptionTypes()">
                 <p (click)="selectSubscription('Daily')">Daily</p>
                 <p (click)="selectSubscription('Alternate')">Alternate</p>
@@ -82,6 +82,7 @@
               </div>
             </div>
           </div>
+          
         </div>
 
 
