@@ -484,15 +484,21 @@ margin-right: 30px;
     margin-bottom: 10px;
    
 }
-
-.typed{
+.typed {
   display: flex;
   flex-direction: row;
-  border: 1px solid #ccc;
   width: 80%;
   padding: 6px;
-  border-radius: 10px;
   justify-content: space-evenly;
+}
+
+.typed:not(.edit-mode) {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.edit-mode .subscription-cards {
+  border: none;
 }
 
 .typed p, .edit{
