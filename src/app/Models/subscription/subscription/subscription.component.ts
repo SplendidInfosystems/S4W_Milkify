@@ -180,7 +180,6 @@ export class SubscriptionComponent implements OnInit {
 
   
 
- 
   confirmSubscription() {
     const subscriptionData = {
       images: this.images,
@@ -190,8 +189,9 @@ export class SubscriptionComponent implements OnInit {
       subscriptionType: this.selectedSubscription,
       date: this.defaultDate
     };
+    this.subscriptionService.saveSubscriptionData(subscriptionData);
+    this.router.navigate(['/my-sub'], { queryParams: { fromSubscription: true } });
   }
-
 
 
   shareOnWhatsApp(): void {
