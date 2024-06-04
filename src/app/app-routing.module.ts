@@ -10,7 +10,7 @@ import { LoginNextComponent } from './Models/login/login/login-next/login-next.c
 import { LoginComponent } from './Models/login/login/login.component';
 import { ProdSubsComponent } from './Components/prod-subs/prod-subs.component';
 import { TransactionComponent } from './Components/wallet/transaction/transaction.component';
-import { OrdersComponent } from './Components/orders/orders.component';
+import { OrdersComponent } from './Models/subscription/orders/orders.component';
 import { BillsComponent } from './Models/subscription/bills/bills.component';
 import { VacationComponent } from './Models/vacation/vacation/vacation.component';
 import { AddVacComponent } from './Models/vacation/add-vac/add-vac.component';

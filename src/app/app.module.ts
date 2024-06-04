@@ -28,7 +28,7 @@ import { WeeklyComponent } from './Models/subscription/weekly/weekly.component';
 import { LoginComponent } from './Models/login/login/login.component';
 import { LoginNextComponent } from './Models/login/login/login-next/login-next.component';
 import { BillsComponent } from './Models/subscription/bills/bills.component';
-import { OrdersComponent } from './Components/orders/orders.component';
+import { OrdersComponent } from './Models/subscription/orders/orders.component';
 import { ProdSubsComponent } from './Components/prod-subs/prod-subs.component';
 import { TransactionComponent } from './Components/wallet/transaction/transaction.component';
 import { SubscriptionComponent } from './Models/subscription/subscription/subscription.component';
