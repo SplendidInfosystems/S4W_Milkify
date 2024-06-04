@@ -84,9 +84,9 @@
   .forms-field{
     display: flex;
     border: 1px solid #ccc;
-    margin-left: 10px;
+    margin-left: 32px;
     border-radius: 10px;
-    width: 95%;
+    width: 100%;
     margin-bottom: 10px;
     height: 45px;
     justify-content: space-evenly;
@@ -247,7 +247,7 @@ margin-right: 11px;
   display: flex;
   flex-wrap: nowrap;
   width: 100%;
-  overflow-x: auto;
+  /* overflow-x: auto; */
   margin: 10px 0;
   gap: 10px;
 }
@@ -258,6 +258,13 @@ margin-right: 11px;
 
 .subscription-type, .start-date {
   width: 48%; /* Adjust as needed */
+  
+}
+
+
+.start-date h2{
+  /* margin-left: 40%; */
+  text-align: center;
 }
 
 .subscription-cards p {
@@ -282,7 +289,7 @@ margin-right: 11px;
 margin-right: 30px;
 }
 .script h2{
-    padding: 10px;
+    padding: 10px 7px;
     font-size: 15px;
     margin: auto;
 }
@@ -292,19 +299,22 @@ margin-right: 30px;
     margin: auto 5px;
 }
 .sub-type{
-    display: flex;
-    border: 1px solid #ccc;
     margin-left: 8px;
     border-radius: 10px;
     margin-bottom: 10px;
-    width: 80%;
-    padding: 6px;
-    justify-content: space-evenly;
+   
 }
+
 .typed{
   display: flex;
   flex-direction: row;
+  border: 1px solid #ccc;
+  width: 80%;
+  padding: 6px;
+  border-radius: 10px;
+  justify-content: space-evenly;
 }
+
 .typed p, .edit{
     text-align: center;
     margin-top:5px;
