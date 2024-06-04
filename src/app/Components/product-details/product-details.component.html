@@ -77,9 +77,10 @@
                 <p (click)="selectSubscription('One Time')">One Time</p>
               </div>
               <p *ngIf="!isSubscriptionTypesVisible" (click)="toggleSubscriptionTypes()">{{ selectedSubscription }}</p>
-              <div class="edit" *ngIf="!isSubscriptionTypesVisible && selectedSubscription == 'Daily' && selectedSubscription == 'Daily'">
+              <div class="edit" *ngIf="!isSubscriptionTypesVisible ">
                 <i class="fas fa-edit" (click)="toggleSubscriptionTypes()"></i>
               </div>
+              
             </div>
           </div>
           
