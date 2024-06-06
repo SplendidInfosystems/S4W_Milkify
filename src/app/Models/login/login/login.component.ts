@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   otpVerificationFailed: boolean = false;
   showCancellationPopup: boolean = false;
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
-
+  responseData: any = null;
   constructor(private router: Router, private loginService: LoginService) { }
 
   
@@ -52,29 +52,26 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void { }
 
   sendOTP(): void {
-    if (!this.isValidMobileNumber(this.mobileNumber)) {
-      alert('Please enter a valid mobile number.');
-      return;
-    }
-
-    const isRegistered = this.isMobileNumberRegistered(this.mobileNumber);
-
-    if (!isRegistered) {
-      this.router.navigate(['/registration']);
-      return;
-    }
-
-    this.otpSent = true;
-    this.loginService.setMobileNumber(this.mobileNumber);
-
-    // Navigate to the next page
-    this.router.navigate(['/login-next']);
+    this.loginService.login(this.mobileNumber).subscribe(
+      (response) => {
+        this.responseData = response;
+        console.log(response);  // Display the response in console
+        if (response.success) {
+          this.otpSent = true;
+          // Store mobile number for OTP verification step
+          this.loginService.setMobileNumber(this.mobileNumber);
+          // Navigate to the next page
+          this.router.navigate(['/login-next']);
+        } else {
+          // Handle login failure, show error message or navigate to registration page
+          console.log('Login failed');
+        }
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
   }
-
-  isMobileNumberRegistered(mobileNumber: string): boolean {
-    return mobileNumber !== '';
-  }
-
   verifyOTP(): void {
     if (this.otp === '123456') {
       this.otpVerified = true;

@@ -15,22 +15,14 @@
     <h3>OTP Verification</h3>
     <p>We have sent a Verification code to +91{{ mobileNumber }}</p>
     <div class="otp-input">
-      <input type="text" maxlength="1" (input)="onOtpInput(0)" (keydown)="onOtpKeydown($event, 0)" #otpInput>
-      <input type="text" maxlength="1" (input)="onOtpInput(1)" (keydown)="onOtpKeydown($event, 1)" #otpInput>
-      <input type="text" maxlength="1" (input)="onOtpInput(2)" (keydown)="onOtpKeydown($event, 2)" #otpInput>
-      <input type="text" maxlength="1" (input)="onOtpInput(3)" (keydown)="onOtpKeydown($event, 3)" #otpInput>
-      <input type="text" maxlength="1" (input)="onOtpInput(4)" (keydown)="onOtpKeydown($event, 4)" #otpInput>
-      <input type="text" maxlength="1" (input)="onOtpInput(5)" (keydown)="onOtpKeydown($event, 5)" #otpInput>
+      <input type="text" maxlength="6" [(ngModel)]="otp" placeholder="Enter OTP">
     </div>
     <div class="otp">
-      <p *ngIf="!otpVerificationFailed && otpVerified">OTP verified. Proceeding...</p>
-      <p *ngIf="!showResendOption">Didn't receive the OTP? Retry in: {{ remainingTime }}</p>
-      <div *ngIf="showResendOption">
-        <button (click)="resend()">Resend</button>
-      </div>
-      <button *ngIf="showVerifyButton" (click)="verifyOTP()" [disabled]="isOtpFieldEmpty">Verify & Proceed</button>
+      <button (click)="verifyOTP()">Verify & Proceed</button>
     </div>
+    
   </div>
+  
   <!-- Modal -->
   <div *ngIf="showModal" class="modal-backdrop" (click)="closeModal()"></div>
   <div *ngIf="showModal" class="modal-content">

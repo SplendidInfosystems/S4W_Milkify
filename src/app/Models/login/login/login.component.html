@@ -44,12 +44,10 @@
     </div>
     <div class="num">
       <input type="tel" id="mobileNumberInput" placeholder="Enter Mobile number" [(ngModel)]="mobileNumber"
-        pattern="[0-9]{10}" required maxlength="10" #mobileInput="ngModel" (click)="goBack()">
-      <button (click)="sendOTP(); mobileInput.control.markAsTouched(); navigateToNextPage()"
-        [disabled]="mobileInput.invalid || mobileNumber.length !== 10 || otpSent">Continue</button>
-
-
+        pattern="[0-9]{10}" required maxlength="10">
+      <button (click)="sendOTP()">Continue</button>
     </div>
+   
     <div *ngIf="showCancellationPopup" class="modal-overlay" (click)="goBack()">
       <div class="modal-content" (click)="$event.stopPropagation()">
         <div class="modal-content-wrapper">

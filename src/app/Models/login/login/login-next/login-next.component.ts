@@ -9,7 +9,9 @@ import { LoginService } from '../../../../Services/login.service';
 export class LoginNextComponent implements OnInit {
   @ViewChildren('otpInput') otpInputs!: QueryList<ElementRef<HTMLInputElement>>;
   mobileNumber: string = '';
-  otp: string = '123456';
+  otp: string = '';
+  responseData: any = null;
+
   otpVerified: boolean = false;
   otpVerificationFailed: boolean = false;
   showResendOption: boolean = false;
@@ -59,16 +61,22 @@ export class LoginNextComponent implements OnInit {
     this.isOtpFieldEmpty = enteredOtp.trim().length !== 6;
   }
   verifyOTP(): void {
-    const enteredOtp = this.otpInputs.toArray().map(input => input.nativeElement.value).join('');
-    if (enteredOtp === this.otp) {
-      this.otpVerified = true;
-      this.router.navigate(['/home']);
-    } else {
-      this.otpVerified = false;
-      this.otpVerificationFailed = true;
-      this.modalMessage = 'OTP Verification failed for this mobile number';
-      this.showModal = true;
-    }
+    this.loginService.verifyOTP(this.otp).subscribe(
+      (response) => {
+        this.responseData = response;
+        console.log(response);  // Display the response in console
+        if (response.success) {
+          console.log('OTP verified successfully.');
+          this.router.navigate(['/home']);
+        } else {
+          // Handle OTP verification failure
+          console.log('Invalid OTP. Please try again.');
+        }
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
   }
   closeModal(): void {
     this.showModal = false;

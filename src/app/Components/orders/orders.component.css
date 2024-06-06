@@ -101,7 +101,9 @@
     align-items: center;
     flex-direction: row-reverse;
     justify-content: space-between;
+    font-size: 13px;
    }
+
   .confirm-button {
     padding: 10px 20px;
     background-color: #04B56C; 

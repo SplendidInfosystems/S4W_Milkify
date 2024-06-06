@@ -2,7 +2,7 @@
 import { AppComponent } from './app.component';
 import { HomeComponent } from './Components/home/home.component';
 import { TapbarComponent } from './Components/tapbar/tapbar.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
@@ -44,6 +44,7 @@ import { OffersComponent } from './Components/offers/offers.component';
 import { ReferComponent } from './Components/refer/refer.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { LegalComponent } from './Models/User/legal/legal.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -96,7 +97,9 @@ import { LegalComponent } from './Models/User/legal/legal.component';
     MatRadioModule,
     MatIconModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbCarouselModule,
+    HttpClientModule
   
   ],
   providers: [
