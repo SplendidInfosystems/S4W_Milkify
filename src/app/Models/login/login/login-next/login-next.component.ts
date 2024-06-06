@@ -11,7 +11,6 @@ export class LoginNextComponent implements OnInit {
   mobileNumber: string = '';
   otp: string = '';
   responseData: any = null;
-
   otpVerified: boolean = false;
   otpVerificationFailed: boolean = false;
   showResendOption: boolean = false;
@@ -61,22 +60,24 @@ export class LoginNextComponent implements OnInit {
     this.isOtpFieldEmpty = enteredOtp.trim().length !== 6;
   }
   verifyOTP(): void {
-    this.loginService.verifyOTP(this.otp).subscribe(
-      (response) => {
-        this.responseData = response;
-        console.log(response);  // Display the response in console
-        if (response.success) {
-          console.log('OTP verified successfully.');
-          this.router.navigate(['/home']);
-        } else {
-          // Handle OTP verification failure
-          console.log('Invalid OTP. Please try again.');
+    if (this.mobileNumber && this.otp) { 
+      this.loginService.verifyOTP(this.mobileNumber, this.otp).subscribe(
+        (response) => {
+          if (response.success) {
+            console.log('OTP verified successfully.');
+            this.router.navigate(['/home']);
+          } else {
+            console.log('OTP verification failed');
+            this.otpVerificationFailed = true;
+          }
+        },
+        (error) => {
+          console.error('Error:', error);
         }
-      },
-      (error) => {
-        console.error('Error:', error);
-      }
-    );
+      );
+    } else {
+      console.error('Mobile number or OTP is empty.');
+    }
   }
   closeModal(): void {
     this.showModal = false;

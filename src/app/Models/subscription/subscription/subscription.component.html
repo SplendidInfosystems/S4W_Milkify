@@ -104,14 +104,18 @@
               <h2>Start Date</h2>
               <form [formGroup]="form">
                 <div class="forms-field">
-                  <p>{{ defaultDate | date }}</p>
-                  <input matInput [matDatepicker]="picker" formControlName="selectedDate"
-                    [matDatepickerFilter]="dateFilter">
+                  <!-- Display the initially selected date -->
+                  <p *ngIf="!selectedStartDate">{{ defaultDate | date }}</p>
+                  <p *ngIf="selectedStartDate">{{ selectedStartDate | date }}</p>
+                
+
+                  <input matInput [matDatepicker]="picker" formControlName="selectedDate" (dateChange)="selectStartDate($event.value)">
                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                  <mat-datepicker #picker [dateClass]="dateClass"></mat-datepicker>
+                  <mat-datepicker #picker></mat-datepicker>
                 </div>
               </form>
             </div>
+            
           </div>
         </div>
       </div>
@@ -130,11 +134,7 @@
             </ul>
             </div>
 
-            <!-- <div class="subscription">
-              <button class="add-sub" (click)="confirmSubscription()" [disabled]="quantity < 1">
-                <span>₹{{ totalPrice }} </span> Confirm Subscription
-              </button>
-            </div> -->
+           
             
             <div class="subscription">
               <ng-container *ngIf="!isEditing; else editingTemplate">
@@ -150,16 +150,7 @@
               </ng-template>
             </div>
             
-            
-
-
-
-            <!-- <ng-template #editingTemplate>
-              <div class="subscription edit-mode">
-                <button class="resume-sub" (click)="resumeSubscription($event)">Resume Subscription</button>
-                <button class="cancel-sub" (click)="cancelSubscription()">Cancel Subscription</button>
-              </div>
-            </ng-template> -->
+          
             <div *ngIf=" showResumePopup" class="modal-overlay" (click)="closeResumePopup()">
               <div class="modal-content" (click)="$event.stopPropagation()">
                 <h6>Subscription Resumed</h6>
@@ -170,6 +161,7 @@
                     
                </div>
             </div>
+            
         <div *ngIf="showCancelPopup" class="modal-overlay" (click)="closeCancelPopup()">
           <div class="modal-content" (click)="$event.stopPropagation()">
 
@@ -205,7 +197,7 @@
         </div>
 
         <!-- Pause subscription popup -->
-<div *ngIf="showPausePopup" class="modal-overlay" (click)="closePausePopup()">
+<div *ngIf="showPausePopup" class="modal-overlay" >
   <div class="modal-content" (click)="$event.stopPropagation()">
     <h6>Pause Subscription</h6>
     <p class="sub-label">If you are cancelling for a certain period of time you can pause the subscription rather than cancelling.</p>
@@ -304,5 +296,3 @@
   
   
    </div>
-
-  <!-- </div> -->

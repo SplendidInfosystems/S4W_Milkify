@@ -4,13 +4,15 @@ import { MatCalendarCellClassFunction, MatDatepicker } from '@angular/material/d
 import { DateAdapter } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SubscriptionService } from '../../../Services/subscription.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-subscription',
   templateUrl: './subscription.component.html',
   styleUrls: ['./subscription.component.css']
 })
+
 export class SubscriptionComponent implements OnInit {
   images = [
     'https://content.jdmagicbox.com/comp/delhi/s6/011pxx11.xx11.191015075931.b6s6/catalogue/country-delight-okhla-industrial-area-delhi-milk-dairy-nlw19dbmil.jpg',
@@ -34,10 +36,12 @@ export class SubscriptionComponent implements OnInit {
   // totalPrice = 27;
   alternateDates: Date[] = [];
   isSubscriptionTypesVisible = false;
-  startDate: Date = new Date();
+  startDate: Date | null | undefined;
+  
+  defaultDate: Date = new Date();
   endDate: Date = new Date();
   selectedSubscription = 'Daily';
-  defaultDate = new Date();
+  // defaultDate = new Date();
   showResumePopup = false;
   showCancelPopup = false;
   @ViewChild('picker') picker: MatDatepicker<any> | undefined;
@@ -47,6 +51,8 @@ export class SubscriptionComponent implements OnInit {
   showPausedDurationPopup: boolean = false;
   endDateInput: any;
   form: any;
+  formOne: FormGroup;
+
   totalPrice = this.price * this.quantity;
   constructor(
     private router: Router,
@@ -60,20 +66,31 @@ export class SubscriptionComponent implements OnInit {
     this.form = this.fb.group({
       selectedDate: [null]
     });
-
+    this.formOne = this.fb.group({
+      selectedDate: new FormControl(this.defaultDate)
+    });
     this.generateCalendar(new Date());
   }
+  // selectStartDate(date: Date): void { this.selectedStartDate = date; 
+  //   this.form.controls['selectedDate'].setValue(this.selectedStartDate); }
+
   ngOnInit(): void {
     this.defaultDate = new Date();
     this.subscriptionService.isEditing$.subscribe(isEditing => {
       this.isEditing = isEditing;
     });
-    this.route.queryParams.subscribe((params: { [x: string]: any; }) => {
+    this.route.queryParams.subscribe(params => {
       if (params['subscriptionCancelled']) {
-        this.showCancellationPopup = true;
+        this.showCancelPopup = true;
       }
     });
   }
+  selectStartDate(date: Date): void {
+    this.selectedStartDate = date;
+    // Set the selected date to the form control value
+    this.form.controls['selectedDate'].setValue(this.selectedStartDate);
+  }
+  
   goBack(): void {
     this.router.navigate(['/prod-subs']);
   }
@@ -93,7 +110,7 @@ export class SubscriptionComponent implements OnInit {
   }
 
   addQuantity(): void {
-    this.quantity++;  // Directly increment the quantity
+    this.quantity++;  
     this.updateTotalPrice();
   }
 
@@ -124,15 +141,25 @@ export class SubscriptionComponent implements OnInit {
   closeCancelPopup() {
     this.showCancelPopup = false;
   }
+  autoCloseCancelPopup() {
+    this.showCancelPopup = false;
+  }
 
   confirmCancelSubscription() {
-    this.showCancelPopup = false; // Close the cancel subscription popup
-    console.log('Subscription canceled successfully!');
-    // this.snackBar.open('Subscription canceled successfully!', 'Close', {
-    //   duration: 3000,
-    // });
+    this.showCancelPopup = false; 
+    console.log('Subscription cancelled successfully!');
+    this.closeAllPopups();
+    this.autoCloseCancelPopup();
+  
     this.router.navigate(['/orders'], { queryParams: { showCancelPopup: true } });
   }
+  closeAllPopups() {
+    this.showResumePopup = false;
+    this.showPausePopup = false;
+    this.showPausedDurationPopup = false;
+    this.showCancellationPopup = false;
+  }
+    
 
   closeCancellationPopup() {
     this.showCancellationPopup = false;
@@ -143,12 +170,14 @@ export class SubscriptionComponent implements OnInit {
       },
       queryParamsHandling: 'merge'
     });
+    this.autoCloseCancelPopup();
   }
 
   pauseSubscription() {
     console.log('Pause subscription clicked');
     this.showPausePopup = true;
     this.checkAndCloseCancelPopup();
+     this.autoCloseCancelPopup();
   }
 
   closePausePopup() {
@@ -158,17 +187,15 @@ export class SubscriptionComponent implements OnInit {
 
   confirmPause() {
     if (this.isDurationSelected()) {
-      // Logic to pause the subscription
       this.showPausePopup = false;
       this.showPausedDurationPopup = true;
-      this.checkAndCloseCancelPopup();
+      this.closeAllPopups();
     }
   }
+  
   closePausedDurationPopup() {
     this.showPausedDurationPopup = false;
-    // this.snackBar.open('Your subscription has been paused.', 'Close', {
-    //   duration: 3000,
-    // });
+    
     this.checkAndCloseCancelPopup();
   }
 
