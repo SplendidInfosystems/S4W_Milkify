@@ -78,34 +78,44 @@
 
       <div class="subscript">
         <div class="script">
-          <h2>Subscription type</h2>
-          <div class="sub-type">
-            <div class="typed">
-              <p *ngIf="!isSubscriptionTypesVisible" (click)="toggleSubscriptionTypes()">{{ selectedSubscription }}</p>
-              <ng-container *ngIf="isSubscriptionTypesVisible">
-                <p (click)="selectSubscription('Daily')">Daily</p>
-                <p (click)="selectSubscription('Alternate')">Alternate</p>
-                <p (click)="selectSubscription('Weekly')">Weekly</p>
-                <p (click)="selectSubscription('One Time')">One Time</p>
-              </ng-container>
+          <div class="row">
+            <div class="subscription-type">
+              <h2>Subscription type</h2>
+              <div class="sub-type">
+                <div class="typed" [ngClass]="{'edit-mode': isSubscriptionTypesVisible}">
+                  <div class="subscription-cards" *ngIf="isSubscriptionTypesVisible" (click)="toggleSubscriptionTypes()">
+                    <p (click)="selectSubscription('Daily')">Daily</p>
+                    <p (click)="selectSubscription('Alternate')">Alternate</p>
+                    <p (click)="selectSubscription('Weekly')">Weekly</p>
+                    <p (click)="selectSubscription('One Time')">One Time</p>
+                  </div>
+                  <p *ngIf="!isSubscriptionTypesVisible" (click)="toggleSubscriptionTypes()">{{ selectedSubscription }}</p>
+                  <div class="edit" *ngIf="!isSubscriptionTypesVisible ">
+                    <i class="fas fa-edit" (click)="toggleSubscriptionTypes()"></i>
+                  </div>
+                  
+                </div>
+              </div>
+              
             </div>
-            <div class="edit">
-              <i class="fas fa-edit" (click)="toggleSubscriptionTypes()"></i>
+    
+    
+            <div class="start-date" *ngIf="selectedSubscription && !isSubscriptionTypesVisible">
+              <h2>Start Date</h2>
+              <form [formGroup]="form">
+                <div class="forms-field">
+                  <p>{{ defaultDate | date }}</p>
+                  <input matInput [matDatepicker]="picker" formControlName="selectedDate"
+                    [matDatepickerFilter]="dateFilter">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker [dateClass]="dateClass"></mat-datepicker>
+                </div>
+              </form>
             </div>
           </div>
         </div>
-        <div class="date">
-          <h2>Start Date</h2>
-          <form [formGroup]="form">
-            <div class="forms-field" >
-              <p>{{ date }}</p>
-              <input matInput [matDatepicker]="picker" formControlName="selectedDate" [matDatepickerFilter]="dateFilter">
-              <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
-              <mat-datepicker #picker [dateClass]="dateClass"></mat-datepicker>
-            </div>
-          </form>
-        </div>
-    </div>
+      </div>
+    
     
     
     <div class="descript">
@@ -139,7 +149,6 @@
                 </div>
               </ng-template>
             </div>
-            
             
             
 

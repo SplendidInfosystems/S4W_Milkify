@@ -245,9 +245,8 @@ margin-right: 11px;
 }
 .subscription-cards {
   display: flex;
-  flex-wrap: nowrap;
+  /* flex-wrap: nowrap;s */
   width: 100%;
-  /* overflow-x: auto; */
   margin: 10px 0;
   gap: 10px;
 }
@@ -270,17 +269,22 @@ margin-right: 11px;
 .subscription-cards p {
   margin: 0;
   padding: 10px;
-  border: 1px solid #04B56C;
-  border-radius: 5px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
   background-color: #fff;
   cursor: pointer;
   flex: 1 0 auto;
   text-align: center;
   font-size: 14px;
 }
+
+
 .subscription-cards p:hover {
   background-color: #04B56C;
   color: #fff;
+}
+.subscription-cards {
+  border: none;
 }
 .script{
     margin-left: 10px;
@@ -301,18 +305,23 @@ margin-right: 30px;
 .sub-type{
     margin-left: 8px;
     border-radius: 10px;
-    margin-bottom: 10px;
-   
+    margin-bottom: 5px;
 }
-
-.typed{
+.typed {
   display: flex;
   flex-direction: row;
-  border: 1px solid #ccc;
   width: 80%;
   padding: 6px;
-  border-radius: 10px;
   justify-content: space-evenly;
+}
+
+.typed:not(.edit-mode) {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.edit-mode .subscription-cards {
+  border: none;
 }
 
 .typed p, .edit{

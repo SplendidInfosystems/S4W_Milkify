@@ -103,37 +103,8 @@ export class SubscriptionComponent implements OnInit {
   toggleSubscriptionTypes() {
     this.isSubscriptionTypesVisible = !this.isSubscriptionTypesVisible;
   }
-  selectSubscription(subscription: string): void {
-    this.selectedSubscription = subscription;
-    this.isSubscriptionTypesVisible = false;
-    if (subscription === 'Daily') {
-      // Open the calendar when "Daily" subscription is selected
-      if (this.picker) {
-        this.picker.open();
-      }
-    }
+ 
 
-    if (subscription === 'Weekly') {
-        this.router.navigate(['/weekly']);
-    }
-}
-  openCalendar(): void {
-    if (this.picker) {
-      this.picker.open();
-    }
-  }
-  confirmSubscription() {
-    const subscriptionData = {
-      images: this.images,
-      price: this.price,
-      quantity: this.quantity,
-      totalPrice: this.totalPrice,
-      subscriptionType: this.selectedSubscription,
-      date: this.defaultDate
-    };
-    this.subscriptionService.saveSubscriptionData(subscriptionData);
-    this.router.navigate(['/my-sub'], { queryParams: { fromSubscription: true } });
-  }
 
   resumeSubscription(event: Event) {
     event.preventDefault();
@@ -206,33 +177,23 @@ export class SubscriptionComponent implements OnInit {
       this.closeCancelPopup();
     }
   }
-  calculateSelectedDates(startDate: Date): void {
-    if (!startDate) {
-      this.selectedDates = [];
-      return;
-    }
 
-    const endDate = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0);
-    this.selectedDates = [];
+  
 
-    for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
-      if (this.selectedSubscription === 'Daily' || (this.selectedSubscription === 'Alternate' && d.getDate() % 2 === startDate.getDate() % 2)) {
-        this.selectedDates.push(new Date(d));
-      }
-    }
+  confirmSubscription() {
+    const subscriptionData = {
+      images: this.images,
+      price: this.price,
+      quantity: this.quantity,
+      totalPrice: this.totalPrice,
+      subscriptionType: this.selectedSubscription,
+      date: this.defaultDate
+    };
+    this.subscriptionService.saveSubscriptionData(subscriptionData);
+    this.router.navigate(['/my-sub'], { queryParams: { fromSubscription: true } });
   }
 
-  dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
-    if (view === 'month') {
-      return this.selectedDates.some(d => d.getTime() === cellDate.getTime()) ? 'selected-date' : '';
-    }
-    return '';
-  };
 
-  dateFilter = (date: Date | null): boolean => {
-    const today = new Date();
-    return date ? date >= today : false;
-  };
   shareOnWhatsApp(): void {
     const message = encodeURIComponent('Message on whatsapp for new offers!');
     const url = encodeURIComponent('https://img.freepik.com/premium-photo/sustainable-travel-photo-abstract-expressionism-art-white-background_873925-1022238.jpg?w=740');
@@ -275,6 +236,61 @@ export class SubscriptionComponent implements OnInit {
       this.selectedStartDate = date;
     } else {
       this.selectedEndDate = date;
+    }
+  }
+  selectSubscription(subscriptionType: string) {
+    this.selectedSubscription = subscriptionType;
+    this.selectedDates = [];
+    this.startDate = new Date();
+    this.endDate = new Date(this.startDate.getFullYear(), this.startDate.getMonth() + 1, 0);
+
+    if (subscriptionType === 'One Time') {
+      this.openCalendar();
+    } else if (subscriptionType === 'Weekly') {
+      this.router.navigate(['/weekly']);
+    } else {
+      this.calculateSelectedDates(this.startDate);
+      this.openCalendar();
+    }
+  }
+
+  calculateSelectedDates(startDate: Date): void {
+    if (!startDate) {
+      this.selectedDates = [];
+      return;
+    }
+
+    const endDate = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0);
+    this.selectedDates = [];
+
+    for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+      if (this.selectedSubscription === 'Daily' || (this.selectedSubscription === 'Alternate' && d.getDate() % 2 === startDate.getDate() % 2)) {
+        this.selectedDates.push(new Date(d));
+      }
+    }
+  }
+
+  dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
+    if (view === 'month') {
+      return this.selectedDates.some(d => d.getTime() === cellDate.getTime()) ? 'selected-date' : '';
+    }
+    return '';
+  };
+
+  dateFilter = (date: Date | null): boolean => {
+    const today = new Date();
+    return date ? date >= today : false;
+  };
+
+  openCalendar(): void {
+    if (this.picker) {
+      this.picker.open();
+    }
+  }
+
+  closeCalendar(): void {
+    if (this.picker) {
+      this.picker.close();
     }
   }
 
