@@ -11,7 +11,6 @@ export class LoginNextComponent implements OnInit {
   mobileNumber: string = '';
   otp: string = '';
   responseData: any = null;
-
   otpVerified: boolean = false;
   otpVerificationFailed: boolean = false;
   showResendOption: boolean = false;

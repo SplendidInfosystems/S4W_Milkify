@@ -2,8 +2,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../../../Services/login.service';
-import { FacebookLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -24,19 +22,15 @@ export class LoginComponent implements OnInit {
 
   
   constructor(private router: Router, private loginService: LoginService) { }
-
   
   @Output() cancelConfirmed = new EventEmitter<boolean>();
   @Output() popupClosed = new EventEmitter<boolean>();
-
   confirmCancel() {
     this.cancelConfirmed.emit(true);
   }
-
   closePopup() {
     this.popupClosed.emit(false);
   }
-
 
   closeCancellationPopup() {
     this.showCancellationPopup = false;
@@ -47,15 +41,11 @@ export class LoginComponent implements OnInit {
       queryParamsHandling: 'merge'
     });
   }
-
  
-
   goBack(): void {
     this.showCancellationPopup = true;
   }
-  ngOnInit(): void { 
-  }
-
+  ngOnInit(): void { }
   sendOTP(): void {
   this.loginService.login(this.mobileNumber).subscribe(
     (response) => {
@@ -73,7 +63,6 @@ export class LoginComponent implements OnInit {
     }
   );
 }
-
   verifyOTP(): void {
     this.loginService.verifyOTP(this.mobileNumber, this.otp).subscribe(
       (response) => {
@@ -91,17 +80,13 @@ export class LoginComponent implements OnInit {
     );
   }
 
-
   private isValidMobileNumber(number: string): boolean {
     return /^\d{10}$/.test(number);
   }
-
   resendOTP(): void {
-
     this.resendDisabled = true;
     this.startCountdownTimer(40);
   }
-
   startCountdownTimer(seconds: number): void {
     let timer = seconds;
     const interval = setInterval(() => {
@@ -114,13 +99,11 @@ export class LoginComponent implements OnInit {
       }
     }, 1000);
   }
-
   formatTime(seconds: number): string {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
   }
-
   navigateToNextPage(): void {
     this.router.navigate(['/login-next']);
   }
