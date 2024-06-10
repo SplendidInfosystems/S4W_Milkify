@@ -18,10 +18,10 @@
     </div>
     <div class="balance"><i class="fas fa-ellipsis-h"></i></div>
   </header>
-  <div class="selection">
-    <div class="act">
+  <div class="selection" *ngIf="paymentData.length > 0">
+    <div class="act" *ngFor="let payment of paymentData">
       <p>Amount to pay</p>
-      <h6>{{ amountToPay | currency:'INR' }}</h6>
+      <h6>{{ payment.amount | currency:'INR' }}</h6>
     </div>
     <div class="react">
       <p>Cashback</p>
@@ -32,7 +32,7 @@
       <h6>{{ toBeCredited | currency:'INR' }}</h6>
     </div>
   </div>
-
+  
 
   <div class="apps">
     <h6>UPI Apps</h6>

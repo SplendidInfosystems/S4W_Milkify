@@ -46,7 +46,8 @@
       <input type="tel" id="mobileNumberInput" placeholder="Enter Mobile number" [(ngModel)]="mobileNumber"
         pattern="[0-9]{10}" required maxlength="10">
       <button (click)="sendOTP()">Continue</button>
-    </div>
+      
+    
    
     <div *ngIf="showCancellationPopup" class="modal-overlay" (click)="goBack()">
       <div class="modal-content" (click)="$event.stopPropagation()">
@@ -62,10 +63,13 @@
         </div>
         <button (click)="sendOTP(); mobileInput.control.markAsTouched(); navigateToNextPage()"
           [disabled]="mobileInput.invalid || mobileNumber.length !== 10 || otpSent">Continue</button>
+       
 
         <div *ngIf="mobileInput.invalid && mobileInput.touched" class="error-message">
           Invalid number
         </div>
+
+       
         <div class="min-message">
           <p>By Continuing, you agree to our <br>&nbsp;&nbsp;
             Terms of service & Privacy of Policy</p>

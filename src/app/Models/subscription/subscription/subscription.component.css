@@ -7,7 +7,6 @@
     background-color: #f1f7f7;
     padding-top: 5px;
     height: 100%;
-
   }
 
   .back-icon {
@@ -21,13 +20,9 @@
 
   .head {
     text-align: center;
-    /* margin-left: 5%; */
     font-size: 20px;
-    /* margin-top: 8px; */
   }
   .Carousel{
-    /* background-color: white;
-    margin: 15px; */
     border-radius: 10px;
 
 }

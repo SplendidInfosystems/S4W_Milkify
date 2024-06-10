@@ -1,64 +1,77 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { BillService } from '../../../Services/bill.service';
 
 @Component({
   selector: 'app-bills',
   templateUrl: './bills.component.html',
   styleUrls: ['./bills.component.css']
 })
-export class BillsComponent {
-  currentMonth: string;
-  months: string[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  totalBill: number = 0; // Initially, set to ₹0
-  billAmounts: { [month: string]: number } = {
-    'January': 100,
-    'February': 150,
-    'March': 120,
-    'April': 220,
-    'May': 320,
-    'June': 0
-  };
+export class BillsComponent implements OnInit {
+  currentMonth: string = '';
+  totalBill: number = 0;
+  monthData: any[] = []; 
 
-  constructor(private location: Location,private router:Router) {
-    const currentDate = new Date();
-    const currentMonthIndex = currentDate.getMonth(); // JavaScript months are 0-based
-    this.currentMonth = this.months[currentMonthIndex];
-    this.totalBill = this.billAmounts[this.currentMonth];
+  constructor(private location: Location, private router: Router, private billService: BillService) {}
+
+  ngOnInit(): void {
+    const userId = 11;
+    this.getMonthlyBillForCurrentUser(userId);
+  }
+
+  getMonthlyBillForCurrentUser(userId: number): void {
+    this.billService.getMonthlyBill(userId).subscribe(
+      (response: any) => {
+        console.log('Monthly Bill Response:', response.body);
+        this.monthData = response.body;
+        if (this.monthData.length > 0) {
+          this.currentMonth = this.monthData[0].month;
+          this.calculateTotalBill();
+        }
+      },
+      (error) => {
+        console.error('Error fetching monthly bill:', error);
+      }
+    );
+  }
+
+  calculateTotalBill(): void {
+    const currentMonthData = this.monthData.find(data => data.month === this.currentMonth);
+    if (currentMonthData) {
+      this.totalBill = currentMonthData.total_bill;
+    } else {
+      this.totalBill = 0;
+    }
   }
 
   goBack(): void {
-    // this.location.back();
     this.router.navigate(['/prod-subs']);
   }
 
   showPreviousMonth(): void {
-    const currentIndex = this.months.indexOf(this.currentMonth);
+    const currentIndex = this.monthData.findIndex(data => data.month === this.currentMonth);
     if (currentIndex > 0) {
-      this.currentMonth = this.months[currentIndex - 1];
-      this.totalBill = this.billAmounts[this.currentMonth];
+      this.currentMonth = this.monthData[currentIndex - 1].month;
+      this.calculateTotalBill();
     }
   }
 
   showNextMonth(): void {
-    const currentIndex = this.months.indexOf(this.currentMonth);
-    const currentDate = new Date();
-    const currentMonthIndex = currentDate.getMonth(); // JavaScript months are 0-based
-    if (currentIndex < currentMonthIndex) {
-      this.currentMonth = this.months[currentIndex + 1];
-      this.totalBill = this.billAmounts[this.currentMonth];
+    const currentIndex = this.monthData.findIndex(data => data.month === this.currentMonth);
+    if (currentIndex < this.monthData.length - 1) {
+      this.currentMonth = this.monthData[currentIndex + 1].month;
+      this.calculateTotalBill();
     }
   }
 
   showPreviousArrow(): boolean {
-    const currentIndex = this.months.indexOf(this.currentMonth);
+    const currentIndex = this.monthData.findIndex(data => data.month === this.currentMonth);
     return currentIndex > 0;
   }
 
   showNextArrow(): boolean {
-    const currentIndex = this.months.indexOf(this.currentMonth);
-    const currentDate = new Date();
-    const currentMonthIndex = currentDate.getMonth(); // JavaScript months are 0-based
-    return currentIndex < currentMonthIndex;
+    const currentIndex = this.monthData.findIndex(data => data.month === this.currentMonth);
+    return currentIndex < this.monthData.length - 1;
   }
 }

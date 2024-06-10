@@ -21,13 +21,16 @@ export class MySubComponent {
     this.route.queryParams.subscribe(params => {
       this.fromSubscription = params['fromSubscription'] === 'true';
       if (this.fromSubscription) {
-        this.subscriptionData = this.subscriptionService.getSubscriptionData();
-        this.hasSubscriptionData = !!this.subscriptionData;
+
+        const userId = 2;
+        this.subscriptionService.getSubscriptionData(userId).subscribe(data => {
+          this.subscriptionData = data;
+          this.hasSubscriptionData = !!this.subscriptionData;
+        });
       }
     });
 
     if (!this.fromSubscription) {
-      // Logic to display static template if not coming from SubscriptionComponent
       this.subscriptionData = null;
       this.hasSubscriptionData = false;
     }

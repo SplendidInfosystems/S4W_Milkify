@@ -31,6 +31,7 @@ export class ProductDetailsComponent {
   subscriptionTypes: string[] = ['Daily', 'Alternate', 'Weekly', 'One Time'];
   form!: FormGroup;
   selectedDates: Date[] = [];
+  selectedStartDate!: Date; 
   // isEditing = false;
   
 
@@ -75,6 +76,11 @@ export class ProductDetailsComponent {
       this.quantity = 0;
       // this.isEditing = false;
     }
+  }
+  selectDate(date: Date): void {
+    this.selectedStartDate = date;
+    // Set the selected date to the form control value
+    this.form.controls['selectedDate'].setValue(this.selectedStartDate);
   }
 
   addQuantity() {

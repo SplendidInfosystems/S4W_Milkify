@@ -30,10 +30,9 @@
 .message p {
     padding: 15px;
     text-align: center;
-    margin-top: 30%;
+    margin-top: 25%;
     font-size: 14px;
     color: rgb(79, 78, 78);
-    /* font-family: 'Arial', sans-serif; */
     font-weight: 500;
 }
 
@@ -103,7 +102,18 @@
         color: #fff;
     }
 }
-
+.submit button{
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(101, 101, 253);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+}
 .num button:hover,
 .otp button:hover {
     background-color: #04B56C;

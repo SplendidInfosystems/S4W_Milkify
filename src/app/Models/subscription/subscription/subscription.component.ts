@@ -31,7 +31,6 @@ export class SubscriptionComponent implements OnInit {
   quantity = 1;
   date = '30 may 2024';
   selectedDates: Date[] = [];
-  // totalPrice = 27;
   alternateDates: Date[] = [];
   isSubscriptionTypesVisible = false;
   startDate: Date = new Date();
@@ -48,6 +47,7 @@ export class SubscriptionComponent implements OnInit {
   endDateInput: any;
   form: any;
   totalPrice = this.price * this.quantity;
+  subscriptionData: any;
   constructor(
     private router: Router,
     private dateAdapter: DateAdapter<Date>,
@@ -64,6 +64,7 @@ export class SubscriptionComponent implements OnInit {
     this.generateCalendar(new Date());
   }
   ngOnInit(): void {
+    this.fetchSubscriptionData(0); 
     this.defaultDate = new Date();
     this.subscriptionService.isEditing$.subscribe(isEditing => {
       this.isEditing = isEditing;
@@ -74,6 +75,51 @@ export class SubscriptionComponent implements OnInit {
       }
     });
   }
+
+  fetchSubscriptionData(userId: number): void {
+    this.subscriptionService.getSubscriptionData(userId).subscribe(
+      (response) => {
+        console.log('Subscription Data:', response.body);
+        this.subscriptionData = response.body;
+      },
+      (error) => {
+        console.error('Error fetching subscription data:', error);
+      }
+    );
+  }
+  postSubscriptionData(subscriptionData: any): void {
+    this.subscriptionService.postSubscriptionData(subscriptionData).subscribe(
+      (response) => {
+        console.log('Subscription Data Posted:', response);
+        // Handle any post-response actions here
+      },
+      (error) => {
+        console.error('Error posting subscription data:', error);
+        // Handle errors
+      }
+    );
+  }
+
+  onPostSubscription(): void {
+  
+    this.subscriptionService.postSubscriptionData(this.subscriptionData).subscribe(
+      (response) => {
+        console.log('Subscription Data Posted:', response);
+        // Handle any post-response actions here
+      },
+      (error) => {
+        console.error('Error posting subscription data:', error);
+        // Handle errors
+      }
+    );
+  }
+
+  // Example usage
+  onSubmit(subscriptionData: any): void {
+    this.postSubscriptionData(subscriptionData);
+  }
+  
+
   goBack(): void {
     this.router.navigate(['/prod-subs']);
   }
@@ -126,11 +172,8 @@ export class SubscriptionComponent implements OnInit {
   }
 
   confirmCancelSubscription() {
-    this.showCancelPopup = false; // Close the cancel subscription popup
+    this.showCancelPopup = false; 
     console.log('Subscription canceled successfully!');
-    // this.snackBar.open('Subscription canceled successfully!', 'Close', {
-    //   duration: 3000,
-    // });
     this.router.navigate(['/orders'], { queryParams: { showCancelPopup: true } });
   }
 
@@ -166,9 +209,6 @@ export class SubscriptionComponent implements OnInit {
   }
   closePausedDurationPopup() {
     this.showPausedDurationPopup = false;
-    // this.snackBar.open('Your subscription has been paused.', 'Close', {
-    //   duration: 3000,
-    // });
     this.checkAndCloseCancelPopup();
   }
 
@@ -238,21 +278,25 @@ export class SubscriptionComponent implements OnInit {
       this.selectedEndDate = date;
     }
   }
-  selectSubscription(subscriptionType: string) {
-    this.selectedSubscription = subscriptionType;
+  selectSubscription(subscription_type: string): void {
+    this.selectedSubscription = subscription_type;
     this.selectedDates = [];
     this.startDate = new Date();
     this.endDate = new Date(this.startDate.getFullYear(), this.startDate.getMonth() + 1, 0);
-
-    if (subscriptionType === 'One Time') {
+  
+    if (subscription_type === 'One Time') {
       this.openCalendar();
-    } else if (subscriptionType === 'Weekly') {
+    } else if (subscription_type === 'Weekly') {
       this.router.navigate(['/weekly']);
     } else {
       this.calculateSelectedDates(this.startDate);
-      this.openCalendar();
+      this.openCalendar(); 
     }
   }
+  
+ 
+  
+  
 
   calculateSelectedDates(startDate: Date): void {
     if (!startDate) {
@@ -263,8 +307,8 @@ export class SubscriptionComponent implements OnInit {
     const endDate = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0);
     this.selectedDates = [];
 
-    for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
-      if (this.selectedSubscription === 'Daily' || (this.selectedSubscription === 'Alternate' && d.getDate() % 2 === startDate.getDate() % 2)) {
+    for (let d = new Date(this.startDate); d <= this.endDate; d.setDate(d.getDate() + 1)) {
+      if (this.selectedSubscription === 'Daily' || (this.selectedSubscription === 'Alternative' && d.getDate() % 2 === this.startDate.getDate() % 2)) {
         this.selectedDates.push(new Date(d));
       }
     }

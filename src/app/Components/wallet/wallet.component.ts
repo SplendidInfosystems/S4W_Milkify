@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { WalletService } from '../../Services/wallet.service';
 
 @Component({
   selector: 'app-wallet',
@@ -27,6 +28,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 })
 export class WalletComponent {
   currentBalance: number = 0;
+  userId: string = '1'; 
   ReBalance: number = 250;
   Balance: number = 1000;
   showErrorMessagePopup: boolean = false;
@@ -44,10 +46,25 @@ export class WalletComponent {
   showPayButton: boolean = true;
   showInvalidCouponPopup: boolean = false;
   showCancellationPopup: boolean = false;
+  coupons: any;
 
-  constructor(private router: Router, private location: Location) { }
+  constructor(private router: Router, private location: Location,private walletService: WalletService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.getCouponData(1); 
+  }
+  getCouponData(userId: number): void {
+    this.walletService.getCoupon(userId).subscribe(
+      (response: any) => {
+        console.log('Coupon Data:', response.body);
+        this.coupons = response.body; 
+      },
+      (error) => {
+        console.error('Error fetching coupon data:', error);
+      }
+    );
+  }
+  
 
   goBack(): void {
     if (localStorage.getItem('fromTransactionPage')) {
@@ -57,7 +74,19 @@ export class WalletComponent {
       this.router.navigate(['/home']);
     }
   }
-
+  updateBalanceOnServer(newBalance: number): void {
+    this.walletService.updateBalance(newBalance, this.userId)
+      .subscribe(
+        response => {
+          console.log('Balance updated successfully:', response);
+        },
+        error => {
+          console.error('Error updating balance:', error);
+        }
+      );
+  }
+  
+  
   offerSets: any[] = [
     { cashback: '₹100', rechargeAmount: '₹500' },
     { cashback: '₹200', rechargeAmount: '₹1500' },
@@ -115,14 +144,29 @@ onChange() {
   }
 
   saveName(): void {
-    // Here you can add the logic to validate the coupon code
-    if (this.couponCode !== 'valid_coupon_code') {
+    const coupon = this.coupons.find((coupon: { coupon_code: string; }) => coupon.coupon_code === this.couponCode);
+    if (coupon) {
+      console.log('Coupon code applied successfully:', coupon);
+
+      // this.saveCoupon(coupon);
+
+    } else {
       this.invalidCoupon = true;
       this.errorMessage = "There is no current running offer with this coupon code";
       this.showErrorMessagePopup = true;
-    } else {
-      // Coupon code is valid, do something
     }
+  }
+  
+  saveCoupon(couponData: any): void {
+    this.walletService.postCoupon(couponData).subscribe(
+      (response: any) => {
+        console.log('Coupon data posted successfully:', response);
+      },
+
+      (error) => {
+        console.error('Error posting coupon data:', error);
+      }
+    );
   }
 
   navigateToNextPage(): void {

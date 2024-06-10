@@ -45,7 +45,11 @@ import { ReferComponent } from './Components/refer/refer.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { LegalComponent } from './Models/User/legal/legal.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import {
+  GoogleLoginProvider,
+  FacebookLoginProvider
+} from '@abacritt/angularx-social-login';
 
 @NgModule({
   
@@ -75,7 +79,8 @@ import { HttpClientModule } from '@angular/common/http';
     OffersComponent,
     UserProfileComponent,
     ReferComponent,
-    LegalComponent
+    LegalComponent,
+  
   
   ],
   imports: [

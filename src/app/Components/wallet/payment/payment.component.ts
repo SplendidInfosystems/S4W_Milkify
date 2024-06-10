@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { PaymentService } from '../../../Services/payment.service';
 
 @Component({
   selector: 'app-payment',
@@ -9,11 +10,12 @@ import { Router } from '@angular/router';
 export class PaymentComponent {
   amountToPay: number = 250;
   cashback: number = 0;
-  toBeCredited: number = this.amountToPay - this.cashback;
+  toBeCredited: number = this.amountToPay ;
   upiIDs: string[] = [];
+  paymentData: any[] = [];
   
   showCancellationPopup: boolean = false;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private paymentService: PaymentService) { }
   
 
   @Output() cancelConfirmed = new EventEmitter<boolean>();
@@ -25,6 +27,22 @@ export class PaymentComponent {
 
   closePopup() {
     this.popupClosed.emit(false);
+  }
+  ngOnInit(): void {
+    const userId = 2; 
+    this.getPaymentData(userId);
+  }
+
+  getPaymentData(userId: number): void {
+    this.paymentService.getpayment(userId).subscribe(
+      (response: any) => {
+        console.log('Payment Data:', response.body);
+        this.paymentData = response.body || [];
+      },
+      (error: any) => {
+        console.error('Error fetching payment data:', error);
+      }
+    );
   }
 
 

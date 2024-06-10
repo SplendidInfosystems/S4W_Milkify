@@ -1,6 +1,8 @@
+
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../../../Services/login.service';
+import { FacebookLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
 
 @Component({
   selector: 'app-login',
@@ -8,6 +10,7 @@ import { LoginService } from '../../../Services/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  
   mobileNumber: string = '';
   otpSent: boolean = false;
   otpVerified: boolean = false;
@@ -18,10 +21,11 @@ export class LoginComponent implements OnInit {
   showCancellationPopup: boolean = false;
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
   responseData: any = null;
+
+  
   constructor(private router: Router, private loginService: LoginService) { }
 
   
-
   @Output() cancelConfirmed = new EventEmitter<boolean>();
   @Output() popupClosed = new EventEmitter<boolean>();
 
@@ -49,22 +53,36 @@ export class LoginComponent implements OnInit {
   goBack(): void {
     this.showCancellationPopup = true;
   }
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+  }
 
   sendOTP(): void {
-    this.loginService.login(this.mobileNumber).subscribe(
+  this.loginService.login(this.mobileNumber).subscribe(
+    (response) => {
+      if (response.success) {
+        this.responseData = response; // Initialize responseData
+        console.log(response);
+        this.otpSent = true;
+        this.router.navigate(['/login-next']);
+      } else {
+        console.log('Login failed');
+      }
+    },
+    (error) => {
+      console.error('Error:', error);
+    }
+  );
+}
+
+  verifyOTP(): void {
+    this.loginService.verifyOTP(this.mobileNumber, this.otp).subscribe(
       (response) => {
-        this.responseData = response;
-        console.log(response);  // Display the response in console
         if (response.success) {
-          this.otpSent = true;
-          // Store mobile number for OTP verification step
-          this.loginService.setMobileNumber(this.mobileNumber);
-          // Navigate to the next page
-          this.router.navigate(['/login-next']);
+          console.log('OTP verified successfully.');
+          this.router.navigate(['/home']);
         } else {
-          // Handle login failure, show error message or navigate to registration page
-          console.log('Login failed');
+          console.log('OTP verification failed');
+          this.otpVerificationFailed = true;
         }
       },
       (error) => {
@@ -72,24 +90,14 @@ export class LoginComponent implements OnInit {
       }
     );
   }
-  verifyOTP(): void {
-    if (this.otp === '123456') {
-      this.otpVerified = true;
-      console.log('OTP verified successfully.');
-      this.router.navigate(['/home']);
-    } else {
-      alert('Invalid OTP. Please try again.');
-      this.otpVerified = false;
-      this.otpVerificationFailed = true;
-    }
-  }
+
 
   private isValidMobileNumber(number: string): boolean {
     return /^\d{10}$/.test(number);
   }
 
   resendOTP(): void {
-    // Resend OTP logic...
+
     this.resendDisabled = true;
     this.startCountdownTimer(40);
   }

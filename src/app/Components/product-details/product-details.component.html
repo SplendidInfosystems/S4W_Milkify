@@ -92,8 +92,9 @@
           <form [formGroup]="form">
             <div class="forms-field">
               <p>{{ defaultDate | date }}</p>
-              <input matInput [matDatepicker]="picker" formControlName="selectedDate"
-                [matDatepickerFilter]="dateFilter">
+              <input matInput [matDatepicker]="picker" formControlName="selectedDate" [(ngModel)]="selectedStartDate"
+              [matDatepickerFilter]="dateFilter">
+ 
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker [dateClass]="dateClass"></mat-datepicker>
             </div>
