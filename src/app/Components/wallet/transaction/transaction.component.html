@@ -10,17 +10,29 @@
 <div class="transaction-wallet-balance">
   <div class="transaction-desc">
     <p>Current Wallet Balance</p>
-    <h5>₹ 0.0</h5>
+    <h5>₹ {{ walletBalance.toFixed(2) }}</h5>
   </div>
   <button (click)="navigateToWallet()">Add Money</button>
+</div>
 
-</div>
 <div class="transaction-main">
-  <div class="no-trans">
-    <h4 style="text-align: center;">No Transactions</h4>
-    <p>You haven't made any transactions,please <br>
-      explore our healthy products.
-    </p>
-    <button mat-raised-button color="primary" (click)="goToProductDetails()">EXPLORE PRODUCTS</button>
+  <div *ngIf="transactions.length > 0 else noTransactions" class="transaction-list">
+    <div *ngFor="let transaction of transactions" class="transaction-item">
+      <p>Mode of Payment: {{ transaction.mode_of_payment }}</p>
+      <p>Order ID: {{ transaction.order_id }}</p>
+      <p>Transaction Amount: ₹ {{ transaction.transaction_amount }}</p>
+      <p>Transaction Date: {{ transaction.transaction_date }}</p>
+      <p>Transaction Status: {{ transaction.transaction_status }}</p>
+    </div>
   </div>
+  <ng-template #noTransactions>
+    <div class="no-trans">
+      <h4 style="text-align: center;">No Transactions</h4>
+      <p>You haven't made any transactions, please <br>
+        explore our healthy products.
+      </p>
+      <button mat-raised-button color="primary" (click)="goToProductDetails()">EXPLORE PRODUCTS</button>
+    </div>
+  </ng-template>
 </div>
+

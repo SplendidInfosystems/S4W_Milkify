@@ -17,7 +17,14 @@ export class BillsComponent implements OnInit {
 
   ngOnInit(): void {
     const userId = 11;
-    this.getMonthlyBillForCurrentUser(userId);
+    // Check if data exists in local cache
+    const cachedData = localStorage.getItem('monthlyBillData');
+    if (cachedData) {
+      this.monthData = JSON.parse(cachedData);
+      this.updateView();
+    } else {
+      this.getMonthlyBillForCurrentUser(userId);
+    }
   }
 
   getMonthlyBillForCurrentUser(userId: number): void {
@@ -25,17 +32,21 @@ export class BillsComponent implements OnInit {
       (response: any) => {
         console.log('Monthly Bill Response:', response.body);
         this.monthData = response.body;
-        if (this.monthData.length > 0) {
-          this.currentMonth = this.monthData[0].month;
-          this.calculateTotalBill();
-        }
+        // Store data in local cache
+        localStorage.setItem('monthlyBillData', JSON.stringify(this.monthData));
+        this.updateView();
       },
       (error) => {
         console.error('Error fetching monthly bill:', error);
       }
     );
   }
-
+  updateView(): void {
+    if (this.monthData.length > 0) {
+      this.currentMonth = this.monthData[0].month;
+      this.calculateTotalBill();
+    }
+  }
   calculateTotalBill(): void {
     const currentMonthData = this.monthData.find(data => data.month === this.currentMonth);
     if (currentMonthData) {

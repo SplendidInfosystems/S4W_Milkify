@@ -7,7 +7,7 @@
     <p>Order History</p>
   </div>
 </div>
-<!-- <div class="text">
+<div class="text">
   <p>Yay! You are saving ₹18.50 on this order</p>
 </div>
 <div class="line-above">
@@ -40,9 +40,9 @@
   <h4>Order Details</h4>
   </div>
 <div class="red">
-  <div class="it">
+  <div class="it" *ngFor="let order of orders">
     <p>item total</p>
-    <p> ₹27</p>
+    <p>{{order.order_quantity}}</p>
   </div>
   <div class="on">
     <p>Delivery Charges</p>
@@ -52,6 +52,10 @@
 <div class="in">
   <p>Packeging Charges</p>
   <p>Free</p>
+</div>
+<div class="in"  *ngFor="let order of orders">
+  <p>Total amount</p>
+  <p>{{order.total_amount }}</p>
 </div>
 </div>
 
@@ -68,9 +72,9 @@
   <h4>Delivery Details</h4>
   </div>
 <div class="red">
-  <div class="on">
+  <div class="on" *ngFor="let order of orders">
     <p>Delivery Date</p>
-    <p>{{ currentDate | date:'mediumDate' }}</p>
+    <p>{{order.order_date }}</p>
   </div>
 </div>
 
@@ -82,8 +86,8 @@
     <p>Weight shown are indicative you will be billed as per actual weight deliverd</p>
 
   </div>
-</div> -->
-<div class="orders-main">
+</div>
+<!-- <div class="orders-main">
     <img src="https://cdn-icons-gif.flaticon.com/15309/15309814.gif">
     <h6><strong>No Orders</strong></h6>
     <p >You haven't made any orders,<br>
@@ -101,5 +105,5 @@
             <button class="confirm-button"  (click)="confirmCancellation()">Confirm</button>
           
         </div>
-    </div>
+    </div> -->
 </div>

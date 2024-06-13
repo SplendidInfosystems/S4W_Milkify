@@ -1,34 +1,30 @@
-
 <div class="add-vac-header">
   <div class="back-icon" (click)="goBack()">
     <i class="fas fa-chevron-left"></i>
-</div>
-<div class="head">
+  </div>
+  <div class="head">
     <p>Add Vacation</p>
+  </div>
 </div>
-  </div>
-  <div class="add-vac-main">
-    <mat-card class="custom-card">
-      <div class="form-group">
-        <label for="startDate">Start Date</label>
-        <input type="date" id="startDate" name="startDate" [(ngModel)]="startDate" required>
-      </div>
-  
-      <div class="divider"></div>
-  
-      <div class="form-group">
-        <label for="endDate">End Date</label>
-        <input type="date" id="endDate" name="endDate" [(ngModel)]="endDate">
-      </div>
-    </mat-card>
-  
-    <!-- <button mat-raised-button color="primary" (click)="addVacation()">
+
+<div class="add-vac-main">
+  <mat-card class="custom-card">
+    <div class="form-group">
+      <label for="startDate">Start Date</label>
+      <input type="date" id="startDate" name="startDate" [(ngModel)]="start_date" required>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="form-group">
+      <label for="endDate">End Date</label>
+      <input type="date" id="endDate" name="endDate" [(ngModel)]="end_date">
+    </div>
+  </mat-card>
+
+  <div class="address-price">
+    <button mat-raised-button color="primary" (click)="addVacation()">
       {{ isEditMode ? 'Update Vacation' : 'Add Vacation' }}
-    </button> -->
-    <div class="address-price">
-      <button mat-raised-button color="primary" (click)="addVacation()">
-        {{ isEditMode ? 'Update Vacation' : 'Add Vacation' }}
-      </button>
+    </button>
   </div>
-  </div>
-  
+</div>

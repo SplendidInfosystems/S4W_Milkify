@@ -9,6 +9,7 @@ import { LoginService } from '../../../Services/login.service';
 })
 export class LoginComponent implements OnInit {
   
+
   mobileNumber: string = '';
   otpSent: boolean = false;
   otpVerified: boolean = false;
@@ -25,9 +26,11 @@ export class LoginComponent implements OnInit {
   
   @Output() cancelConfirmed = new EventEmitter<boolean>();
   @Output() popupClosed = new EventEmitter<boolean>();
+
   confirmCancel() {
     this.cancelConfirmed.emit(true);
   }
+
   closePopup() {
     this.popupClosed.emit(false);
   }
@@ -45,24 +48,32 @@ export class LoginComponent implements OnInit {
   goBack(): void {
     this.showCancellationPopup = true;
   }
+
   ngOnInit(): void { }
+  
   sendOTP(): void {
-  this.loginService.login(this.mobileNumber).subscribe(
-    (response) => {
-      if (response.success) {
-        this.responseData = response; // Initialize responseData
-        console.log(response);
-        this.otpSent = true;
-        this.router.navigate(['/login-next']);
-      } else {
-        console.log('Login failed');
+    this.loginService.postLogin(this.mobileNumber, this.otp).subscribe(
+      (response) => {
+        if (response.success) {
+          this.responseData = response; 
+          console.log(response);
+          this.otpSent = true;
+          if (response) {
+            this.router.navigate(['/login-next']);
+          }
+        } else {
+          console.log('Login failed');
+        }
+      },
+      (error) => {
+        console.error('Error:', error);
+        if (error.error && error.error.message) {
+          console.error('Error Message:', error.error.message);
+        }
       }
-    },
-    (error) => {
-      console.error('Error:', error);
-    }
-  );
-}
+    );
+  }
+  
   verifyOTP(): void {
     this.loginService.verifyOTP(this.mobileNumber, this.otp).subscribe(
       (response) => {

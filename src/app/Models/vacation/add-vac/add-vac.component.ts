@@ -12,6 +12,9 @@ export class AddVacComponent implements OnInit {
   endDate: Date | undefined;
   isEditMode: boolean = false;
   vacationId: number | undefined;
+  start_date: any;
+  end_date: any;
+  vacationData: any;
 
   constructor(
     private router: Router, 
@@ -20,11 +23,18 @@ export class AddVacComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Check if we are in edit mode
+    const storedVacationData = localStorage.getItem('vacationData');
+    if (storedVacationData) {
+      this.vacationData = JSON.parse(storedVacationData);
+      this.processVacationData();
+    } else {
+      this.getVacationData(0);
+    }
+
     this.route.params.subscribe(params => {
       if (params['id']) {
         this.isEditMode = true;
-        this.vacationId = Number(params['id']); // Ensuring the id is a number
+        this.vacationId = Number(params['id']); 
         this.vacationService.vacationData$.subscribe((data: any) => {
           const vacationData = data[this.vacationId!];
           if (vacationData) {
@@ -36,17 +46,48 @@ export class AddVacComponent implements OnInit {
     });
   }
 
+  processVacationData(): void {
+    if (this.vacationData.length > 0) {
+      this.start_date = this.vacationData[0].start_date; 
+      this.end_date = this.vacationData[0].end_date; 
+    }
+  }
+
+  getVacationData(userId: number): void {
+    this.vacationService.getVacationData(userId).subscribe(
+      (data: any) => {
+        console.log('Vacation Data:', data.body);
+        this.vacationData = data.body || [];
+        this.processVacationData();
+        localStorage.setItem('vacationData', JSON.stringify(this.vacationData));
+      },
+      (error: any) => {
+        console.error('Error fetching vacation data:', error);
+      }
+    );
+  }
+  
   addVacation() {
-    if (this.startDate) {
-      const vacationData = { startDate: this.startDate, endDate: this.endDate };
+    if (this.start_date && this.end_date) {
+      const vacationData = { start_date: this.start_date, end_date: this.end_date };
       if (this.isEditMode && this.vacationId !== undefined) {
         this.vacationService.updateVacationData(this.vacationId, vacationData);
       } else {
-        this.vacationService.setVacationData(vacationData);
+        this.vacationService.addVacation(vacationData).subscribe(
+          (response) => {
+            console.log('Vacation added successfully:', response);
+            this.router.navigate(['/vacation']);
+          },
+          (error) => {
+            console.error('Error adding vacation:', error);
+          }
+        );
       }
-      this.router.navigate(['/vacation']);
+    } else {
+      console.error('Start date or end date is undefined');
     }
   }
+  
 
   goBack(): void {
     this.router.navigate(['/vacation']);

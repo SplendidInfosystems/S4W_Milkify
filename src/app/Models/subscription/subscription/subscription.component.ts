@@ -40,7 +40,6 @@ export class SubscriptionComponent implements OnInit {
   defaultDate: Date = new Date();
   endDate: Date = new Date();
   selectedSubscription = 'Daily';
-  // defaultDate = new Date();
   showResumePopup = false;
   showCancelPopup = false;
   @ViewChild('picker') picker: MatDatepicker<any> | undefined;
@@ -71,8 +70,7 @@ export class SubscriptionComponent implements OnInit {
     });
     this.generateCalendar(new Date());
   }
-  // selectStartDate(date: Date): void { this.selectedStartDate = date; 
-  //   this.form.controls['selectedDate'].setValue(this.selectedStartDate); }
+  
 
   ngOnInit(): void {
     this.fetchSubscriptionData(0); 
@@ -90,6 +88,7 @@ export class SubscriptionComponent implements OnInit {
     this.subscriptionService.getSubscriptionData(userId).subscribe(
       (response) => {
         console.log('Subscription Data:', response.body);
+        localStorage.setItem('SubscriptionData', JSON.stringify(response.body));
         this.subscriptionData = response.body;
       },
       (error) => {
@@ -97,18 +96,19 @@ export class SubscriptionComponent implements OnInit {
       }
     );
   }
+  
   postSubscriptionData(subscriptionData: any): void {
     this.subscriptionService.postSubscriptionData(subscriptionData).subscribe(
       (response) => {
         console.log('Subscription Data Posted:', response);
-        // Handle any post-response actions here
+        localStorage.setItem('SubscriptionData', JSON.stringify(subscriptionData));
       },
       (error) => {
         console.error('Error posting subscription data:', error);
-        // Handle errors
       }
     );
   }
+  
 
   onPostSubscription(): void {
   
@@ -131,7 +131,6 @@ export class SubscriptionComponent implements OnInit {
   
   selectStartDate(date: Date): void {
     this.selectedStartDate = date;
-    // Set the selected date to the form control value
     this.form.controls['selectedDate'].setValue(this.selectedStartDate);
   }
   
@@ -309,26 +308,23 @@ export class SubscriptionComponent implements OnInit {
       this.selectedEndDate = date;
     }
   }
-  selectSubscription(subscription_type: string): void {
-    this.selectedSubscription = subscription_type;
-    this.selectedDates = [];
-    this.startDate = new Date();
-    this.endDate = new Date(this.startDate.getFullYear(), this.startDate.getMonth() + 1, 0);
-  
-    if (subscription_type === 'One Time') {
-      this.openCalendar();
-    } else if (subscription_type === 'Weekly') {
-      this.router.navigate(['/weekly']);
-    } else {
-      this.calculateSelectedDates(this.startDate);
-      this.openCalendar(); 
-    }
+selectSubscription(subscription_type: string): void {
+  this.selectedSubscription = subscription_type;
+  this.selectedDates = [];
+  this.startDate = new Date();
+  this.endDate = new Date(this.startDate.getFullYear(), this.startDate.getMonth() + 1, 0);
+
+  if (subscription_type === 'One Time') {
+    this.openCalendar();
+  } else if (subscription_type === 'Weekly') {
+    this.router.navigate(['/weekly']);
+  } else {
+    this.calculateSelectedDates(this.startDate, subscription_type);
+    this.openCalendar(); 
   }
-  
- 
-  
-  
-  calculateSelectedDates(startDate: Date | null | undefined): void {
+}
+
+  calculateSelectedDates(startDate: Date | null | undefined, subscription_type: string): void {
     if (!startDate) {
       this.selectedDates = [];
       return;
@@ -338,10 +334,8 @@ export class SubscriptionComponent implements OnInit {
     this.selectedDates = [];
   
     for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
-      if (
-        this.selectedSubscription === 'Daily' ||
-        (this.selectedSubscription === 'Alternative' && d.getDate() % 2 === startDate.getDate() % 2)
-      ) {
+      if (subscription_type === 'Daily' ||
+          (subscription_type === 'Alternative' && d.getDate() % 2 === startDate.getDate() % 2)) {
         this.selectedDates.push(new Date(d));
       }
     }

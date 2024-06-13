@@ -10,10 +10,8 @@ export class WalletService {
   apiUrl = 'https://v066mgs3g4.execute-api.us-east-1.amazonaws.com/devStage/postWallet';
   apiKey = 'MRGJIm8gf484Vj4XTPkgF8arq7lFlrPy3IPEK57A';
 
-
   couponapiUrl = 'https://lccuykgvm8.execute-api.us-east-1.amazonaws.com/devStage/getCoupon?user_id=1';
   couponapiKey = 'd3qoj1nEC03MllYh1gk0w7hoGG3Hjyzp5ejpXWlH';
-
 
   PostcouponapiUrl = 'https://uosfv3nibb.execute-api.us-east-1.amazonaws.com/devStage/postCoupon"';
   PostcouponapiKey = 'bXiDC7CUJXa7ph2BxsmKu8mfWq6p2zZaauAMPCkP';
@@ -31,11 +29,11 @@ export class WalletService {
 
   getCoupon(userId: number): Observable<any> {
     const headers = new HttpHeaders({
-      'x-api-key': this.couponapiKey // Pass API key as a header
+      'x-api-key': this.couponapiKey
     });
-    // Correct URL concatenation, remove userId from the URL
     return this.http.get<any>(`${this.couponapiUrl}?user_id=${userId}`, { headers });
   }
+
   postCoupon(couponData: any): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -43,5 +41,4 @@ export class WalletService {
     });
     return this.http.post(this.PostcouponapiUrl, couponData, { headers });
   }
-  
 }

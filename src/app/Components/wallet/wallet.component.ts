@@ -54,15 +54,22 @@ export class WalletComponent {
     this.getCouponData(1); 
   }
   getCouponData(userId: number): void {
-    this.walletService.getCoupon(userId).subscribe(
-      (response: any) => {
-        console.log('Coupon Data:', response.body);
-        this.coupons = response.body; 
-      },
-      (error) => {
-        console.error('Error fetching coupon data:', error);
-      }
-    );
+    // Check if data exists in local cache
+    const cachedData = localStorage.getItem('couponData');
+    if (cachedData) {
+      this.coupons = JSON.parse(cachedData);
+    } else {
+      this.walletService.getCoupon(userId).subscribe(
+        (response: any) => {
+          console.log('Coupon Data:', response.body);
+          this.coupons = response.body || [];
+          localStorage.setItem('couponData', JSON.stringify(this.coupons));
+        },
+        (error) => {
+          console.error('Error fetching coupon data:', error);
+        }
+      );
+    }
   }
   
 

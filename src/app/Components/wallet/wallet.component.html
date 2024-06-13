@@ -9,7 +9,6 @@
     <div class="balance" [ngClass]="{ 'zero-balance': currentBalance === 0, 'positive-balance': currentBalance > 0 }">
       Balance
       <p> ₹{{ currentBalance }}</p>
-      <!-- <button (click)="updateBalanceOnServer(currentBalance)">Update Balance</button> -->
     </div>
   </header>
 
@@ -53,8 +52,7 @@
           <input class="input-couponCode" [(ngModel)]="couponCode" placeholder="Enter coupon code..."
             [ngClass]="{'error': invalidCoupon}" />
           <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
-
- <button class="confirm-button" (click)="saveName()">Apply</button>
+         <button class="confirm-button" (click)="saveName()">Apply</button>
         </div>
       </div>
     </div>

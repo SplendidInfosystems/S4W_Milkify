@@ -14,7 +14,7 @@
     <div class="profile-section">
       <div class="profile-text">
           <h4>Name</h4>
-          <p>{{ name || 'Not Added' }}</p>
+          <p>{{  userData?.name  }}</p>
         </div>
       <mat-icon (click)="openNamePopup()">chevron_right</mat-icon>
         </div>
@@ -33,7 +33,7 @@
     <div class="profile-section">
       <div class="profile-text">
         <h4>Email</h4>
-        <p>{{ email || 'Not Added' }}</p>
+        <p>{{ userData?.email }}</p>
       </div>
       <button mat-button class="custom-button" (click)="openEmailPopup()">Add</button>
     </div>
@@ -52,7 +52,7 @@
     <div class="profile-section">
       <div class="profile-text">
           <h4>Alternate Number</h4>
-      <p>8476513257</p>
+          <p>{{ userData?.alternate_mobile_number  }}</p>
       </div>
       <button mat-button class="custom-button">Add</button>
     </div>
@@ -79,7 +79,7 @@
     <div class="profile-section">
       <div class="profile-text">
           <h4>Gender</h4>
-      <p>Not Specified</p>
+          <p>{{ userData?.gender  }}</p>
       </div>
       <button mat-button class="custom-button">Add</button>
     </div>

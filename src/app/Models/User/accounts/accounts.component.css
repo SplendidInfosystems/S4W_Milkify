@@ -9,7 +9,6 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
-
     position: fixed;
     top: 0;
     left: 0;
@@ -194,4 +193,119 @@
   border: none;
   background-color: transparent;
   color: #04B56C;
+}
+
+.horizontal-icon {
+  transform: rotate(90deg); 
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  animation: slideUp 0.5s ease-in-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+
+.close-button i {
+  font-size: 3vh;
+  font-weight: 600;
+}
+
+
+.input-couponCode {
+  margin-top: 3vh;
+  height: 50px;
+  font-size: 16px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: calc(100% - -1px);
+  box-sizing: border-box;
+}
+
+.message {
+  color: red;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.log{
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px 5px 0 0;
+  text-align: center;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  height: 13%;
+}
+
+.error-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; 
+}
+
+.error-modal-content {
+  background-color: #fff;
+  width: 90%;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.error-close-button {
+  position: absolute;
+  color: #4caf50;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.error-modal-content p{
+  font-size: 18px;
+}
+
+.error-modal-content .button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.error-modal-content .yes-button, .error-modal-content .confirm-button {
+  color: #04B56C;
+  border: none;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px 10px;
+  cursor: pointer;
 }

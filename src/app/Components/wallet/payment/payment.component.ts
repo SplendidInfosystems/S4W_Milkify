@@ -30,7 +30,13 @@ export class PaymentComponent {
   }
   ngOnInit(): void {
     const userId = 2; 
-    this.getPaymentData(userId);
+    // Check if data exists in local cache
+    const cachedData = localStorage.getItem('paymentData');
+    if (cachedData) {
+      this.paymentData = JSON.parse(cachedData);
+    } else {
+      this.getPaymentData(userId);
+    }
   }
 
   getPaymentData(userId: number): void {
@@ -38,6 +44,8 @@ export class PaymentComponent {
       (response: any) => {
         console.log('Payment Data:', response.body);
         this.paymentData = response.body || [];
+        // Store data in local cache
+        localStorage.setItem('paymentData', JSON.stringify(this.paymentData));
       },
       (error: any) => {
         console.error('Error fetching payment data:', error);

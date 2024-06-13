@@ -1,128 +1,133 @@
 <div class="accounts-header">
   <div class="back-icon" (click)="goBack()">
-      <i class="fas fa-chevron-left"></i>
-    </div>
-    <div class="head">
-      <p>Account & Preference</p>
-    </div>
-  <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="logout()">Logout</button>
-    </mat-menu>
+    <i class="fas fa-chevron-left"></i>
   </div>
-    
-   <div class="accounts-main">
-      <mat-card class="accounts-card">
-          <div class="card-content">
-            <div class="profile-section">
-              <div class="profile-text">
-              <h4>My Profile</h4>
-              <p>8999568045</p>
-          </div>
-            </div>
-            <mat-icon (click)="navigateToUserProfile()">chevron_right</mat-icon>      
-          </div>
-        
-          <div class="card-content">
-            <div class="profile-section">
-              <div class="profile-text">
-              <h4>Address</h4>
-              <div *ngIf="address">
-                <p>{{ address.street }}&nbsp;{{ address.city }}&nbsp;{{ address.state }}&nbsp;{{ address.zip }} </p>
-               
-              </div>
-          </div>  
-          </div>
-          <mat-icon (click)="togglePopupAdd()">chevron_right</mat-icon>
-                </div>
+  <div class="head">
+    <p>Account & Preference</p>
+  </div>
 
-
-                <!-- Popup for changing address -->
-  <div class="popup" *ngIf="showPopup">
-    <div class="popup-content">
-      <h3>Delivery Address</h3>
-      <div *ngIf="address">
-        <p>{{ address.street }}&nbsp;{{ address.city }}&nbsp;{{ address.state }}&nbsp;{{ address.zip }} </p>
-       
+  <div class="code" (click)="openNamePopup()">
+    <mat-icon class="horizontal-icon">more_vert</mat-icon>
+  </div>
+  <div *ngIf="showNamePopup" class="modal-overlay" (click)="closeNamePopup()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h5>Account Settings</h5>
+      <div class="log">
+        <div class="message">Logout</div>
+        <i class="fas fa-chevron-right" (click)="openConfirmationPopup()"></i>
       </div>
-      <button (click)="navigateToChangeAddress()">Change Address</button>
     </div>
   </div>
+</div>
 
+<div *ngIf="showConfirmationPopup" class="error-modal-overlay" (click)="closeConfirmationPopup()">
+  <div class="error-modal-content" (click)="$event.stopPropagation()">
+    <h5>Logout</h5>
+    <p>Are you sure?</p>
+    <div class="button-container">
+      <button class="confirm-button" (click)="confirmLogout()">CANCEL</button>
+      <button class="yes-button" (click)="closeConfirmationPopup()" [routerLink]="['/login']">YES</button>
+    </div>
+  </div>
+</div>
 
-        </mat-card>
-        
-        <h4 class="section-header">Customer Preference</h4>
-        
-        <mat-card class="accounts-card">
-          
-          <div class="card-content">
-            <div class="profile-section">
-              <div class="profile-text">
-                <h4>Delivery time slot</h4>
-                <p>{{ selectedTimeSlot || 'Not selected' }}</p>
-              </div>
-            </div>
-            <mat-icon (click)="togglePopup()">chevron_right</mat-icon>
+<div class="accounts-main">
+  <mat-card class="accounts-card">
+    <div class="card-content">
+      <div class="profile-section">
+        <div class="profile-text">
+          <h4>My Profile</h4>
+          <p>{{number}}</p>
+        </div>
+      </div>
+      <mat-icon (click)="navigateToUserProfile()">chevron_right</mat-icon>
+    </div>
+
+    <div class="card-content">
+      <div class="profile-section">
+        <div class="profile-text">
+          <h4>Address</h4>
+          <div *ngIf="address">
+            <p>{{ userData?.address }}&nbsp;{{ userData?.city }}&nbsp;{{ address.state }}&nbsp;{{ address.zip }} </p>
           </div>
-          
-          <!-- Popup -->
-          <div class="popup" *ngIf="isPopupVisible">
-            <div class="popup-content">
-              <h5><strong>Select Delivery Slot</strong></h5>
-              <mat-radio-group [(ngModel)]="selectedTimeSlot">
-                <mat-radio-button value="morning">Morning (5:00 AM - 7:30 AM)</mat-radio-button>
-                <mat-radio-button value="afternoon">Afternoon (12:00 PM - 3:00 PM)</mat-radio-button>
-                <mat-radio-button value="evening">Evening (6:00 PM - 9:00 PM)</mat-radio-button>
-              </mat-radio-group>
-              <p style="    text-align: center;
+        </div>
+      </div>
+      <mat-icon (click)="togglePopupAdd()">chevron_right</mat-icon>
+    </div>
+
+    <div class="popup" *ngIf="showPopup">
+      <div class="popup-content">
+        <h3>Delivery Address</h3>
+        <div *ngIf="address">
+          <p>{{ userData?.address }}&nbsp;{{ userData?.city }}&nbsp;{{ address.state }}&nbsp;{{ address.zip }} </p>
+        </div>
+        <button (click)="navigateToChangeAddress()">Change Address</button>
+      </div>
+    </div>
+
+  </mat-card>
+  <h4 class="section-header">Customer Preference</h4>
+  <mat-card class="accounts-card">
+    <div class="card-content">
+      <div class="profile-section">
+        <div class="profile-text">
+          <h4>Delivery time slot</h4>
+          <p>{{ selectedTimeSlot || 'Not selected' }}</p>
+        </div>
+      </div>
+      <mat-icon (click)="togglePopup()">chevron_right</mat-icon>
+    </div>
+
+    <!-- Popup -->
+    <div class="popup" *ngIf="isPopupVisible">
+      <div class="popup-content">
+        <h5><strong>Select Delivery Slot</strong></h5>
+        <mat-radio-group [(ngModel)]="selectedTimeSlot">
+          <mat-radio-button value="morning">Morning (5:00 AM - 7:30 AM)</mat-radio-button>
+          <mat-radio-button value="afternoon">Afternoon (12:00 PM - 3:00 PM)</mat-radio-button>
+          <mat-radio-button value="evening">Evening (6:00 PM - 9:00 PM)</mat-radio-button>
+        </mat-radio-group>
+        <p style="    text-align: center;
               padding: 5px;">All changes will be applicable from Tue 20 May</p>
-              <div class="button-group">
-                <button mat-raised-button  (click)="confirmSelection()">Confirm</button>
-              </div>
-            </div>
-            <div class="popup-overlay" (click)="closePopup()"></div>
-          </div>
-          
-        
-          <div class="card-content">
-            <div class="profile-section">
-              
-              <div class="profile-text">
-                  <h4>Ring the bell</h4>
-                  <p>No</p>
-              </div>
-              <mat-slide-toggle></mat-slide-toggle>
-            </div>
-          </div>
-        
-          <div class="card-content">
-            <div class="profile-section">
-              <div class="profile-text">
-                  <h4>Record voice instructions</h4>
-              <p>No</p>
-              </div>
-              <button mat-button class="custom-button" (click)="toggleRecordPopup()">Add</button>
-            </div>
-          </div>
-
-          <div class="popup" *ngIf="showRecordPopup">
-            <div class="popup-content">
-              <h3>Record Voice Instructions</h3>
-              <button (click)="startRecording()">Start Recording</button>
-              <button (click)="stopRecording()">Stop Recording</button>
-              <button (click)="toggleRecordPopup()">Cancel</button>
-              <div *ngIf="audioUrl">
-                <h4>Recorded Audio:</h4>
-                <audio [src]="audioUrl" controls></audio>
-              </div>
-            </div>
-          </div>
+        <div class="button-group">
+          <button mat-raised-button (click)="confirmSelection()">Confirm</button>
+        </div>
+      </div>
+      <div class="popup-overlay" (click)="closePopup()"></div>
+    </div>
 
 
-        </mat-card>
-        
-        
-   </div>
+    <div class="card-content">
+      <div class="profile-section">
+        <div class="profile-text">
+          <h4>Ring the bell</h4>
+          <p>No</p>
+        </div>
+        <mat-slide-toggle></mat-slide-toggle>
+      </div>
+    </div>
+
+    <div class="card-content">
+      <div class="profile-section">
+        <div class="profile-text">
+          <h4>Record voice instructions</h4>
+          <p>No</p>
+        </div>
+        <button mat-button class="custom-button" (click)="toggleRecordPopup()">Add</button>
+      </div>
+    </div>
+
+    <div class="popup" *ngIf="showRecordPopup">
+      <div class="popup-content">
+        <h3>Record Voice Instructions</h3>
+        <button (click)="startRecording()">Start Recording</button>
+        <button (click)="stopRecording()">Stop Recording</button>
+        <button (click)="toggleRecordPopup()">Cancel</button>
+        <div *ngIf="audioUrl">
+          <h4>Recorded Audio:</h4>
+          <audio [src]="audioUrl" controls></audio>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>

@@ -1,6 +1,7 @@
 import { Component, Input} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ReferService } from '../../Services/refer.service';
 
 @Component({
   selector: 'app-refer',
@@ -13,7 +14,8 @@ export class ReferComponent {
   balance=0;
   Rebalance=1500;
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
-  constructor(private router: Router ,private _formBuilder: FormBuilder) { }
+  referralData: any;
+  constructor(private router: Router ,private _formBuilder: FormBuilder,private referService: ReferService) { }
  
   firstFormGroup: FormGroup = this._formBuilder.group({firstCtrl: ['']});
   secondFormGroup: FormGroup = this._formBuilder.group({secondCtrl: ['']});
@@ -24,9 +26,22 @@ export class ReferComponent {
       { content: 'Refer Your friends to Milify',status:'R'},
       { content: 'Friends do their first recharge' ,status:'R'},
       { content: 'Win up to Rs. 100 on every recommendation' },
-    ]
+    ],
+    this.fetchReferralData(2);
   }
-  
+  fetchReferralData(userId: number): void {
+    this.referService.getReferral(userId).subscribe(
+      (response) => {
+        this.referralData = response;
+        console.log('Referral data:', this.referralData);
+
+        localStorage.setItem('referralData', JSON.stringify(this.referralData));
+      },
+      (error) => {
+        console.error('Error fetching referral data:', error);
+      }
+    );
+  }
   openShareContent(): void {
     if (navigator.share) {
       navigator.share({
