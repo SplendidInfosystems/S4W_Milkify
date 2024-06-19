@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class BillService {
 
-  apiUrl = 'https://g07wh13jr0.execute-api.us-east-1.amazonaws.com/devStage/getMonthlyBill?user_id=1';
+  apiUrl = 'https://g07wh13jr0.execute-api.us-east-1.amazonaws.com/devStage/getMonthlyBill?user_id=2';
   apiKey = 'SsJYRrqXU9aAfVGOL8exC2ao77fJBC3r8vXFSCEK';
 
   

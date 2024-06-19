@@ -21,7 +21,9 @@ export class LoginNextComponent implements OnInit {
   modalMessage: string = '';
   isOtpFieldEmpty: boolean = true;
   showCancellationPopup: boolean = false;
+  
   constructor(private router: Router, private loginService: LoginService) { }
+
   ngOnInit(): void {
     this.mobileNumber = this.loginService.getMobileNumber();
     this.startCountdownTimer();

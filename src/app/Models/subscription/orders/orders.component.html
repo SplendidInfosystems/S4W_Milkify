@@ -23,6 +23,9 @@
 <div class="apps">
   <h4>Subscription Details</h4>
   </div>
+  <div *ngIf="loading" class="spinner-overlay">
+    <div class="spinner"></div>
+  </div>
 <div class="red">
   <div class="on">
     <p>Start Date</p>
@@ -87,23 +90,4 @@
 
   </div>
 </div>
-<!-- <div class="orders-main">
-    <img src="https://cdn-icons-gif.flaticon.com/15309/15309814.gif">
-    <h6><strong>No Orders</strong></h6>
-    <p >You haven't made any orders,<br>
-    please explore our healthy <br>products.</p>
-    <button mat-raised-button color="primary" class="order-button"  (click)="goToProductDetails()">EXPLORE PRODUCTS</button>
-    <div *ngIf="showCancelPopup" class="modal-overlay" (click)="closeCancelPopup()">
-        <div class="modal-content" (click)="$event.stopPropagation()">
-          <h6>Please select a reason for cancellation</h6>
-          <ul>
-            <li><input type="radio" name="reason" value="Too Expensive"> Too Expensive</li>
-            <li><input type="radio" name="reason" value="Not Satisfied"> Not Satisfied</li>
-            <li><input type="radio" name="reason" value="Not Satisfied"> Subscribe by mistake</li>
-            <li><input type="radio" name="reason" value="Other"> Other</li>
-          </ul>
-            <button class="confirm-button"  (click)="confirmCancellation()">Confirm</button>
-          
-        </div>
-    </div> -->
 </div>

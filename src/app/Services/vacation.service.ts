@@ -9,9 +9,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class VacationService {
   private vacationDataSubject = new BehaviorSubject<any[]>([]);
   vacationData$ = this.vacationDataSubject.asObservable();
+
   constructor(private http: HttpClient) { }
 
-  apiUrl = 'https://zow8560vee.execute-api.us-east-1.amazonaws.com/devStage/getUserVacation?user_id=10';
+  apiUrl = 'https://zow8560vee.execute-api.us-east-1.amazonaws.com/devStage/getUserVacation?user_id=1';
   apiKey = 'eCIlKtju013KB8RsLkEbtaUPCwRTbIdC4LfTaJ5m';
 
 
@@ -35,13 +36,7 @@ export class VacationService {
     return currentData[id];
   }
 
-  updateVacationData(id: number, data: any) {
-    const currentData = this.vacationDataSubject.value;
-    if (currentData[id]) {
-      currentData[id] = data;
-      this.vacationDataSubject.next([...currentData]);
-    }
-  }
+
   addVacation(vacationData: any): Observable<any> {
     const headers = new HttpHeaders().set('x-api-key', this.PostapiKey);
     return this.http.post<any>(this.PostapiUrl, vacationData, { headers });

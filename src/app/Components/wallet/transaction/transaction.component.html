@@ -14,6 +14,9 @@
   </div>
   <button (click)="navigateToWallet()">Add Money</button>
 </div>
+<div *ngIf="loading" class="spinner-overlay">
+  <div class="spinner"></div>
+</div>
 
 <div class="transaction-main">
   <div *ngIf="transactions.length > 0 else noTransactions" class="transaction-list">

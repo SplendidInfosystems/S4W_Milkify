@@ -65,7 +65,9 @@
         <p> waiting for an invite</p>
         <i class="fas fa-chevron-right"></i>
       </div>
-
+      <div *ngIf="loading" class="spinner-overlay">
+        <div class="spinner"></div>
+      </div>
 
       <div class="refer-now-container">
         <div class="referal" (click)="openWhatsApp('8237718610')">

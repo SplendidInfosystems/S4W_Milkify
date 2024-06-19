@@ -11,42 +11,77 @@ import { BillService } from '../../../Services/bill.service';
 export class BillsComponent implements OnInit {
   currentMonth: string = '';
   totalBill: number = 0;
-  monthData: any[] = []; 
+  monthData: any[] = [];
+  loading: boolean = true;
 
   constructor(private location: Location, private router: Router, private billService: BillService) {}
 
   ngOnInit(): void {
-    const userId = 11;
-    // Check if data exists in local cache
-    const cachedData = localStorage.getItem('monthlyBillData');
-    if (cachedData) {
-      this.monthData = JSON.parse(cachedData);
+    const userId = 1;
+    const storedData = localStorage.getItem('monthlyBillData');
+    if (storedData) {
+      this.monthData = JSON.parse(storedData);
       this.updateView();
+      this.loading = false;
     } else {
       this.getMonthlyBillForCurrentUser(userId);
     }
   }
 
   getMonthlyBillForCurrentUser(userId: number): void {
+    this.loading = true;
+
     this.billService.getMonthlyBill(userId).subscribe(
       (response: any) => {
         console.log('Monthly Bill Response:', response.body);
         this.monthData = response.body;
-        // Store data in local cache
         localStorage.setItem('monthlyBillData', JSON.stringify(this.monthData));
+        this.addStaticMonths();
         this.updateView();
+        this.loading = false;
       },
       (error) => {
         console.error('Error fetching monthly bill:', error);
+        this.loading = false; // Stop loading spinner on error
       }
     );
   }
+
+
+  addStaticMonths(): void {
+ 
+    const monthsToAdd = [
+      { month: 'January', total_bill: 0 },
+      { month: 'March', total_bill: 0 },
+      { month: 'April', total_bill: 0 },
+      { month: 'May', total_bill: 0 },
+      { month: 'June', total_bill: 0 },
+      { month: 'July', total_bill: 0 },
+      { month: 'August', total_bill: 0 },
+      { month: 'September', total_bill: 0 },
+      { month: 'November', total_bill: 0 },
+
+    ];
+
+    monthsToAdd.forEach(month => {
+      if (!this.monthData.find(data => data.month === month.month)) {
+        this.monthData.push(month);
+      }
+    });
+
+    this.monthData.sort((a, b) => {
+      const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      return monthNames.indexOf(a.month) - monthNames.indexOf(b.month);
+    });
+  }
+
   updateView(): void {
     if (this.monthData.length > 0) {
       this.currentMonth = this.monthData[0].month;
       this.calculateTotalBill();
     }
   }
+
   calculateTotalBill(): void {
     const currentMonthData = this.monthData.find(data => data.month === this.currentMonth);
     if (currentMonthData) {

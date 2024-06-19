@@ -11,30 +11,31 @@ export class AddVacComponent implements OnInit {
   startDate: Date | undefined;
   endDate: Date | undefined;
   isEditMode: boolean = false;
-  vacationId: number | undefined;
+  vacationId: any;
   start_date: any;
+  loading: boolean = false;
   end_date: any;
   vacationData: any;
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private vacationService: VacationService,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    const storedVacationData = localStorage.getItem('vacationData');
-    if (storedVacationData) {
-      this.vacationData = JSON.parse(storedVacationData);
+    const cachedVacationData = localStorage.getItem('vacationData');
+    if (cachedVacationData) {
+      this.vacationData = JSON.parse(cachedVacationData);
       this.processVacationData();
     } else {
-      this.getVacationData(0);
+      this.getVacationData(1); // Fetch vacation data if not cached
     }
-
+  
     this.route.params.subscribe(params => {
       if (params['id']) {
         this.isEditMode = true;
-        this.vacationId = Number(params['id']); 
+        this.vacationId = Number(params['id']);
         this.vacationService.vacationData$.subscribe((data: any) => {
           const vacationData = data[this.vacationId!];
           if (vacationData) {
@@ -45,15 +46,16 @@ export class AddVacComponent implements OnInit {
       }
     });
   }
-
+  
   processVacationData(): void {
-    if (this.vacationData.length > 0) {
-      this.start_date = this.vacationData[0].start_date; 
-      this.end_date = this.vacationData[0].end_date; 
+    if (this.vacationData && this.vacationData.length > 0) {
+      this.start_date = this.vacationData[0].start_date;
+      this.end_date = this.vacationData[0].end_date;
     }
   }
 
   getVacationData(userId: number): void {
+    this.loading = true;
     this.vacationService.getVacationData(userId).subscribe(
       (data: any) => {
         console.log('Vacation Data:', data.body);
@@ -63,31 +65,35 @@ export class AddVacComponent implements OnInit {
       },
       (error: any) => {
         console.error('Error fetching vacation data:', error);
+      },
+      () => {
+        this.loading = false; 
       }
     );
   }
   
-  addVacation() {
-    if (this.start_date && this.end_date) {
-      const vacationData = { start_date: this.start_date, end_date: this.end_date };
-      if (this.isEditMode && this.vacationId !== undefined) {
-        this.vacationService.updateVacationData(this.vacationId, vacationData);
-      } else {
-        this.vacationService.addVacation(vacationData).subscribe(
-          (response) => {
-            console.log('Vacation added successfully:', response);
-            this.router.navigate(['/vacation']);
-          },
-          (error) => {
-            console.error('Error adding vacation:', error);
-          }
-        );
-      }
-    } else {
-      console.error('Start date or end date is undefined');
+
+  addVacation(): void {
+    if (this.startDate && this.endDate) {
+      const vacationData = {
+        start_date: this.startDate.toISOString(),
+        end_date: this.endDate.toISOString()
+      };
+      this.loading = true;
+      this.vacationService.addVacation(vacationData).subscribe(
+        (response) => {
+          console.log('Vacation added successfully:', response);
+          this.router.navigate(['/vacation']);
+        },
+        (error) => {
+          console.error('Error adding vacation:', error);
+        },
+        () => {
+          this.loading = false;
+        }
+      );
     }
   }
-  
 
   goBack(): void {
     this.router.navigate(['/vacation']);

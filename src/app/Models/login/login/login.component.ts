@@ -10,7 +10,7 @@ import { LoginService } from '../../../Services/login.service';
 export class LoginComponent implements OnInit {
   
 
-  mobileNumber: string = '';
+  mobile_number: string = '';
   otpSent: boolean = false;
   otpVerified: boolean = false;
   otp: string = '';
@@ -52,10 +52,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void { }
   
   sendOTP(): void {
-    this.loginService.postLogin(this.mobileNumber, this.otp).subscribe(
+    this.loginService.postLogin(this.mobile_number, this.otp).subscribe(
       (response) => {
         if (response.success) {
-          this.responseData = response; 
+          this.responseData = response.body; 
           console.log(response);
           this.otpSent = true;
           if (response) {
@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
   }
   
   verifyOTP(): void {
-    this.loginService.verifyOTP(this.mobileNumber, this.otp).subscribe(
+    this.loginService.verifyOTP(this.mobile_number, this.otp).subscribe(
       (response) => {
         if (response.success) {
           console.log('OTP verified successfully.');

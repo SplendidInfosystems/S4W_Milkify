@@ -6,7 +6,9 @@
     <p>Add Vacation</p>
   </div>
 </div>
-
+<div *ngIf="loading" class="spinner-overlay">
+  <div class="spinner"></div>
+</div>
 <div class="add-vac-main">
   <mat-card class="custom-card">
     <div class="form-group">

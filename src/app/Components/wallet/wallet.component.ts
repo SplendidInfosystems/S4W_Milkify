@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { trigger, state, style, animate, transition } from '@angular/animations';
@@ -26,14 +26,19 @@ import { WalletService } from '../../Services/wallet.service';
     ])
   ]
 })
-export class WalletComponent {
+export class WalletComponent implements OnInit {
+
   currentBalance: number = 0;
+  initialBalance: number = 0;
+  balanceStatus: string = "";
   userId: string = '1'; 
+
+  loading: boolean = false;
   ReBalance: number = 250;
   Balance: number = 1000;
   showErrorMessagePopup: boolean = false;
   selectedOption: string = "recharge";
-  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
+  images = [];
   price: number = 1000;
   selectedAmount: number = 1000;
   totalPrice: number = this.price;
@@ -47,32 +52,60 @@ export class WalletComponent {
   showInvalidCouponPopup: boolean = false;
   showCancellationPopup: boolean = false;
   coupons: any;
+  walletData: any[] = [];
 
-  constructor(private router: Router, private location: Location,private walletService: WalletService) { }
+  constructor(private router: Router, private location: Location, private walletService: WalletService) { }
 
-  ngOnInit(): void { 
-    this.getCouponData(1); 
-  }
-  getCouponData(userId: number): void {
-    // Check if data exists in local cache
-    const cachedData = localStorage.getItem('couponData');
-    if (cachedData) {
-      this.coupons = JSON.parse(cachedData);
+  ngOnInit(): void {
+    // Load coupon data from local storage or API
+    const cachedCouponData = localStorage.getItem('couponData');
+    if (cachedCouponData) {
+      this.coupons = JSON.parse(cachedCouponData);
     } else {
-      this.walletService.getCoupon(userId).subscribe(
-        (response: any) => {
-          console.log('Coupon Data:', response.body);
-          this.coupons = response.body || [];
-          localStorage.setItem('couponData', JSON.stringify(this.coupons));
-        },
-        (error) => {
-          console.error('Error fetching coupon data:', error);
-        }
-      );
+      this.getCouponData(1); // Fetch coupon data if not cached
+    }
+  
+    // Load wallet data from local storage or API
+    const cachedWalletData = localStorage.getItem('walletData');
+    if (cachedWalletData) {
+      this.walletData = JSON.parse(cachedWalletData);
+    } else {
+      this.getWallet(1); // Fetch wallet data if not cached
     }
   }
   
-
+  getWallet(userId: number): void {
+    this.loading = true;
+    this.walletService.getWallet(userId).subscribe(
+      (response: any) => {
+        console.log('Wallet data successfully retrieved:', response.body);
+        this.walletData = response.body || [];
+        localStorage.setItem('walletData', JSON.stringify(this.walletData));
+        this.loading = false;
+      },
+      (error) => {
+        console.error('Error retrieving wallet data:', error);
+        this.loading = false;
+      }
+    );
+  }
+  
+  getCouponData(userId: number): void {
+    this.loading = true;
+    this.walletService.getCoupon(userId).subscribe(
+      (response: any) => {
+        console.log('Coupon Data:', response.body);
+        this.coupons = response.body || [];
+        localStorage.setItem('couponData', JSON.stringify(this.coupons));
+        this.loading = false;
+      },
+      (error) => {
+        console.error('Error fetching coupon data:', error);
+        this.loading = false;
+      }
+    );
+  }
+  
   goBack(): void {
     if (localStorage.getItem('fromTransactionPage')) {
       localStorage.removeItem('fromTransactionPage'); 
@@ -81,8 +114,9 @@ export class WalletComponent {
       this.router.navigate(['/home']);
     }
   }
-  updateBalanceOnServer(newBalance: number): void {
-    this.walletService.updateBalance(newBalance, this.userId)
+
+  postWallet(newBalance: number): void {
+    this.walletService.postWallet(newBalance, this.userId)
       .subscribe(
         response => {
           console.log('Balance updated successfully:', response);
@@ -92,8 +126,7 @@ export class WalletComponent {
         }
       );
   }
-  
-  
+    
   offerSets: any[] = [
     { cashback: '₹100', rechargeAmount: '₹500' },
     { cashback: '₹200', rechargeAmount: '₹1500' },
@@ -112,17 +145,18 @@ export class WalletComponent {
   payAmount(): void {
     console.log("Payment amount:", this.selectedAmount);
   }
-  proceed() {
+
+  proceed(): void {
     this.router.navigate(['/payment']); 
   }
-onChange() {
 
-  if (!this.userInput || this.userInput < 1000) {
-    this.showPayButton = true;
-  } else {
-    this.showPayButton = false;
+  onChange() {
+    if (!this.userInput || this.userInput < 1000) {
+      this.showPayButton = true;
+    } else {
+      this.showPayButton = false;
+    }
   }
-}
 
   closeCancellationPopup() {
     this.showCancellationPopup = false;
@@ -143,7 +177,7 @@ onChange() {
 
   openNamePopup(): void {
     this.showNamePopup = true;
-    this.errorMessage = ''; // Reset error message when opening the popup
+    this.errorMessage = ''; 
   }
 
   closeNamePopup(): void {
@@ -154,9 +188,8 @@ onChange() {
     const coupon = this.coupons.find((coupon: { coupon_code: string; }) => coupon.coupon_code === this.couponCode);
     if (coupon) {
       console.log('Coupon code applied successfully:', coupon);
-
-      // this.saveCoupon(coupon);
-
+      this.selectedAmount = this.selectedAmount * 0.8; 
+      this.closeNamePopup(); 
     } else {
       this.invalidCoupon = true;
       this.errorMessage = "There is no current running offer with this coupon code";
@@ -169,13 +202,12 @@ onChange() {
       (response: any) => {
         console.log('Coupon data posted successfully:', response);
       },
-
       (error) => {
         console.error('Error posting coupon data:', error);
       }
     );
   }
-
+  
   navigateToNextPage(): void {
     this.router.navigate(['/login-next']);
   }

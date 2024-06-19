@@ -25,10 +25,12 @@
       <h3>Enter Your Name</h3>
       <input [(ngModel)]="newName" placeholder="Enter name" type="name"/>
     
-        <button class="confirm-button" [class.disabled]="!newName"  (click)="saveName()">Save</button>
+        <button class="confirm-button" [class.disabled]="!newName"  (click)="postData()">Save</button>
     </div>
   </div>
-  
+  <div *ngIf="loading" class="spinner-overlay">
+    <div class="spinner"></div>
+  </div>
   <div class="card-content">
     <div class="profile-section">
       <div class="profile-text">
@@ -44,7 +46,7 @@
     <div class="modal-content" (click)="$event.stopPropagation()">
       <h3>Enter Your Email</h3>
       <input [(ngModel)]="newEmail" placeholder="Enter email" type="email"/>
-      <button class="confirm-button" [class.disabled]="!newEmail" (click)="saveEmail()">Save</button>
+      <button class="confirm-button" [class.disabled]="!newEmail" (click)="postData()">Save</button>
     </div>
   </div>
   
