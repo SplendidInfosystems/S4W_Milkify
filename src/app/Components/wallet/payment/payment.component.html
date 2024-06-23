@@ -20,7 +20,43 @@
     <div class="head">
       <p>Payment Options</p>
     </div>
-    <div class="balance"><i class="fas fa-ellipsis-h"></i></div>
+    <div class="balance" (click)="openAddCardPopup()">
+      <i class="fas fa-ellipsis-h"></i>
+    </div>
+    
+    <div *ngIf="showAddCardPopup" class="popup-overlay" (click)="closeAddCardPopup()">
+      <div class="popup-content" (click)="$event.stopPropagation()">
+        <h5>Card Options</h5>
+        <div class="log">
+          <i class="fas fa-wallet" (click)="openConfirmationPopup()"></i>
+          <div class="message" (click)="openConfirmationPopup()">Add New Card</div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="showConfirmationPopup" class="card-overlay" (click)="closeConfirmationPopup()">
+      <div class="card-content" (click)="$event.stopPropagation()">
+        <h5>Add New Card</h5>
+        <div class="card-num">
+          <input type="number" placeholder="Card Number" [(ngModel)]="cardNumber" name="cardNumber" required>
+          <i class="fas fa-wallet"></i>
+        </div>
+        <div class="card-date">
+          <input type="number" placeholder="Card Expiry (MM/YY)" pattern="(0[1-9]|1[0-2])\/[0-9]{2}" [(ngModel)]="cardExpiry" name="cardExpiry" required>
+          <input type="number" placeholder="CVV" [(ngModel)]="cvv" name="cvv" required>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" [(ngModel)]="saveCard">
+            <span>Securely save card for faster checkouts</span>
+          </label>
+        </div>
+        <div class="button-container">
+          <button (click)="addMoney()" [disabled]="!isFormValid()">Add Money ₹{{ money }}</button>
+        </div>
+      </div>
+    </div>
+    
+    
   </header>
   <div class="selection" *ngIf="paymentData.length > 0">
     <div class="act" *ngFor="let payment of paymentData">

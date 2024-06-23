@@ -36,7 +36,6 @@ export class VacationService {
     return currentData[id];
   }
 
-
   addVacation(vacationData: any): Observable<any> {
     const headers = new HttpHeaders().set('x-api-key', this.PostapiKey);
     return this.http.post<any>(this.PostapiUrl, vacationData, { headers });

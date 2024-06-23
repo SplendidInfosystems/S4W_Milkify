@@ -321,3 +321,164 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    animation: slideUp 0.5s ease-in-out;
+    }
+  
+    .popup-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px 5px 0 0;
+      text-align: center;
+      width: 100%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      height: 13%;
+      }
+  
+  .popup-content h5 {
+    margin-top: 0;
+  }
+  
+  .popup-content .log {
+    margin-top: 20px;
+   display: flex;
+   color: #1eba62;
+   justify-content: flex-start;
+  }
+  
+  .popup-content .log .message{
+    margin-left: 20px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .popup-content .log .message:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .popup-content .log i {
+    cursor: pointer;
+  }
+  
+  .card-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    animation: slideUp 0.5s ease-in-out;
+  }
+  
+  .card-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    height: 30%;
+  }
+  
+  .card-content h5 {
+    margin-top: 0;
+  }
+  
+  .card-num {
+    margin-bottom: 10px;
+    position: relative;
+  }
+  
+  .card-num input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .card-num i {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #4ac47f;
+    cursor: pointer;
+  }
+  
+  .card-date {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .card-date input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .card-date input[type="number"]:first-child {
+    width: 70%; 
+  }
+  
+  .card-date input[type="number"]:last-child {
+    width: 25%; /* Set CVV width to 30% */
+  }
+  
+  
+  .checkbox {
+    margin-bottom: 10px;
+  }
+  .checkbox span{
+    font-size: 14px;
+  }
+  .checkbox label {
+    display: flex;
+    align-items: center;
+  }
+  
+  .checkbox input[type="checkbox"] {
+    margin-right: 5px;
+    width: 15px;
+    height: 15px;
+  }
+  
+  .button-container {
+    margin-top: 20px;
+  }
+  
+  .button-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #04B56C;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+
+    &[disabled]{
+        background-color: #868686;
+        color: #fff;
+    }
+  }
+  
+  .button-container button:hover {
+    background-color: #0AB36E;
+  }
+  

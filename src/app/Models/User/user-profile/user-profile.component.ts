@@ -16,22 +16,16 @@ export class UserProfileComponent implements OnInit {
   newEmail: string = '';
   showEmailPopup: boolean = false;
 
+  gender: string | null = null; 
+
   loading: boolean = false;
   userData: any = {};
-
-  postStatus: { statusCode: number, message: string, body: any } = { statusCode: 0, message: '', body: null };
 
   constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
-    const cachedUserData = localStorage.getItem('userData');
-    if (cachedUserData) {
-      this.userData = JSON.parse(cachedUserData);
-    } else {
-      this.getUserData(10); 
-    }
+    this.getUserData(10); 
   }
-  
 
   getUserData(userId: number): void {
     this.loading = true;
@@ -39,6 +33,9 @@ export class UserProfileComponent implements OnInit {
       (response: any) => {
         console.log('User Data:', response);
         this.userData = response.body || {};
+        this.name = this.userData.name || '';
+        this.email = this.userData.email || '';
+        this.gender = this.userData.gender || ''; 
         localStorage.setItem('userData', JSON.stringify(this.userData));
         this.loading = false;
       },
@@ -52,11 +49,16 @@ export class UserProfileComponent implements OnInit {
   postData(): void {
     if (this.userData && Object.keys(this.userData).length > 0) {
       this.loading = true;
-      const userDataJson = JSON.stringify(this.userData); // Serialize userData to JSON string
-      this.userService.postUser(userDataJson).subscribe(
+
+      const userDataToSend = {
+        name: this.name,
+        email: this.email,
+        gender: this.gender 
+      };
+  
+      this.userService.postUser(userDataToSend).subscribe(
         (response: any) => {
           console.log('User data posted successfully:', response);
-          this.userData = response.body || {};
           localStorage.setItem('userData', JSON.stringify(this.userData));
           this.loading = false;
         },
@@ -67,11 +69,9 @@ export class UserProfileComponent implements OnInit {
       );
     } else {
       console.error('Cannot post empty user data.');
-      
     }
+
   }
-  
-  
 
   openNamePopup(): void {
     this.newName = this.name || '';
@@ -86,7 +86,7 @@ export class UserProfileComponent implements OnInit {
     this.name = this.newName;
     localStorage.setItem('userName', this.newName);
     this.showNamePopup = false;
-    // Optionally, you can call postData() here to save updated data immediately
+    this.postData(); 
   }
 
   openEmailPopup(): void {
@@ -102,10 +102,11 @@ export class UserProfileComponent implements OnInit {
     this.email = this.newEmail;
     localStorage.setItem('userEmail', this.newEmail);
     this.showEmailPopup = false;
-    // Optionally, you can call postData() here to save updated data immediately
+    this.postData(); 
   }
 
   goBack(): void {
     this.router.navigate(['/accounts']);
   }
+  
 }

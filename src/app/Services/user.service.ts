@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
+  
   private apiUrl = 'https://udxjxutmi1.execute-api.us-east-1.amazonaws.com/devStage/getUser';
   private apiKey = 'gR7WQGPkVv8YqS1DTOiur56eZpr1e1T16rDe8Fx1';
 
@@ -21,7 +22,10 @@ export class UserService {
   }
 
   postUser(userData: any): Observable<any> {
-    const headers = new HttpHeaders().set('x-api-key', this.postApiKey);
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('x-api-key', this.postApiKey); 
     return this.http.post<any>(this.postApiUrl, userData, { headers });
   }
+
 }

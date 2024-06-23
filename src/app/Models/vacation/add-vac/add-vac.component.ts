@@ -74,26 +74,29 @@ export class AddVacComponent implements OnInit {
   
 
   addVacation(): void {
-    if (this.startDate && this.endDate) {
-      const vacationData = {
-        start_date: this.startDate.toISOString(),
-        end_date: this.endDate.toISOString()
-      };
-      this.loading = true;
-      this.vacationService.addVacation(vacationData).subscribe(
-        (response) => {
-          console.log('Vacation added successfully:', response);
-          this.router.navigate(['/vacation']);
-        },
-        (error) => {
-          console.error('Error adding vacation:', error);
-        },
-        () => {
-          this.loading = false;
-        }
-      );
-    }
+    this.loading = true;
+    const vacationData = {
+      userId: 1, // Assuming userId is fixed or should come from somewhere else
+      startDate: this.startDate,
+      endDate: this.endDate
+      // Add other necessary properties from your form or component
+    };
+  
+    this.vacationService.addVacation(vacationData).subscribe(
+      (response) => {
+        console.log('Vacation added successfully:', response);
+        this.router.navigate(['/vacation']);
+      },
+      (error) => {
+        console.error('Error adding vacation:', error);
+        // Handle error as needed
+      },
+      () => {
+        this.loading = false;
+      }
+    );
   }
+  
 
   goBack(): void {
     this.router.navigate(['/vacation']);

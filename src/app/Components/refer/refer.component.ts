@@ -12,7 +12,7 @@ export class ReferComponent implements OnInit {
 
   @Input() value: any[] = [];
   balance = 0;
-  loading: boolean = true; // Initialize loading to true
+  loading: boolean = true;
   Rebalance = 1500;
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
   referralData: any;
@@ -45,11 +45,11 @@ export class ReferComponent implements OnInit {
         this.referralData = response;
         console.log('Referral data:', this.referralData);
         localStorage.setItem('referralData', JSON.stringify(this.referralData));
-        this.loading = false; // Stop loading spinner on successful data load
+        this.loading = false; 
       },
       (error) => {
         console.error('Error fetching referral data:', error);
-        this.loading = false; // Stop loading spinner on error
+        this.loading = false; 
       }
     );
   }

@@ -13,15 +13,46 @@ export class PaymentComponent {
   loading: boolean = false; // Add loading state
   toBeCredited: number = this.amountToPay;
   upiIDs: string[] = [];
+  cardExpiry: string = '';
   paymentData: any[] = [];
+  money:number =0;
+  cardNumber: string[] = []; 
 
+  cvv: string[] = [];
+  saveCard: boolean = false; 
   showCancellationPopup: boolean = false;
+  showAddCardPopup: boolean = false;
+  showConfirmationPopup: boolean = false;
+  
 
   constructor(private router: Router, private paymentService: PaymentService) { }
 
   @Output() cancelConfirmed = new EventEmitter<boolean>();
   @Output() popupClosed = new EventEmitter<boolean>();
 
+  openAddCardPopup(): void {
+    this.showAddCardPopup = true;
+  }
+  isFormValid(): boolean {
+    // Check if all required fields are filled
+    if (this.cardNumber && this.cardExpiry && this.cvv) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  closeAddCardPopup(): void {
+    this.showAddCardPopup = false;
+  }
+
+  openConfirmationPopup(): void {
+    this.showConfirmationPopup = true;
+  }
+
+  closeConfirmationPopup(): void {
+    this.showConfirmationPopup = false;
+  }
   confirmCancel() {
     this.cancelConfirmed.emit(true);
   }
@@ -29,6 +60,7 @@ export class PaymentComponent {
   closePopup() {
     this.popupClosed.emit(false);
   }
+
 
  
   ngOnInit(): void {
@@ -41,7 +73,10 @@ export class PaymentComponent {
       this.getPaymentData(userId);
     }
   }
-
+  addMoney(): void {
+    console.log('Adding money:', this.money);
+    this.router.navigate(['/success']);
+  }
   getPaymentData(userId: number): void {
     this.loading = true; 
     this.paymentService.getPayment(userId).subscribe(

@@ -51,7 +51,12 @@ export class WalletComponent implements OnInit {
   showPayButton: boolean = true;
   showInvalidCouponPopup: boolean = false;
   showCancellationPopup: boolean = false;
-  coupons: any;
+  coupons: any[] = [
+    { coupon_code: "DISC10", discount_percentage: "30%" },
+    { coupon_code: "RITE34", discount_percentage: "25%" },
+    { coupon_code: "SPRING20", discount_percentage: "20%" }
+  ];
+  
   walletData: any[] = [];
 
   constructor(private router: Router, private location: Location, private walletService: WalletService) { }
@@ -183,19 +188,22 @@ export class WalletComponent implements OnInit {
   closeNamePopup(): void {
     this.showNamePopup = false;
   }
+  
 
   saveName(): void {
-    const coupon = this.coupons.find((coupon: { coupon_code: string; }) => coupon.coupon_code === this.couponCode);
+    const coupon = this.coupons.find(coupon => coupon.coupon_code === this.couponCode);
     if (coupon) {
       console.log('Coupon code applied successfully:', coupon);
-      this.selectedAmount = this.selectedAmount * 0.8; 
-      this.closeNamePopup(); 
+      const discountPercentage = parseFloat(coupon.discount_percentage) / 100;
+      this.selectedAmount -= this.selectedAmount * discountPercentage;
+      this.closeNamePopup();
     } else {
       this.invalidCoupon = true;
-      this.errorMessage = "There is no current running offer with this coupon code";
+      this.errorMessage = "Invalid coupon code. Please enter a valid one.";
       this.showErrorMessagePopup = true;
     }
   }
+  
   
   saveCoupon(couponData: any): void {
     this.walletService.postCoupon(couponData).subscribe(

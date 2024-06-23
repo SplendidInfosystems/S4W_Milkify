@@ -1,4 +1,3 @@
-
 <div class="user-header">
   <div class="back-icon" (click)="goBack()">
     <i class="fas fa-chevron-left"></i>
@@ -6,9 +5,9 @@
 <div class="head">
     <p>My Profile</p>
 </div>
-  </div>
+</div>
 
-  <div class="user-info-main">
+<div class="user-info-main">
     <mat-card class="user-card">
 <div class="card-content">
     <div class="profile-section">
@@ -41,7 +40,7 @@
     </div>
   </div>
   
-  <!-- Email Entry Popup -->
+
   <div *ngIf="showEmailPopup" class="modal-overlay" (click)="closeEmailPopup()">
     <div class="modal-content" (click)="$event.stopPropagation()">
       <h3>Enter Your Email</h3>
@@ -81,7 +80,7 @@
     <div class="profile-section">
       <div class="profile-text">
           <h4>Gender</h4>
-          <p>{{ userData?.gender  }}</p>
+          <p>{{ userData.gender  }}</p>
       </div>
       <button mat-button class="custom-button">Add</button>
     </div>
