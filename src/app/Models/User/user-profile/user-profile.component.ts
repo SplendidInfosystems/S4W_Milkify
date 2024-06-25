@@ -49,16 +49,21 @@ export class UserProfileComponent implements OnInit {
   postData(): void {
     if (this.userData && Object.keys(this.userData).length > 0) {
       this.loading = true;
-
+  
       const userDataToSend = {
-        name: this.name,
-        email: this.email,
-        gender: this.gender 
+        name: this.userData.name,
+        email: this.userData.email,
+        gender: this.userData.gender,
+        address: this.userData.address, // Ensure these fields are included if required
+        alternate_mobile_number: this.userData.alternate_mobile_number,
+        city: this.userData.city,
+        user_type: this.userData.user_type
       };
   
       this.userService.postUser(userDataToSend).subscribe(
         (response: any) => {
           console.log('User data posted successfully:', response);
+          this.userData = response.body || {};
           localStorage.setItem('userData', JSON.stringify(this.userData));
           this.loading = false;
         },
@@ -70,7 +75,6 @@ export class UserProfileComponent implements OnInit {
     } else {
       console.error('Cannot post empty user data.');
     }
-
   }
 
   openNamePopup(): void {

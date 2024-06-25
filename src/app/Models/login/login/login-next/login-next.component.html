@@ -15,12 +15,40 @@
     <h3>OTP Verification</h3>
     <p>We have sent a Verification code to +91{{ mobileNumber }}</p>
     <div class="otp-input">
-      <input type="text" maxlength="6" [(ngModel)]="otp" placeholder="Enter OTP">
-    </div>
-    <div class="otp">
-      <button (click)="verifyOTP()">Verify & Proceed</button>
+      <input type="text" maxlength="1" autofocus #input1 
+             (keyup)="moveToNext(input1, input2)" 
+             (keydown)="moveToPrevious($event, input1)">
+      
+      <input type="text" maxlength="1" #input2 
+             (keyup)="moveToNext(input2, input3)" 
+             (keydown)="moveToPrevious($event, input2, input1)">
+      
+      <input type="text" maxlength="1" #input3 
+             (keyup)="moveToNext(input3, input4)" 
+             (keydown)="moveToPrevious($event, input3, input2)">
+      
+      <input type="text" maxlength="1" #input4 
+             (keyup)="moveToNext(input4, input5)" 
+             (keydown)="moveToPrevious($event, input4, input3)">
+      
+      <input type="text" maxlength="1" #input5 
+             (keyup)="moveToNext(input5, input6)" 
+             (keydown)="moveToPrevious($event, input5, input4)">
+      
+      <input type="text" maxlength="1" #input6 
+             (keyup)="moveToNext(input6)"
+             (keydown)="moveToPrevious($event, input6, input5)">
     </div>
     
+  
+    <div class="resend">
+      <p *ngIf="remainingTime > 0">Don't receive the OTP? 00:{{ remainingTime }}</p>
+      <button *ngIf="remainingTime <= 0" (click)="resend()">Resend</button>
+    </div>
+  
+    <div class="otp">
+      <button [disabled]="!showVerifyButton" (click)="sendOTP()">Verify & Proceed</button>
+    </div>
   </div>
   
   <!-- Modal -->

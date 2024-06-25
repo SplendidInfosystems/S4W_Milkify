@@ -19,6 +19,7 @@ export class VacationComponent implements OnInit {
       this.showVacationDates = !!data && data.length > 0; 
     });
   }
+  
 
   goToAddVacation(): void {
     this.router.navigate(['/add-vac']);
@@ -31,4 +32,5 @@ export class VacationComponent implements OnInit {
   goBack(): void {
     this.router.navigate(['/prod-subs']);
   }
+ 
 }

@@ -29,7 +29,7 @@ export class AddVacComponent implements OnInit {
       this.vacationData = JSON.parse(cachedVacationData);
       this.processVacationData();
     } else {
-      this.getVacationData(1); // Fetch vacation data if not cached
+      this.getVacationData(1); 
     }
   
     this.route.params.subscribe(params => {
@@ -37,10 +37,12 @@ export class AddVacComponent implements OnInit {
         this.isEditMode = true;
         this.vacationId = Number(params['id']);
         this.vacationService.vacationData$.subscribe((data: any) => {
-          const vacationData = data[this.vacationId!];
+          const vacationData = data[this.vacationId];
           if (vacationData) {
-            this.startDate = new Date(vacationData.startDate);
-            this.endDate = new Date(vacationData.endDate);
+            this.startDate = new Date(vacationData.start_date);
+            this.endDate = new Date(vacationData.end_date);
+          } else {
+            console.error('Vacation data not found for ID:', this.vacationId);
           }
         });
       }
@@ -51,6 +53,8 @@ export class AddVacComponent implements OnInit {
     if (this.vacationData && this.vacationData.length > 0) {
       this.start_date = this.vacationData[0].start_date;
       this.end_date = this.vacationData[0].end_date;
+      this.startDate = new Date(this.start_date);
+      this.endDate = new Date(this.end_date);
     }
   }
 
@@ -75,28 +79,33 @@ export class AddVacComponent implements OnInit {
 
   addVacation(): void {
     this.loading = true;
+
+    if (!this.startDate || !this.endDate) {
+      console.error('Start date or end date is not defined.');
+      return;
+    }
+
     const vacationData = {
-      userId: 1, // Assuming userId is fixed or should come from somewhere else
-      startDate: this.startDate,
-      endDate: this.endDate
-      // Add other necessary properties from your form or component
+      user_id: 12, // Replace with actual user ID if needed
+      start_date: this.startDate.toISOString(),
+      end_date: this.endDate.toISOString()
     };
-  
+
+    console.log('Vacation data to be sent:', vacationData);
+
     this.vacationService.addVacation(vacationData).subscribe(
-      (response) => {
+      (response: any) => {
         console.log('Vacation added successfully:', response);
         this.router.navigate(['/vacation']);
       },
       (error) => {
         console.error('Error adding vacation:', error);
-        // Handle error as needed
       },
       () => {
         this.loading = false;
       }
     );
   }
-  
 
   goBack(): void {
     this.router.navigate(['/vacation']);

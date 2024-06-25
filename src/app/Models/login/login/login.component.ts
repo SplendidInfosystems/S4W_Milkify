@@ -10,7 +10,7 @@ import { LoginService } from '../../../Services/login.service';
 export class LoginComponent implements OnInit {
   
 
-  mobile_number: string = '';
+  mobileNumber: string = '';
   otpSent: boolean = false;
   otpVerified: boolean = false;
   otp: string = '';
@@ -51,45 +51,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void { }
   
-  sendOTP(): void {
-    this.loginService.postLogin(this.mobile_number, this.otp).subscribe(
-      (response) => {
-        if (response.success) {
-          this.responseData = response.body; 
-          console.log(response);
-          this.otpSent = true;
-          if (response) {
-            this.router.navigate(['/login-next']);
-          }
-        } else {
-          console.log('Login failed');
-        }
-      },
-      (error) => {
-        console.error('Error:', error);
-        if (error.error && error.error.message) {
-          console.error('Error Message:', error.error.message);
-        }
-      }
-    );
-  }
-  
-  verifyOTP(): void {
-    this.loginService.verifyOTP(this.mobile_number, this.otp).subscribe(
-      (response) => {
-        if (response.success) {
-          console.log('OTP verified successfully.');
-          this.router.navigate(['/home']);
-        } else {
-          console.log('OTP verification failed');
-          this.otpVerificationFailed = true;
-        }
-      },
-      (error) => {
-        console.error('Error:', error);
-      }
-    );
-  }
 
   private isValidMobileNumber(number: string): boolean {
     return /^\d{10}$/.test(number);

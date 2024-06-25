@@ -38,14 +38,13 @@
     </ng-template>
   </ngb-carousel>
 
-  <div class="Loginscreen">
-    <div class="login">
-      <p>Let’s get started</p>
-    </div>
+   <div class="Loginscreen">
     <div class="num">
-      <input type="tel" id="mobileNumberInput" placeholder="Enter Mobile number" [(ngModel)]="mobile_number"
-        pattern="[0-9]{10}" required maxlength="10">
-      <button (click)="sendOTP()">Continue</button>
+      <input type="tel" id="mobileNumberInput" placeholder="Enter Mobile number" [(ngModel)]="mobileNumber"
+      pattern="[0-9]{10}" required maxlength="10" (click)="showCancellationPopup = true">
+    <!-- Continue Button -->
+    <button>Continue</button>
+    </div>
       
     
    
@@ -57,12 +56,12 @@
           </div>
           <div class="input-container">
             <img src="https://cdn.britannica.com/97/1597-050-008F30FA/Flag-India.jpg" alt="">
-            <input type="tel" id="mobileNumberInput" placeholder="Enter Mobile number" [(ngModel)]="mobile_number"
+            <input type="tel" id="mobileNumberInput" placeholder="Enter Mobile number" [(ngModel)]="mobileNumber"
               pattern="[0-9]{10}" required maxlength="10" #mobileInput="ngModel">
           </div>
         </div>
-        <button (click)="sendOTP(); mobileInput.control.markAsTouched(); navigateToNextPage()"
-          [disabled]="mobileInput.invalid || mobile_number.length !== 10 || otpSent">Continue</button>
+        <button (click)=" mobileInput.control.markAsTouched(); navigateToNextPage()"
+          [disabled]="mobileInput.invalid || mobileNumber.length !== 10 || otpSent">Continue</button>
        
 
         <div *ngIf="mobileInput.invalid && mobileInput.touched" class="error-message">
@@ -79,13 +78,6 @@
 
     </div>
 
-    <div class="otp-section" *ngIf="otpSent">
-      <input type="text" placeholder="Enter OTP" [(ngModel)]="otp" maxlength="6" required #otpInput="ngModel">
-      <button (click)="verifyOTP()" [disabled]="otp.length !== 6">Verify OTP</button>
-      <div *ngIf="otpVerificationFailed" class="error-message">
-        Invalid OTP. Please try again.
-      </div>
-    </div>
 
     <div class="message">
       <p>By Signing up you accept to<br>&nbsp;&nbsp;
