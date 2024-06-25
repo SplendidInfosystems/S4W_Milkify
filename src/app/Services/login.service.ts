@@ -11,10 +11,13 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  postLogin(mobileNumber: string, otp: string): Observable<any> {
+  verifyOTP(otpData: any): Observable<any> {
     const headers = new HttpHeaders().set('x-api-key', this.apiKey);
-    const body = { mobile_number: mobileNumber, otp_code: otp };
-    
-    return this.http.post<any>(this.apiUrl, body, { headers: headers });
+
+    const body = {
+      body: [otpData]
+    };
+
+    return this.http.post<any>(this.apiUrl, body, { headers });
   }
 }

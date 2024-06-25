@@ -9,7 +9,7 @@ import { LoginService } from '../../../Services/login.service';
 })
 export class LoginComponent implements OnInit {
   
-
+  mobile_number:any;
   mobileNumber: string = '';
   otpSent: boolean = false;
   otpVerified: boolean = false;

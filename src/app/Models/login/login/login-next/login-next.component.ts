@@ -8,7 +8,9 @@ import { LoginService } from '../../../../Services/login.service';
   styleUrls: ['./login-next.component.css']
 })
 export class LoginNextComponent implements OnInit {
+  
   mobileNumber: string ='';
+  mobile_number:any;
   otp: string = ''; 
   otpSent: boolean = false;
   responseData: any = null;
@@ -23,14 +25,30 @@ export class LoginNextComponent implements OnInit {
   modalMessage: string = '';
   isOtpFieldEmpty: boolean = true;
   showCancellationPopup: boolean = false;
-
+  loading: boolean = false;
+  otp1: string = '';
+  otp2: string = '';
+  otp3: string = '';
+  otp4: string = '';
+  otp5: string = '';
+  otp6: string = '';
+  get otp_code(): string {
+    return this.otp1 + this.otp2 + this.otp3 + this.otp4 + this.otp5 + this.otp6;
+  }
+  
   constructor(private router: Router, private loginService: LoginService) { }
 
   ngOnInit(): void {
-    // this.mobileNumber = this.loginService.getMobileNumber();
     this.startCountdownTimer();
   }
+  
 
+  checkOtp() {
+    if (this.otp_code.length === 6) {
+      console.log(this.otp_code);
+    }
+  }
+  
   closeCancellationPopup(): void {
     this.showCancellationPopup = false;
     this.router.navigate([], {
@@ -43,29 +61,26 @@ export class LoginNextComponent implements OnInit {
     this.showCancellationPopup = true;
   }
 
-  sendOTP(): void {
-    // Assuming this.loginService is properly injected in your component
-    this.loginService.postLogin(this.mobileNumber, this.otp).subscribe(
-      (response: any) => {
-        if (response) {
-          console.log('OTP sent successfully:', response);
-          this.otpSent = true;
-          this.router.navigate(['/home']);
-        } else {
-          console.error('OTP sending failed. Response:', response);
-        }
+ verifyOTP(): void {
+    this.loading = true;
+    const otpData = {
+      mobile_number: this.mobileNumber,
+      otp_code: this.otp 
+    };
+
+    this.loginService.verifyOTP(otpData).subscribe(
+      (response) => {
+        this.loading = false;
+        console.log('OTP verified successfully',response);
+        this.router.navigate(['/home']);
       },
-      (error: any) => {
-        console.error('Error:', error);
-        if (error.error && error.error.message) {
-          console.error('Error Message:', error.error.message);
-        } else {
-          console.error('Unknown error occurred.');
-        }
+      (error) => {
+        this.loading = false;
+        this.otpVerificationFailed = true;
+        console.error('Failed to verify OTP', error);
       }
     );
   }
-  
   
 
   closeModal(): void {
@@ -91,28 +106,28 @@ export class LoginNextComponent implements OnInit {
     }, 1000);
   }
 
-  moveToNext(currentInput: HTMLInputElement, nextInput?: HTMLInputElement) {
-    const length = currentInput.value.length;
-    if (length === 1 && nextInput) {
+  moveToNext(currentInput: any, nextInput?: any) {
+    if (currentInput.value.length === 1 && nextInput) {
       nextInput.focus();
     }
-  }
-
-  moveToPrevious(event: KeyboardEvent, currentInput: HTMLInputElement, previousInput?: HTMLInputElement) {
-    if (event.key === 'Backspace' && currentInput.value.length === 0) {
-      event.preventDefault();
-      if (previousInput) {
-        previousInput.focus();
-      }
+    if (!nextInput) {
+      this.checkOtp();
     }
   }
+  
+  moveToPrevious(event: any, currentInput: any, previousInput?: any) {
+    if (event.key === 'Backspace' && currentInput.value.length === 0 && previousInput) {
+      previousInput.focus();
+    }
+  }
+  
 
   onOtpInput(inputIndex: number, event: Event) {
     const inputValue = (event.target as HTMLInputElement).value.trim();
     if (inputValue) {
-      this.enteredOtpDigits = inputIndex + 1; // Increment entered digits count
+      this.enteredOtpDigits = inputIndex + 1; 
     } else {
-      this.enteredOtpDigits = inputIndex; // Decrement entered digits count if input is cleared
+      this.enteredOtpDigits = inputIndex;
     }
   }
   
