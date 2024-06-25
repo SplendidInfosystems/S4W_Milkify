@@ -34,9 +34,7 @@ export class LoginNextComponent implements OnInit {
   closeCancellationPopup(): void {
     this.showCancellationPopup = false;
     this.router.navigate([], {
-      queryParams: {
-        subscriptionCancelled: null
-      },
+      queryParams: { subscriptionCancelled: null },
       queryParamsHandling: 'merge'
     });
   }
@@ -44,22 +42,20 @@ export class LoginNextComponent implements OnInit {
   goBack(): void {
     this.showCancellationPopup = true;
   }
- 
-  
+
   sendOTP(): void {
-    if (!this.mobileNumber || !this.otp) {
+    if (!this.mobileNumber || !this.otp || this.otp.length !== 6) {
       console.error('Mobile number or OTP is empty.');
       return;
     }
-    
+
     console.log('Sending OTP for mobile number:', this.mobileNumber);
-  
+
     const Data = {
       mobile_number: this.mobileNumber,
       otp_code: this.otp
     };
-    console.log('Data to be sent:', this.mobileNumber, this.otp);
-  
+
     this.loginService.postLogin(this.mobileNumber, this.otp).subscribe(
       (response: any) => {
         if (response) {
@@ -80,8 +76,7 @@ export class LoginNextComponent implements OnInit {
       }
     );
   }
-  
-  
+
   closeModal(): void {
     this.showModal = false;
   }
@@ -120,6 +115,7 @@ export class LoginNextComponent implements OnInit {
       }
     }
   }
+
   onOtpInput(inputIndex: number, event: Event) {
     const inputValue = (event.target as HTMLInputElement).value.trim();
     if (inputValue) {

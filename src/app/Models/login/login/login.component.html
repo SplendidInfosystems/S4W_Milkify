@@ -58,6 +58,7 @@
             <img src="https://cdn.britannica.com/97/1597-050-008F30FA/Flag-India.jpg" alt="">
             <input type="tel" id="mobileNumberInput" placeholder="Enter Mobile number" [(ngModel)]="mobileNumber"
               pattern="[0-9]{10}" required maxlength="10" #mobileInput="ngModel">
+
           </div>
         </div>
         <button (click)=" mobileInput.control.markAsTouched(); navigateToNextPage()"
