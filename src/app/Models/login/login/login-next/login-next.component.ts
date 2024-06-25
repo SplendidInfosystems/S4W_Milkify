@@ -44,18 +44,7 @@ export class LoginNextComponent implements OnInit {
   }
 
   sendOTP(): void {
-    if (!this.mobileNumber || !this.otp || this.otp.length !== 6) {
-      console.error('Mobile number or OTP is empty.');
-      return;
-    }
-
-    console.log('Sending OTP for mobile number:', this.mobileNumber);
-
-    const Data = {
-      mobile_number: this.mobileNumber,
-      otp_code: this.otp
-    };
-
+    // Assuming this.loginService is properly injected in your component
     this.loginService.postLogin(this.mobileNumber, this.otp).subscribe(
       (response: any) => {
         if (response) {
@@ -76,6 +65,8 @@ export class LoginNextComponent implements OnInit {
       }
     );
   }
+  
+  
 
   closeModal(): void {
     this.showModal = false;
