@@ -20,21 +20,19 @@ export class LoginComponent implements OnInit {
   showCancellationPopup: boolean = false;
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
   responseData: any = null;
-
+mobileInput: any;
+mobileNumberInput: any;
   
   constructor(private router: Router, private loginService: LoginService) { }
   
   @Output() cancelConfirmed = new EventEmitter<boolean>();
   @Output() popupClosed = new EventEmitter<boolean>();
-
   confirmCancel() {
     this.cancelConfirmed.emit(true);
   }
-
   closePopup() {
     this.popupClosed.emit(false);
   }
-
   closeCancellationPopup() {
     this.showCancellationPopup = false;
     this.router.navigate([], {
@@ -44,14 +42,20 @@ export class LoginComponent implements OnInit {
       queryParamsHandling: 'merge'
     });
   }
- 
+  navigateToNextPage(): void {
+    if (this.isValidMobileNumber(this.mobileNumber)) {
+      this.router.navigate(['/login-next'], { queryParams: { mobileNumber: this.mobileNumber } });
+    } else {
+      // Handle invalid mobile number case if needed
+    }
+  }
+  
+  
   goBack(): void {
     this.showCancellationPopup = true;
   }
-
   ngOnInit(): void { }
   
-
   private isValidMobileNumber(number: string): boolean {
     return /^\d{10}$/.test(number);
   }
@@ -75,8 +79,5 @@ export class LoginComponent implements OnInit {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
-  }
-  navigateToNextPage(): void {
-    this.router.navigate(['/login-next']);
   }
 }

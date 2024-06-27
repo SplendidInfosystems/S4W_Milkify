@@ -56,13 +56,12 @@
           </div>
           <div class="input-container">
             <img src="https://cdn.britannica.com/97/1597-050-008F30FA/Flag-India.jpg" alt="">
-            <input type="tel" id="mobile_number" placeholder="Enter Mobile number" name="mobile_number" [(ngModel)]="mobile_number"
-              pattern="[0-9]{10}" required maxlength="10" #mobileInput="ngModel">
-
+            <input type="tel" id="mobileNumberInput" placeholder="Enter Mobile number" [(ngModel)]="mobileNumber"
+            pattern="[0-9]{10}" required maxlength="10" (click)="showCancellationPopup = true">
+                
           </div>
         </div>
-        <button (click)=" mobileInput.control.markAsTouched(); navigateToNextPage()"
-          [disabled]="mobileInput.invalid || mobileNumber.length !== 10 || otpSent">Continue</button>
+          <button (click)="navigateToNextPage()" [disabled]="mobileInput.invalid || mobileNumber.length !== 10 || otpSent">Continue</button>
        
 
         <div *ngIf="mobileInput.invalid && mobileInput.touched" class="error-message">

@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from '../../../../Services/login.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class LoginNextComponent implements OnInit {
   mobile_number:any;
   otp: string = ''; 
   otpSent: boolean = false;
-  responseData: any = null;
+  LoginData: any;
   otpVerified: boolean = false;
   otpVerificationFailed: boolean = false;
   showResendOption: boolean = false;
@@ -32,16 +32,26 @@ export class LoginNextComponent implements OnInit {
   otp4: string = '';
   otp5: string = '';
   otp6: string = '';
+  // activatedRoute: any;
   get otp_code(): string {
     return this.otp1 + this.otp2 + this.otp3 + this.otp4 + this.otp5 + this.otp6;
   }
   
-  constructor(private router: Router, private loginService: LoginService) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute ,private Loginservice : LoginService) {}
 
   ngOnInit(): void {
-    this.startCountdownTimer();
-  }
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.mobileNumber = params['mobileNumber'];
+    });
   
+    this.startCountdownTimer();
+  
+    const storedLoginData = localStorage.getItem('LoginData');
+    if (storedLoginData) {
+      this.LoginData = JSON.parse(storedLoginData);
+    }
+  }
+
 
   checkOtp() {
     if (this.otp_code.length === 6) {
@@ -62,26 +72,29 @@ export class LoginNextComponent implements OnInit {
   }
 
  verifyOTP(): void {
-    this.loading = true;
-    const otpData = {
-      mobile_number: this.mobileNumber,
-      otp_code: this.otp 
-    };
+  this.loading = true;
 
-    this.loginService.verifyOTP(otpData).subscribe(
-      (response) => {
-        this.loading = false;
-        console.log('OTP verified successfully',response);
-        this.router.navigate(['/home']);
-      },
-      (error) => {
-        this.loading = false;
-        this.otpVerificationFailed = true;
-        console.error('Failed to verify OTP', error);
-      }
-    );
-  }
-  
+  const otpData = {
+    mobile_number: this.mobileNumber,
+    otp_code: this.otp_code
+  };
+
+  this.Loginservice.verifyOTP(otpData).subscribe(
+    (response) => {
+      this.loading = false;
+      console.log('OTP verified successfully', response);
+      // Handle successful OTP verification (e.g., store session, navigate to home)
+      localStorage.setItem('LoginData', JSON.stringify(response));
+      this.router.navigate(['/home']);
+    },
+    (error) => {
+      this.loading = false;
+      this.otpVerificationFailed = true;
+      console.error('Failed to verify OTP', error);
+      // Handle OTP verification failure (e.g., show error message)
+    }
+  );
+}
 
   closeModal(): void {
     this.showModal = false;
