@@ -13,7 +13,10 @@ export class LoginService {
 
   verifyOTP(otpData: any): Observable<any> {
     const headers = new HttpHeaders().set('x-api-key', this.apiKey);
-    return this.http.post<any>(this.apiUrl, otpData, { headers });
+
+    const body = { body: [otpData] };
+
+    return this.http.post<any>(this.apiUrl, body, { headers });
   }
   
 }

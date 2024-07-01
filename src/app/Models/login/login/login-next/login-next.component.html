@@ -16,10 +16,11 @@
     <h3>OTP Verification</h3>
     <p>We have sent a Verification code to +91{{ mobileNumber }}</p>
     <div class="otp-input" name="otp_code">
-      <input type="text" maxlength="1" autofocus #input1 [(ngModel)]="otp1" 
-             (keyup)="moveToNext(input1, input2)" 
-             (keydown)="moveToPrevious($event, input1)">
-      
+      <input type="text" maxlength="1" #input1 [(ngModel)]="otp1" 
+      (keyup)="moveToNext(input1, input2)" 
+      (keydown)="moveToPrevious($event, input1)">
+
+
       <input type="text" maxlength="1" #input2 [(ngModel)]="otp2" 
              (keyup)="moveToNext(input2, input3)" 
              (keydown)="moveToPrevious($event, input2, input1)">

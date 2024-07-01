@@ -42,6 +42,8 @@ mobileNumberInput: any;
       queryParamsHandling: 'merge'
     });
   }
+ 
+  
   navigateToNextPage(): void {
     if (this.isValidMobileNumber(this.mobileNumber)) {
       this.router.navigate(['/login-next'], { queryParams: { mobileNumber: this.mobileNumber } });

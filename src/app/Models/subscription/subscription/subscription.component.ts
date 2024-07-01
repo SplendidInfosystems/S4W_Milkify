@@ -110,19 +110,6 @@ export class SubscriptionComponent implements OnInit {
   }
   
 
-  onPostSubscription(): void {
-  
-    this.subscriptionService.postSubscriptionData(this.subscriptionData).subscribe(
-      (response) => {
-        console.log('Subscription Data Posted:', response);
-        // Handle any post-response actions here
-      },
-      (error) => {
-        console.error('Error posting subscription data:', error);
-        // Handle errors
-      }
-    );
-  }
 
   // Example usage
   onSubmit(subscriptionData: any): void {

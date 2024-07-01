@@ -32,7 +32,8 @@ export class LoginNextComponent implements OnInit {
   otp4: string = '';
   otp5: string = '';
   otp6: string = '';
-  // activatedRoute: any;
+ 
+  
   get otp_code(): string {
     return this.otp1 + this.otp2 + this.otp3 + this.otp4 + this.otp5 + this.otp6;
   }
@@ -71,31 +72,33 @@ export class LoginNextComponent implements OnInit {
     this.showCancellationPopup = true;
   }
 
- verifyOTP(): void {
-  this.loading = true;
-
-  const otpData = {
-    mobile_number: this.mobileNumber,
-    otp_code: this.otp_code
-  };
-
-  this.Loginservice.verifyOTP(otpData).subscribe(
-    (response) => {
-      this.loading = false;
-      console.log('OTP verified successfully', response);
-      // Handle successful OTP verification (e.g., store session, navigate to home)
-      localStorage.setItem('LoginData', JSON.stringify(response));
-      this.router.navigate(['/home']);
-    },
-    (error) => {
-      this.loading = false;
-      this.otpVerificationFailed = true;
-      console.error('Failed to verify OTP', error);
-      // Handle OTP verification failure (e.g., show error message)
-    }
-  );
-}
-
+  verifyOTP(): void {
+    this.loading = true;
+  
+    const otpData = {
+      mobile_number: this.mobileNumber,
+      otp_code: `${this.otp1}${this.otp2}${this.otp3}${this.otp4}${this.otp5}${this.otp6}`
+    };
+  
+    this.Loginservice.verifyOTP(otpData).subscribe(
+      (response) => {
+        this.loading = false;
+        console.log('OTP verified successfully', response);
+        localStorage.setItem('LoginData', JSON.stringify(response));
+        this.router.navigate(['/home']);
+      },
+      (error) => {
+        this.loading = false;
+        this.otpVerificationFailed = true;
+        console.error('Failed to verify OTP', error);
+        if (error.status === 500 && error.error && error.error.error) {
+          this.showModal = true;
+          this.modalMessage = error.error.error;
+        }
+      }
+    );
+  }
+  
   closeModal(): void {
     this.showModal = false;
   }

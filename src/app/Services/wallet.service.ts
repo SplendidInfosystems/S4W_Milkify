@@ -19,6 +19,10 @@ export class WalletService {
   getWalletapiUrl = 'https://fb405yn7nh.execute-api.us-east-1.amazonaws.com/devStage/getWallet?user_id=2';
   getWalletapiKey = 'tj2zZlg1xT2vxHXDMZnbP5tNalXW21g8ayxup4vo';
 
+
+  updateWalletapiUrl = 'https://hiamt7qw66.execute-api.us-east-1.amazonaws.com/devStage/updateWallet';
+  updateWalletapiKey = 'qe5pwT3rFK3KX09efEat49bKqXxD3r386Kig9ppt';
+
   constructor(private http: HttpClient) { }
 
   postWallet(balance: number, userId: string): Observable<any> {
@@ -29,6 +33,15 @@ export class WalletService {
     return this.http.post(this.apiUrl, body, { headers: headers });
   }
 
+  updateWallet(updatedata:any): Observable<any> {
+    const headers = new HttpHeaders({
+      'x-api-key': this.updateWalletapiKey
+    });
+    const body = { body: [updatedata] };
+
+    return this.http.patch(this.updateWalletapiUrl, body, { headers });
+  }
+  
   getCoupon(userId: number): Observable<any> {
     const headers = new HttpHeaders({
       'x-api-key': this.couponapiKey
@@ -41,7 +54,9 @@ export class WalletService {
       'Content-Type': 'application/json',
       'x-api-key': this.postCouponapiKey
     });
-    return this.http.post(this.postCouponapiUrl, couponData, { headers });
+    const body = { body: [couponData] };
+
+    return this.http.post(this.postCouponapiUrl, body, { headers });
   }
 
   getWallet(userId: number): Observable<any> {

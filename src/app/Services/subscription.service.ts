@@ -20,8 +20,6 @@ export class SubscriptionService {
 
   getSubscriptionData(userId: number): Observable<any> {
     const headers = new HttpHeaders().set('x-api-key', this.apiKey);
-
-    // Check if subscription data exists in local storage
     const cachedData = localStorage.getItem('subscriptionData');
     if (cachedData) {
       return new Observable<any>((observer) => {
@@ -32,6 +30,7 @@ export class SubscriptionService {
       return this.http.get<any>(`${this.baseUrl}getSubscription?user_id=${userId}`, { headers });
     }
   }
+  
   postSubscriptionData(subscriptionData: any): Observable<any> {
     const headers = new HttpHeaders().set('x-api-key', this.PostapiKey);
     return this.http.post<any>(`${this.PostbaseUrl}postSubscription`, subscriptionData, { headers });

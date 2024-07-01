@@ -148,9 +148,12 @@ export class WalletComponent implements OnInit {
   }
 
   payAmount(): void {
-    console.log("Payment amount:", this.selectedAmount);
+   this.payAmount;
   }
 
+  onClickBalance(): void {
+    this.updateWallet();
+  }
   proceed(): void {
     this.router.navigate(['/payment']); 
   }
@@ -188,33 +191,48 @@ export class WalletComponent implements OnInit {
   closeNamePopup(): void {
     this.showNamePopup = false;
   }
-  
 
-  saveName(): void {
-    const coupon = this.coupons.find(coupon => coupon.coupon_code === this.couponCode);
-    if (coupon) {
-      console.log('Coupon code applied successfully:', coupon);
-      const discountPercentage = parseFloat(coupon.discount_percentage) / 100;
-      this.selectedAmount -= this.selectedAmount * discountPercentage;
-      this.closeNamePopup();
-    } else {
-      this.invalidCoupon = true;
-      this.errorMessage = "Invalid coupon code. Please enter a valid one.";
-      this.showErrorMessagePopup = true;
-    }
-  }
   
-  
-  saveCoupon(couponData: any): void {
+  saveCoupon() {
+    const couponData = {
+      coupon_code: this.couponCode, 
+      discount_percentage: "30%",
+      expiry_date: "2024-05-31",
+      user_id: "5"
+    };
+  console.log(couponData);
     this.walletService.postCoupon(couponData).subscribe(
       (response: any) => {
         console.log('Coupon data posted successfully:', response);
       },
       (error) => {
         console.error('Error posting coupon data:', error);
+        this.errorMessage = 'Failed to apply coupon. Please try again.'; 
       }
     );
+   
   }
+
+  updateWallet(): void {
+    const updatedata = {
+          wallet_id: "3",
+           balance: this.Balance,
+           user_id: "3"
+    };
+    this.walletService.updateWallet(updatedata)
+      .subscribe(
+        response => {
+          console.log('Wallet balance updated successfully:', response);
+          // Optionally, update local data or handle success
+        },
+        error => {
+          console.error('Error updating wallet balance:', error);
+          // Handle error appropriately
+        }
+      );
+  }
+  
+ 
   
   navigateToNextPage(): void {
     this.router.navigate(['/login-next']);
